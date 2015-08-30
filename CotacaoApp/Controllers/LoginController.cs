@@ -16,6 +16,9 @@ namespace CotacaoApp.Controllers
             return View();
         }
 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Autenticar(string login, string senha)
         {
             UsuarioDAO usuarioDao = new UsuarioDAO();
@@ -24,12 +27,19 @@ namespace CotacaoApp.Controllers
             if( usuario != null)
             {
                 Session["UsuarioLogado"] = usuario;
-                return RedirectToAction("Index", "Propostas");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
                 return RedirectToAction("Index");
             }
+        }
+
+
+        public ActionResult Logout()
+        {
+            Session.Remove("UsuarioLogado");
+            return RedirectToAction("Index", "Login");
         }
     }
 }

@@ -9,10 +9,12 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CotacaoApp.Models;
+using CotacaoApp.Filters;
 
 namespace CotacaoApp.Controllers
 {
-    [Authorize]
+    //[Authorize]
+    [AutorizacaoFilter]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;

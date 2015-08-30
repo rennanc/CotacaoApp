@@ -29,5 +29,7 @@ namespace CotacaoApp.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Usuario> Usuarios { get; set; }
     }
 }
