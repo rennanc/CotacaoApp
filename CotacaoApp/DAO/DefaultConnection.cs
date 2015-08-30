@@ -10,7 +10,7 @@ namespace CotacaoApp.DAO
 {
     public class DefaultConnection : DbContext
     {
-        public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Usuario> Usuario { get; set; } 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
