@@ -1,11 +1,15 @@
 ﻿
 @{
     ViewBag.Title = "Login";
+    var erro = ViewBag.Error;
 }
 
 <h2>Login</h2>
 
-
+@if (erro != null)
+{
+    <div class="has-warning">@erro</div>
+}
 <form action="/Login/Autenticar" method="post">
     @Html.AntiForgeryToken()
     <label for="login">Login:</label>

@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #226b90;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +22,31 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.logo{
+    background: url('../Images/busqueSegurosSmall.jpg') no-repeat center right; 
+    display: block; 
+    height: 50px; 
+    width: 187px;
+}
+
+.body-content{
+    background-color:white;
+}
+
+.homeContent{
+    background: url('../Images/mulherComChave.jpg') no-repeat center left;
+    height: 400px;
+}
+
+.form-control{
+    height:50px;
+    width: 100%;
+}
+
+.form-home{
+    background-color: #226b90;
+    padding: 20px;
+    border-radius: 10px;
 }

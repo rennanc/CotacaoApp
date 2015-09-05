@@ -7,7 +7,6 @@ using System.Web.Mvc;
 
 namespace CotacaoApp.Controllers
 {
-    [AutorizacaoFilter]
     public class HomeController : Controller
     {
         

@@ -31,7 +31,10 @@ namespace CotacaoApp.Controllers
             }
             else
             {
-                return RedirectToAction("Index");
+                //ModelState.AddModelError("", "Invalid login attempt.");
+                ViewBag.Error = "Login Inválido";
+                return View("Index");
+
             }
         }
 

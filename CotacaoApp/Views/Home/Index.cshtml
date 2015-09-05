@@ -2,9 +2,50 @@
     ViewBag.Title = "Pagina Inicial";
 }
 
-<div class="jumbotron">
+@*<div class="jumbotron">
     <h1>Bem-Vindo</h1>
+</div>*@
+
+<div class="container">
+    <div class="row homeContent">
+        <div class="col-lg-7"></div>
+        <div class="col-lg-5">
+            <div class="col-xs-12" style="height:50px;"></div>
+            <form action="/Proposta/Passo1" class="form-home">
+                <div class="col-md-12 form-group">
+                    <select class="form-control" name="registerCarroMarca" id="registerCarroMarca">
+                        <option selected>Escolha a marca do Seu Carro</option>
+                        <option>TESTE</option>
+                    </select>
+                </div>
+                <div class="col-md-12 form-group">
+                    <select class="form-control" name="registerCarroAno" id="registerCarroAno">
+                        <option selected>Ano do Carro</option>
+                        <option>2015</option>
+                    </select>
+                </div>
+                <div class="col-md-12 form-group">
+                    <select class="form-control" name="registerCarroAnoModelo" id="registerCarroAnoModelo">
+                        <option selected>Ano do Modelo</option>
+                        <option>2015</option>
+                    </select>
+                </div>
+                <div class="col-md-12 form-group">
+                    <input class="form-control" type="text" placeholder="Ex: Palio" />
+                </div>
+                <div class="col-md-12 form-group">
+                    <input class="form-control btn btn-primary" type="submit" value="Simule Grátis" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+
 </div>
+
+
+
+
 
 <div class="row">
     <div class="col-md-4">
