@@ -11,29 +11,31 @@ using CotacaoApp.DAO;
 
 namespace CotacaoApp.Controllers
 {
-    public class UsuarioController : Controller
+    public class PropostaController : Controller
     {
+
         private DefaultConnection db = new DefaultConnection();
 
-        // GET: Usuario
+        // GET: Proposta
         public ActionResult Index()
         {
-            return View(db.Usuario.ToList());
+            return View(db.Proposta.ToList());
         }
 
-        // GET: Usuario/Details/5
+
+        // GET: Proposta/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuario.Find(id);
-            if (usuario == null)
+            Proposta proposta = db.Proposta.Find(id);
+            if (proposta == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(proposta);
         }
 
         // GET: Usuario/Create
@@ -42,36 +44,36 @@ namespace CotacaoApp.Controllers
             return View();
         }
 
-        // POST: Usuario/Create
+        // POST: Proposta/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Senha")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "Id,Nome,Senha")] Proposta proposta)
         {
             if (ModelState.IsValid)
             {
-                db.Usuario.Add(usuario);
+                db.Proposta.Add(proposta);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(usuario);
+            return View(proposta);
         }
 
-        // GET: Usuario/Edit/5
+        // GET: Proposta/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuario.Find(id);
-            if (usuario == null)
+            Proposta proposta = db.Proposta.Find(id);
+            if (proposta == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(proposta);
         }
 
         // POST: Usuario/Edit/5
@@ -79,18 +81,19 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Senha")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Senha")] Proposta proposta)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(usuario).State = EntityState.Modified;
+                db.Entry(proposta).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(usuario);
+            return View(proposta);
         }
 
-        // GET: Usuario/Delete/5
+
+        // GET: Proposta/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,13 +108,13 @@ namespace CotacaoApp.Controllers
             return View(usuario);
         }
 
-        // POST: Usuario/Delete/5
+        // POST: Proposta/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Usuario usuario = db.Usuario.Find(id);
-            db.Usuario.Remove(usuario);
+            Proposta proposta = db.Proposta.Find(id);
+            db.Proposta.Remove(proposta);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

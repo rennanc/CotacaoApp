@@ -21,7 +21,7 @@ namespace CotacaoApp.DAO
         {
 
             var conexao = new DBConnection();
-            QuerySql query = conexao.CreateQuery("select * from Usuario where NM_EMAIL=@usuario and NM_SENHA=@senha");
+            QuerySql query = conexao.CreateQuery("select * from usuario where NM_USUARIO=@usuario and NM_SENHA=@senha");
             query.SetParameter("usuario", usuario);
             query.SetParameter("senha", senha);
             DbDataReader reader = query.ExecuteQuery();
@@ -30,8 +30,9 @@ namespace CotacaoApp.DAO
             {
                 user = new Usuario
                 {
-                    Email = reader.GetString(reader.GetOrdinal("NM_EMAIL")),
-                    Senha = reader.GetString(reader.GetOrdinal("NM_SENHA"))
+                    Nome = reader.GetString(reader.GetOrdinal("NM_USUARIO")),
+                    Senha = reader.GetString(reader.GetOrdinal("NM_SENHA")),
+                    Permissao = 0
                 };
             }
             return user;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Common;
@@ -16,14 +17,14 @@ namespace CotacaoApp.DAO
         private string _ErrorMessage;       // Indica ULTIMO Mensagem de Erro da conexao
         private int _ErrorNumber;           // Indica ULTIMO Numero de Erro da conexao
         private bool _CompleteCommand;      // Indica ULTIMO comando foi executado com sucesso
-        private SqlDataReader _rsData;      // Usado para retornar colecao de registros
-        private SqlConnection _Connection; // Representa a conexão com banco de dados
+        private MySqlDataReader _rsData;      // Usado para retornar colecao de registros
+        private MySqlConnection _Connection; // Representa a conexão com banco de dados
 
         #endregion
 
         public DBConnection()
         {
-            _Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString.ToString());
+            _Connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString.ToString());
             _Connection.Open();
         }
 
@@ -63,12 +64,12 @@ namespace CotacaoApp.DAO
                 if (myQueryString.Length > 0)
                 {
                     // Inicio de Conexão com o banco de Dados
-                    SqlConnection myConnection = new SqlConnection(myConnectionString);
+                    MySqlConnection myConnection = new MySqlConnection(myConnectionString);
                     //Abrindo Conexão
                     myConnection.Open();
 
                     // Iniciar um comando
-                    SqlCommand myCommand = new SqlCommand(myQueryString, myConnection);
+                    MySqlCommand myCommand = new MySqlCommand(myQueryString, myConnection);
 
                     //Executando um comando com ExecuteReader, pois este retorna dados a um SqlDataReader
                     _rsData = myCommand.ExecuteReader(); //Executa comando
@@ -85,7 +86,7 @@ namespace CotacaoApp.DAO
             }
         }
 
-        public SqlDataReader RecordSet
+        public MySqlDataReader RecordSet
         {
             //Metodo para ler Registros
             get { return _rsData; }
@@ -119,13 +120,13 @@ namespace CotacaoApp.DAO
 
     public class QuerySql
     {
-        private SqlCommand _Command;
+        private MySqlCommand _Command;
         //private string _Connection = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString.ToString();
 
 
-        public QuerySql(string sql, SqlConnection connection)
+        public QuerySql(string sql, MySqlConnection connection)
         {
-            _Command = new SqlCommand(sql, connection);
+            _Command = new MySqlCommand(sql, connection);
             _Command.CommandText = sql + ";";
         }
         public void ExecuteUpdate()
