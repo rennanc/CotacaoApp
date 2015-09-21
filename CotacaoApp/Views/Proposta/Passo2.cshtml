@@ -1,0 +1,165 @@
+﻿@model CotacaoApp.Models.Proposta
+@{
+    ViewBag.Title = "Seu Carro";
+}
+<h2>Seu Carro</h2>
+
+@using (Html.BeginForm("Passo1", "Proposta", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Formulario</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.IEEstacionamentoCarro, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="col-md-10">
+                    <p>@Html.RadioButtonFor(model => model.IEEstacionamentoCarro, "0") Residência/Garagem</p>
+                    <!--Tipo Portão-->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IETipoPortao, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            <div class="col-md-12">
+                                <p>@Html.RadioButtonFor(model => model.IETipoPortao, "0") Automático
+                                @Html.RadioButtonFor(model => model.IETipoPortao, "1") Manual
+                                @Html.RadioButtonFor(model => model.IETipoPortao, "2") Com Porteiro
+                                @Html.RadioButtonFor(model => model.IETipoPortao, "3") Sem Portão
+                                @Html.ValidationMessageFor(model => model.IETipoPortao, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <!--Tipo Portão-->
+                    <p>@Html.RadioButtonFor(model => model.IEEstacionamentoCarro, "1") Estacionamento</p>
+                    <p>@Html.RadioButtonFor(model => model.IEEstacionamentoCarro, "2") Outros</p>
+                    @Html.ValidationMessageFor(model => model.IEEstacionamentoCarro, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Segurado.Pessoa.Endereco.NumeroCep, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Segurado.Pessoa.Endereco.NumeroCep, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Segurado.Pessoa.Endereco.NumeroCep, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Segurado.Pessoa.Endereco.NumeroCepFrequente, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Segurado.Pessoa.Endereco.NumeroCepFrequente, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Segurado.Pessoa.Endereco.NumeroCepFrequente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("O Carro é Utilizado Para:*", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.LabelFor(model => model.IELazer, htmlAttributes: new { @class = "control-label col-md-2" })
+                <p>@Html.CheckBoxFor(model => model.IELazer, true)</p>
+                @Html.LabelFor(model => model.IEVeiculoTrabalho, htmlAttributes: new { @class = "control-label col-md-2" })
+                <p>@Html.CheckBoxFor(model => model.IEVeiculoTrabalho, true)</p>
+                <!--Para Trabalhar-->
+                <div class="form-group" >
+                    @Html.Label("O Veiculo Permanece em Garagem ou Estacionamento Protegido no Local de Trabalho?*", htmlAttributes: new { @class = "control-label col-md-4 col-md-pull-1" })
+                    <div class="col-md-8 col-md-pull-1">
+                        <p>@Html.RadioButtonFor(model => model.IELocalGaragemTrabalho, 0) Sim, Com Portão Manual</p>
+                        <p>@Html.RadioButtonFor(model => model.IELocalGaragemTrabalho, 1) Sim, Com Portão Automático ou com Porteiro</p>
+                        <p>@Html.RadioButtonFor(model => model.IELocalGaragemTrabalho, 2) Sim, Em Estacionamento Privado Pago Ou Fechado</p>
+                        <p>@Html.RadioButtonFor(model => model.IELocalGaragemTrabalho, 3) Não</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Distancia Percorrida do Local Estacionado à até o Local de Trabalho*", htmlAttributes: new { @class = "control-label col-md-4 col-md-pull-1" })
+                    <div class="col-md-8 col-md-pull-1">
+                        <p>@Html.RadioButtonFor(model => model.IEDistanciaPercorridaParaTrabalho, 0) Até 10km</p>
+                        <p>@Html.RadioButtonFor(model => model.IEDistanciaPercorridaParaTrabalho, 1) Até 20Km</p>
+                        <p>@Html.RadioButtonFor(model => model.IEDistanciaPercorridaParaTrabalho, 2) Até 30Km</p>
+                        <p>@Html.RadioButtonFor(model => model.IEDistanciaPercorridaParaTrabalho, 3) Até 40Km</p>
+                        <p>@Html.RadioButtonFor(model => model.IEDistanciaPercorridaParaTrabalho, 3) Acima de 40Km</p>
+                    </div>
+                </div>
+                <!--Para Trabalhar-->
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IEVeiculoEstudo, htmlAttributes: new { @class = "control-label col-md-3" })
+            @Html.CheckBoxFor(model => model.IEVeiculoEstudo, true)
+            <div class="col-md-10">
+                <!--Para Trabalhar-->
+                <div class="form-group">
+                    <p>@Html.Label("O Veiculo Permanece em Garagem ou Estacionamento Protegido no Local de Trabalho?*", htmlAttributes: new { @class = "control-label col-md-4 col-md-offset-1" })</p>
+                    <div class="col-md-6 ">
+                        <p>@Html.RadioButtonFor(model => model.IELocalGaragemEstudo, 0) Sim, Com Portão Manual</p>
+                        <p>@Html.RadioButtonFor(model => model.IELocalGaragemEstudo, 1) Sim, Com Portão Automático ou com Porteiro</p>
+                        <p>@Html.RadioButtonFor(model => model.IELocalGaragemEstudo, 2) Sim, Em Estacionamento Privado Pago Ou Fechado</p>
+                        <p>@Html.RadioButtonFor(model => model.IELocalGaragemEstudo, 3) Não</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+        @Html.LabelFor(model => model.IECarroParaTrabalhar, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <p>@Html.RadioButtonFor(model => model.IECarroParaTrabalhar, 0) Sim</p>
+            <div class="form-group">
+                <p>@Html.LabelFor(model => model.IEUtilizacaoVeiculo, htmlAttributes: new { @class = "control-label col-md-2" })</p>
+                <div class="col-md-10">
+                    <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculo, 0) Para entregas, representação comercial, vendedores, promotores e prestadores de serviços.</p>
+                    <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculo, 1) Para visitas a clientes, fornecedores e prospecção de novos negócios.</p>
+                    <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculo, 3) Utilizado em outras atividades não relacionadas acima.</p>
+                </div>
+            </div>
+            <p>@Html.RadioButtonFor(model => model.IECarroParaTrabalhar, 1) Não</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IECarroParaTrabalhar, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <p>@Html.RadioButtonFor(model => model.IEKmEmMedia, 0) Até 500 km/mês (16 km dia)</p>
+                <p>@Html.RadioButtonFor(model => model.IEKmEmMedia, 1) Até 1200 km/mês (40 km dia)</p>
+                <p>@Html.RadioButtonFor(model => model.IEKmEmMedia, 2) Acima de 1200 km/mês</p>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-1">
+                @Html.ActionLink("Voltar", "Passo1", Model)
+                @*<input type="submit" name="btnVoltar" value="Voltar" class="btn btn-default" />*@
+            </div>
+            <div class="col-md-1">
+                <input type="submit" name="btnAvancar" value="Avançar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+
+<script type="text/javascript">
+    function OnSubmitForm()
+    {
+        if (document.pressed == 'Voltar')
+      {
+          document.form1.action = "Passo1";
+      }
+      else
+            if (document.pressed == 'Avançar')
+      {
+          document.form1.action = "Passo3";
+      }
+      return true;
+    }
+</script>
+
+
+

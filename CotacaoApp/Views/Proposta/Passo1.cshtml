@@ -1,0 +1,102 @@
+﻿@model CotacaoApp.Models.Proposta
+
+@{
+    ViewBag.Title = "Seu Carro";
+}
+
+<h2>Seu Carro</h2>
+
+@using (Html.BeginForm("Passo1", "Proposta", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Formulario</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.Hidden("otherComplexData", new Microsoft.Web.Mvc.MvcSerializer().Serialize(Model))
+            <div class="form-group">
+                @Html.LabelFor(model => model.NomeMarca, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NomeMarca, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NomeMarca, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DataFabricacao, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DataFabricacao, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.DataFabricacao, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DataVeiculo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DataVeiculo, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.DataVeiculo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IEZeroKM, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*<input type="radio" name="IEZeroKM" class="form-control" value="1">Sim
+                    <input type="radio" name="IEZeroKM" class="form-control" value="0">Não*@
+                    @Html.RadioButtonFor(model => model.IEZeroKM, "1") Sim
+                    @Html.RadioButtonFor(model => model.IEZeroKM, "0") Não
+                    @*@Html.RadioButton(model => model.IEZeroKM, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.ValidationMessageFor(model => model.IEZeroKM, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NomeVeiculo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NomeVeiculo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NomeVeiculo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IEVeiculoFinanciado, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="col-md-10">
+                        <p>@Html.RadioButtonFor(model => model.IEVeiculoFinanciado, "0") Não é Financiado</p>
+                        <p>@Html.RadioButtonFor(model => model.IEVeiculoFinanciado, "1") Sim, é Financiado</p>
+                        <p>@Html.RadioButtonFor(model => model.IEVeiculoFinanciado, "2") Sim, é Financiado e Alienado (CDC, Financiamento Direto, Leasing, Consórcio)</p>
+                    @Html.ValidationMessageFor(model => model.IEVeiculoFinanciado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <h2>Sobre o Carro</h2>
+            <div class="form-group">
+                @Html.LabelFor(model => model.IEAntiFurtoComum, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <p>@Html.RadioButtonFor(model => model.IEAntiFurtoComum, "0") Alarme Sonoro</p>
+                    <p>@Html.RadioButtonFor(model => model.IEAntiFurtoComum, "1") Chave Codificada</p>
+                    <p>@Html.RadioButtonFor(model => model.IEAntiFurtoComum, "2") Outros Dispositivos</p>
+                    <p>@Html.RadioButtonFor(model => model.IEAntiFurtoComum, "3") Não Tenho Dispositivo</p>
+                    @Html.ValidationMessageFor(model => model.IEAntiFurtoComum, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-1">
+                    <input type="submit" name="btnVoltar" value="Voltar" class="btn btn-default"/>
+                </div>
+                <div class="col-md-1">
+                    <input type="submit" name="btnAvancar" value="Avançar" class="btn btn-primary" />
+                </div>
+            </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+

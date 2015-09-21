@@ -1,37 +1,45 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 namespace CotacaoApp.Models
 {
+    [Serializable]
     public class Proposta
     {
+        public Proposta()
+        {
+            NomeMarcaLista = new List<SelectListItem>();
+            NomeMarcaLista.Add(new SelectListItem { Value = "1", Text = "Fiat" });
+            NomeMarcaLista.Add(new SelectListItem { Value = "2", Text = "Volkswagen" });
+        }
 
         [Key]
         [Display(Name = "Codigo")]
         [Column("CD_PROPOSTA")]
         public int Id { get; set; }
 
-        [Display(Name = "Email")]
-        [Column("CD_SEGURADO")]
-        public int Nome { get; set; }
+        [Display(Name = "Segurado")]
+        public Segurado Segurado { get; set; }
 
         [Required]
         [Display(Name = "Condutor")]
-        [Column("DT_INICIO_VIGENCIA")]
+        [Column("NM_CONDUTOR")]
         public string Condutor { get; set; }
 
         [Required]
-        [Display(Name = "Condutor")]
+        [Display(Name = "Inicio da Vigencia")]
         [Column("DT_INICIO_VIGENCIA")]
         [DataType(DataType.Date)]
-        public string dataInicioVigencia { get; set; }
-
+        public DateTime dataInicioVigencia { get; set; }
 
         [Required]
-        [Display(Name = "Condutor")]
-        [Column("DT_INICIO_VIGENCIA")]
+        [Display(Name = "Fim da Vigencia")]
+        [Column("DT_FIM_VIGENCIA")]
         [DataType(DataType.Date)]
-        public string dataFimVigencia { get; set; }
+        public DateTime dataFimVigencia { get; set; }
 
         [Display(Name = "Renovação de Seguro")]
         [Column("IE_RENV_SEGURO")]
@@ -53,13 +61,13 @@ namespace CotacaoApp.Models
         [Column("NM_PLACA")]
         public string NomePlaca { get; set; }
 
-        [Display(Name = "Veiculo")]
+        [Display(Name = "Qual o Seu Veículo?")]
         [Column("NM_VEICULO")]
         public string NomeVeiculo { get; set; }
 
-        [Display(Name = "Veiculo Financiado")]
+        [Display(Name = "O Carro É Financiado?")]
         [Column("IE_VEICULOFINANCIADO")]
-        public string IEVeiculoFinanciado { get; set; }
+        public int IEVeiculoFinanciado { get; set; }
 
         [Display(Name = "Marca do Carro")]
         [Column("NM_MARCA")]
@@ -79,7 +87,7 @@ namespace CotacaoApp.Models
         [Column("IE_STATUS")]
         public string IEStatus { get; set; }
 
-        [Display(Name = "Status")]
+        [Display(Name = "Descrição")]
         [Column("DS_OBJSEGURADO")]
         public string DescricaoObjSegurado { get; set; }
 
@@ -114,7 +122,7 @@ namespace CotacaoApp.Models
         [Display(Name = "Data da Blindagem")]
         [Column("DT_BLINDAGEM")]
         [DataType(DataType.Date)]
-        public string DataBlindagem { get; set; }
+        public DateTime DataBlindagem { get; set; }
 
         [Display(Name = "Valor da Blindagem")]
         [Column("VR_BLINDAGEM")]
@@ -143,6 +151,57 @@ namespace CotacaoApp.Models
         [Display(Name = "Sexo do Condutor")]
         [Column("IE_SEXOCONDUTOR")]
         public int IESexoCondutor { get; set; }
+
+        [Display(Name = "Estacionamento do Carro")]
+        public int IEEstacionamentoCarro { get; set; }
+
+        [Display(Name = "Tipo do Portão")]
+        public int IETipoPortao { get; set; }
+
+
+        //Adicionar no banco
+
+        [Display(Name = "Para Lazer")]
+        //[Column("IE_LAZER")]
+        public bool IELazer { get; set; }
+
+        [Display(Name = "Para Trabalhar")]
+        //[Column("IE_LAZER")]
+        public bool IEVeiculoTrabalho { get; set; }
+
+        [Display(Name = "Local do Veiculo")]
+        //[Column("IELocalVeiculo")]
+        public int IELocalGaragemTrabalho { get; set; }
+
+        [Display(Name = "Distancia percorrida para o trabalho")]
+        //[Column("IELocalVeiculo")]
+        public int IEDistanciaPercorridaParaTrabalho { get; set; }
+
+        [Display(Name = "Ir ao Colégio/Faculdade/Pós")]
+        //[Column("IELocalVeiculo")]
+        public bool IEVeiculoEstudo { get; set; }
+
+        [Display(Name = "Garagem Estudo")]
+        //[Column("IELocalVeiculo")]
+        public int IELocalGaragemEstudo { get; set; }
+
+        [Display(Name = "Carro Para Trabalho")]
+        //[Column("IELocalVeiculo")]
+        public int IECarroParaTrabalhar { get; set; }
+
+        [Display(Name = "Como Veiculo é utilizado")]
+        //[Column("IELocalVeiculo")]
+        public int IEUtilizacaoVeiculo { get; set; }
+
+        [Display(Name = "Km em Média")]
+        //[Column("IELocalVeiculo")]
+        public int IEKmEmMedia { get; set; }
+
+
+
+        //Auxiliares
+        [Display(Name = "Marca", Prompt = "Marca", Description = "Escolha a Marca do Veículo")]
+        public IList<SelectListItem> NomeMarcaLista { get; set; }
 
     }
 }
