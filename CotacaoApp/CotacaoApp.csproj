@@ -251,6 +251,17 @@
     <Content Include="Images\busqueSegurosSmall.jpg" />
     <Content Include="Images\mulherComChave.jpg" />
     <Content Include="Images\Motivos.png" />
+    <Content Include="Images\Seguradoras\seguradora-aig-seguros.png" />
+    <Content Include="Images\Seguradoras\seguradora-allianz-seguros.png" />
+    <Content Include="Images\Seguradoras\seguradora-azul-seguros.png" />
+    <Content Include="Images\Seguradoras\seguradora-bradesco-seguros.png" />
+    <Content Include="Images\Seguradoras\seguradora-chubb-seguros.png" />
+    <Content Include="Images\Seguradoras\seguradora-hdi-seguros.png" />
+    <Content Include="Images\Seguradoras\seguradora-mapfre-seguros.png" />
+    <Content Include="Images\Seguradoras\seguradora-mitsui-seguros.png" />
+    <Content Include="Images\Seguradoras\seguradora-porto-seguro.png" />
+    <Content Include="Images\Seguradoras\seguradora-tokio-marine-seguros.png" />
+    <Content Include="Images\Seguradoras\seguradora-yasuda-maritima-seguros.png" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="App_Data\estoque.db" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -112,13 +112,16 @@ textarea {
 
 
 footer, footer a, footer a:visited {
-    color: #fff;
     text-decoration: none;
+    color: white;
 }
 
-.footer{
-    background: #666;
-    padding: 15px;
+footer{
+    width: 100%;
+    padding: 45px 0;
+    margin: 0 auto;
+    display: table;
+    background: #023650;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -137,4 +140,30 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     border-color: #226B90;
 }
 
+.lista-seguradoras {
+    margin: 0 auto;
+    width: 101%;
+}
+ol, ul {
+    list-style: none;
+}
+
+.home-inner-content .item-seguradora-home {
+    width: 14.02%;
+    height: 100px;
+    border: 1px #e1f2f1 solid;
+    display: inline-block;
+    float: left;
+    background: #fff;
+}
+
+.table-toogle.white-style .item-body div.home-inner-content {
+    padding: 0;
+}
+
+.table-toogle li {
+    width: 100%;
+    float: left;
+    display: inline-block;
+}
 
