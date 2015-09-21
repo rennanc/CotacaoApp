@@ -1,0 +1,189 @@
+﻿@model CotacaoApp.Models.Proposta
+@{
+    ViewBag.Title = "Passo3 - Localização";
+}
+<h2>Localização</h2>
+
+@using (Html.BeginForm("Passo4", "Proposta", FormMethod.Post))
+{
+    @*<form action="Passo4" method="post"></form>*@
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Formulario</h4>
+    <hr />
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IEEstacionamentoCarro, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Segurado.Pessoa.PessoaFisica.Nome, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Segurado.Pessoa.PessoaFisica.DataNascimento, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Segurado.Pessoa.PessoaFisica.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Segurado.Pessoa.PessoaFisica.DataNascimento, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Segurado.Pessoa.PessoaFisica.IESexo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Segurado.Pessoa.PessoaFisica.IESexo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Segurado.Pessoa.PessoaFisica.IESexo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Segurado.Pessoa.PessoaFisica.IEEstadoCivil, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Segurado.Pessoa.PessoaFisica.IEEstadoCivil, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Segurado.Pessoa.PessoaFisica.IEEstadoCivil, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Segurado.Pessoa.PessoaFisica.CodigoCpf, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Segurado.Pessoa.PessoaFisica.CodigoCpf, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Segurado.Pessoa.PessoaFisica.CodigoCpf, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Segurado.Pessoa.Endereco.NumeroCep, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Segurado.Pessoa.Endereco.NumeroCep, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Segurado.Pessoa.Endereco.NumeroCep, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Segurado.Pessoa.IsSegurado, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Segurado.Pessoa.IsSegurado, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Segurado.Pessoa.IsSegurado, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("O que você procura ao realizar essa cotação?*", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.LabelFor(model => model.IEMotivoCotacao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <p>@Html.RadioButtonFor(model => model.IEMotivoCotacao, 0) Só estou pesquisando para comprar um carro novo</p>
+            <p>@Html.RadioButtonFor(model => model.IEMotivoCotacao, 1) Fazer meu primeiro seguro para um carro que já tenho</p>
+            <!--Primeiro Seguro-->
+            <div class="form-group" >
+                <div class="col-md-8 col-md-pull-1">
+                    <p>@Html.RadioButtonFor(model => model.IESeguroParaCarroExistente, 0) Já tenho cotações de outras corretoras</p>
+                    <p>@Html.RadioButtonFor(model => model.IESeguroParaCarroExistente, 1) Ainda não tenho cotações de outras corretoras</p>
+                </div>
+            </div>
+            <!--Primeiro Seguro-->
+            <p>@Html.RadioButtonFor(model => model.IEMotivoCotacao, 2) Renovar o seguro de um carro que já tenho</p>
+            <!--Renovar Seguro-->
+            <div class="form-group">
+                @Html.Label("Marque as opções que você se identifica:", htmlAttributes: new { @class = "control-label col-md-4 col-md-pull-1" })
+                <div class="col-md-8 col-md-pull-1">
+                    <p>@Html.RadioButtonFor(model => model.IEQuerMaisOpcoes, 0) Quero mais opções de seguradoras e coberturas</p>
+                    <p>@Html.RadioButtonFor(model => model.IEQuerMelhorAtendimento, 1) Estou em busca de um melhor atendimento</p>
+                    <p>@Html.RadioButtonFor(model => model.IEQuerMelhorPreco, 2) Não estou satisfeito com os preços que tenho</p>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Qual a seguradora atual?*", htmlAttributes: new { @class = "control-label col-md-4 col-md-pull-1" })
+                <div class="col-md-8 col-md-pull-1">
+                    <p>@Html.EditorFor(model => model.NomeSeguradoraAtual) </p>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Data de vencimento da apólice atual*", htmlAttributes: new { @class = "control-label col-md-4 col-md-pull-1" })
+                <div class="col-md-8 col-md-pull-1">
+                    <p>@Html.EditorFor(model => model.dataFimVigencia) </p>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Qual a classe de bônus que está na sua apólice atual?* ", htmlAttributes: new { @class = "control-label col-md-4 col-md-pull-1" })
+                Informar o bônus sem considerar os sinistros que
+                ocorreram durante a vigência do seguro.
+                <div class="col-md-8 col-md-pull-1">
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 0) 0
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 1) 1
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 2) 2
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 3) 3
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 4) 4
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 5) 5
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 6) 6
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 7) 7
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 8) 8
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 9) 9
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 10) 10
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Qual a classe de bônus que está na sua apólice atual?* ", htmlAttributes: new { @class = "control-label col-md-4 col-md-pull-1" })
+                Sinistro é todo evento em que a Seguradora indeniza o
+                segurado e/ou um terceiro.
+                <div class="col-md-8 col-md-pull-1">
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 0) Nenhum
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 1) 1
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 2) 2
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 3) 3
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 4) 4
+                    @Html.RadioButtonFor(model => model.IEBonusSeguroAtualSemSinistro, 5) 5
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Número da apólice:", htmlAttributes: new { @class = "control-label col-md-4 col-md-pull-1" })
+                <div class="col-md-8 col-md-pull-1">
+                    @Html.EditorFor(model => model.NumeroApoliceAntiga)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Número da apólice:", htmlAttributes: new { @class = "control-label col-md-4 col-md-pull-1" })
+                <div class="col-md-8 col-md-pull-1">
+                    @Html.EditorFor(model => model.NumeroCIAntiga)
+                </div>
+            </div>
+            <!--Renovar Seguro-->
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-1">
+                <input type="submit" name="btnVoltar" value="Voltar" class="btn btn-default" />
+            </div>
+            <div class="col-md-1">
+                <input type="submit" name="btnAvancar" value="Avançar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    </div>
+}
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+
+<script type="text/javascript">
+    function OnSubmitForm()
+    {
+        if (document.pressed == 'Voltar')
+      {
+          document.form1.action = "Passo1";
+      }
+      else
+            if (document.pressed == 'Avançar')
+      {
+          document.form1.action = "Passo3";
+      }
+      return true;
+    }
+</script>
+
+
+

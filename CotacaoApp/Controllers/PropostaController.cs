@@ -66,7 +66,6 @@ namespace CotacaoApp.Controllers
             
         }
 
-        [HttpPost]
         public ActionResult Passo3(Proposta data, string btnVoltar, string btnAvancar)
         {
             if (btnVoltar != null)

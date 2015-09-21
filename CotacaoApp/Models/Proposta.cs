@@ -197,6 +197,41 @@ namespace CotacaoApp.Models
         //[Column("IELocalVeiculo")]
         public int IEKmEmMedia { get; set; }
 
+        [Display(Name = "Motivo Cotacao")]
+        //[Column("IELocalVeiculo")]
+        public int IEMotivoCotacao { get; set; }
+
+        [Display(Name = "Seguro para Carro Existente")]
+        //[Column("IELocalVeiculo")]
+        public int IESeguroParaCarroExistente { get; set; }
+
+        [Display(Name = "Quero mais opções de seguradoras e coberturas")]
+        //[Column("IELocalVeiculo")]
+        public bool IEQuerMaisOpcoes { get; set; }
+
+        [Display(Name = "Estou em busca de um melhor atendimento")]
+        //[Column("IELocalVeiculo")]
+        public bool IEQuerMelhorAtendimento { get; set; }
+
+        [Display(Name = "IEQuerMelhorPreco")]
+        //[Column("IELocalVeiculo")]
+        public bool IEQuerMelhorPreco { get; set; }
+
+        [Display(Name = "IEBonusSeguroAtualSemSinistro")]
+        //[Column("IELocalVeiculo")]
+        public int IEBonusSeguroAtualSemSinistro { get; set; }
+
+        [Display(Name = "IEBonusSeguroAtualComSinistro")]
+        //[Column("IELocalVeiculo")]
+        public int IEBonusSeguroAtualComSinistro { get; set; }
+
+        [Display(Name = "Apolice Antiga")]
+        //[Column("IELocalVeiculo")]
+        public int NumeroApoliceAntiga { get; set; }
+
+        [Display(Name = "CI Antiga")]
+        //[Column("IELocalVeiculo")]
+        public int NumeroCIAntiga { get; set; }
 
 
         //Auxiliares

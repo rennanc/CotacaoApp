@@ -18,8 +18,18 @@ namespace CotacaoApp.Models
         [Column("CD_SEGURADO")]
         public int codigoSegurado { get; set; }
 
-        [Display(Name = "Segurado")]
+        [Display(Name = "O proprietario é o segurado")]
+        //[Column("IE_SEGURADO")]
+        public bool IsSegurado { get; set; }
+
+        [Display(Name = "Endereco")]
         public Endereco Endereco { get; set; }
+
+        [Display(Name = "Pessoa Fisica")]
+        public PessoaFisica PessoaFisica { get; set; }
+
+        [Display(Name = "Pessoa Juridica")]
+        public PessoaJuridica PessoaJuridica { get; set; }
 
     }
 }
