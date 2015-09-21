@@ -9,12 +9,12 @@ namespace CotacaoApp.Models
     [Serializable]
     public class Proposta
     {
-        public Proposta()
-        {
-            NomeMarcaLista = new List<SelectListItem>();
-            NomeMarcaLista.Add(new SelectListItem { Value = "1", Text = "Fiat" });
-            NomeMarcaLista.Add(new SelectListItem { Value = "2", Text = "Volkswagen" });
-        }
+        //public Proposta()
+        //{
+        //    NomeMarcaLista = new List<SelectListItem>();
+        //    NomeMarcaLista.Add(new SelectListItem { Value = "1", Text = "Fiat" });
+        //    NomeMarcaLista.Add(new SelectListItem { Value = "2", Text = "Volkswagen" });
+        //}
 
         [Key]
         [Display(Name = "Codigo")]
@@ -235,8 +235,8 @@ namespace CotacaoApp.Models
 
 
         //Auxiliares
-        [Display(Name = "Marca", Prompt = "Marca", Description = "Escolha a Marca do Veículo")]
-        public IList<SelectListItem> NomeMarcaLista { get; set; }
+        //[Display(Name = "Marca", Prompt = "Marca", Description = "Escolha a Marca do Veículo")]
+        //public IList<SelectListItem> NomeMarcaLista { get; set; }
 
     }
 }

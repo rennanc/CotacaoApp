@@ -38,6 +38,7 @@ textarea {
 .homeContent{
     background: url('../Images/mulherComChave.jpg') no-repeat center left;
     height: 400px;
+    margin-left: -30px;
 }
 
 .form-control{
@@ -122,6 +123,18 @@ footer, footer a, footer a:visited {
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
+}
+
+.title-banner{
+    font-family: 'Open Sans',sans-serif;
+    position: absolute;
+    color: #808080;
+    vertical-align: bottom;
+}
+
+.navbar-inverse {
+    background-color: #023650;
+    border-color: #226B90;
 }
 
 

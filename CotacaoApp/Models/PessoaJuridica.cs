@@ -9,8 +9,6 @@ namespace CotacaoApp.Models
     public class PessoaJuridica
     {
 
-        [Key]
-        [ForeignKey("CD_PESSOA")]
         [Display(Name = "Codigo")]
         [Column("CD_PESSOA")]
         public int Id { get; set; }
