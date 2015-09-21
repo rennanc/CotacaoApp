@@ -2,7 +2,14 @@
 @{
     ViewBag.Title = "Passo3 - Localização";
 }
-<h2>Localização</h2>
+
+<button type="button" class="btn btn-default btn-lg">Seu Carro</button>
+<button type="button" class="btn btn-default btn-lg">Localização</button>
+<button type="button" class="btn btn-primary btn-lg">Segurado</button>
+<button type="button" class="btn btn-default btn-lg">Condutores</button>
+<button type="button" class="btn btn-default btn-lg">Conclusão</button>
+
+<h2>Segurado</h2>
 
 @using (Html.BeginForm("Passo4", "Proposta", FormMethod.Post))
 {
@@ -154,7 +161,8 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-1">
-                <input type="submit" name="btnVoltar" value="Voltar" class="btn btn-default" />
+                @*<input type="submit" name="btnVoltar" value="Voltar" class="btn btn-default" />*@
+                @Html.ActionLink("Voltar","Passo2")
             </div>
             <div class="col-md-1">
                 <input type="submit" name="btnAvancar" value="Avançar" class="btn btn-primary" />

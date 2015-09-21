@@ -250,6 +250,7 @@
     <Content Include="Images\busqueSeguros.jpg" />
     <Content Include="Images\busqueSegurosSmall.jpg" />
     <Content Include="Images\mulherComChave.jpg" />
+    <Content Include="Images\Motivos.png" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="App_Data\estoque.db" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

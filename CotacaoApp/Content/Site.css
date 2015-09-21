@@ -49,4 +49,79 @@ textarea {
     background-color: #226b90;
     padding: 20px;
     border-radius: 10px;
+    height: 350px;
+    opacity: 0.9;
 }
+
+.protection {
+    width: 180px;
+    height: 180px;
+    background-position: -195px -195px;
+}
+
+.assistence {
+    width: 180px;
+    height: 180px;
+    background-position: -5px -5px;
+}
+
+.flex {
+    width: 180px;
+    height: 180px;
+    background-position: -195px -5px;
+}
+
+.peaceful {
+    width: 180px;
+    height: 180px;
+    background-position: -5px -195px;
+}
+
+
+.reasons-to-hire {
+    background-image: url('../Images/Motivos.png');
+    background-repeat: no-repeat;
+    display: block;
+    position: relative;
+    margin-left: 40px;
+}
+
+.sale-box {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.grid .col {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: -.25em;
+    min-height: 1px;
+    padding-left: 20px;
+    vertical-align: top;
+}
+.grid>.col--3-of-12 {
+    width: 25%;
+}
+
+.inputHomeLarge{
+    width: 200px;
+}
+
+
+footer, footer a, footer a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer{
+    background: #666;
+    padding: 15px;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+
