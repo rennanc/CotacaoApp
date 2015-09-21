@@ -75,12 +75,10 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Data Fabricacao")]
         [Column("DT_FABRICACAO")]
-        [DataType(DataType.Date)]
         public string DataFabricacao { get; set; }
 
         [Display(Name = "Data Veiculo")]
         [Column("DT_VEICULO")]
-        [DataType(DataType.Date)]
         public string DataVeiculo { get; set; }
 
         [Display(Name = "Status")]

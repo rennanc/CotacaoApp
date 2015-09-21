@@ -259,6 +259,8 @@
     <Content Include="Images\Seguradoras\seguradora-bradesco-seguros.png" />
     <Content Include="Images\Seguradoras\seguradora-chubb-seguros.png" />
     <Content Include="Images\Seguradoras\seguradora-hdi-seguros.png" />
+    <Content Include="Images\Seguradoras\seguradora-itau-seguros.png" />
+    <Content Include="Images\Seguradoras\seguradora-liberty-seguros.png" />
     <Content Include="Images\Seguradoras\seguradora-mapfre-seguros.png" />
     <Content Include="Images\Seguradoras\seguradora-mitsui-seguros.png" />
     <Content Include="Images\Seguradoras\seguradora-porto-seguro.png" />
