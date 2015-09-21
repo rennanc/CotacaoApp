@@ -15,6 +15,7 @@ namespace CotacaoApp.DAO
         public DbSet<Endereco> Endereco { get; set; }
         public DbSet<Pessoa> Pessoa { get; set; }
         public DbSet<PessoaFisica> PessoaFisica { get; set; }
+        public DbSet<Sinistro> Sinistro { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

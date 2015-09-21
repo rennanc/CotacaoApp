@@ -1,0 +1,66 @@
+﻿@model CotacaoApp.Models.Sinistro
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataSinistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataSinistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocalSinistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocalSinistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescricaoSinistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescricaoSinistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SituacaoSinistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SituacaoSinistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ObservacaoSinistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ObservacaoSinistro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
