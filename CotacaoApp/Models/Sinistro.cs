@@ -37,12 +37,12 @@ namespace CotacaoApp.Models
 
         [Required]
         [Display(Name = "Situação Sinistro")]
-        [Column("SG_SINISTRO")]
+        [Column("SG_SITUACAO_SINISTRO")]
         public string SituacaoSinistro { get; set; }
 
         [Required]
         [Display(Name = "Observação Sinistro")]
-        [Column("DS_OBSERVAÇÃO_SINISTRO")]
+        [Column("DS_OBSERVACAO_SINISTRO")]
         public string ObservacaoSinistro { get; set; }
         
     }
