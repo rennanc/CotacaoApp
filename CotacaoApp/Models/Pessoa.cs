@@ -14,13 +14,16 @@ namespace CotacaoApp.Models
         [Column("CD_PESSOA")]
         public int Id { get; set; }
 
-        [Display(Name = "Segurado")]
+        [Display(Name = "Codigo Segurado")]
         [Column("CD_SEGURADO")]
         public int codigoSegurado { get; set; }
 
-        [Display(Name = "O proprietario é o segurado")]
-        //[Column("IE_SEGURADO")]
-        public bool IsSegurado { get; set; }
+        [Display(Name = "O condutor é o segurado?")]
+        [Column("IE_SEGURADO")]
+        public int IsSegurado { get; set; }
+
+        [Display(Name = "Tipo Pessoa")]
+        public bool IETipo { get; set; }
 
         [Display(Name = "Endereco")]
         public Endereco Endereco { get; set; }

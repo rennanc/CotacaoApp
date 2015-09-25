@@ -17,12 +17,12 @@ namespace CotacaoApp.DAO
 
         }
 
-        public Usuario getByLogin(String usuario, String senha)
+        public Usuario getByLogin(String login, String senha)
         {
 
             var conexao = new DBConnection();
-            QuerySql query = conexao.CreateQuery("select * from usuario where NM_USUARIO=@usuario and NM_SENHA=@senha");
-            query.SetParameter("usuario", usuario);
+            QuerySql query = conexao.CreateQuery("SELECT * FROM usuario WHERE NM_LOGIN=@usuario AND NM_SENHA=@senha");
+            query.SetParameter("usuario", login);
             query.SetParameter("senha", senha);
             DbDataReader reader = query.ExecuteQuery();
             Usuario user = null;
@@ -30,7 +30,7 @@ namespace CotacaoApp.DAO
             {
                 user = new Usuario
                 {
-                    Nome = reader.GetString(reader.GetOrdinal("NM_USUARIO")),
+                    Login = reader.GetString(reader.GetOrdinal("NM_LOGIN")),
                     Senha = reader.GetString(reader.GetOrdinal("NM_SENHA")),
                     Permissao = 0
                 };

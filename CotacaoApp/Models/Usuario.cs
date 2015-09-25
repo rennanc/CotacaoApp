@@ -12,9 +12,14 @@ namespace CotacaoApp.Models
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "Usuario")]
         [Column("NM_USUARIO")]
         [EmailAddress]
+        public string Login { get; set; }
+
+        [Required]
+        [Display(Name = "Nome")]
+        [Column("NM_NOME")]
         public string Nome { get; set; }
 
         [Required]

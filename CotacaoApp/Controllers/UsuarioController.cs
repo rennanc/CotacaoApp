@@ -47,7 +47,7 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Senha")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "Id,Login,Nome,Senha,Permissao")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Senha")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "Id,Login,Nome,Senha,Permissao")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {

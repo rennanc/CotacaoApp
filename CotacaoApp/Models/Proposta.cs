@@ -21,8 +21,8 @@ namespace CotacaoApp.Models
         [Column("CD_PROPOSTA")]
         public int Id { get; set; }
 
-        [Display(Name = "Segurado")]
-        public Segurado Segurado { get; set; }
+        [Display(Name = "Pessoa")]
+        public Pessoa Pessoa { get; set; }
 
         [Required]
         [Display(Name = "Condutor")]

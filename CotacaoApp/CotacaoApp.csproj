@@ -221,7 +221,6 @@
     <Compile Include="Models\PessoaFisica.cs" />
     <Compile Include="Models\PessoaJuridica.cs" />
     <Compile Include="Models\Proposta.cs" />
-    <Compile Include="Models\Segurado.cs" />
     <Compile Include="Models\Sinistro.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
