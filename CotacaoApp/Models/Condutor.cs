@@ -25,9 +25,6 @@ namespace CotacaoApp.Models
         [Display(Name = "Tipo Pessoa")]
         public bool IETipo { get; set; }
 
-        [Display(Name = "Endereco")]
-        public Endereco Endereco { get; set; }
-
         [Display(Name = "Pessoa Fisica")]
         public PessoaFisica PessoaFisica { get; set; }
 

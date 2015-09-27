@@ -37,7 +37,7 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Zero KM")]
         [Column("IE_ZEROKM")]
-        public int IEZeroKM { get; set; }
+        public bool IEZeroKM { get; set; }
 
         [Display(Name = "Qual o Seu Veículo?")]
         [Column("NM_VEICULO")]
@@ -51,19 +51,23 @@ namespace CotacaoApp.Models
         //tipo veiculo
         [Display(Name = "Taxi")]
         [Column("IE_TIPOVEICULO_TAXI")]
-        public int IETipoVeiculoTaxi { get; set; }
+        public bool IETipoVeiculoTaxi { get; set; }
 
         [Display(Name = "Para Deficiente")]
         [Column("IE_TIPOVEICULO_DEFICIENTE")]
-        public int IETipoVeiculoDeficiente { get; set; }
+        public bool IETipoVeiculoDeficiente { get; set; }
 
         [Display(Name = "com KitGas")]
         [Column("IE_TIPOVEICULO_KITGAS")]
-        public int IETipoVeiculoKitGas { get; set; }
+        public bool IETipoVeiculoKitGas { get; set; }
 
         [Display(Name = "Blindado")]
         [Column("IE_TIPOVEICULO_BLINDADO")]
-        public int IETipoVeiculoBlindado { get; set; }
+        public bool IETipoVeiculoBlindado { get; set; }
+
+        [Display(Name = "Pessoa Juridica")]
+        [Column("IE_TIPOVEICULO_PESSOAJURIDICA")]
+        public bool IETipoVeiculoPessoaJuridica { get; set; }
         //tipo veiculo
 
         [Display(Name = "Alarme Veiculo ou antifurto")]
@@ -113,6 +117,14 @@ namespace CotacaoApp.Models
             [Display(Name = "Garagem Estudo")]
             [Column("IE_TIPOGARAGEMESTUDO")]
             public int IELocalGaragemEstudo { get; set; }
+
+        [Display(Name = "Utilização do veiculo como instrumento de trabalho")]
+        [Column("IE_UTILIZACAOVEICULO_INSTRUMENTO")]
+        public bool IEUtilizacaoVeiculoInstrumento { get; set; }
+
+        [Display(Name = "Forma de utilização do veiculo como instrumento de trabalho")]
+        [Column("IE_UTILIZACAOVEICULO_INSTRUMENTOFORMA")]
+        public int IEUtilizacaoVeiculoInstrumentoForma { get; set; }
 
         [Display(Name = "Km em Média")]
         [Column("IE_MEDIAKMVEICULO")]

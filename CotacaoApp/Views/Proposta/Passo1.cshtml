@@ -21,37 +21,34 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.Hidden("otherComplexData", new Microsoft.Web.Mvc.MvcSerializer().Serialize(Model))
             <div class="form-group">
-                @Html.LabelFor(model => model.NomeMarca, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.NomeMarcaVeiculo, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.NomeMarca, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.NomeMarca, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.NomeMarcaVeiculo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NomeMarcaVeiculo, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.DataFabricacao, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.AnoFabricacaoVeiculo, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.DataFabricacao, new { htmlAttributes = new { @class = "form-control datepicker" } })
-                    @Html.ValidationMessageFor(model => model.DataFabricacao, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.AnoFabricacaoVeiculo, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.AnoFabricacaoVeiculo, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.DataVeiculo, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.AnoModeloVeiculo, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.DataVeiculo, new { htmlAttributes = new { @class = "form-control datepicker" } })
-                    @Html.ValidationMessageFor(model => model.DataVeiculo, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.AnoModeloVeiculo, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.AnoModeloVeiculo, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.IEZeroKM, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @*<input type="radio" name="IEZeroKM" class="form-control" value="1">Sim
-                    <input type="radio" name="IEZeroKM" class="form-control" value="0">Não*@
-                    @Html.RadioButtonFor(model => model.IEZeroKM, "1") Sim
-                    @Html.RadioButtonFor(model => model.IEZeroKM, "0") Não
-                    @*@Html.RadioButton(model => model.IEZeroKM, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.RadioButtonFor(model => model.IEZeroKM, true) Sim
+                    @Html.RadioButtonFor(model => model.IEZeroKM, false) Não
                     @Html.ValidationMessageFor(model => model.IEZeroKM, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -65,26 +62,36 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.IEVeiculoFinanciado, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.IEFinanciadoVeiculo, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     <div class="col-md-10">
-                        <p>@Html.RadioButtonFor(model => model.IEVeiculoFinanciado, "0") Não é Financiado</p>
-                        <p>@Html.RadioButtonFor(model => model.IEVeiculoFinanciado, "1") Sim, é Financiado</p>
-                        <p>@Html.RadioButtonFor(model => model.IEVeiculoFinanciado, "2") Sim, é Financiado e Alienado (CDC, Financiamento Direto, Leasing, Consórcio)</p>
-                    @Html.ValidationMessageFor(model => model.IEVeiculoFinanciado, "", new { @class = "text-danger" })
+                        <p>@Html.RadioButtonFor(model => model.IEFinanciadoVeiculo, "0") Não é Financiado</p>
+                        <p>@Html.RadioButtonFor(model => model.IEFinanciadoVeiculo, "1") Sim, é Financiado</p>
+                        <p>@Html.RadioButtonFor(model => model.IEFinanciadoVeiculo, "2") Sim, é Financiado e Alienado (CDC, Financiamento Direto, Leasing, Consórcio)</p>
+                    @Html.ValidationMessageFor(model => model.IEFinanciadoVeiculo, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
 
             <h2>Sobre o Carro</h2>
             <div class="form-group">
-                @Html.LabelFor(model => model.IEAntiFurtoComum, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.Label("Marque as opções nas quais seu carro se enquadra(caso não se encaixe em nenhuma,ignore a pergunta).", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <p>@Html.RadioButtonFor(model => model.IEAntiFurtoComum, "0") Alarme Sonoro</p>
-                    <p>@Html.RadioButtonFor(model => model.IEAntiFurtoComum, "1") Chave Codificada</p>
-                    <p>@Html.RadioButtonFor(model => model.IEAntiFurtoComum, "2") Outros Dispositivos</p>
-                    <p>@Html.RadioButtonFor(model => model.IEAntiFurtoComum, "3") Não Tenho Dispositivo</p>
-                    @Html.ValidationMessageFor(model => model.IEAntiFurtoComum, "", new { @class = "text-danger" })
+                    <p>@Html.CheckBoxFor(model => model.IETipoVeiculoTaxi, true) Táxi</p>
+                    <p>@Html.CheckBoxFor(model => model.IETipoVeiculoDeficiente, true) Adaptado para deficiente físico</p>
+                    <p>@Html.CheckBoxFor(model => model.IETipoVeiculoKitGas, true) Tem Kit Gás</p>
+                    <p>@Html.CheckBoxFor(model => model.IETipoVeiculoBlindado, true) É Blindado</p>
+                    <p>@Html.CheckBoxFor(model => model.IETipoVeiculoPessoaJuridica, true) Pessoa Juridica</p>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.IEAlarmeVeiculo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <p>@Html.RadioButtonFor(model => model.IEAlarmeVeiculo, "0") Alarme Sonoro</p>
+                    <p>@Html.RadioButtonFor(model => model.IEAlarmeVeiculo, "1") Chave Codificada</p>
+                    <p>@Html.RadioButtonFor(model => model.IEAlarmeVeiculo, "2") Outros Dispositivos</p>
+                    <p>@Html.RadioButtonFor(model => model.IEAlarmeVeiculo, "3") Não Tenho Dispositivo</p>
+                    @Html.ValidationMessageFor(model => model.IEAlarmeVeiculo, "", new { @class = "text-danger" })
                 </div>
             </div>
 

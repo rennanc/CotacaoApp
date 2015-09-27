@@ -27,18 +27,6 @@ namespace CotacaoApp.Models
         [Column("DT_NASCIMENTO")]
         public DateTime DataNascimento { get; set; }
 
-        [Display(Name = "Data Expedicao")]
-        [Column("DT_DATA_EXPEDICAO")]
-        public DateTime DataExpedicao { get; set; }
-
-        [Display(Name = "Orgão Emissor")]
-        [Column("SG_ORGAO")]
-        public string SiglaOrgao { get; set; }
-
-        [Display(Name = "Identidade")]
-        [Column("NR_RG")]
-        public int NumeroRg { get; set; }
-
         [Display(Name = "Sexo")]
         [Column("IE_SEXO")]
         public int IESexo { get; set; }
@@ -70,6 +58,10 @@ namespace CotacaoApp.Models
         [Display(Name = "é o Condutor Principal")]
         [Column("IE_CONDPRINCIPAL")]
         public int IECondutorPrincipal { get; set; }
+
+        [Display(Name = "Numero Cep")]
+        [Column("NR_CEP")]
+        public int NumeroCep { get; set; }
 
         /*********** PASSO-4 : CONDUTORES ************/
 

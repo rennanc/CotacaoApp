@@ -18,7 +18,7 @@ namespace CotacaoApp.Controllers
         // GET: Usuario
         public ActionResult Index()
         {
-            return View(db.Sinistro.ToList());
+            return View(db.Cobertura.ToList());
         }
 
         // GET: Usuario/Details/5
@@ -28,7 +28,7 @@ namespace CotacaoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cobertura sinistro = db.Sinistro.Find(id);
+            Cobertura sinistro = db.Cobertura.Find(id);
             if (sinistro == null)
             {
                 return HttpNotFound();
@@ -51,7 +51,7 @@ namespace CotacaoApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Sinistro.Add(sinistro);
+                db.Cobertura.Add(sinistro);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace CotacaoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cobertura sinistro = db.Sinistro.Find(id);
+            Cobertura sinistro = db.Cobertura.Find(id);
             if (sinistro == null)
             {
                 return HttpNotFound();
@@ -97,7 +97,7 @@ namespace CotacaoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cobertura sinistro = db.Sinistro.Find(id);
+            Cobertura sinistro = db.Cobertura.Find(id);
             if (sinistro == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace CotacaoApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cobertura sinistro = db.Sinistro.Find(id);
-            db.Sinistro.Remove(sinistro);
+            Cobertura sinistro = db.Cobertura.Find(id);
+            db.Cobertura.Remove(sinistro);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
