@@ -28,7 +28,7 @@ namespace CotacaoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sinistro sinistro = db.Sinistro.Find(id);
+            Cobertura sinistro = db.Sinistro.Find(id);
             if (sinistro == null)
             {
                 return HttpNotFound();
@@ -47,7 +47,7 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Tipo,DataSinistro,LocalSinistro,DescricaoSinistro,SituacaoSinistro,ObservacaoSinistro")] Sinistro sinistro)
+        public ActionResult Create([Bind(Include = "Id,Tipo,DataSinistro,LocalSinistro,DescricaoSinistro,SituacaoSinistro,ObservacaoSinistro")] Cobertura sinistro)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace CotacaoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sinistro sinistro = db.Sinistro.Find(id);
+            Cobertura sinistro = db.Sinistro.Find(id);
             if (sinistro == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Tipo,DataSinistro,LocalSinistro,DescricaoSinistro,SituacaoSinistro,ObservacaoSinistro")] Sinistro sinistro)
+        public ActionResult Edit([Bind(Include = "Id,Tipo,DataSinistro,LocalSinistro,DescricaoSinistro,SituacaoSinistro,ObservacaoSinistro")] Cobertura sinistro)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace CotacaoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sinistro sinistro = db.Sinistro.Find(id);
+            Cobertura sinistro = db.Sinistro.Find(id);
             if (sinistro == null)
             {
                 return HttpNotFound();
@@ -110,7 +110,7 @@ namespace CotacaoApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Sinistro sinistro = db.Sinistro.Find(id);
+            Cobertura sinistro = db.Sinistro.Find(id);
             db.Sinistro.Remove(sinistro);
             db.SaveChanges();
             return RedirectToAction("Index");

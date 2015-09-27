@@ -6,11 +6,11 @@ using System.Web.Mvc;
 
 namespace CotacaoApp.Models
 {
-    public class Sinistro
+    public class Cobertura
     {
         [Key]
         [Display(Name = "Sinistro")]
-        [Column("CD_SINISTRO")]
+        [Column("CD_COBERTURA")]
         public int Id { get; set; }
 
 

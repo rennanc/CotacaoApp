@@ -23,6 +23,10 @@ namespace CotacaoApp.Models
         [Column("NM_NOME")]
         public string Nome { get; set; }
 
+        [Display(Name = "Data de Nascimento")]
+        [Column("DT_NASCIMENTO")]
+        public DateTime DataNascimento { get; set; }
+
         [Display(Name = "Data Expedicao")]
         [Column("DT_DATA_EXPEDICAO")]
         public DateTime DataExpedicao { get; set; }
@@ -43,24 +47,66 @@ namespace CotacaoApp.Models
         [Column("NM_ESTADOCIVIL")]
         public int IEEstadoCivil { get; set; }
 
-        [Display(Name = "Data de Nascimento")]
-        [Column("DT_NASCIMENTO")]
-        public DateTime DataNascimento { get; set; }
-
         [Display(Name = "Possui Outros Carros")]
-        //[Column("IE_POSSUIOUTROSCARROS")]
+        [Column("IE_POSSUIOUTROSCARROS")]
         public int IEPossuiOutrosCarros { get; set; }
 
         [Display(Name = "Quantidade de Carros")]
-        //[Column("IE_POSSUIOUTROSCARROS")]
+        [Column("IE_QTDCARROS")]
         public int IEQuantidadeCarro { get; set; }
+
+        [Display(Name = "Anos de CNH")]
+        [Column("NR_ANOSCNH")]
+        public int AnosDeCNH { get; set; }
+
+        [Display(Name = "É o proprietario do veiculo")]
+        [Column("IE_PROPRIETARIOVEICULO")]
+        public int IEProprietarioVeiculo { get; set; }
+
+        [Display(Name = "Relaxao com o proprietario")]
+        [Column("IE_RELACAOPROPRIETARIO")]
+        public int IERelacaoProprietario { get; set; }
+
+        [Display(Name = "é o Condutor Principal")]
+        [Column("IE_CONDPRINCIPAL")]
+        public int IECondutorPrincipal { get; set; }
+
+        /*********** PASSO-4 : CONDUTORES ************/
+
+        [Display(Name = "tipo de residencia")]
+        [Column("IE_CONDPRINCIPAL")]
+        public int IETipoResidencia { get; set; }
+
+        [Display(Name = "Profissao")]
+        [Column("DS_PROFISSAO")]
+        public string Profissao { get; set; }
+
+        [Display(Name = "Roubado em 24 meses")]
+        [Column("IE_ROUBADOEM24MESES")]
+        public int IERoubadoEm24Meses { get; set; }
+
+        [Display(Name = "Algum Condutor Estuda")]
+        [Column("IE_ALGUMCONDUTORESTUDA")]
+        public int IEAlgumCondutorEstuda { get; set; }
+
+        /*********** PASSO-5 : CONCLUSÃO ************/
 
         [Display(Name = "Email")]
         [Column("NM_EMAIL")]
-        public DateTime NomeEmail { get; set; }
+        public string Email { get; set; }
 
-        [Display(Name = "Banco")]
-        [Column("NM_BANCO")]
-        public DateTime NomeBanco { get; set; }
+        [Display(Name = "Noticias por Email")]
+        [Column("IE_NOTICIASEMAIL")]
+        public bool IENoticiasEmail { get; set; }
+
+
+        //Vantagens
+        [Display(Name = "Cliente Itaú Personalité")]
+        [Column("IE_ITAUPERSONALITE")]
+        public bool IEItauPersonalite { get; set; }
+
+        [Display(Name = "Cartão Porto Seguro Visa")]
+        [Column("IE_CARTAOPORTOSEGUROVISA")]
+        public bool IECartaoPortoSeguroVisa { get; set; }
     }
 }

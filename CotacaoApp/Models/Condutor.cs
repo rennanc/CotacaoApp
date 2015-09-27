@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace CotacaoApp.Models
 {
-    public class Pessoa
+    public class Condutor
     {
 
         [Key]
         [Display(Name = "Codigo")]
-        [Column("CD_PESSOA")]
+        [Column("CD_CONDUTOR")]
         public int Id { get; set; }
 
         [Display(Name = "Codigo Segurado")]
