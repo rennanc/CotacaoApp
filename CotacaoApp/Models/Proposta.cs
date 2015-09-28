@@ -70,17 +70,17 @@ namespace CotacaoApp.Models
         public bool IETipoVeiculoPessoaJuridica { get; set; }
         //tipo veiculo
 
-        [Display(Name = "Alarme Veiculo ou antifurto")]
+        [Display(Name = "Possui alarme ou algum dispositivo antifurto?*")]
         [Column("IE_ALARMEVEICULO")]
         public int IEAlarmeVeiculo { get; set; }
 
         /*********** PASSO-2 : LOCALIZAÇÃO ************/
 
-        [Display(Name = "Estacionamento do Carro")]
+        [Display(Name = "Onde o carro fica estacionado à noite?*")]
         [Column("IE_TIPOESTACION")]
         public int IETipoEstacionamento { get; set; }
 
-        [Display(Name = "Tipo do Portão")]
+        [Display(Name = "Tipo de Portão")]
         [Column("IE_TIPOPORTAO")]
         public int IETipoPortao { get; set; }
 
@@ -162,7 +162,7 @@ namespace CotacaoApp.Models
 
             [Display(Name = "Nome da Seguradora Atual")]
             [Column("NM_SEGURADORAATUAL")]
-            public bool NomeSeguradoraAtual { get; set; }
+            public string NomeSeguradoraAtual { get; set; }
 
             [Display(Name = "Fim da Vigencia da Apolice atual")]
             [Column("DT_VENC_APOLICEATUAL")]

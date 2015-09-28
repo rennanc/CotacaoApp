@@ -10,14 +10,14 @@ namespace CotacaoApp.Models
     {
 
         [Display(Name = "Codigo")]
-        [Column("CD_PESSOA")]
+        [Column("CD_CONDUTOR")]
         public int Id { get; set; }
 
         [Key]
         [Required]
         [Display(Name = "CPF")]
         [Column("CD_CPF")]
-        public int CodigoCpf { get; set; }
+        public string CodigoCpf { get; set; }
 
         [Display(Name = "Nome")]
         [Column("NM_NOME")]
@@ -25,11 +25,12 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Data de Nascimento")]
         [Column("DT_NASCIMENTO")]
+        [DataType(DataType.Date)]
         public DateTime DataNascimento { get; set; }
 
         [Display(Name = "Sexo")]
         [Column("IE_SEXO")]
-        public int IESexo { get; set; }
+        public string IESexo { get; set; }
 
         [Display(Name = "EstadoCivel")]
         [Column("NM_ESTADOCIVIL")]

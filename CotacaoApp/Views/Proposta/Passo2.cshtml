@@ -19,42 +19,38 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.IETipoEstacionamento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="col-md-10">
+            @Html.LabelFor(model => model.IETipoEstacionamento, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                     <p>@Html.RadioButtonFor(model => model.IETipoEstacionamento, "0") Residência/Garagem</p>
                     <!--Tipo Portão-->
                     <div class="form-group">
-                        @Html.LabelFor(model => model.IETipoPortao, htmlAttributes: new { @class = "control-label col-md-3" })
-                        <div class="col-md-9">
-                            <div class="col-md-12">
-                                <p>@Html.RadioButtonFor(model => model.IETipoPortao, "0") Automático
+                        <div class="col-md-3">@Html.LabelFor(model => model.IETipoPortao, htmlAttributes: new { @class = "control-label" })</div>
+                        <div class="col-md-9 col-md-pull-1">
+                                @Html.RadioButtonFor(model => model.IETipoPortao, "0") Automático
                                 @Html.RadioButtonFor(model => model.IETipoPortao, "1") Manual
                                 @Html.RadioButtonFor(model => model.IETipoPortao, "2") Com Porteiro
                                 @Html.RadioButtonFor(model => model.IETipoPortao, "3") Sem Portão
                                 @Html.ValidationMessageFor(model => model.IETipoPortao, "", new { @class = "text-danger" })
-                            </div>
                         </div>
                     </div>
                     <!--Tipo Portão-->
                     <p>@Html.RadioButtonFor(model => model.IETipoEstacionamento, "1") Estacionamento</p>
                     <p>@Html.RadioButtonFor(model => model.IETipoEstacionamento, "2") Outros</p>
                     @Html.ValidationMessageFor(model => model.IETipoEstacionamento, "", new { @class = "text-danger" })
-                </div>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CepEstacionamento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.CepEstacionamento, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.CepEstacionamento, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CepEstacionamento, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CepDeslocamento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.CepDeslocamento, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.CepDeslocamento, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CepDeslocamento, "", new { @class = "text-danger" })
             </div>
