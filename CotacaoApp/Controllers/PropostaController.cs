@@ -18,59 +18,101 @@ namespace CotacaoApp.Controllers
 
         private DefaultConnection db = new DefaultConnection();
 
+        private Proposta _proposta;
+
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            var serialized = Request.Form["proposta"];
+            if (serialized != null)
+            {
+                // Form was posted containing serialized data
+                _proposta = (Proposta)new MvcSerializer().Deserialize(serialized);
+                TryUpdateModel(_proposta);
+            }
+            else
+            {
+                _proposta = (Proposta)TempData["proposta"] ?? new Proposta();
+            }
+        }
+
+        protected override void OnResultExecuted(ResultExecutedContext filterContext)
+        {
+            if (filterContext.Result is RedirectToRouteResult)
+            {
+                TempData["proposta"] = _proposta;
+            }
+        }
+
+
         // GET: Proposta
         public ActionResult Index()
         {
             return View(db.Proposta.ToList());
         }
 
-        private Proposta GetProposta()
-        {
-            if (Session["proposta"] == null)
-            {
-                Session["proposta"] = new Proposta();
-            }
-            return (Proposta)Session["proposta"];
-        }
 
         public ActionResult Passo1(Proposta proposta, string btnVoltar, string btnAvancar)
         {
-            if(btnAvancar != null)
-            {
-                    Proposta PropostaObj = GetProposta();
-                    PropostaObj = proposta;
-                    return RedirectToAction("Passo2");
 
+            if (btnAvancar != null)
+            {
+                return RedirectToAction("Passo2");
             }
-            return View();
+            return View(_proposta);
         }
 
  
-        public ActionResult Passo2(Proposta proposta, string btnVoltar, string btnAvancar)
+        public ActionResult Passo2(string btnVoltar, string btnAvancar)
         {
-            Proposta PropostaObj = GetProposta();
+            if (btnVoltar != null)
+                return RedirectToAction("Passo1");
+            if (btnAvancar != null)
+            {
+                return RedirectToAction("Passo2");
+            }
+            return View(_proposta);
 
+        }
+
+        public ActionResult Passo3(Proposta proposta, string btnVoltar, string btnAvancar)
+        {
             if (btnVoltar != null)
             {
-                return RedirectToAction("Passo1", PropostaObj);
-                //return RedirectToAction("Passo1", "Proposta", data);
+                return RedirectToAction("Passo2");
             }
-            else if(btnAvancar != null)
+            else if (btnAvancar != null)
             {
-                return RedirectToAction("Passo3", proposta);
+                return RedirectToAction("Passo4", proposta);
             }
             else
             {
                 return View();
             }
-            
+
         }
 
-        public ActionResult Passo3(Proposta data, string btnVoltar, string btnAvancar)
+        public ActionResult Passo4(Proposta data, string btnVoltar, string btnAvancar)
         {
             if (btnVoltar != null)
             {
-                return RedirectToAction("Passo2");
+                return RedirectToAction("Passo3");
+            }
+            else if (btnAvancar != null)
+            {
+                return RedirectToAction("Passo5");
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+
+        public ActionResult Passo5(Proposta data, string btnVoltar, string btnAvancar)
+        {
+            if (btnVoltar != null)
+            {
+                return RedirectToAction("Passo4");
             }
             else if (btnAvancar != null)
             {

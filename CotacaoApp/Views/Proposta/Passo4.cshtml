@@ -1,0 +1,57 @@
+﻿@model CotacaoApp.Models.Proposta
+@{
+    ViewBag.Title = "Passo3 - Localização";
+}
+
+<button type="button" class="btn btn-default btn-lg">Seu Carro</button>
+<button type="button" class="btn btn-default btn-lg">Localização</button>
+<button type="button" class="btn btn-primary btn-lg">Segurado</button>
+<button type="button" class="btn btn-default btn-lg">Condutores</button>
+<button type="button" class="btn btn-default btn-lg">Conclusão</button>
+
+<h2>Segurado</h2>
+
+@using (Html.BeginForm("Passo3", "Proposta", FormMethod.Post))
+{
+    @*<form action="Passo4" method="post"></form>*@
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Formulario</h4>
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Segurado.PessoaFisica.Nome, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Segurado.PessoaFisica.Nome, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-1">
+                @*<input type="submit" name="btnVoltar" value="Voltar" class="btn btn-default" />*@
+                @Html.ActionLink("Voltar", "Passo2")
+            </div>
+            <div class="col-md-1">
+                <input type="submit" name="btnAvancar" value="Avançar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<script type="text/javascript">
+    function OnSubmitForm()
+    {
+        if (document.pressed == 'Voltar')
+      {
+          document.form1.action = "Passo1";
+      }
+      else
+            if (document.pressed == 'Avançar')
+      {
+          document.form1.action = "Passo3";
+      }
+      return true;
+    }
+</script>

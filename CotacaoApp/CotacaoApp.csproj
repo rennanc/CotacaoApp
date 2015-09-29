@@ -403,6 +403,7 @@
     <Content Include="Views\Sinistro\Details.cshtml" />
     <Content Include="Views\Sinistro\Edit.cshtml" />
     <Content Include="Views\Sinistro\Index.cshtml" />
+    <Content Include="Views\Proposta\Passo4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
