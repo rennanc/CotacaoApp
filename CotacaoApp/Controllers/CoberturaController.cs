@@ -11,32 +11,32 @@ using CotacaoApp.DAO;
 
 namespace CotacaoApp.Controllers
 {
-    public class SinistroController : Controller
+    public class CoberturaController : Controller
     {
         private DefaultConnection db = new DefaultConnection();
 
-        // GET: Usuario
+        // GET: Cobertura
         public ActionResult Index()
         {
             return View(db.Cobertura.ToList());
         }
 
-        // GET: Usuario/Details/5
+        // GET: Cobertura/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cobertura sinistro = db.Cobertura.Find(id);
-            if (sinistro == null)
+            Cobertura cobertura = db.Cobertura.Find(id);
+            if (cobertura == null)
             {
                 return HttpNotFound();
             }
-            return View(sinistro);
+            return View(cobertura);
         }
 
-        // GET: Sinistro/Create
+        // GET: Cobertura/Create
         public ActionResult Create()
         {
             return View();
@@ -47,31 +47,31 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Tipo,DataSinistro,LocalSinistro,DescricaoSinistro,SituacaoSinistro,ObservacaoSinistro")] Cobertura sinistro)
+        public ActionResult Create([Bind(Include = "Id,Tipo,DataSinistro,LocalSinistro,DescricaoSinistro,SituacaoSinistro,ObservacaoSinistro")] Cobertura cobertura)
         {
             if (ModelState.IsValid)
             {
-                db.Cobertura.Add(sinistro);
+                db.Cobertura.Add(cobertura);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(sinistro);
+            return View(cobertura);
         }
 
-        // GET: Sinistro/Edit/5
+        // GET: Cobertura/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cobertura sinistro = db.Cobertura.Find(id);
-            if (sinistro == null)
+            Cobertura cobertura = db.Cobertura.Find(id);
+            if (cobertura == null)
             {
                 return HttpNotFound();
             }
-            return View(sinistro);
+            return View(cobertura);
         }
 
         // POST: Usuario/Edit/5
@@ -79,39 +79,39 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Tipo,DataSinistro,LocalSinistro,DescricaoSinistro,SituacaoSinistro,ObservacaoSinistro")] Cobertura sinistro)
+        public ActionResult Edit([Bind(Include = "Id,Tipo,DataSinistro,LocalSinistro,DescricaoSinistro,SituacaoSinistro,ObservacaoSinistro")] Cobertura cobertura)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sinistro).State = EntityState.Modified;
+                db.Entry(cobertura).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(sinistro);
+            return View(cobertura);
         }
 
-        // GET: Sinistro/Delete/5
+        // GET: Cobertura/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cobertura sinistro = db.Cobertura.Find(id);
-            if (sinistro == null)
+            Cobertura cobertura = db.Cobertura.Find(id);
+            if (cobertura == null)
             {
                 return HttpNotFound();
             }
-            return View(sinistro);
+            return View(cobertura);
         }
 
-        // POST: Sinistro/Delete/5
+        // POST: Cobertura/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cobertura sinistro = db.Cobertura.Find(id);
-            db.Cobertura.Remove(sinistro);
+            Cobertura cobertura = db.Cobertura.Find(id);
+            db.Cobertura.Remove(cobertura);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

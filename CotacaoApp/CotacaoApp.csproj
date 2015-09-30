@@ -203,7 +203,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PropostaController.cs" />
-    <Compile Include="Controllers\SinistroController.cs" />
+    <Compile Include="Controllers\CoberturaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="DAO\DBConnection.cs" />
     <Compile Include="DAO\DBSession.cs" />
