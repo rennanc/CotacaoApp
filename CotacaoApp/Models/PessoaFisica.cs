@@ -58,7 +58,7 @@ namespace CotacaoApp.Models
         public int IERelacaoProprietario { get; set; }
 
         [Display(Name = "é o Condutor Principal")]
-        [Column("IE_CONDPRINCIPAL")]
+        //[Column("IE_CONDPRINCIPAL")]
         public int IECondutorPrincipal { get; set; }
 
         [Display(Name = "Numero Cep")]

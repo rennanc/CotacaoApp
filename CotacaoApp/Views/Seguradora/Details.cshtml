@@ -1,0 +1,66 @@
+﻿@model CotacaoApp.Models.Seguradora
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Seguradora</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SinistroAuto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SinistroAuto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Recepcao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recepcao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Assistencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assistencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Outros)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Outros)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Calculos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calculos)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Editar", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para a Lista", "Index")
+</p>

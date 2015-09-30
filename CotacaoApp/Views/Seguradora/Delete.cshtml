@@ -1,0 +1,42 @@
+﻿@model CotacaoApp.Models.Seguradora
+
+@{
+    ViewBag.Title = "Excluir Seguradora";
+}
+
+<h2>Excluir Seguradora</h2>
+
+<h3>Você tem certeza de que quer deletar isso?</h3>
+<div>
+    <h4>Seguradora</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Recepcao) 
+            
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recepcao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SinistroAuto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SinistroAuto)
+        </dd>
+
+    </dl>
+    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deletar" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para a Lista", "Index")
+        </div>
+    }
+</div>
