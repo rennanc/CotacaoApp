@@ -1,6 +1,6 @@
 ﻿@model CotacaoApp.Models.Proposta
 @{
-    ViewBag.Title = "Passo3 - Localização";
+    ViewBag.Title = "Passo 4 - Condutores";
 }
 
 <button type="button" class="btn btn-default btn-lg">Seu Carro</button>
@@ -11,26 +11,130 @@
 
 <h2>Segurado</h2>
 
-@using (Html.BeginForm("Passo3", "Proposta", FormMethod.Post))
+@using (Html.BeginForm("Passo4", "Proposta", FormMethod.Post))
 {
-    @*<form action="Passo4" method="post"></form>*@
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
         <h4>Formulario</h4>
         <hr />
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.Hidden("proposta", new Microsoft.Web.Mvc.MvcSerializer().Serialize(Model))
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Segurado.PessoaFisica.Nome, htmlAttributes: new { @class = "control-label col-md-4" })
-            <div class="col-md-8">
-                @Html.EditorFor(model => model.Segurado.PessoaFisica.Nome, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-6 text-right">
+                <p>@Html.Label("Quem é o condutor principal do carro?*", htmlAttributes: new { @class = "control-label" })</p>
+                <i>
+                    O condutor principal é a pessoa que dirige o carro no mínimo 6
+                    dias por semana. Se houver alguém entre 18 e 24 anos que
+                    dirija o mesmo veículo mais de um dia por semana, esta
+                    pessoa deve ser considerada o condutor principal. Se não for
+                    possível identificar o condutor principal por não ter ninguém
+                    que dirija no mínimo 6 dias por semana, considerar sempre o
+                    motorista mais jovem.
+                </i>
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Segurado.PessoaFisica.IECondutorPrincipal, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Segurado.PessoaFisica.IECondutorPrincipal, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.Label("Nome completo do(a) condutor(a) principal*", htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.OutroCondutor.PessoaFisica.Nome, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OutroCondutor.PessoaFisica.IESexo, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                @Html.RadioButtonFor(model => model.OutroCondutor.PessoaFisica.IESexo, "M") Masculino
+                @Html.RadioButtonFor(model => model.OutroCondutor.PessoaFisica.IESexo, "F") Feminino
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OutroCondutor.PessoaFisica.IEEstadoCivil, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                <p>@Html.RadioButtonFor(model => model.OutroCondutor.PessoaFisica.IEEstadoCivil, "0") Casado(a) ou reside há pelo menos 2 anos com companheiro(a)</p>
+                <p>@Html.RadioButtonFor(model => model.OutroCondutor.PessoaFisica.IEEstadoCivil, "1") Separado(a)/Divorciado(a)</p>
+                <p>@Html.RadioButtonFor(model => model.OutroCondutor.PessoaFisica.IEEstadoCivil, "2") Solteiro(a)</p>
+                <p>@Html.RadioButtonFor(model => model.OutroCondutor.PessoaFisica.IEEstadoCivil, "3") Viúvo(a)</p>
+                <p>@Html.ValidationMessageFor(model => model.OutroCondutor.PessoaFisica.IEEstadoCivil, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OutroCondutor.PessoaFisica.CodigoCpf, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.OutroCondutor.PessoaFisica.CodigoCpf, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OutroCondutor.PessoaFisica.CodigoCpf, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OutroCondutor.PessoaFisica.IERelacaoProprietario, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                <p>@Html.RadioButtonFor(model => model.OutroCondutor.PessoaFisica.IERelacaoProprietario, "0") Cônjuge</p>
+                <p>@Html.RadioButtonFor(model => model.OutroCondutor.PessoaFisica.IERelacaoProprietario, "1") Em transferência para o segurado</p>
+                <p>@Html.RadioButtonFor(model => model.OutroCondutor.PessoaFisica.IERelacaoProprietario, "2") Filho(a) ou Enteado(a)</p>
+                <p>@Html.RadioButtonFor(model => model.OutroCondutor.PessoaFisica.IERelacaoProprietario, "3") Operação de leasing</p>
+                <p>@Html.RadioButtonFor(model => model.OutroCondutor.PessoaFisica.IERelacaoProprietario, "4") Pai ou Mãe</p>
+                @Html.ValidationMessageFor(model => model.OutroCondutor.PessoaFisica.IERelacaoProprietario, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-4 text-right">
+                <p><label class="control-label">CPF do proprietário*</label></p>
+                <i>É muito importante colocar o CPF correto para obter uma cotação exata e com preços dentro do seu perfil. Não se preocupe, as informações serão armazenadas com total segurança.</i>
+            </div>
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.OutroCondutor.PessoaFisica.CodigoCpf, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OutroCondutor.PessoaFisica.CodigoCpf, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Segurado.PessoaFisica.IETipoResidencia, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                @Html.RadioButtonFor(model => model.Segurado.PessoaFisica.IETipoResidencia, 0) Apartamento ou flat
+                @Html.RadioButtonFor(model => model.Segurado.PessoaFisica.IETipoResidencia, 1) Casa em condominio fechado
+                @Html.RadioButtonFor(model => model.Segurado.PessoaFisica.IETipoResidencia, 2) Casa ou sobrado
+                @Html.RadioButtonFor(model => model.Segurado.PessoaFisica.IETipoResidencia, 3) Chácara, fazenda ou sítio
+                @Html.RadioButtonFor(model => model.Segurado.PessoaFisica.IETipoResidencia, 4) Outros
+                @Html.RadioButtonFor(model => model.Segurado.PessoaFisica.IETipoResidencia, 5) Não sei
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Segurado.PessoaFisica.Profissao, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Segurado.PessoaFisica.Profissao, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Segurado.PessoaFisica.IERoubadoEm24Meses, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                @Html.RadioButtonFor(model => model.Segurado.PessoaFisica.IERoubadoEm24Meses, 1) Sim
+                @Html.RadioButtonFor(model => model.Segurado.PessoaFisica.IERoubadoEm24Meses, 0) Não
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Segurado.PessoaFisica.IEAlgumCondutorEstuda, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                @Html.RadioButtonFor(model => model.Segurado.PessoaFisica.IEAlgumCondutorEstuda, 1) Sim
+                @Html.RadioButtonFor(model => model.Segurado.PessoaFisica.IEAlgumCondutorEstuda, 0) Não
+            </div>
+        </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-1">
-                @*<input type="submit" name="btnVoltar" value="Voltar" class="btn btn-default" />*@
-                @Html.ActionLink("Voltar", "Passo2")
+                <input type="submit" name="btnVoltar" value="Voltar" class="btn btn-default" />
             </div>
             <div class="col-md-1">
                 <input type="submit" name="btnAvancar" value="Avançar" class="btn btn-primary" />
@@ -38,20 +142,3 @@
         </div>
     </div>
 }
-
-
-<script type="text/javascript">
-    function OnSubmitForm()
-    {
-        if (document.pressed == 'Voltar')
-      {
-          document.form1.action = "Passo1";
-      }
-      else
-            if (document.pressed == 'Avançar')
-      {
-          document.form1.action = "Passo3";
-      }
-      return true;
-    }
-</script>

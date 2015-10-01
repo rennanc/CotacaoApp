@@ -68,13 +68,13 @@ namespace CotacaoApp.Controllers
                 return RedirectToAction("Passo1");
             if (btnAvancar != null)
             {
-                return RedirectToAction("Passo2");
+                return RedirectToAction("Passo3");
             }
             return View(_proposta);
 
         }
 
-        public ActionResult Passo3(Proposta proposta, string btnVoltar, string btnAvancar)
+        public ActionResult Passo3(string btnVoltar, string btnAvancar)
         {
             if (btnVoltar != null)
             {
@@ -82,7 +82,7 @@ namespace CotacaoApp.Controllers
             }
             else if (btnAvancar != null)
             {
-                return RedirectToAction("Passo4", proposta);
+                return RedirectToAction("Passo4");
             }
             else
             {
@@ -91,7 +91,7 @@ namespace CotacaoApp.Controllers
 
         }
 
-        public ActionResult Passo4(Proposta data, string btnVoltar, string btnAvancar)
+        public ActionResult Passo4(string btnVoltar, string btnAvancar)
         {
             if (btnVoltar != null)
             {
