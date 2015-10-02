@@ -224,6 +224,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministracaoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -244,7 +245,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Condutor.cs" />
     <Compile Include="Models\PessoaFisica.cs" />
-    <Compile Include="Models\PessoaJuridica.cs" />
     <Compile Include="Models\Proposta.cs" />
     <Compile Include="Models\Cobertura.cs" />
     <Compile Include="Models\Seguradora.cs" />
@@ -424,11 +424,11 @@
     <Content Include="Views\Proposta\Passo1.cshtml" />
     <Content Include="Views\Proposta\Passo2.cshtml" />
     <Content Include="Views\Proposta\Passo3.cshtml" />
-    <Content Include="Views\Sinistro\Create.cshtml" />
-    <Content Include="Views\Sinistro\Delete.cshtml" />
-    <Content Include="Views\Sinistro\Details.cshtml" />
-    <Content Include="Views\Sinistro\Edit.cshtml" />
-    <Content Include="Views\Sinistro\Index.cshtml" />
+    <Content Include="Views\Cobertura\Create.cshtml" />
+    <Content Include="Views\Cobertura\Delete.cshtml" />
+    <Content Include="Views\Cobertura\Details.cshtml" />
+    <Content Include="Views\Cobertura\Edit.cshtml" />
+    <Content Include="Views\Cobertura\Index.cshtml" />
     <Content Include="Views\Proposta\Passo4.cshtml" />
     <Content Include="Views\Seguradora\Create.cshtml" />
     <Content Include="Views\Seguradora\Delete.cshtml" />
@@ -436,6 +436,8 @@
     <Content Include="Views\Seguradora\Edit.cshtml" />
     <Content Include="Views\Seguradora\Index.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
+    <Content Include="Views\Proposta\Passo5.cshtml" />
+    <Content Include="Views\Administracao\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -448,6 +450,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

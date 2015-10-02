@@ -25,7 +25,7 @@
                     <p>@Html.RadioButtonFor(model => model.IETipoEstacionamento, "0") Residência/Garagem</p>
                     <!--Tipo Portão-->
                     <div class="form-group">
-                        <div class="col-md-3">@Html.LabelFor(model => model.IETipoPortao, htmlAttributes: new { @class = "control-label" })</div>
+                        <div class="col-md-3">@Html.Label("Tipo do Portão", htmlAttributes: new { @class = "control-label" })</div>
                         <div class="col-md-9 col-md-pull-1">
                                 @Html.RadioButtonFor(model => model.IETipoPortao, "0") Automático
                                 @Html.RadioButtonFor(model => model.IETipoPortao, "1") Manual
@@ -42,7 +42,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CepEstacionamento, htmlAttributes: new { @class = "control-label col-md-4" })
+            @Html.Label("Qual o CEP do local onde ele fica estacionado à noite ? *", htmlAttributes: new { @class = "control -label col-md-4" })
             <div class="col-md-8">
                 @Html.EditorFor(model => model.CepEstacionamento, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CepEstacionamento, "", new { @class = "text-danger" })
@@ -50,7 +50,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CepDeslocamento, htmlAttributes: new { @class = "control-label col-md-4" })
+            @Html.Label("Qual o CEP para onde o carro mais se desloca?*", htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8">
                 @Html.EditorFor(model => model.CepDeslocamento, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CepDeslocamento, "", new { @class = "text-danger" })
@@ -138,25 +138,6 @@
         </div>
     </div>
 }
-
-
-
-
-<script type="text/javascript">
-    function OnSubmitForm()
-    {
-        if (document.pressed == 'Voltar')
-      {
-          document.form1.action = "Passo1";
-      }
-      else
-            if (document.pressed == 'Avançar')
-      {
-          document.form1.action = "Passo3";
-      }
-      return true;
-    }
-</script>
 
 
 

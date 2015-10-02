@@ -22,26 +22,35 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Nome")]
         [Column("NM_NOME")]
+        [Required]
         public string Nome { get; set; }
 
         [Display(Name = "Data de Nascimento")]
         [Column("DT_NASCIMENTO")]
         [DataType(DataType.Date)]
+        [Required]
         public DateTime DataNascimento { get; set; }
 
-        [Display(Name = "Sexo")]
+        [Display(Name = "Sexo*")]
         [Column("IE_SEXO")]
+        [Required]
         public string IESexo { get; set; }
 
-        [Display(Name = "EstadoCivel")]
+        [Display(Name = "Estado Civil*")]
         [Column("NM_ESTADOCIVIL")]
+        [Required]
         public int IEEstadoCivil { get; set; }
 
-        [Display(Name = "Possui Outros Carros")]
+        [Display(Name = "Numero Cep")]
+        [Column("NR_CEP")]
+        [Required]
+        public int NumeroCep { get; set; }
+
+        [Display(Name = "Além desse carro, o segurado possui outros carros em sua residência ? *")]
         [Column("IE_POSSUIOUTROSCARROS")]
         public int IEPossuiOutrosCarros { get; set; }
 
-        [Display(Name = "Quantidade de Carros")]
+        [Display(Name = "Quantos mais?*")]
         [Column("IE_QTDCARROS")]
         public int IEQuantidadeCarro { get; set; }
 
@@ -49,11 +58,11 @@ namespace CotacaoApp.Models
         [Column("NR_ANOSCNH")]
         public int AnosDeCNH { get; set; }
 
-        [Display(Name = "É o proprietario do veiculo")]
+        [Display(Name = "O segurado é proprietário(a) do carro?*")]
         [Column("IE_PROPRIETARIOVEICULO")]
         public int IEProprietarioVeiculo { get; set; }
 
-        [Display(Name = "Relaxao com o proprietario")]
+        [Display(Name = "Relação entre PROPRIETÁRIO e SEGURADO*")]
         [Column("IE_RELACAOPROPRIETARIO")]
         public int IERelacaoProprietario { get; set; }
 
@@ -61,9 +70,7 @@ namespace CotacaoApp.Models
         //[Column("IE_CONDPRINCIPAL")]
         public int IECondutorPrincipal { get; set; }
 
-        [Display(Name = "Numero Cep")]
-        [Column("NR_CEP")]
-        public int NumeroCep { get; set; }
+        
 
         /*********** PASSO-4 : CONDUTORES ************/
 

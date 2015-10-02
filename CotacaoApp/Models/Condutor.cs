@@ -29,8 +29,5 @@ namespace CotacaoApp.Models
         [Display(Name = "Pessoa Fisica")]
         public PessoaFisica PessoaFisica { get; set; }
 
-        [Display(Name = "Pessoa Juridica")]
-        public PessoaJuridica PessoaJuridica { get; set; }
-
     }
 }

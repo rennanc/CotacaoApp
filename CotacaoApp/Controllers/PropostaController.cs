@@ -27,7 +27,17 @@ namespace CotacaoApp.Controllers
             {
                 // Form was posted containing serialized data
                 _proposta = (Proposta)new MvcSerializer().Deserialize(serialized);
-                TryUpdateModel(_proposta);
+                try
+                {
+                    TryUpdateModel(_proposta);
+                }
+                catch(Exception)
+                {
+                    _proposta = (Proposta)TempData["proposta"] ?? new Proposta();
+
+                }
+                
+
             }
             else
             {
@@ -62,7 +72,7 @@ namespace CotacaoApp.Controllers
         }
 
  
-        public ActionResult Passo2(string btnVoltar, string btnAvancar)
+        public ActionResult Passo2(Proposta proposta, string btnVoltar, string btnAvancar)
         {
             if (btnVoltar != null)
                 return RedirectToAction("Passo1");
@@ -74,7 +84,7 @@ namespace CotacaoApp.Controllers
 
         }
 
-        public ActionResult Passo3(string btnVoltar, string btnAvancar)
+        public ActionResult Passo3(Proposta proposta, string btnVoltar, string btnAvancar)
         {
             if (btnVoltar != null)
             {
@@ -86,12 +96,12 @@ namespace CotacaoApp.Controllers
             }
             else
             {
-                return View();
+                return View(_proposta);
             }
 
         }
 
-        public ActionResult Passo4(string btnVoltar, string btnAvancar)
+        public ActionResult Passo4(Proposta proposta, string btnVoltar, string btnAvancar)
         {
             if (btnVoltar != null)
             {
@@ -103,12 +113,12 @@ namespace CotacaoApp.Controllers
             }
             else
             {
-                return View();
+                return View(_proposta);
             }
 
         }
 
-        public ActionResult Passo5(Proposta data, string btnVoltar, string btnAvancar)
+        public ActionResult Passo5(Proposta proposta, string btnVoltar, string btnAvancar)
         {
             if (btnVoltar != null)
             {
@@ -116,7 +126,7 @@ namespace CotacaoApp.Controllers
             }
             else if (btnAvancar != null)
             {
-                return Content("é o fimmm!!!");
+                return Content("é o fim");
             }
             else
             {
