@@ -23,7 +23,8 @@ namespace CotacaoApp.Models
         [Required]
         [Display(Name = "Data Hora Sinistro")]
         [Column("DT_DATAHORA_SINISTRO")]
-        public DateTime DataSinistro  { get; set; }
+        [DataType(DataType.Date)]
+        public string DataSinistro  { get; set; }
 
         [Required]
         [Display(Name = "Local Sinistro")]
