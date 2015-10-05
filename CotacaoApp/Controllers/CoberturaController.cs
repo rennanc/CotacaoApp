@@ -47,7 +47,7 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Tipo,DataSinistro,LocalSinistro,DescricaoSinistro,SituacaoSinistro,ObservacaoSinistro")] Cobertura cobertura)
+        public ActionResult Create([Bind(Include = "Id,NomeCobertura,Tipo,DescricaoCobertura")] Cobertura cobertura)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Tipo,DataSinistro,LocalSinistro,DescricaoSinistro,SituacaoSinistro,ObservacaoSinistro")] Cobertura cobertura)
+        public ActionResult Edit([Bind(Include = "Id,NomeCobertura,Tipo,DescricaoCobertura")] Cobertura cobertura)
         {
             if (ModelState.IsValid)
             {

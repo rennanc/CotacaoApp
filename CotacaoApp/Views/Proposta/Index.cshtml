@@ -1,21 +1,21 @@
-﻿@model IEnumerable<CotacaoApp.Models.Usuario>
+﻿@model IEnumerable<CotacaoApp.Models.Proposta>
 
 @{
-    ViewBag.Title = "Usuários";
+    ViewBag.Title = "Propostas";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Novo Usuario", "Create")
+    @Html.ActionLink("Nova Proposta", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nome)
+            @Html.DisplayNameFor(model => model.Id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Senha)
+            @Html.DisplayNameFor(model => model.NomeVeiculo)
         </th>
         <th></th>
     </tr>
@@ -23,10 +23,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Nome)
+            @Html.DisplayFor(modelItem => item.Id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Senha)
+            @Html.DisplayFor(modelItem => item.NomeVeiculo)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |

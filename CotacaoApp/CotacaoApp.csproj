@@ -225,7 +225,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministracaoController.cs" />
-    <Compile Include="Controllers\ApoliceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -233,9 +232,11 @@
     <Compile Include="Controllers\CoberturaController.cs" />
     <Compile Include="Controllers\SeguradoraController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="DAO\CondutorDAO.cs" />
     <Compile Include="DAO\DBConnection.cs" />
     <Compile Include="DAO\DBSession.cs" />
     <Compile Include="DAO\DefaultConnection.cs" />
+    <Compile Include="DAO\PropostaDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="Filters\AutorizacaoFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -246,10 +247,11 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Condutor.cs" />
-    <Compile Include="Models\PessoaFisica.cs" />
     <Compile Include="Models\Proposta.cs" />
     <Compile Include="Models\Cobertura.cs" />
+    <Compile Include="Models\PropostaCobertura.cs" />
     <Compile Include="Models\Seguradora.cs" />
+    <Compile Include="Models\Telefone.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -273,6 +275,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\buscaSegurosSmall.jpg" />
     <Content Include="Images\busqueSeguros.jpg" />
     <Content Include="Images\busqueSegurosSmall.jpg" />
     <Content Include="Images\mulherComChave.jpg" />
@@ -300,13 +303,21 @@
     <Content Include="App_Data\busqueSeguros.mwb" />
     <Content Include="ApplicationInsights.config" />
     <None Include="Properties\PublishProfiles\buscaseguros.pubxml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.inputmask\inputmask.date.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\inputmask.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\inputmask.js" />
+    <Content Include="Scripts\jquery.inputmask\inputmask.numeric.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\inputmask.phone.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\inputmask.regex.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -440,8 +451,9 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Proposta\Passo5.cshtml" />
     <Content Include="Views\Administracao\Index.cshtml" />
-    <Content Include="Views\Apolice\Delete.cshtml" />
+    <Content Include="Views\Proposta\Passo6.cshtml" />
     <Content Include="Views\Apolice\Create.cshtml" />
+    <Content Include="Views\Apolice\Delete.cshtml" />
     <Content Include="Views\Apolice\Details.cshtml" />
     <Content Include="Views\Apolice\Edit.cshtml" />
     <Content Include="Views\Apolice\Index.cshtml" />
@@ -452,7 +464,6 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

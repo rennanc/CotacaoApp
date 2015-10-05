@@ -11,6 +11,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.NomeCobertura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeCobertura)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Tipo)
         </dt>
 
@@ -19,48 +27,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DataSinistro)
+            @Html.DisplayNameFor(model => model.DescricaoCobertura)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DataSinistro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LocalSinistro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LocalSinistro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DescricaoSinistro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DescricaoSinistro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SituacaoSinistro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SituacaoSinistro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ObservacaoSinistro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ObservacaoSinistro)
+            @Html.DisplayFor(model => model.DescricaoCobertura)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Editar", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para a Lista", "Index")
 </p>

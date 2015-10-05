@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,35 +20,43 @@ namespace CotacaoApp.Models
         [Column("CD_PROPOSTA")]
         public int Id { get; set; }
 
+        [Display(Name = "Codigo")]
+        [Column("CD_CONDUTOR")]
+        public int codigoSegurado { get; set; }
+
 
         /*********** PASSO-1 : SEU CARRO ************/
+        [NotMapped]
+        [Display(Name = "Coberturas")]
+        public List<Cobertura> Coberturas { get; set; }
+
+        [NotMapped]
+        [Display(Name = "CodigoCobertura")]
+        [Column("CD_COBERTURA")]
+        public int CodigoCobertura { get; set; }
+
         [Display(Name = "Marca do Carro")]
         [Column("NM_MARCAVEICULO")]
         public string NomeMarcaVeiculo { get; set; }
 
         [Display(Name = "Ano de fabricação:*")]
         [Column("NR_ANOFABVEICULO")]
-        [Required]
         public int AnoFabricacaoVeiculo { get; set; }
 
         [Display(Name = "Ano do modelo:*")]
         [Column("NR_ANOMODELOVEICULO")]
-        [Required]
         public int AnoModeloVeiculo { get; set; }
 
         [Display(Name = "O carro é 0 KM?*")]
         [Column("IE_ZEROKM")]
-        [Required]
         public bool IEZeroKM { get; set; }
 
         [Display(Name = "Qual o seu veiculo?*")]
         [Column("NM_VEICULO")]
-        [Required]
         public string NomeVeiculo { get; set; }
 
         [Display(Name = "O carro é financiado?*")]
         [Column("IE_FINANCIADOVEICULO")]
-        [Required]
         public int IEFinanciadoVeiculo { get; set; }
 
 
@@ -75,14 +84,12 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Possui alarme ou algum dispositivo antifurto?*")]
         [Column("IE_ALARMEVEICULO")]
-        [Required]
         public int IEAlarmeVeiculo { get; set; }
 
         /*********** PASSO-2 : LOCALIZAÇÃO ************/
 
         [Display(Name = "Onde o carro fica estacionado à noite?*")]
         [Column("IE_TIPOESTACION")]
-        [Required]
         public int IETipoEstacionamento { get; set; }
 
         [Display(Name = "Tipo de portão:*")]
@@ -91,14 +98,10 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Qual o CEP do local onde ele fica estacionado à noite?*")]
         [Column("NR_CEPESTACION")]
-        [DataType(DataType.PostalCode)]
-        [Required]
         public string CepEstacionamento { get; set; }
 
         [Display(Name = "Qual o CEP para onde o carro mais se desloca?*")]
         [Column("NR_CEPDESLOC")]
-        [DataType(DataType.PostalCode)]
-        [Required]
         public string CepDeslocamento { get; set; }
 
         //Utilização do veiculo
@@ -129,7 +132,6 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Usa o carro como instrumento de trabalho? Ex.: Representante comercial, entregador delivery etc.* ")]
         [Column("IE_UTILIZACAOVEICULO_INSTRUMENTO")]
-        [Required]
         public bool IEUtilizacaoVeiculoInstrumento { get; set; }
 
             [Display(Name = "Como o veículo é utilizado?*")]
@@ -142,9 +144,11 @@ namespace CotacaoApp.Models
 
         /*********** PASSO-3 : SEGURADO ************/
 
+        [NotMapped]
         [Display(Name = "Segurado")]
         public Condutor Segurado { get; set; }
 
+        [NotMapped]
         [Display(Name = "Proprietario")]
         public Condutor Proprietario { get; set; }
 
@@ -175,9 +179,9 @@ namespace CotacaoApp.Models
             public string NomeSeguradoraAtual { get; set; }
 
             [Display(Name = "Fim da Vigencia da Apolice atual")]
-            [Column("DT_VENC_APOLICEATUAL")]
+            [Column("DT_VENC_SEGUROATUAL")]
             [DataType(DataType.Date)]
-            public DateTime DataApoliceAtualVencimento { get; set; }
+            public string DataApoliceAtualVencimento { get; set; }
 
             [Display(Name = "BonusSeguro  Atual Sem Sinistro")]
             [Column("IE_BONUSAPOLICEATUAL_SEMSINISTRO")]
@@ -198,6 +202,7 @@ namespace CotacaoApp.Models
 
         /*********** PASSO-4 : CONDUTORES ************/
 
+        [NotMapped]
         [Display(Name = "OutroCondutor")]
         public Condutor OutroCondutor { get; set; }
 
@@ -206,11 +211,11 @@ namespace CotacaoApp.Models
 
         //usar entidade do segurado para email, telefone e vantagens
 
-        [Display(Name = "Placa")]
+        [Display(Name = "Placa do veículo")]
         [Column("NR_PLACAVEICULO")]
         public string NumeroPlaca { get; set; }
 
-        [Display(Name = "Placa")]
+        [Display(Name = "Chassi do veículo")]
         [Column("NR_CHASSIVEICULO")]
         public string NumeroChassi { get; set; }
 

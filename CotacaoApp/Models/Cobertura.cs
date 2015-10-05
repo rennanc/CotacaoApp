@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace CotacaoApp.Models
 {
+    [Serializable]
     public class Cobertura
     {
         [Key]
@@ -13,37 +14,21 @@ namespace CotacaoApp.Models
         [Column("CD_COBERTURA")]
         public int Id { get; set; }
 
+        [Required]
+        [Display(Name = "Nome da Cobertura")]
+        [Column("NM_COBERTURA")]
+        public string NomeCobertura { get; set; }
 
         [Required]
         [Display(Name = "Tipo")]
         [Column("SG_TIPO")]
         public string Tipo { get; set; }
 
-
         [Required]
-        [Display(Name = "Data Hora Sinistro")]
-        [Column("DT_DATAHORA_SINISTRO")]
-        public DateTime DataSinistro  { get; set; }
-
-        [Required]
-        [Display(Name = "Local Sinistro")]
-        [Column("DS_LOCAL_SINISTRO")]
-        public string LocalSinistro { get; set; }
-
-        [Required]
-        [Display(Name = "Descrição Sinistro")]
-        [Column("DS_SINISTRO")]
-        public string DescricaoSinistro { get; set; }
-
-        [Required]
-        [Display(Name = "Situação Sinistro")]
-        [Column("SG_SITUACAO_SINISTRO")]
-        public string SituacaoSinistro { get; set; }
-
-        [Required]
-        [Display(Name = "Observação Sinistro")]
-        [Column("DS_OBSERVACAO_SINISTRO")]
-        public string ObservacaoSinistro { get; set; }
+        [Display(Name = "Descrição Cobertura")]
+        [Column("DS_COBERTURA")]
+        public string DescricaoCobertura { get; set; }
+        
         
     }
 }

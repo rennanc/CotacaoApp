@@ -11,7 +11,7 @@
 
 <h2>Conclusão</h2>
 
-@using (Html.BeginForm("Passo4", "Proposta", FormMethod.Post))
+@using (Html.BeginForm("Passo5", "Proposta", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
@@ -22,64 +22,109 @@
         @Html.Hidden("proposta", new Microsoft.Web.Mvc.MvcSerializer().Serialize(Model))
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Segurado.PessoaFisica.Nome, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-9">
-                @Html.EditorFor(model => model.Segurado.PessoaFisica.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Segurado.PessoaFisica.Nome, "", new { @class = "text-danger" })
+            @Html.Label("Nome Completo*", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Segurado.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Segurado.Nome, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Segurado.PessoaFisica.Email, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-9">
-                @Html.EditorFor(model => model.Segurado.PessoaFisica.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Segurado.PessoaFisica.Email, "", new { @class = "text-danger" })
+            @Html.Label("E-mail*", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Segurado.Email, new { htmlAttributes = new { @class = "form-control email" } })
+                @Html.ValidationMessageFor(model => model.Segurado.Email, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            telefone fixo
-            @Html.LabelFor(model => model.Segurado.PessoaFisica.Nome, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-9">
-                @Html.EditorFor(model => model.Segurado.PessoaFisica.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Segurado.PessoaFisica.Email, "", new { @class = "text-danger" })
+            @Html.Label("Telefone Fixo*", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Segurado.Telefones[0].NumeroTelefone, new { htmlAttributes = new { @class = "form-control telefone" } })
+                @Html.ValidationMessageFor(model => model.Segurado.Telefones[0].NumeroTelefone, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            telefone celular
-            @Html.LabelFor(model => model.Segurado.PessoaFisica.Nome, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-9">
-                @Html.EditorFor(model => model.Segurado.PessoaFisica.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Segurado.PessoaFisica.Email, "", new { @class = "text-danger" })
+            @Html.Label("Telefone Celular", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Segurado.Telefones[1].NumeroTelefone, new { htmlAttributes = new { @class = "form-control telefone" } })
+                @Html.ValidationMessageFor(model => model.Segurado.Telefones[1].NumeroTelefone, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            telefone comercial
-            @Html.LabelFor(model => model.Segurado.PessoaFisica.Nome, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-9">
-                @Html.EditorFor(model => model.Segurado.PessoaFisica.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Segurado.PessoaFisica.Email, "", new { @class = "text-danger" })
+            @Html.Label("Telefone Comercial", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Segurado.Telefones[2].NumeroTelefone, new { htmlAttributes = new { @class = "form-control telefone" } })
+                @Html.ValidationMessageFor(model => model.Segurado.Telefones[2].NumeroTelefone, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            telefone comercial
-            @Html.LabelFor(model => model.Segurado.PessoaFisica.IENoticiasEmail, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-9">
-                @Html.CheckBoxFor(model => model.Segurado.PessoaFisica.IENoticiasEmail, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Segurado.PessoaFisica.IENoticiasEmail, "", new { @class = "text-danger" })
+            <label class="control-label col-md-4">Autorizo receber informações sobre a cotação e descontos sobre o seguro por:</label>
+            <div class="col-md-8">
+                @Html.CheckBoxFor(model => model.Segurado.IENoticiasEmail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.LabelFor(model => model.Segurado.IENoticiasEmail, htmlAttributes: new { @class = "control-label" })
+                @Html.ValidationMessageFor(model => model.Segurado.IENoticiasEmail, "", new { @class = "text-danger" })
             </div>
         </div>
 
+        <div class="col-md-12">
+            <h2>VANTAGENS E PREFERÊNCIAS</h2>
+            <i>Os itens abaixo não são obrigatórios, mas podem trazer descontos ou vantagens na cotação do seu seguro.</i>
+        </div>
+
+        <div class="border-box col-md-12">
+            <i>As seguradoras Porto, Azul e Itaú oferecem desconto para correntistas Itaú e para proprietários de Cartões de
+                crédito Porto Seguro. Para isso, precisamos de informações completamentares:</i>
+            <div class="form-group">
+                <div class="col-md-8 col-md-offset-4">
+                    @Html.CheckBoxFor(model => model.Segurado.IEItauPersonalite, new { htmlAttributes = new { @class = "form-control" } }) Sou cliente Itaú Personnalité
+                    @Html.ValidationMessageFor(model => model.Segurado.IEItauPersonalite, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-8 col-md-offset-4">
+                    @Html.CheckBoxFor(model => model.Segurado.IECartaoPortoSeguroVisa, new { htmlAttributes = new { @class = "form-control" } }) Possuo cartão Porto Seguro Visa
+                    @Html.ValidationMessageFor(model => model.Segurado.IECartaoPortoSeguroVisa, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NumeroPlaca, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.NumeroPlaca, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NumeroPlaca, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NumeroChassi, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.NumeroChassi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NumeroChassi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            @Html.CheckBoxFor(model => model.Segurado.IEItauPersonalite, new { htmlAttributes = new { @class = "form-control" } }) Li e concordo com o contrato de prestação de serviços de corretagem de seguros e com o termo de Uso e política de privacidade do site da BuscaSeguro.
+        </div>
+
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-1">
-                <input type="submit" name="btnVoltar" value="Voltar" class="btn btn-default" />
+            <div class="col-md-offset-4 col-md-1">
+                <input type="submit" name="btnVoltar" value="<< Anterior" class="btn btn-default" />
             </div>
             <div class="col-md-1">
-                <input type="submit" name="btnAvancar" value="Concluir" class="btn btn-primary" />
+                <input type="submit" name="btnAvancar" value="Confirmar e Prosseguir >>" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
+
+<script type="text/javascript">
+    $(".email").inputmask({ alias: "email" });
+    $(".telefone").inputmask("(99) 9999-99999");
+</script>

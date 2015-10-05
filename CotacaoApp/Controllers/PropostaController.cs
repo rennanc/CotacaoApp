@@ -10,6 +10,7 @@ using CotacaoApp.Models;
 using CotacaoApp.DAO;
 using Microsoft.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Validation;
 
 namespace CotacaoApp.Controllers
 {
@@ -63,28 +64,31 @@ namespace CotacaoApp.Controllers
 
         public ActionResult Passo1(Proposta proposta, string btnVoltar, string btnAvancar)
         {
-
             if (btnAvancar != null)
             {
                 return RedirectToAction("Passo2");
             }
+            _proposta.Coberturas = db.Cobertura.ToList();
             return View(_proposta);
         }
 
  
-        public ActionResult Passo2(Proposta proposta, string btnVoltar, string btnAvancar)
+        public ActionResult Passo2(string btnVoltar, string btnAvancar)
         {
             if (btnVoltar != null)
+            {
                 return RedirectToAction("Passo1");
-            if (btnAvancar != null)
+            }
+            if (btnAvancar != null )
             {
                 return RedirectToAction("Passo3");
             }
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
             return View(_proposta);
 
         }
 
-        public ActionResult Passo3(Proposta proposta, string btnVoltar, string btnAvancar)
+        public ActionResult Passo3(string btnVoltar, string btnAvancar)
         {
             if (btnVoltar != null)
             {
@@ -94,14 +98,13 @@ namespace CotacaoApp.Controllers
             {
                 return RedirectToAction("Passo4");
             }
-            else
-            {
-                return View(_proposta);
-            }
+
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            return View(_proposta);
 
         }
 
-        public ActionResult Passo4(Proposta proposta, string btnVoltar, string btnAvancar)
+        public ActionResult Passo4(string btnVoltar, string btnAvancar)
         {
             if (btnVoltar != null)
             {
@@ -111,27 +114,48 @@ namespace CotacaoApp.Controllers
             {
                 return RedirectToAction("Passo5");
             }
-            else
-            {
-                return View(_proposta);
-            }
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            return View(_proposta);
 
         }
 
-        public ActionResult Passo5(Proposta proposta, string btnVoltar, string btnAvancar)
+        public ActionResult Passo5(string btnVoltar, string btnAvancar)
         {
             if (btnVoltar != null)
             {
                 return RedirectToAction("Passo4");
             }
-            else if (btnAvancar != null)
+            else if (btnAvancar != null && ModelState.IsValid)
             {
-                return Content("é o fim");
+                try
+                {
+                    PropostaDAO propostaDAO = new PropostaDAO();
+                    propostaDAO.Insert(_proposta);
+                    return RedirectToAction("Passo6");
+
+                }
+                catch (DbEntityValidationException ex) { 
+                    // Retrieve the error messages as a list of strings.
+                    var errorMessages = ex.EntityValidationErrors
+                            .SelectMany(x => x.ValidationErrors)
+                            .Select(x => x.ErrorMessage);
+
+                    // Join the list to a single string.
+                    var fullErrorMessage = string.Join("; ", errorMessages);
+
+                    // Combine the original exception message with the new one.
+                    var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
+
+                    // Throw a new DbEntityValidationException with the improved exception message.
+                    throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
+                }catch(Exception e)
+                {
+                    
+                    throw new Exception("stack" + e.StackTrace);
+                }
             }
-            else
-            {
-                return View();
-            }
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            return View(_proposta);
 
         }
 
