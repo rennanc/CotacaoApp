@@ -1,0 +1,48 @@
+﻿@model CotacaoApp.Models.Apolice
+
+@{
+    ViewBag.Title = "Excluir Apólice";
+}
+
+<h2>Excluir Apólice</h2>
+
+<h3>Você tem certeza de que quer deletar isso?</h3>
+<div>
+    <h4>Apolice</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Proposta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Proposta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Segurdora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Segurdora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deletar" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para a Lista", "Index")
+        </div>
+    }
+</div>
