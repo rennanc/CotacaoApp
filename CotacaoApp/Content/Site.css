@@ -167,3 +167,13 @@ ol, ul {
     display: inline-block;
 }
 
+.border-box{
+    border: 1px solid #a9a7a7;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.display-hide{
+    display: none;
+}
+

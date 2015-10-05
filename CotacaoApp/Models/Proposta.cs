@@ -19,6 +19,10 @@ namespace CotacaoApp.Models
         [Column("CD_PROPOSTA")]
         public int Id { get; set; }
 
+        [Display(Name = "Codigo")]
+        [Column("CD_CONDUTOR")]
+        public int codigoSegurado { get; set; }
+
 
         /*********** PASSO-1 : SEU CARRO ************/
         [Display(Name = "Marca do Carro")]
@@ -142,9 +146,11 @@ namespace CotacaoApp.Models
 
         /*********** PASSO-3 : SEGURADO ************/
 
+        [NotMapped]
         [Display(Name = "Segurado")]
         public Condutor Segurado { get; set; }
 
+        [NotMapped]
         [Display(Name = "Proprietario")]
         public Condutor Proprietario { get; set; }
 
@@ -175,9 +181,9 @@ namespace CotacaoApp.Models
             public string NomeSeguradoraAtual { get; set; }
 
             [Display(Name = "Fim da Vigencia da Apolice atual")]
-            [Column("DT_VENC_APOLICEATUAL")]
+            [Column("DT_VENC_SEGUROATUAL")]
             [DataType(DataType.Date)]
-            public DateTime DataApoliceAtualVencimento { get; set; }
+            public string DataApoliceAtualVencimento { get; set; }
 
             [Display(Name = "BonusSeguro  Atual Sem Sinistro")]
             [Column("IE_BONUSAPOLICEATUAL_SEMSINISTRO")]
@@ -198,6 +204,7 @@ namespace CotacaoApp.Models
 
         /*********** PASSO-4 : CONDUTORES ************/
 
+        [NotMapped]
         [Display(Name = "OutroCondutor")]
         public Condutor OutroCondutor { get; set; }
 
@@ -206,11 +213,11 @@ namespace CotacaoApp.Models
 
         //usar entidade do segurado para email, telefone e vantagens
 
-        [Display(Name = "Placa")]
+        [Display(Name = "Placa do veículo")]
         [Column("NR_PLACAVEICULO")]
         public string NumeroPlaca { get; set; }
 
-        [Display(Name = "Placa")]
+        [Display(Name = "Chassi do veículo")]
         [Column("NR_CHASSIVEICULO")]
         public string NumeroChassi { get; set; }
 

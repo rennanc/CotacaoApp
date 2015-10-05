@@ -129,8 +129,10 @@ namespace CotacaoApp.Controllers
             {
                 try
                 {
-                    db.Proposta.Add(_proposta);
-                    db.SaveChanges();
+                    PropostaDAO propostaDAO = new PropostaDAO();
+                    propostaDAO.Insert(_proposta);
+                    //db.Proposta.Add(_proposta);
+                    //db.SaveChanges();
                     return Content("é o fim");
 
                 }

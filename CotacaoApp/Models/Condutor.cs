@@ -19,7 +19,7 @@ namespace CotacaoApp.Models
         [Column("CD_SEGURADO")]
         public int codigoSegurado { get; set; }
 
-        [Display(Name = "O condutor é o segurado?")]
+        [Display(Name = "O segurado é proprietário(a) do carro?*")]
         [Column("IE_SEGURADO")]
         public int IsSegurado { get; set; }
 
@@ -38,7 +38,6 @@ namespace CotacaoApp.Models
         [Display(Name = "Data de Nascimento")]
         [Column("DT_NASCIMENTO")]
         [DataType(DataType.Date)]
-        [Required]
         public string DataNascimento { get; set; }
 
         [Display(Name = "Sexo*")]
@@ -54,7 +53,7 @@ namespace CotacaoApp.Models
         [Display(Name = "Numero Cep")]
         [Column("NR_CEP")]
         [Required]
-        public int NumeroCep { get; set; }
+        public string NumeroCep { get; set; }
 
         [Display(Name = "Além desse carro, o segurado possui outros carros em sua residência ? *")]
         [Column("IE_POSSUIOUTROSCARROS")]
@@ -101,6 +100,10 @@ namespace CotacaoApp.Models
         public int IEAlgumCondutorEstuda { get; set; }
 
         /*********** PASSO-5 : CONCLUSÃO ************/
+
+        [NotMapped]
+        [Display(Name = "Segurado")]
+        public List<Telefone> Telefones { get; set; }
 
         [Display(Name = "Email")]
         [Column("NM_EMAIL")]

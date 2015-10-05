@@ -24,7 +24,7 @@
             <div class="col-md-8">
                     <p>@Html.RadioButtonFor(model => model.IETipoEstacionamento, "0") Residência/Garagem</p>
                     <!--Tipo Portão-->
-                    <div class="form-group">
+                    <div class="form-group border-box display-hide" id="IETipoPortao" >
                         <div class="col-md-3">@Html.Label("Tipo do Portão", htmlAttributes: new { @class = "control-label" })</div>
                         <div class="col-md-9 col-md-pull-1">
                                 @Html.RadioButtonFor(model => model.IETipoPortao, "0") Automático
@@ -42,9 +42,9 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Qual o CEP do local onde ele fica estacionado à noite ? *", htmlAttributes: new { @class = "control -label col-md-4" })
+            @Html.Label("Qual o CEP do local onde ele fica estacionado à noite ? *", htmlAttributes: new { @class = "control-label col-md-4 margin-right" })
             <div class="col-md-8">
-                @Html.EditorFor(model => model.CepEstacionamento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.CepEstacionamento, new { htmlAttributes = new { @class = "form-control cep" } })
                 @Html.ValidationMessageFor(model => model.CepEstacionamento, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -52,31 +52,31 @@
         <div class="form-group">
             @Html.Label("Qual o CEP para onde o carro mais se desloca?*", htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8">
-                @Html.EditorFor(model => model.CepDeslocamento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.CepDeslocamento, new { htmlAttributes = new { @class = "form-control cep" } })
                 @Html.ValidationMessageFor(model => model.CepDeslocamento, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.Label("O Carro é Utilizado Para:*", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.LabelFor(model => model.IEUtilizacaoVeiculoLazer, htmlAttributes: new { @class = "control-label col-md-2" })
-                <p>@Html.CheckBoxFor(model => model.IEUtilizacaoVeiculoLazer, true)</p>
-                @Html.LabelFor(model => model.IEUtilizacaoVeiculoTrabalho, htmlAttributes: new { @class = "control-label col-md-2" })
-                <p>@Html.CheckBoxFor(model => model.IEUtilizacaoVeiculoTrabalho, true)</p>
+            @Html.Label("O Carro é Utilizado Para:*", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.CheckBoxFor(model => model.IEUtilizacaoVeiculoLazer, true)
+                @Html.LabelFor(model => model.IEUtilizacaoVeiculoLazer, htmlAttributes: new { @class = "control-label" }) <br/>
+                @Html.CheckBoxFor(model => model.IEUtilizacaoVeiculoTrabalho, true)
+                @Html.LabelFor(model => model.IEUtilizacaoVeiculoTrabalho, htmlAttributes: new { @class = "control-label" })<br />
                 <!--Para Trabalhar-->
-                <div class="form-group" >
-                    @Html.Label("O Veiculo Permanece em Garagem ou Estacionamento Protegido no Local de Trabalho?*", htmlAttributes: new { @class = "control-label col-md-4 col-md-pull-1" })
-                    <div class="col-md-8 col-md-pull-1">
+                <div class="form-group border-box display-hide" id="IELocalGaragemTrabalho" >
+                    @Html.Label("O Veiculo Permanece em Garagem ou Estacionamento Protegido no Local de Trabalho?*", htmlAttributes: new { @class = "control-label col-md-4 " })
+                    <div class="col-md-8">
                         <p>@Html.RadioButtonFor(model => model.IELocalGaragemTrabalho, 0) Sim, Com Portão Manual</p>
                         <p>@Html.RadioButtonFor(model => model.IELocalGaragemTrabalho, 1) Sim, Com Portão Automático ou com Porteiro</p>
                         <p>@Html.RadioButtonFor(model => model.IELocalGaragemTrabalho, 2) Sim, Em Estacionamento Privado Pago Ou Fechado</p>
                         <p>@Html.RadioButtonFor(model => model.IELocalGaragemTrabalho, 3) Não</p>
                     </div>
                 </div>
-                <div class="form-group">
-                    @Html.Label("Distancia Percorrida do Local Estacionado à até o Local de Trabalho*", htmlAttributes: new { @class = "control-label col-md-4 col-md-pull-1" })
-                    <div class="col-md-8 col-md-pull-1">
+                <div class="form-group border-box display-hide" id="IEDistanciaParaTrabalhoVeiculo">
+                    @Html.Label("Distancia Percorrida do Local Estacionado à até o Local de Trabalho*", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8 ">
                         <p>@Html.RadioButtonFor(model => model.IEDistanciaParaTrabalhoVeiculo, 0) Até 10km</p>
                         <p>@Html.RadioButtonFor(model => model.IEDistanciaParaTrabalhoVeiculo, 1) Até 20Km</p>
                         <p>@Html.RadioButtonFor(model => model.IEDistanciaParaTrabalhoVeiculo, 2) Até 30Km</p>
@@ -86,10 +86,10 @@
                 </div>
                 <!--Para Trabalhar-->
                 <!--Para Estudar-->
-                @Html.LabelFor(model => model.IEUtilizacaoVeiculoEstudo, htmlAttributes: new { @class = "control-label col-md-2" })
                 @Html.CheckBoxFor(model => model.IEUtilizacaoVeiculoEstudo, true)
-                <div class="form-group">
-                    <p>@Html.Label("O Veiculo Permanece em Garagem ou Estacionamento Protegido no Local de Estudo?*", htmlAttributes: new { @class = "control-label col-md-4 col-md-offset-1" })</p>
+                @Html.LabelFor(model => model.IEUtilizacaoVeiculoEstudo, htmlAttributes: new { @class = "control-label" })<br />
+                <div class="form-group border-box display-hide" id="IELocalGaragemEstudo">
+                    <p>@Html.Label("O Veiculo Permanece em Garagem ou Estacionamento Protegido no Local de Estudo?*", htmlAttributes: new { @class = "control-label col-md-4" })</p>
                     <div class="col-md-6 ">
                         <p>@Html.RadioButtonFor(model => model.IELocalGaragemEstudo, 0) Sim, Com Portão Manual</p>
                         <p>@Html.RadioButtonFor(model => model.IELocalGaragemEstudo, 1) Sim, Com Portão Automático ou com Porteiro</p>
@@ -102,10 +102,10 @@
         </div>
 
         <div class="form-group">
-        @Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumento, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumento, htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
             <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, true) Sim</p>
-            <div class="form-group">
+            <div class="form-group border-box display-hide" id="IEUtilizacaoVeiculoInstrumentoForma">
                 <p>@Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, htmlAttributes: new { @class = "control-label col-md-2" })</p>
                 <div class="col-md-10">
                     <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, 0) Para entregas, representação comercial, vendedores, promotores e prestadores de serviços.</p>
@@ -118,8 +118,8 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IEKmEmMedia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.IEKmEmMedia, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 <p>@Html.RadioButtonFor(model => model.IEKmEmMedia, 0) Até 500 km/mês (16 km dia)</p>
                 <p>@Html.RadioButtonFor(model => model.IEKmEmMedia, 1) Até 1200 km/mês (40 km dia)</p>
                 <p>@Html.RadioButtonFor(model => model.IEKmEmMedia, 2) Acima de 1200 km/mês</p>
@@ -129,15 +129,43 @@
 
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-1">
-                <input type="submit" name="btnVoltar" value="Voltar" class="btn btn-default" />
+            <div class="col-md-offset-4 col-md-1">
+                <input type="submit" name="btnVoltar" value="<< Anterior" class="btn btn-default" />
             </div>
             <div class="col-md-1">
-                <input type="submit" name="btnAvancar" value="Avançar" class="btn btn-primary" />
+                <input type="submit" name="btnAvancar" value="Confirmar e Prosseguir >>" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
+<script type="text/javascript">
+    $(".cep").inputmask("99.999-999");
 
+    $("input[name='IETipoEstacionamento']").on('click', function () {
+        if ($(this).val() == 0) {
+            $('#IETipoPortao').show();
+        } else {
+            $('#IETipoPortao').hide();
+        }
+    });
+
+    $("input[name='IEUtilizacaoVeiculoTrabalho']").on('click', function () {
+        $('#IELocalGaragemTrabalho').toggle();
+        $('#IEDistanciaParaTrabalhoVeiculo').toggle();
+    });
+
+    $("input[name='IEUtilizacaoVeiculoEstudo']").on('click', function () {
+        $('#IELocalGaragemEstudo').toggle();
+    });
+
+    $("input[name='IEUtilizacaoVeiculoInstrumento']").on('click', function () {
+        if ($(this).val() == "True") {
+            $('#IEUtilizacaoVeiculoInstrumentoForma').show();
+        } else {
+            $('#IEUtilizacaoVeiculoInstrumentoForma').hide();
+        }
+    });
+
+</script>
 
