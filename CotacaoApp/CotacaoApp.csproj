@@ -248,6 +248,7 @@
     <Compile Include="Models\Condutor.cs" />
     <Compile Include="Models\Proposta.cs" />
     <Compile Include="Models\Cobertura.cs" />
+    <Compile Include="Models\PropostaCobertura.cs" />
     <Compile Include="Models\Seguradora.cs" />
     <Compile Include="Models\Telefone.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -448,6 +449,7 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Proposta\Passo5.cshtml" />
     <Content Include="Views\Administracao\Index.cshtml" />
+    <Content Include="Views\Proposta\Passo6.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

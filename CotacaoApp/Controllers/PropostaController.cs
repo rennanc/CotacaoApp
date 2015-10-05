@@ -131,9 +131,7 @@ namespace CotacaoApp.Controllers
                 {
                     PropostaDAO propostaDAO = new PropostaDAO();
                     propostaDAO.Insert(_proposta);
-                    //db.Proposta.Add(_proposta);
-                    //db.SaveChanges();
-                    return Content("é o fim");
+                    return RedirectToAction("Passo6");
 
                 }
                 catch (DbEntityValidationException ex) { 
