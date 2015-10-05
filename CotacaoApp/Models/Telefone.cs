@@ -9,12 +9,14 @@ namespace CotacaoApp.Models
 {
     public class Telefone
     {
-
         [Key]
-        [ForeignKey("FK_TELEFONE_CONDUTOR")]
+        [Display(Name = "Codigo")]
+        [Column("CD_TELEFONE")]
+        public int Id { get; set; }
+
         [Display(Name = "Codigo")]
         [Column("CD_CONDUTOR")]
-        public int Id { get; set; }
+        public int CodigoCondutor { get; set; }
 
         [Display(Name = "Telefone")]
         [Column("NR_TELEFONE")]

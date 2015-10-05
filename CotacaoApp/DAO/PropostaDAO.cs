@@ -13,12 +13,6 @@ namespace CotacaoApp.DAO
 
         public void Insert(Proposta proposta)
         {
-            
-
-            
-            Condutor segurado = new Condutor();
-            Condutor proprietario = new Condutor();
-            Condutor outroCondutor = new Condutor();
 
             //Adicionando Segurado
             db.Condutor.Add(proposta.Segurado);
@@ -27,19 +21,19 @@ namespace CotacaoApp.DAO
             //Adicionando telefones do segurado
             foreach(Telefone telefone in proposta.Segurado.Telefones)
             {
-                telefone.Id = proposta.Segurado.Id;
+                telefone.CodigoCondutor = proposta.Segurado.Id;
             }
             db.Telefone.AddRange(proposta.Segurado.Telefones);
 
             //Adicionando Proprietario
-            if (proposta.Proprietario != null)
+            if (proposta.Proprietario.CodigoCpf != null)
             {
                 proposta.Proprietario.codigoSegurado = proposta.Segurado.Id;
                 db.Condutor.Add(proposta.Proprietario);
             }
 
             //Adicionando Outro Condutor
-            if (proposta.OutroCondutor != null)
+            if (proposta.OutroCondutor.CodigoCpf != null)
             {
                 proposta.OutroCondutor.codigoSegurado = proposta.Segurado.Id;
                 db.Condutor.Add(proposta.OutroCondutor);

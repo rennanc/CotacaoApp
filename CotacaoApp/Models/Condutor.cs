@@ -25,14 +25,12 @@ namespace CotacaoApp.Models
 
         //pessoa fisica
 
-        [Required]
         [Display(Name = "CPF")]
         [Column("CD_CPF")]
         public string CodigoCpf { get; set; }
 
         [Display(Name = "Nome")]
         [Column("NM_NOME")]
-        [Required]
         public string Nome { get; set; }
 
         [Display(Name = "Data de Nascimento")]
@@ -42,17 +40,14 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Sexo*")]
         [Column("IE_SEXO")]
-        [Required]
         public string IESexo { get; set; }
 
         [Display(Name = "Estado Civil*")]
         [Column("NM_ESTADOCIVIL")]
-        [Required]
         public int IEEstadoCivil { get; set; }
 
         [Display(Name = "Numero Cep")]
         [Column("NR_CEP")]
-        [Required]
         public string NumeroCep { get; set; }
 
         [Display(Name = "Além desse carro, o segurado possui outros carros em sua residência ? *")]
