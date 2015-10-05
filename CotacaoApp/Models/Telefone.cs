@@ -7,6 +7,7 @@ using System.Web;
 
 namespace CotacaoApp.Models
 {
+    [Serializable]
     public class Telefone
     {
         [Key]

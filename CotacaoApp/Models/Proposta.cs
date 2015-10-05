@@ -26,6 +26,15 @@ namespace CotacaoApp.Models
 
 
         /*********** PASSO-1 : SEU CARRO ************/
+        [NotMapped]
+        [Display(Name = "Coberturas")]
+        public List<Cobertura> Coberturas { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Cobertura")]
+        [Column("CD_COBERTURA")]
+        public int CodigoCobertura { get; set; }
+
         [Display(Name = "Marca do Carro")]
         [Column("NM_MARCAVEICULO")]
         public string NomeMarcaVeiculo { get; set; }

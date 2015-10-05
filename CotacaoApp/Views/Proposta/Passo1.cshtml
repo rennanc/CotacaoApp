@@ -20,6 +20,20 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.Hidden("proposta", new Microsoft.Web.Mvc.MvcSerializer().Serialize(Model))
+
+
+            <div class="form-group ">
+                
+                <select name="" class="form-control col-md-9 col-md-offset-3" style="margin-left:305px">
+                    <option>Escolha uma Cobertura</option>
+                    @foreach (var cobertura in Model.Coberturas)
+                    {
+                        <option value="@cobertura.Id">@cobertura.NomeCobertura</option>
+                    }
+                </select>
+            </div>
+
+
             <div class="form-group">
                 @Html.LabelFor(model => model.NomeMarcaVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="col-md-9">
@@ -64,16 +78,16 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.IEFinanciadoVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="col-md-9">
-                        <p>@Html.RadioButtonFor(model => model.IEFinanciadoVeiculo, "0") Não é Financiado</p>
-                        <p>@Html.RadioButtonFor(model => model.IEFinanciadoVeiculo, "1") Sim, é Financiado</p>
-                        <p>@Html.RadioButtonFor(model => model.IEFinanciadoVeiculo, "2") Sim, é Financiado e Alienado (CDC, Financiamento Direto, Leasing, Consórcio)</p>
+                    <p>@Html.RadioButtonFor(model => model.IEFinanciadoVeiculo, "0") Não é Financiado</p>
+                    <p>@Html.RadioButtonFor(model => model.IEFinanciadoVeiculo, "1") Sim, é Financiado</p>
+                    <p>@Html.RadioButtonFor(model => model.IEFinanciadoVeiculo, "2") Sim, é Financiado e Alienado (CDC, Financiamento Direto, Leasing, Consórcio)</p>
                     @Html.ValidationMessageFor(model => model.IEFinanciadoVeiculo, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <h2>Sobre o Carro</h2>
             <div class="form-group">
-                <label class="control-label col-md-3" >Marque as opções nas quais seu carro se enquadra(caso não se encaixe em nenhuma,ignore a pergunta).</label>
+                <label class="control-label col-md-3">Marque as opções nas quais seu carro se enquadra(caso não se encaixe em nenhuma,ignore a pergunta).</label>
                 <div class="col-md-9">
                     <p>@Html.CheckBoxFor(model => model.IETipoVeiculoTaxi, true) Táxi</p>
                     <p>@Html.CheckBoxFor(model => model.IETipoVeiculoDeficiente, true) Adaptado para deficiente físico</p>
@@ -96,13 +110,13 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-1">
-                    <input type="submit" name="btnVoltar" value="<< Anterior" class="btn btn-default"/>
+                    <input type="submit" name="btnVoltar" value="<< Anterior" class="btn btn-default" />
                 </div>
                 <div class="col-md-1">
                     <input type="submit" name="btnAvancar" value="Confirmar e Prosseguir >>" class="btn btn-primary" />
                 </div>
             </div>
-    </div>
+        </div>
 }
 
 

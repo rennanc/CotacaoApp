@@ -68,7 +68,7 @@ namespace CotacaoApp.Controllers
             {
                 return RedirectToAction("Passo2");
             }
-            
+            _proposta.Coberturas = db.Cobertura.ToList();
             return View(_proposta);
         }
 
