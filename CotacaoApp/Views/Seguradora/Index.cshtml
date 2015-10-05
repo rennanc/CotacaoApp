@@ -12,20 +12,9 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.SinistroAuto)
+            @Html.DisplayNameFor(model => model.NomeSeguradora)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Producao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Recepcao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Outros)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Calculos)
-        </th>
+       
         <th></th>
     </tr>
 
@@ -33,20 +22,9 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.SinistroAuto)
+                @Html.DisplayFor(modelItem => item.NomeSeguradora)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Producao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Recepcao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Outros)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Calculos)
-            </td>
+            
             <td>
                 @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
