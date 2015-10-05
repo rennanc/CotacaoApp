@@ -274,6 +274,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\buscaSegurosSmall.jpg" />
     <Content Include="Images\busqueSeguros.jpg" />
     <Content Include="Images\busqueSegurosSmall.jpg" />
     <Content Include="Images\mulherComChave.jpg" />
