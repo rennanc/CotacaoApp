@@ -39,7 +39,10 @@ namespace CotacaoApp.Controllers
         // GET: Apolice/Create
         public ActionResult Create()
         {
-            return View();
+            Apolice apolice = new Apolice();
+            apolice.Propostas = db.Proposta.ToList();
+            apolice.Seguradoras = db.Seguradora.ToList();
+            return View(apolice);
         }
 
         // POST: Usuario/Create
@@ -55,7 +58,7 @@ namespace CotacaoApp.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            
             return View(apolice);
         }
 

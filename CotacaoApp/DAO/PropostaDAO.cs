@@ -47,9 +47,13 @@ namespace CotacaoApp.DAO
 
             //Salvando PropostaCobertura
             PropostaCobertura propostaCobertura = new PropostaCobertura();
-            propostaCobertura.CodigoCobertura = proposta.CodigoCobertura;
-            propostaCobertura.CodigoProposta = proposta.Id;
-            db.PropostaCobertura.Add(propostaCobertura);
+            if(proposta.CodigoCobertura == 0)
+            {
+                proposta.CodigoCobertura = 1;
+            }
+            //propostaCobertura.CodigoCobertura = proposta.CodigoCobertura;
+            //propostaCobertura.CodigoProposta = proposta.Id;
+            //db.PropostaCobertura.Add(propostaCobertura);
             db.SaveChanges();
         }
 

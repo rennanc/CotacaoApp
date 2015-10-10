@@ -159,6 +159,11 @@ namespace CotacaoApp.Controllers
 
         }
 
+        public ActionResult Passo6(string btnVoltar, string btnAvancar)
+        {
+            return View(_proposta);
+            //return RedirectToAction("Details");
+        }
 
         // GET: Proposta/Details/5
         public ActionResult Details(int? id)

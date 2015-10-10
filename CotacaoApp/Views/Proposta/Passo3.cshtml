@@ -342,5 +342,20 @@
             $('#Proprietario').hide();
         }
     });
+
+    //VALIDACAO
+    $("#Proposta").validate({
+        rules: {
+            "Segurado.Nome": {
+                required: true
+            },
+            "Segurado.DataNascimento": {
+                required: true
+            },
+            "Segurado.IESexo": {
+                required: true
+            }
+        }
+    });
 </script>
 

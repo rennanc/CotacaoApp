@@ -127,4 +127,13 @@
 <script type="text/javascript">
     $(".email").inputmask({ alias: "email" });
     $(".telefone").inputmask("(99) 9999-99999");
+
+    //VALIDACAO
+    $("#Proposta").validate({
+        rules: {
+            "Segurado.Nome": {
+                required: true
+            }
+        }
+    });
 </script>

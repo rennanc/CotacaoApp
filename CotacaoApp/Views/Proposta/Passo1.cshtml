@@ -4,6 +4,7 @@
     ViewBag.Title = "Seu Carro";
 }
 
+
 <button type="button" class="btn btn-primary btn-lg">Seu Carro</button>
 <button type="button" class="btn btn-default btn-lg">Localização</button>
 <button type="button" class="btn btn-default btn-lg">Segurado</button>
@@ -12,7 +13,7 @@
 
 <h2>Seu Carro</h2>
 
-@using (Html.BeginForm("Passo1", "Proposta", FormMethod.Post))
+@using (Html.BeginForm("Passo1", "Proposta", FormMethod.Post, new { id = "Proposta" } ))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
@@ -24,8 +25,8 @@
 
             <div class="form-group ">
                 
-                <select name="" class="form-control col-md-9 col-md-offset-3" style="margin-left:305px">
-                    <option>Escolha uma Cobertura</option>
+                <select name="CodigoCobertura" class="form-control col-md-9 col-md-offset-3" style="margin-left:305px" required>
+                    <option value="" disabled selected>Escolha uma Cobertura</option>
                     @foreach (var cobertura in Model.Coberturas)
                     {
                         <option value="@cobertura.Id">@cobertura.NomeCobertura</option>
@@ -45,16 +46,14 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.AnoFabricacaoVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="col-md-9">
-                    @Html.EditorFor(model => model.AnoFabricacaoVeiculo, new { htmlAttributes = new { @class = "form-control datepicker" } })
-                    @Html.ValidationMessageFor(model => model.AnoFabricacaoVeiculo, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.AnoFabricacaoVeiculo, new { htmlAttributes = new { @class = "form-control", @min = "1900" } })
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.AnoModeloVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="col-md-9">
-                    @Html.EditorFor(model => model.AnoModeloVeiculo, new { htmlAttributes = new { @class = "form-control datepicker" } })
-                    @Html.ValidationMessageFor(model => model.AnoModeloVeiculo, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.AnoModeloVeiculo, new { htmlAttributes = new { @class = "form-control", @min = "1900" } })
                 </div>
             </div>
 
@@ -97,7 +96,7 @@
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.IEAlarmeVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
+                @Html.LabelFor(model => model.IEAlarmeVeiculo, htmlAttributes: new { @class = "control-label col-md-3"})
                 <div class="col-md-9">
                     <p>@Html.RadioButtonFor(model => model.IEAlarmeVeiculo, "0") Alarme Sonoro</p>
                     <p>@Html.RadioButtonFor(model => model.IEAlarmeVeiculo, "1") Chave Codificada</p>
@@ -119,5 +118,41 @@
         </div>
 }
 
+<script type="text/javascript">
+    $.validator.setDefaults({
+        highlight: function (element) {
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function (error, element) {
+            if (element.parent('.input-group').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
 
+
+    $("#Proposta").validate({
+        rules: {
+            CodigoCobertura: {
+                required: true
+            },
+            NomeMarcaVeiculo: {
+                required: true
+            },
+            AnoFabricacaoVeiculo: {
+                required: true
+            },
+            IEZeroKM: {
+                required: true
+            }
+        }
+    });
+</script>
 
