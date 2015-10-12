@@ -238,6 +238,7 @@
     <Compile Include="DAO\DBSession.cs" />
     <Compile Include="DAO\DefaultConnection.cs" />
     <Compile Include="DAO\PropostaDAO.cs" />
+    <Compile Include="DAO\TelefoneDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="Filters\AutorizacaoFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -459,6 +460,7 @@
     <Content Include="Views\Apolice\Details.cshtml" />
     <Content Include="Views\Apolice\Edit.cshtml" />
     <Content Include="Views\Apolice\Index.cshtml" />
+    <Content Include="Views\Apolice\_Proposta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

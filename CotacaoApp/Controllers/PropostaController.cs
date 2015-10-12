@@ -210,13 +210,17 @@ namespace CotacaoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Proposta proposta = db.Proposta.Find(id);
+
+            PropostaDAO propostaDao = new PropostaDAO();
+            Proposta proposta = propostaDao.GetProposta(id);
+
             if (proposta == null)
             {
                 return HttpNotFound();
             }
             return View(proposta);
         }
+
 
         // POST: Usuario/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

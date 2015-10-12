@@ -57,5 +57,28 @@ namespace CotacaoApp.DAO
             db.SaveChanges();
         }
 
+        public Proposta GetProposta(int? id)
+        {
+            Proposta proposta = db.Proposta.Find(id);
+            proposta.Coberturas = db.Cobertura.ToList();
+            proposta.Segurado = db.Condutor.Find(proposta.codigoSegurado);
+
+            //obtendo telefone
+            TelefoneDAO telefoneDao = new TelefoneDAO();
+            proposta.Segurado.Telefones = telefoneDao.ObterTodosPorIdCondutor(proposta.Segurado.Id);
+
+            CondutorDAO condutorDao = new CondutorDAO();
+            if (!proposta.Segurado.IEProprietarioVeiculo)
+            {
+                proposta.Proprietario = condutorDao.ObterPorIdSeguradoETipo(proposta.Segurado.Id, 1);
+            }
+            if (!proposta.Segurado.IECondutorPrincipal)
+            {
+                proposta.OutroCondutor = condutorDao.ObterPorIdSeguradoETipo(proposta.Segurado.Id, 2);
+            }
+
+            return proposta;
+        }
+
     }
 }

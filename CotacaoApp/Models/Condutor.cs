@@ -19,10 +19,6 @@ namespace CotacaoApp.Models
         [Column("CD_SEGURADO")]
         public int codigoSegurado { get; set; }
 
-        [Display(Name = "O segurado é proprietário(a) do carro?*")]
-        [Column("IE_SEGURADO")]
-        public int IsSegurado { get; set; }
-
         //pessoa fisica
 
         [Display(Name = "CPF")]
@@ -64,7 +60,7 @@ namespace CotacaoApp.Models
 
         [Display(Name = "O segurado é proprietário(a) do carro?*")]
         [Column("IE_PROPRIETARIOVEICULO")]
-        public int IEProprietarioVeiculo { get; set; }
+        public bool IEProprietarioVeiculo { get; set; }
 
         [Display(Name = "Relação entre PROPRIETÁRIO e SEGURADO*")]
         [Column("IE_RELACAOPROPRIETARIO")]
@@ -72,7 +68,7 @@ namespace CotacaoApp.Models
 
         [Display(Name = "é o Condutor Principal")]
         [Column("IE_CONDPRINCIPAL")]
-        public int IECondutorPrincipal { get; set; }
+        public bool IECondutorPrincipal { get; set; }
 
 
 

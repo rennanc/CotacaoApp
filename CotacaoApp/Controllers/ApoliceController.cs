@@ -37,10 +37,13 @@ namespace CotacaoApp.Controllers
         }
 
         // GET: Apolice/Create
-        public ActionResult Create()
+        public ActionResult Create(int? propostaId)
         {
+
             Apolice apolice = new Apolice();
-            apolice.Propostas = db.Proposta.ToList();
+
+            PropostaDAO propostaDao = new PropostaDAO();
+            apolice.Proposta = propostaDao.GetProposta(propostaId);
             apolice.Seguradoras = db.Seguradora.ToList();
             return View(apolice);
         }
@@ -50,7 +53,7 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Proposta,Comissao,Segurdora,Contrato,Status")] Apolice apolice)
+        public ActionResult Create([Bind(Include = "Id,CodigoProposta,Comissao,Segurdora,Contrato,Status")] Apolice apolice)
         {
             if (ModelState.IsValid)
             {

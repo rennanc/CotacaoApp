@@ -22,7 +22,10 @@ namespace CotacaoApp.Models
         [Required]
         [Display(Name = "Proposta")]
         [Column("CD_PROPOSTA")]
-        public int Proposta { get; set; }
+        public int CodigoProposta { get; set; }
+
+        [NotMapped]
+        public Proposta Proposta { get; set; }
 
         [NotMapped]
         public List<Proposta> Propostas { get; set; }
