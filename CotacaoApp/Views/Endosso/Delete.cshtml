@@ -1,0 +1,41 @@
+﻿@model CotacaoApp.Models.Endosso
+
+@{
+    ViewBag.Title = "Excluir Endosso";
+}
+
+<h2>Excluir Endesso</h2>
+
+<h3>Você tem certeza de que quer deletar isso?</h3>
+<div>
+    <h4>Endosso</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DataAlteracaoEndosso) 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataAlteracaoEndosso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataEndosso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataEndosso)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para a Lista", "Index")
+        </div>
+    }
+</div>
