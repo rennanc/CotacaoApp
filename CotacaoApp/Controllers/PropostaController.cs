@@ -159,6 +159,11 @@ namespace CotacaoApp.Controllers
 
         }
 
+        public ActionResult Passo6(string btnVoltar, string btnAvancar)
+        {
+            return View(_proposta);
+            //return RedirectToAction("Details");
+        }
 
         // GET: Proposta/Details/5
         public ActionResult Details(int? id)
@@ -205,13 +210,17 @@ namespace CotacaoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Proposta proposta = db.Proposta.Find(id);
+
+            PropostaDAO propostaDao = new PropostaDAO();
+            Proposta proposta = propostaDao.GetProposta(id);
+
             if (proposta == null)
             {
                 return HttpNotFound();
             }
             return View(proposta);
         }
+
 
         // POST: Usuario/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

@@ -9,6 +9,11 @@ namespace CotacaoApp.Models
 {
     public class Apolice
     {
+
+        public Apolice()
+        {
+            Comissao = 1;
+        }
         [Key]
         [Display(Name = "Apólice")]
         [Column("CD_APOLICE")]
@@ -17,7 +22,13 @@ namespace CotacaoApp.Models
         [Required]
         [Display(Name = "Proposta")]
         [Column("CD_PROPOSTA")]
-        public int Proposta { get; set; }
+        public int CodigoProposta { get; set; }
+
+        [NotMapped]
+        public Proposta Proposta { get; set; }
+
+        [NotMapped]
+        public List<Proposta> Propostas { get; set; }
 
         [Required]
         [Display(Name = "Comissão")]
@@ -28,6 +39,9 @@ namespace CotacaoApp.Models
         [Display(Name = "Seguradora")]
         [Column("CD_SEGURADORA")]
         public int Segurdora { get; set; }
+
+        [NotMapped]
+        public List<Seguradora> Seguradoras { get; set; }
 
         [Required]
         [Display(Name = "Contrato")]

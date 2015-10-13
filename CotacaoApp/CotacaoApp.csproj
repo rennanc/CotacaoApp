@@ -226,6 +226,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministracaoController.cs" />
     <Compile Include="Controllers\ApoliceController.cs" />
+    <Compile Include="Controllers\EndossoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -238,6 +239,7 @@
     <Compile Include="DAO\DBSession.cs" />
     <Compile Include="DAO\DefaultConnection.cs" />
     <Compile Include="DAO\PropostaDAO.cs" />
+    <Compile Include="DAO\TelefoneDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="Filters\AutorizacaoFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -245,6 +247,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Apolice.cs" />
+    <Compile Include="Models\Endosso.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Condutor.cs" />
@@ -312,6 +315,7 @@
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.globalize\globalize.js" />
     <Content Include="Scripts\jquery.inputmask\inputmask.date.extensions.js" />
     <Content Include="Scripts\jquery.inputmask\inputmask.extensions.js" />
     <Content Include="Scripts\jquery.inputmask\inputmask.js" />
@@ -458,6 +462,12 @@
     <Content Include="Views\Apolice\Details.cshtml" />
     <Content Include="Views\Apolice\Edit.cshtml" />
     <Content Include="Views\Apolice\Index.cshtml" />
+    <Content Include="Views\Apolice\_Proposta.cshtml" />
+    <Content Include="Views\Endosso\Create.cshtml" />
+    <Content Include="Views\Endosso\Delete.cshtml" />
+    <Content Include="Views\Endosso\Details.cshtml" />
+    <Content Include="Views\Endosso\Edit.cshtml" />
+    <Content Include="Views\Endosso\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -11,67 +11,67 @@ using CotacaoApp.DAO;
 
 namespace CotacaoApp.Controllers
 {
-    public class SeguradoraController : Controller
+    public class EndossoController : Controller
     {
         private DefaultConnection db = new DefaultConnection();
 
-        // GET: Cobertura
+        // GET: Endosso
         public ActionResult Index()
         {
-            return View(db.Seguradora.ToList());
+            return View(db.Endosso.ToList());
         }
 
-        // GET: Cobertura/Details/5
+        // GET: Endosso/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Seguradora seguradora = db.Seguradora.Find(id); 
-            if (seguradora == null)
+            Endosso endosso = db.Endosso.Find(id);
+            if (endosso == null)
             {
                 return HttpNotFound();
             }
-            return View(seguradora);
+            return View(endosso);
         }
 
-        // GET: Seguradora/Create
+        // GET: Endosso/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Seguradora/Create
+        // POST: Usuario/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,NomeSeguradora")] Seguradora seguradora)
+        public ActionResult Create([Bind(Include = "Id,CodApolice,dataAlteracaoEndosso,DataEndosso")] Endosso endosso)
         {
             if (ModelState.IsValid)
             {
-                db.Seguradora.Add(seguradora);
+                db.Endosso.Add(endosso);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(seguradora);
+            return View(endosso);
         }
 
-        // GET: Seguradora/Edit/5
+        // GET: Endosso/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Seguradora seguradora = db.Seguradora.Find(id);
-            if (seguradora == null)
+            Endosso endosso = db.Endosso.Find(id);
+            if (endosso == null)
             {
                 return HttpNotFound();
             }
-            return View(seguradora);
+            return View(endosso);
         }
 
         // POST: Usuario/Edit/5
@@ -79,39 +79,39 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,NomeSeguradora")] Seguradora seguradora)
+        public ActionResult Edit([Bind(Include = "Id,CodApolice,dataAlteracaoEndosso,DataEndosso")] Endosso endosso)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(seguradora).State = EntityState.Modified;
+                db.Entry(endosso).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(seguradora);
+            return View(endosso);
         }
 
-        // GET: Seguradora/Delete/5
+        // GET: Endosso/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Seguradora seguradora = db.Seguradora.Find(id);
-            if (seguradora == null)
+            Endosso endosso = db.Endosso.Find(id);
+            if (endosso == null)
             {
                 return HttpNotFound();
             }
-            return View(seguradora);
+            return View(endosso);
         }
 
-        // POST: Seguradora/Delete/5
+        // POST: Endosso/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Seguradora seguradora = db.Seguradora.Find(id);
-            db.Seguradora.Remove(seguradora);
+            Endosso endosso = db.Endosso.Find(id);
+            db.Endosso.Remove(endosso);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

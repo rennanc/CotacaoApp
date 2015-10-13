@@ -110,11 +110,11 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Segurado.IsSegurado, htmlAttributes: new { @class = "control-label col-md-4" })
+        @Html.LabelFor(model => model.Segurado.IEProprietarioVeiculo, htmlAttributes: new { @class = "control-label col-md-4" })
         <div class="col-md-8">
-            @Html.RadioButtonFor(model => model.Segurado.IsSegurado, true) Sim
-            @Html.RadioButtonFor(model => model.Segurado.IsSegurado, false) Não
-            @Html.ValidationMessageFor(model => model.Segurado.IsSegurado, "", new { @class = "text-danger" })
+            @Html.RadioButtonFor(model => model.Segurado.IEProprietarioVeiculo, true) Sim
+            @Html.RadioButtonFor(model => model.Segurado.IEProprietarioVeiculo, false) Não
+            @Html.ValidationMessageFor(model => model.Segurado.IEProprietarioVeiculo, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -340,6 +340,21 @@
             $('#Proprietario').show();
         } else {
             $('#Proprietario').hide();
+        }
+    });
+
+    //VALIDACAO
+    $("#Proposta").validate({
+        rules: {
+            "Segurado.Nome": {
+                required: true
+            },
+            "Segurado.DataNascimento": {
+                required: true
+            },
+            "Segurado.IESexo": {
+                required: true
+            }
         }
     });
 </script>

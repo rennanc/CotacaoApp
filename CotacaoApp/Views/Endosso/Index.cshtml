@@ -1,20 +1,22 @@
-﻿@model IEnumerable<CotacaoApp.Models.Seguradora>
+﻿@model IEnumerable<CotacaoApp.Models.Endosso>
 
 @{
-    ViewBag.Title = "Seguradora";
+    ViewBag.Title = "Endosso";
 }
 
-<h2>Seguradora</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Nova Seguradora", "Create")
+    @Html.ActionLink("Novo Endosso", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NomeSeguradora)
+            @Html.DisplayNameFor(model => model.CodApolice)
         </th>
-       
+        <th>
+            @Html.DisplayNameFor(model => model.DataEndosso)
+        </th>
         <th></th>
     </tr>
 
@@ -22,9 +24,11 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.NomeSeguradora)
+                @Html.DisplayFor(modelItem => item.CodApolice)
             </td>
-            
+            <td>
+                @Html.DisplayFor(modelItem => item.DataEndosso)
+            </td>
             <td>
                 @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
