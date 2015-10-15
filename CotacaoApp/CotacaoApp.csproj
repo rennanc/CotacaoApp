@@ -247,6 +247,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Apolice.cs" />
+    <Compile Include="Models\Comissao.cs" />
     <Compile Include="Models\Endosso.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

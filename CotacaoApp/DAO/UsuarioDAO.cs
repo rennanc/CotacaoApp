@@ -30,9 +30,10 @@ namespace CotacaoApp.DAO
             {
                 user = new Usuario
                 {
+                    Id = reader.GetInt16(reader.GetOrdinal("CD_USUARIO")),
                     Login = reader.GetString(reader.GetOrdinal("NM_USUARIO")),
-                    Senha = reader.GetString(reader.GetOrdinal("NM_SENHA")),
-                    Permissao = 0
+                    Nome = reader.GetString(reader.GetOrdinal("NM_NOME")),
+                    Permissao = reader.GetInt16(reader.GetOrdinal("FL_PERMISSAO"))
                 };
             }
             return user;

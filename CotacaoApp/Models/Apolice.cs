@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CotacaoApp.Filters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,12 +8,15 @@ using System.Web;
 
 namespace CotacaoApp.Models
 {
+    [Serializable]
+    [AutorizacaoFilter]
     public class Apolice
     {
 
+        
         public Apolice()
         {
-            Comissao = 1;
+            CodigoComissao = 1;
         }
         [Key]
         [Display(Name = "Apólice")]
@@ -33,12 +37,14 @@ namespace CotacaoApp.Models
         [Required]
         [Display(Name = "Comissão")]
         [Column("CD_COMISSAO")]
-        public int Comissao { get; set; }
+        public int CodigoComissao { get; set; }
+
+        public Comissao Comissao { get; set; }
 
         [Required]
         [Display(Name = "Seguradora")]
         [Column("CD_SEGURADORA")]
-        public int Segurdora { get; set; }
+        public int Seguradora { get; set; }
 
         [NotMapped]
         public List<Seguradora> Seguradoras { get; set; }

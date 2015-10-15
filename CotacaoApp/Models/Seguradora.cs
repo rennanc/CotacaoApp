@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace CotacaoApp.Models
 {
+    [Serializable]
     public class Seguradora
     {
         [Key]
