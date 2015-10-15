@@ -11,7 +11,7 @@
 
 <h2>Segurado</h2>
 
-@using (Html.BeginForm("Passo3", "Proposta", FormMethod.Post))
+@using (Html.BeginForm("Passo3", "Proposta", FormMethod.Post, new { id = "Proposta" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
@@ -343,9 +343,31 @@
         }
     });
 
-    //VALIDACAO
+
+    //VALIDACAO COMPORTAMENTO PADRAO
+    $.validator.setDefaults({
+        highlight: function (element) {
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function (error, element) {
+            if (element.parent('.input-group').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+    //CAMPOS QUE SERÃO VALIDADOS
+    ///para o Bruno fazer
     $("#Proposta").validate({
         rules: {
+            //esse é diferente, por isso tinha deixado o exemplo
+            //Dodos do Segurado
             "Segurado.Nome": {
                 required: true
             },
@@ -354,7 +376,62 @@
             },
             "Segurado.IESexo": {
                 required: true
-            }
+            },
+            "Segurado.IEEstadoCivil": {
+                required: true
+            },
+            "Segurado.CodigoCpf": {
+                required: true
+            },
+            "Segurado.NumeroCep": {
+                required: true
+            },
+            "Segurado.IEPossuiOutrosCarros": {
+                required: true
+            },
+            "Segurado.IEQuantidadeCarro": {
+                required: true
+            },
+            "Segurado.AnosDeCNH": {
+                required: true
+            },
+            "Segurado.IEProprietarioVeiculo": {
+                required: true
+            },
+
+            //Dodos do Proprietario
+            "Proprietario.Nome": {
+                required: true
+            },
+            "Proprietario.DataNascimento": {
+                required: true
+            },
+            "Proprietario.IESexo": {
+                required: true
+            },
+            "Proprietario.IERelacaoProprietario": {
+                required: true
+            },
+            "Proprietario.IEEstadoCivil": {
+                required: true
+            },
+            "Proprietario.CodigoCpf": {
+                required: true
+            },
+            "Proprietario.NumeroCep": {
+                required: true
+            },
+
+            //Seguro Atual
+            "IEMotivoCotacao": {
+                required: true
+            },
+            "NomeSeguradoraAtual": {
+                required: true
+            },
+            "DataApoliceAtualVencimento": {
+                required: true
+            },
         }
     });
 </script>

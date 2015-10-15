@@ -31,7 +31,7 @@ namespace CotacaoApp.Models
         public List<Cobertura> Coberturas { get; set; }
 
         [NotMapped]
-        [Display(Name = "CodigoCobertura")]
+        [Display(Name = "Codigo Cobertura")]
         [Column("CD_COBERTURA")]
         public int CodigoCobertura { get; set; }
 
@@ -183,7 +183,7 @@ namespace CotacaoApp.Models
             [DataType(DataType.Date)]
             public string DataApoliceAtualVencimento { get; set; }
 
-            [Display(Name = "BonusSeguro  Atual Sem Sinistro")]
+            [Display(Name = "Bonus Seguro Atual Sem Sinistro")]
             [Column("IE_BONUSAPOLICEATUAL_SEMSINISTRO")]
             public int IEBonusSeguroAtualSemSinistro { get; set; }
 

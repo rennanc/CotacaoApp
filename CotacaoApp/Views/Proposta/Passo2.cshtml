@@ -11,7 +11,7 @@
 
 <h2>Localização</h2>
 
-@using (Html.BeginForm("Passo2", "Proposta", FormMethod.Post))
+@using (Html.BeginForm("Passo2", "Proposta", FormMethod.Post, new { id = "Proposta" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
@@ -169,8 +169,7 @@
 
 
 
-    //VALIDACAO
-    <script type="text/javascript">
+    //VALIDACAO COMPORTAMENTO PADRAO
     $.validator.setDefaults({
         highlight: function (element) {
             $(element).closest('.form-group').addClass('has-error');
@@ -189,10 +188,14 @@
         }
     });
 
-    //VALIDACAO
+    //CAMPOS QUE SERÃO VALIDADOS
+    ///para o Bruno fazer
     $("#Proposta").validate({
         rules: {
             IETipoEstacionamento: {
+                required: true
+            },
+            IeTipoPortao: {
                 required: true
             },
             CepEstacionamento: {
@@ -202,6 +205,24 @@
                 required: true
             },
             IEUtilizacaoVeiculoLazer: {
+                required: true
+            },
+            IELocalGaragemTrabalho: {
+                required: true
+            },
+            IEDistanciaParaTrabalhoVeiculo: {
+                required: true
+            },
+            IELocalGaragemEstudo: {
+                required: true
+            },
+            IEUtilizacaoVeiculoInstrumento: {
+                required: true
+            },
+            IEUtilizacaoVeiculoInstrumentoForma: {
+                required: true
+            },
+            IeKmMedia: {
                 required: true
             }
         }

@@ -11,7 +11,7 @@
 
 <h2>Conclusão</h2>
 
-@using (Html.BeginForm("Passo5", "Proposta", FormMethod.Post))
+@using (Html.BeginForm("Passo5", "Proposta", FormMethod.Post, new { id = "Proposta" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
@@ -128,10 +128,36 @@
     $(".email").inputmask({ alias: "email" });
     $(".telefone").inputmask("(99) 9999-99999");
 
-    //VALIDACAO
+
+    //VALIDACAO COMPORTAMENTO PADRAO
+    $.validator.setDefaults({
+        highlight: function (element) {
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function (error, element) {
+            if (element.parent('.input-group').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+    //CAMPOS QUE SERÃO VALIDADOS
+    ///para o Bruno fazer
     $("#Proposta").validate({
         rules: {
             "Segurado.Nome": {
+                required: true
+            },
+            "Segurado.Email": {
+                required: true
+            },
+            "Segurado.Telefones[0].NumeroTelefone": {
                 required: true
             }
         }
