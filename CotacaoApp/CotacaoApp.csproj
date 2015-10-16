@@ -241,12 +241,14 @@
     <Compile Include="DAO\PropostaDAO.cs" />
     <Compile Include="DAO\TelefoneDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
+    <Compile Include="Enumerations\EnumProposta.cs" />
     <Compile Include="Filters\AutorizacaoFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Apolice.cs" />
+    <Compile Include="Models\Comissao.cs" />
     <Compile Include="Models\Endosso.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -468,6 +470,7 @@
     <Content Include="Views\Endosso\Details.cshtml" />
     <Content Include="Views\Endosso\Edit.cshtml" />
     <Content Include="Views\Endosso\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

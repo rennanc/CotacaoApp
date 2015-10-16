@@ -1,4 +1,5 @@
 ﻿@model CotacaoApp.Models.Proposta
+@using CotacaoApp.Enumerations
 
 @{
     ViewBag.Title = "Seu Carro";
@@ -76,9 +77,9 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.IEFinanciadoVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="col-md-9">
-                    <p>@Html.RadioButtonFor(model => model.IEFinanciadoVeiculo, "0") Não é Financiado</p>
-                    <p>@Html.RadioButtonFor(model => model.IEFinanciadoVeiculo, "1") Sim, é Financiado</p>
-                    <p>@Html.RadioButtonFor(model => model.IEFinanciadoVeiculo, "2") Sim, é Financiado e Alienado (CDC, Financiamento Direto, Leasing, Consórcio)</p>
+                    <p>@Html.RadioButtonFor(model => model.IEFinanciadoVeiculo, IEFinanciadoVeiculo.NAOFINANCIADO) Não é Financiado</p>
+                    <p>@Html.RadioButtonFor(model => model.IEFinanciadoVeiculo, IEFinanciadoVeiculo.SIMFINANCIADO) Sim, é Financiado</p>
+                    <p>@Html.RadioButtonFor(model => model.IEFinanciadoVeiculo, IEFinanciadoVeiculo.SIMFINANCIADOCOMALIENACAO) Sim, é Financiado e Alienado (CDC, Financiamento Direto, Leasing, Consórcio)</p>
                     @Html.ValidationMessageFor(model => model.IEFinanciadoVeiculo, "", new { @class = "text-danger" })
                 </div>
             </div>

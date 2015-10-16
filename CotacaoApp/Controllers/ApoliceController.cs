@@ -57,6 +57,8 @@ namespace CotacaoApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                db.Comissao.Add(apolice.Comissao);
+                db.SaveChanges();
                 db.Apolice.Add(apolice);
                 db.SaveChanges();
                 return RedirectToAction("Index");

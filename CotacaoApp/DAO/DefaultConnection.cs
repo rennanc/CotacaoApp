@@ -19,6 +19,7 @@ namespace CotacaoApp.DAO
         public DbSet<PropostaCobertura> PropostaCobertura { get; set; }
         public DbSet<Apolice> Apolice { get; set; }
         public DbSet<Endosso> Endosso { get; set; }
+        public DbSet<Comissao> Comissao { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
