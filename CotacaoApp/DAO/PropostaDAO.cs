@@ -60,7 +60,7 @@ namespace CotacaoApp.DAO
         public Proposta GetProposta(int? id)
         {
             Proposta proposta = db.Proposta.Find(id);
-            proposta.Coberturas = db.Cobertura.ToList();
+            proposta.Cobertura = db.Cobertura.Find(proposta.CodigoCobertura);
             proposta.Segurado = db.Condutor.Find(proposta.codigoSegurado);
 
             //obtendo telefone

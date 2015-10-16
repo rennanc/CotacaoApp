@@ -23,7 +23,6 @@ namespace CotacaoApp.Models
         [Column("CD_APOLICE")]
         public int Id { get; set; }
 
-        [Required]
         [Display(Name = "Proposta")]
         [Column("CD_PROPOSTA")]
         public int CodigoProposta { get; set; }
@@ -34,17 +33,19 @@ namespace CotacaoApp.Models
         [NotMapped]
         public List<Proposta> Propostas { get; set; }
 
-        [Required]
         [Display(Name = "Comissão")]
         [Column("CD_COMISSAO")]
         public int CodigoComissao { get; set; }
 
+        [NotMapped]
         public Comissao Comissao { get; set; }
 
-        [Required]
         [Display(Name = "Seguradora")]
         [Column("CD_SEGURADORA")]
-        public int Seguradora { get; set; }
+        public int CodigoSeguradora { get; set; }
+
+        [NotMapped]
+        public Seguradora Seguradora { get; set; }
 
         [NotMapped]
         public List<Seguradora> Seguradoras { get; set; }

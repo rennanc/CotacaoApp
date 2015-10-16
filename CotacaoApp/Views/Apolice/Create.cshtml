@@ -8,7 +8,7 @@
 
 <h2>Criar Apólice</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Apolice", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -36,7 +36,7 @@
         <h1>Apolice</h1>
         <div class="form-group ">
             @Html.Label("Seguradora:*", htmlAttributes: new { @class = "control-label col-md-2" })
-            <select name="" class="form-control col-md-10" style="margin-left:15px">
+            <select name="CodigoSeguradora" class="form-control col-md-10" style="margin-left:15px">
                 <option>Escolha uma Seguradora</option>
                 @foreach (var seguradora in Model.Seguradoras)
                 {
@@ -68,40 +68,40 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Comissao.ValorPremioLiquido, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Comissao.ValorPremioLiquido, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "R$ 0.00" } })
-                @Html.ValidationMessageFor(model => model.Comissao.ValorPremioLiquido, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Comissao.ValorPremioLiquido, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "0.00" } })
+                @*@Html.ValidationMessageFor(model => model.Comissao.ValorPremioLiquido, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Comissao.ValorPercentualLiquido, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Comissao.ValorPercentualLiquido, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "R$ 0.00" } })
-                @Html.ValidationMessageFor(model => model.Comissao.ValorPercentualLiquido, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Comissao.ValorPercentualLiquido, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "0.00" } })
+                @*@Html.ValidationMessageFor(model => model.Comissao.ValorPercentualLiquido, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Comissao.ValorComissaoLiquida, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Comissao.ValorComissaoLiquida, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "R$ 0.00" } })
-                @Html.ValidationMessageFor(model => model.Comissao.ValorComissaoLiquida, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Comissao.ValorComissaoLiquida, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "0.00" } })
+                @*@Html.ValidationMessageFor(model => model.Comissao.ValorComissaoLiquida, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Comissao.ValorPercentualCiss, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Comissao.ValorPercentualCiss, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "R$ 0.00" } })
-                @Html.ValidationMessageFor(model => model.Comissao.ValorPercentualCiss, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Comissao.ValorPercentualCiss, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "0.00" } })
+                @*@Html.ValidationMessageFor(model => model.Comissao.ValorPercentualCiss, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Comissao.ValorPercentualCir, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Comissao.ValorPercentualCir, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "R$ 0.00" } })
-                @Html.ValidationMessageFor(model => model.Comissao.ValorPercentualCir, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Comissao.ValorPercentualCir, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "0.00" } })
+                @*@Html.ValidationMessageFor(model => model.Comissao.ValorPercentualCir, "", new { @class = "text-danger" })*@
             </div>
         </div>
             
@@ -116,8 +116,8 @@
 
 <script type="text/javascript">
     $(".numeric").inputmask("decimal", {
-        radixPoint: ".",
-        groupSeparator: ",",
+        radixPoint: ",",
+        groupSeparator: ".",
         digits: 2,
         autoGroup: true,
         prefix: 'R$ '

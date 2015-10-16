@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CotacaoApp.Enumerations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -31,6 +32,10 @@ namespace CotacaoApp.Models
         public List<Cobertura> Coberturas { get; set; }
 
         [NotMapped]
+        [Display(Name = "Cobertura")]
+        public Cobertura Cobertura { get; set; }
+
+        [NotMapped]
         [Display(Name = "CodigoCobertura")]
         [Column("CD_COBERTURA")]
         public int CodigoCobertura { get; set; }
@@ -57,7 +62,7 @@ namespace CotacaoApp.Models
 
         [Display(Name = "O carro é financiado?*")]
         [Column("IE_FINANCIADOVEICULO")]
-        public int IEFinanciadoVeiculo { get; set; }
+        public IEFinanciadoVeiculo IEFinanciadoVeiculo { get; set; }
 
 
         //tipo veiculo
