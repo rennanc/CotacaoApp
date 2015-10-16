@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CotacaoApp.Enumerations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -64,7 +65,7 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Relação entre PROPRIETÁRIO e SEGURADO*")]
         [Column("IE_RELACAOPROPRIETARIO")]
-        public int IERelacaoProprietario { get; set; }
+        public IERelacaoProprietario IERelacaoProprietario { get; set; }
 
         [Display(Name = "é o Condutor Principal")]
         [Column("IE_CONDPRINCIPAL")]

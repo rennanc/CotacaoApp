@@ -1,4 +1,5 @@
 ﻿@model CotacaoApp.Models.Proposta
+@using CotacaoApp.Enumerations
 @{
     ViewBag.Title = "Passo 4 - Condutores";
 }
@@ -35,8 +36,8 @@
                 </i>
             </div>
             <div class="col-md-7">
-                <p>@Html.RadioButtonFor(model => model.Segurado.IECondutorPrincipal, true) Condutor Principal</p>
-                <p>@Html.RadioButtonFor(model => model.Segurado.IECondutorPrincipal, false) Outra Pessoa</p>
+                <p>@Html.RadioButtonFor(model => model.Segurado.IECondutorPrincipal, IECondutorPrincipal.CONDUTORPRINCIPAL) Condutor Principal</p>
+                <p>@Html.RadioButtonFor(model => model.Segurado.IECondutorPrincipal, IECondutorPrincipal.OUTRAPESSOA) Outra Pessoa</p>
                 @Html.ValidationMessageFor(model => model.Segurado.IECondutorPrincipal, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -82,16 +83,16 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.OutroCondutor.IERelacaoProprietario, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, "0") Cônjuge</p>
+                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, IERelacaoProprietario.CONJUGE) Cônjuge</p>
                     @*<p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, "1") Em transferência para o segurado</p>*@
-                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, "2") Filho(a) ou Enteado(a)</p>
-                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, "3") Operação de leasing</p>
-                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, "4") Pai ou Mãe</p>
-                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, "5") Diretor/Gerente/Sócio</p>
-                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, "6") Funcionário</p>
-                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, "7") Motorista particular e leva o veiculo para casa</p>
-                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, "8") Motorista particular e não leva o veículo para casa</p>
-                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, "9") Outros</p>
+                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, IERelacaoProprietario.FILHOAOUENTEADOA) Filho(a) ou Enteado(a)</p>
+                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, IERelacaoProprietario.FILHOAOUENTEADOA) Operação de leasing</p>
+                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, IERelacaoProprietario.PAIOUMAE) Pai ou Mãe</p>
+                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, IERelacaoProprietario.DIRETORGERENTESOCIO) Diretor/Gerente/Sócio</p>
+                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, IERelacaoProprietario.FUNCIONARIO) Funcionário</p>
+                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, IERelacaoProprietario.MOTORISTAPARTICULALEVACARO) Motorista particular e leva o veiculo para casa</p>
+                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, IERelacaoProprietario.MOTORISTAPARTICULALEVACARO) Motorista particular e não leva o veículo para casa</p>
+                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IERelacaoProprietario, IERelacaoProprietario.OUTROS) Outros</p>
                     @Html.ValidationMessageFor(model => model.OutroCondutor.IERelacaoProprietario, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -108,12 +109,12 @@
             <div class="form-group">
                 @Html.Label("Tipo de residência do Principal*", htmlAttributes: new { @class = "control-label col-md-5" })
                 <div class="col-md-7">
-                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, 0) Apartamento ou flat</p>
-                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, 1) Casa em condominio fechado</p>
-                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, 2) Casa ou sobrado</p>
-                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, 3) Chácara, fazenda ou sítio</p>
-                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, 4) Outros</p>
-                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, 5) Não sei</p>
+                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.APARTAMENTOOUFLAT) Apartamento ou flat</p>
+                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.CASAEMCONDOMINIOFECHADO) Casa em condominio fechado</p>
+                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.CASAOUSOBRADO) Casa ou sobrado</p>
+                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.CHACARAFAZENDAOUSITIO) Chácara, fazenda ou sítio</p>
+                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.OUTROS) Outros</p>
+                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.NAOSEI) Não sei</p>
                 </div>
             </div>
 
@@ -127,16 +128,16 @@
             <div class="form-group">
                 @Html.Label("Nos últimos 24 meses Principal foi vítima de roubo / furto de carro?*", htmlAttributes: new { @class = "control-label col-md-5" })
                 <div class="col-md-7">
-                    @Html.RadioButtonFor(model => model.Segurado.IERoubadoEm24Meses, true) Sim
-                    @Html.RadioButtonFor(model => model.Segurado.IERoubadoEm24Meses, false) Não
+                    @Html.RadioButtonFor(model => model.Segurado.IERoubadoEm24Meses, IERoubadoEm24Meses.SIM) Sim
+                    @Html.RadioButtonFor(model => model.Segurado.IERoubadoEm24Meses, IERoubadoEm24Meses.NAO) Não
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.Label("Algum condutor estuda?*", htmlAttributes: new { @class = "control-label col-md-5" })
                 <div class="col-md-7">
-                    @Html.RadioButtonFor(model => model.Segurado.IEAlgumCondutorEstuda, true) Sim
-                    @Html.RadioButtonFor(model => model.Segurado.IEAlgumCondutorEstuda, false) Não
+                    @Html.RadioButtonFor(model => model.Segurado.IEAlgumCondutorEstuda, IEAlgumCondutorEstuda.SIM) Sim
+                    @Html.RadioButtonFor(model => model.Segurado.IEAlgumCondutorEstuda, IEAlgumCondutorEstuda.NAO) Não
                 </div>
             </div>
 

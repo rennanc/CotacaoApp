@@ -1,5 +1,6 @@
 ﻿@model CotacaoApp.Models.Proposta
-@using CotacaoApp.Enumerations
+<!--tem q importar o using CotacaoApp.Enumerations como feito abaixo nas paginas de html q usar -->
+@using CotacaoApp.Enumerations  
 
 @{
     ViewBag.Title = "Seu Carro";
@@ -60,8 +61,8 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.IEZeroKM, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="col-md-9">
-                    @Html.RadioButtonFor(model => model.IEZeroKM, true) Sim
-                    @Html.RadioButtonFor(model => model.IEZeroKM, false) Não
+                    @Html.RadioButtonFor(model => model.IEZeroKM, IEZeroKM.SIM) Sim
+                    @Html.RadioButtonFor(model => model.IEZeroKM, IEZeroKM.NAO) Não
                     @Html.ValidationMessageFor(model => model.IEZeroKM, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -74,6 +75,7 @@
                 </div>
             </div>
 
+        <!--Exemplo - INICIO -->
             <div class="form-group">
                 @Html.LabelFor(model => model.IEFinanciadoVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="col-md-9">
@@ -83,25 +85,26 @@
                     @Html.ValidationMessageFor(model => model.IEFinanciadoVeiculo, "", new { @class = "text-danger" })
                 </div>
             </div>
+        <!--Exemplo - FIM -->
 
             <h2>Sobre o Carro</h2>
             <div class="form-group">
                 <label class="control-label col-md-3">Marque as opções nas quais seu carro se enquadra(caso não se encaixe em nenhuma,ignore a pergunta).</label>
                 <div class="col-md-9">
-                    <p>@Html.CheckBoxFor(model => model.IETipoVeiculoTaxi, true) Táxi</p>
-                    <p>@Html.CheckBoxFor(model => model.IETipoVeiculoDeficiente, true) Adaptado para deficiente físico</p>
-                    <p>@Html.CheckBoxFor(model => model.IETipoVeiculoKitGas, true) Tem Kit Gás</p>
-                    <p>@Html.CheckBoxFor(model => model.IETipoVeiculoBlindado, true) É Blindado</p>
+                    <p>@Html.CheckBoxFor(model => model.IETipoVeiculoTaxi, IETipoVeiculoTaxi.SIM) Táxi</p>
+                    <p>@Html.CheckBoxFor(model => model.IETipoVeiculoDeficiente, IETipoVeiculoDeficiente.SIM) Adaptado para deficiente físico</p>
+                    <p>@Html.CheckBoxFor(model => model.IETipoVeiculoKitGas, IETipoVeiculoKitGas.SIM) Tem Kit Gás</p>
+                    <p>@Html.CheckBoxFor(model => model.IETipoVeiculoBlindado, IETipoVeiculoBlindado.SIM) É Blindado</p>
                     <p>@Html.CheckBoxFor(model => model.IETipoVeiculoPessoaJuridica, true) Pessoa Juridica</p>
                 </div>
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.IEAlarmeVeiculo, htmlAttributes: new { @class = "control-label col-md-3"})
                 <div class="col-md-9">
-                    <p>@Html.RadioButtonFor(model => model.IEAlarmeVeiculo, "0") Alarme Sonoro</p>
-                    <p>@Html.RadioButtonFor(model => model.IEAlarmeVeiculo, "1") Chave Codificada</p>
-                    <p>@Html.RadioButtonFor(model => model.IEAlarmeVeiculo, "2") Outros Dispositivos</p>
-                    <p>@Html.RadioButtonFor(model => model.IEAlarmeVeiculo, "3") Não Tenho Dispositivo</p>
+                    <p>@Html.RadioButtonFor(model => model.IEAlarmeVeiculo, IEAlarmeVeiculo.ALARMESONORO) Alarme Sonoro</p>
+                    <p>@Html.RadioButtonFor(model => model.IEAlarmeVeiculo, IEAlarmeVeiculo.CHAVECODIFICADA) Chave Codificada</p>
+                    <p>@Html.RadioButtonFor(model => model.IEAlarmeVeiculo, IEAlarmeVeiculo.OUTROSDISPOSITIVOS) Outros Dispositivos</p>
+                    <p>@Html.RadioButtonFor(model => model.IEAlarmeVeiculo, IEAlarmeVeiculo.NAOTENHODISPOSITIVO) Não Tenho Dispositivo</p>
                     @Html.ValidationMessageFor(model => model.IEAlarmeVeiculo, "", new { @class = "text-danger" })
                 </div>
             </div>

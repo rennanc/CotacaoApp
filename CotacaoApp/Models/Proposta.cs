@@ -54,7 +54,7 @@ namespace CotacaoApp.Models
 
         [Display(Name = "O carro é 0 KM?*")]
         [Column("IE_ZEROKM")]
-        public bool IEZeroKM { get; set; }
+        public IEZeroKM IEZeroKM { get; set; }
 
         [Display(Name = "Qual o seu veiculo?*")]
         [Column("NM_VEICULO")]
@@ -89,17 +89,17 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Possui alarme ou algum dispositivo antifurto?*")]
         [Column("IE_ALARMEVEICULO")]
-        public int IEAlarmeVeiculo { get; set; }
+        public IEAlarmeVeiculo IEAlarmeVeiculo { get; set; } // tem q mudar o tipo deles
 
         /*********** PASSO-2 : LOCALIZAÇÃO ************/
 
         [Display(Name = "Onde o carro fica estacionado à noite?*")]
         [Column("IE_TIPOESTACION")]
-        public int IETipoEstacionamento { get; set; }
+        public IETipoEstacionamento IETipoEstacionamento { get; set; }
 
         [Display(Name = "Tipo de portão:*")]
         [Column("IE_TIPOPORTAO")]
-        public int IETipoPortao { get; set; }
+        public IETipoPortao IETipoPortao { get; set; }
 
         [Display(Name = "Qual o CEP do local onde ele fica estacionado à noite?*")]
         [Column("NR_CEPESTACION")]
@@ -121,11 +121,11 @@ namespace CotacaoApp.Models
 
             [Display(Name = "O veículo permanece em garagem ou estacionamento protegido no local de trabalho? *")]
             [Column("IE_TIPOGARAGEMTRABALHO")]
-            public int IELocalGaragemTrabalho { get; set; }
+            public IELocalGaragemTrabalho IELocalGaragemTrabalho { get; set; }
 
             [Display(Name = "Distância percorrida do local estacionado à noite até o local de trabalho*")]
             [Column("IE_DISTANCIATRABVEICULO")]
-            public int IEDistanciaParaTrabalhoVeiculo { get; set; }
+            public IEDistanciaParaTrabalhoVeiculo IEDistanciaParaTrabalhoVeiculo { get; set; }
 
         [Display(Name = "Ir ao Colégio/Faculdade/Pós-Graduação")]
         [Column("IE_UTILIZACAOVEICULO_ESTUDO")]
@@ -133,7 +133,7 @@ namespace CotacaoApp.Models
 
             [Display(Name = "O veículo permanece em garagem ou estacionamento protegido no local de estudo ? *")]
             [Column("IE_TIPOGARAGEMESTUDO")]
-            public int IELocalGaragemEstudo { get; set; }
+            public IELocalGaragemEstudo IELocalGaragemEstudo { get; set; }
 
         [Display(Name = "Usa o carro como instrumento de trabalho? Ex.: Representante comercial, entregador delivery etc.* ")]
         [Column("IE_UTILIZACAOVEICULO_INSTRUMENTO")]
@@ -141,11 +141,11 @@ namespace CotacaoApp.Models
 
             [Display(Name = "Como o veículo é utilizado?*")]
             [Column("IE_UTILIZACAOVEICULO_INSTRUMENTOFORMA")]
-            public int IEUtilizacaoVeiculoInstrumentoForma { get; set; }
+            public IEUtilizacaoVeiculoInstrumentoForma IEUtilizacaoVeiculoInstrumentoForma { get; set; }
 
         [Display(Name = "Quantos km roda em média ? *")]
         [Column("IE_MEDIAKMVEICULO")]
-        public int IEKmEmMedia { get; set; }
+        public IEKmEmMedia IEKmEmMedia { get; set; }
 
         /*********** PASSO-3 : SEGURADO ************/
 
