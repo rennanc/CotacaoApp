@@ -68,23 +68,23 @@ namespace CotacaoApp.Models
         //tipo veiculo
         [Display(Name = "Taxi")]
         [Column("IE_TIPOVEICULO_TAXI")]
-        public bool IETipoVeiculoTaxi { get; set; }
+        public IETipoVeiculoTaxi IETipoVeiculoTaxi { get; set; }
 
         [Display(Name = "Adaptado para deficiente físico")]
         [Column("IE_TIPOVEICULO_DEFICIENTE")]
-        public bool IETipoVeiculoDeficiente { get; set; }
+        public IETipoVeiculoDeficiente IETipoVeiculoDeficiente { get; set; }
 
         [Display(Name = "Tem Kit Gás")]
         [Column("IE_TIPOVEICULO_KITGAS")]
-        public bool IETipoVeiculoKitGas { get; set; }
+        public IETipoVeiculoKitGas IETipoVeiculoKitGas { get; set; }
 
         [Display(Name = "É Blindado")]
         [Column("IE_TIPOVEICULO_BLINDADO")]
-        public bool IETipoVeiculoBlindado { get; set; }
+        public IETipoVeiculoBlindado IETipoVeiculoBlindado { get; set; }
 
         [Display(Name = "É para Pessoa Jurídica")]
         [Column("IE_TIPOVEICULO_PESSOAJURIDICA")]
-        public bool IETipoVeiculoPessoaJuridica { get; set; }
+        public IETipoVeiculoPessoaJuridica IETipoVeiculoPessoaJuridica { get; set; }
         //tipo veiculo
 
         [Display(Name = "Possui alarme ou algum dispositivo antifurto?*")]
@@ -159,25 +159,25 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Motivo da cotação")]
         [Column("IE_MOTIVO_COTACAO")]
-        public int IEMotivoCotacao { get; set; }
+        public IEMotivoCotacao IEMotivoCotacao { get; set; }
 
 
             [Display(Name = "primeiro seguro")]
             [Column("IE_PRIMEIROSEGURO")]
-            public int IEPrimeiroSeguro { get; set; }
+            public IEPrimeiroSeguro IEPrimeiroSeguro { get; set; }
 
             //seguro atual - caso ja tenha
             [Display(Name = "Seguro Atual - quer mais opções")]
             [Column("IE_SEGUROATUAL_QUERMAISOPCOES")]
-            public bool IESeguroAtualQuerMaisOpcoes { get; set; }
+            public IESeguroAtualQuerMaisOpcoes IESeguroAtualQuerMaisOpcoes { get; set; }
 
             [Display(Name = "Seguro Atual - quer melhor atendimento")]
             [Column("IE_SEGUROATUAL_MELHORATENDIMENTO")]
-            public bool IESeguroAtualMelhorAtendimento { get; set; }
+            public IESeguroAtualMelhorAtendimento IESeguroAtualMelhorAtendimento { get; set; }
 
             [Display(Name = "Seguro Atual - Não está satisfeito")]
             [Column("IE_SEGUROATUAL_NAOSATISFEITO")]
-            public bool IESeguroAtualNaoSatisfeito { get; set; }
+            public IESeguroAtualNaoSatisfeito IESeguroAtualNaoSatisfeito { get; set; }
 
             [Display(Name = "Nome da Seguradora Atual")]
             [Column("NM_SEGURADORAATUAL")]
@@ -190,11 +190,11 @@ namespace CotacaoApp.Models
 
             [Display(Name = "Bonus Seguro Atual Sem Sinistro")]
             [Column("IE_BONUSAPOLICEATUAL_SEMSINISTRO")]
-            public int IEBonusSeguroAtualSemSinistro { get; set; }
+            public IEBonusSeguroAtualSemSinistro IEBonusSeguroAtualSemSinistro { get; set; }
 
             [Display(Name = "Bonus Seguro Atual Com Sinistro")]
             [Column("IE_BONUSAPOLICEATUAL_COMSINISTRO")]
-            public int IEBonusSeguroAtualComSinistro { get; set; }
+            public IEBonusSeguroAtualComSinistro IEBonusSeguroAtualComSinistro { get; set; }
 
 
             [Display(Name = "Apolice Antiga")]

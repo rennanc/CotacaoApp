@@ -68,11 +68,11 @@ namespace CotacaoApp.DAO
             proposta.Segurado.Telefones = telefoneDao.ObterTodosPorIdCondutor(proposta.Segurado.Id);
 
             CondutorDAO condutorDao = new CondutorDAO();
-            if (!proposta.Segurado.IEProprietarioVeiculo)
+            if (proposta.Segurado.IEProprietarioVeiculo == 0)
             {
                 proposta.Proprietario = condutorDao.ObterPorIdSeguradoETipo(proposta.Segurado.Id, 1);
             }
-            if (!proposta.Segurado.IECondutorPrincipal)
+            if (proposta.Segurado.IECondutorPrincipal == 0)
             {
                 proposta.OutroCondutor = condutorDao.ObterPorIdSeguradoETipo(proposta.Segurado.Id, 2);
             }

@@ -11,9 +11,9 @@ namespace CotacaoApp.Enumerations
     {
         //opções do radio button
         [Display(Name = "Masculino")]
-        MASCULINO = 0,
+        MASCULINO = 1,
         [Display(Name = "Feminino")]
-        FEMININO = 1
+        FEMININO = 2
     }
 
     public enum IEEstadoCivil
@@ -33,9 +33,9 @@ namespace CotacaoApp.Enumerations
     {
         //opções do radio button
         [Display(Name = "Sim")]
-        SIM = 0,
+        SIM = 1,
         [Display(Name = "Não")]
-        NAO = 1
+        NAO = 0
     }
 
     public enum IEQuantidadeCarro
@@ -58,9 +58,9 @@ namespace CotacaoApp.Enumerations
     {
         //opções do radio button
         [Display(Name = "Sim")]
-        SIM = 0,
+        SIM = 1,
         [Display(Name = "Não")]
-        NAO = 1,
+        NAO = 0,
     }
     
     public enum IERelacaoProprietario
@@ -116,27 +116,45 @@ namespace CotacaoApp.Enumerations
     {
         //opções do radio button
         [Display(Name = "Sim")]
-        SIM = 0,
+        SIM = 1,
         [Display(Name = "Não")]
-        NAO = 1,
+        NAO = 0,
     }
 
     public enum IEAlgumCondutorEstuda
     {
         //opções do radio button
         [Display(Name = "Sim")]
-        SIM = 0,
+        SIM = 1,
         [Display(Name = "Não")]
-        NAO = 1,
+        NAO = 0,
     }
 
     public enum IENoticiasEmail
     {
         //opções do radio button
-        //[Display(Name = "Sim, Autorizo receber informações sobre a cotação e descontos sobre o seguro por:")]
-        //SIM = 0,
-        //[Display(Name = "Não, Autorizo receber informações sobre a cotação e descontos sobre o seguro por:")]
-        //NAO = 1,
+        [Display(Name = "Sim, Autorizo receber informações sobre a cotação e descontos sobre o seguro")]
+        SIM = 1,
+        [Display(Name = "Não, Autorizo receber informações sobre a cotação e descontos sobre o seguro")]
+        NAO = 0
+    }
+
+    public enum IEItauPersonalite
+    {
+        //opções do radio button
+        [Display(Name = "Possui Itaú Personalite")]
+        SIM = 1,
+        [Display(Name = "Não possui Itaú Personalite")]
+        NAO = 0
+    }
+
+    public enum IECartaoPortoSeguroVisa
+    {
+        //opções do radio button
+        [Display(Name = "Possui Cartão Porto Seguro Visa")]
+        NAO = 0,
+        [Display(Name = "Não Possui Cartão Porto Seguro Visa")]
+        SIM = 1
     }
 
 

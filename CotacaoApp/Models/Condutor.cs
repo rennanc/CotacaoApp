@@ -37,11 +37,11 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Sexo*")]
         [Column("IE_SEXO")]
-        public string IESexo { get; set; }
+        public IESexo IESexo { get; set; }
 
         [Display(Name = "Estado Civil*")]
         [Column("NM_ESTADOCIVIL")]
-        public int IEEstadoCivil { get; set; }
+        public IEEstadoCivil IEEstadoCivil { get; set; }
 
         [Display(Name = "Numero Cep")]
         [Column("NR_CEP")]
@@ -49,11 +49,11 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Além desse carro, o segurado possui outros carros em sua residência ? *")]
         [Column("IE_POSSUIOUTROSCARROS")]
-        public int IEPossuiOutrosCarros { get; set; }
+        public IEPossuiOutrosCarros IEPossuiOutrosCarros { get; set; }
 
         [Display(Name = "Quantos mais?*")]
         [Column("IE_QTDCARROS")]
-        public int IEQuantidadeCarro { get; set; }
+        public IEQuantidadeCarro IEQuantidadeCarro { get; set; }
 
         [Display(Name = "Anos de CNH")]
         [Column("NR_ANOSCNH")]
@@ -61,7 +61,7 @@ namespace CotacaoApp.Models
 
         [Display(Name = "O segurado é proprietário(a) do carro?*")]
         [Column("IE_PROPRIETARIOVEICULO")]
-        public bool IEProprietarioVeiculo { get; set; }
+        public IEProprietarioVeiculo IEProprietarioVeiculo { get; set; }
 
         [Display(Name = "Relação entre PROPRIETÁRIO e SEGURADO*")]
         [Column("IE_RELACAOPROPRIETARIO")]
@@ -69,7 +69,7 @@ namespace CotacaoApp.Models
 
         [Display(Name = "é o Condutor Principal")]
         [Column("IE_CONDPRINCIPAL")]
-        public bool IECondutorPrincipal { get; set; }
+        public IECondutorPrincipal IECondutorPrincipal { get; set; }
 
 
 
@@ -77,7 +77,7 @@ namespace CotacaoApp.Models
 
         [Display(Name = "tipo de residencia")]
         [Column("IE_TIPORESIDENCIA")]
-        public int IETipoResidencia { get; set; }
+        public IETipoResidencia IETipoResidencia { get; set; }
 
         [Display(Name = "Profissao")]
         [Column("DS_PROFISSAO")]
@@ -85,11 +85,11 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Roubado em 24 meses")]
         [Column("IE_ROUBADOEM24MESES")]
-        public int IERoubadoEm24Meses { get; set; }
+        public IERoubadoEm24Meses IERoubadoEm24Meses { get; set; }
 
         [Display(Name = "Algum Condutor Estuda")]
         [Column("IE_ALGUMCONDUTORESTUDA")]
-        public int IEAlgumCondutorEstuda { get; set; }
+        public IEAlgumCondutorEstuda IEAlgumCondutorEstuda { get; set; }
 
         /*********** PASSO-5 : CONCLUSÃO ************/
 
@@ -103,17 +103,17 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Noticias por Email")]
         [Column("IE_NOTICIASEMAIL")]
-        public bool IENoticiasEmail { get; set; }
+        public IENoticiasEmail IENoticiasEmail { get; set; }
 
 
         //Vantagens
         [Display(Name = "Cliente Itaú Personalité")]
         [Column("IE_ITAUPERSONALITE")]
-        public bool IEItauPersonalite { get; set; }
+        public IEItauPersonalite IEItauPersonalite { get; set; }
 
         [Display(Name = "Cartão Porto Seguro Visa")]
         [Column("IE_CARTAOPORTOSEGUROVISA")]
-        public bool IECartaoPortoSeguroVisa { get; set; }
+        public IECartaoPortoSeguroVisa IECartaoPortoSeguroVisa { get; set; }
 
     }
 }
