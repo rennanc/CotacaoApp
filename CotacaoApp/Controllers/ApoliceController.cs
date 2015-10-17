@@ -48,21 +48,35 @@ namespace CotacaoApp.Controllers
             return View(apolice);
         }
 
+        //// GET: Apolice/Create
+        //public ActionResult Create(int? propostaId)
+        //{
+
+        //    Apolice apolice = new Apolice();
+
+        //    PropostaDAO propostaDao = new PropostaDAO();
+        //    apolice.Proposta = propostaDao.GetProposta(propostaId);
+        //    apolice.Seguradoras = db.Seguradora.ToList();
+        //    return View(apolice);
+        //}
+
         // POST: Usuario/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CodigoProposta,Comissao,Segurdora,Contrato,Status")] Apolice apolice)
+        public ActionResult SendForm(Apolice apolice)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 db.Comissao.Add(apolice.Comissao);
                 db.SaveChanges();
+                apolice.CodigoComissao = apolice.Comissao.Id;
                 db.Apolice.Add(apolice);
                 db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            //}
             
             return View(apolice);
         }

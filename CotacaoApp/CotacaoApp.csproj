@@ -472,6 +472,7 @@
     <Content Include="Views\Endosso\Edit.cshtml" />
     <Content Include="Views\Endosso\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
+    <Content Include="Views\Apolice\SendForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

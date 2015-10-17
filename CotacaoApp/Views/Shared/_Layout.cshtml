@@ -25,13 +25,21 @@
                 @Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand logo" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav ">
                     @if (Session["UsuarioLogado"] != null)
                     {
-                    <li>@Html.ActionLink("Propostas", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Usuario", "Index", "Usuario")</li>
-                    <li>@Html.ActionLink("Cobertura", "Index", "Cobertura")</li>
-                    <li>@Html.ActionLink("Administracao", "Index", "Administracao")</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administração <span class="caret"></span></a>
+                        @*@Html.ActionLink("Administracao", "Index", "Administracao")*@
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Propostas", "Index", "Proposta")</li>
+                            <li>@Html.ActionLink("Apolice", "Index", "Apolice")</li>
+                            <li>@Html.ActionLink("Usuario", "Index", "Usuario")</li>
+                            <li>@Html.ActionLink("Cobertura", "Index", "Cobertura")</li>
+                            <li>@Html.ActionLink("Seguradora", "Index", "Seguradora")</li>
+                            
+                        </ul>
+                    </li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

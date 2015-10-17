@@ -50,12 +50,12 @@ namespace CotacaoApp.Models
         [NotMapped]
         public List<Seguradora> Seguradoras { get; set; }
 
-        [Required]
+
         [Display(Name = "Contrato")]
         [Column("VL_CONTRATO")]
-        public string Contrato { get; set; }
+        public string ValorContrato { get; set; }
 
-        [Required]
+
         [Display(Name = "Status")]
         [Column("SG_STATUS")]
         public string Status { get; set; }
