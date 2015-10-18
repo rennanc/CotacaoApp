@@ -241,6 +241,7 @@
     <Compile Include="DAO\PropostaDAO.cs" />
     <Compile Include="DAO\TelefoneDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
+    <Compile Include="Enumerations\EnumApolice.cs" />
     <Compile Include="Enumerations\EnumCondutor.cs" />
     <Compile Include="Enumerations\EnumProposta.cs" />
     <Compile Include="Filters\AutorizacaoFilterAttribute.cs" />

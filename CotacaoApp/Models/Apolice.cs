@@ -1,4 +1,5 @@
-﻿using CotacaoApp.Filters;
+﻿using CotacaoApp.Enumerations;
+using CotacaoApp.Filters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
