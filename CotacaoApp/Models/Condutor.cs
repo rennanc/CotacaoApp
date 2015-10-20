@@ -103,17 +103,17 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Noticias por Email")]
         [Column("IE_NOTICIASEMAIL")]
-        public IENoticiasEmail IENoticiasEmail { get; set; }
+        public bool IENoticiasEmail { get; set; }
 
 
         //Vantagens
         [Display(Name = "Cliente Itaú Personalité")]
         [Column("IE_ITAUPERSONALITE")]
-        public IEItauPersonalite IEItauPersonalite { get; set; }
+        public bool IEItauPersonalite { get; set; }
 
         [Display(Name = "Cartão Porto Seguro Visa")]
         [Column("IE_CARTAOPORTOSEGUROVISA")]
-        public IECartaoPortoSeguroVisa IECartaoPortoSeguroVisa { get; set; }
+        public bool IECartaoPortoSeguroVisa { get; set; }
 
     }
 }

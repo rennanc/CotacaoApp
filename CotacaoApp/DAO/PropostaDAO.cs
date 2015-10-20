@@ -19,11 +19,17 @@ namespace CotacaoApp.DAO
             db.SaveChanges();
 
             //Adicionando telefones do segurado
+            List<Telefone> telefonesCorretos = new List<Telefone>();
             foreach(Telefone telefone in proposta.Segurado.Telefones)
             {
-                telefone.CodigoCondutor = proposta.Segurado.Id;
+                if(telefone.NumeroTelefone != null)
+                {
+                    telefone.CodigoCondutor = proposta.Segurado.Id;
+                    telefonesCorretos.Add(telefone);
+                }
+                
             }
-            db.Telefone.AddRange(proposta.Segurado.Telefones);
+            db.Telefone.AddRange(telefonesCorretos);
 
             //Adicionando Proprietario
             if (proposta.Proprietario.CodigoCpf != null)

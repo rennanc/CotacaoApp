@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace CotacaoApp.Enumerations
 {
@@ -219,7 +220,9 @@ namespace CotacaoApp.Enumerations
         [Display(Name = "Só estou pesquisando para comprar um carro novo")]
         SOPESQUISANDO = 0,
         [Display(Name = "Fazer meu primeiro seguro para um carro que já tenho")]
-        FAZERPRIMEIROSEGURO = 1
+        FAZERPRIMEIROSEGURO = 1,
+        [Display(Name = "Renovar o seguro de um carro que já tenho")]
+        RENOVARSEGURO = 2
     }
 
     public enum IEPrimeiroSeguro
@@ -228,30 +231,6 @@ namespace CotacaoApp.Enumerations
         JATENHOCOTACAO = 0,
         [Display(Name = "Ainda não tenho cotações de outras corretoras")]
         AINDANAOTENHOCOTACAO = 1
-    }
-
-    public enum IESeguroAtualQuerMaisOpcoes
-    {
-        [Display(Name = "Nao, quero mais opções de seguradoras e coberturas")]
-        NAO = 0,
-        [Display(Name = "Sim, quero mais opções de seguradoras e coberturas")]
-        SIM = 1
-    }
-
-    public enum IESeguroAtualMelhorAtendimento
-    {
-        [Display(Name = "Não, estou em busca de um melhor atendimento")]
-        NAO = 0,
-        [Display(Name = "Sim, estou em busca de um melhor atendimento")]
-        SIM = 1
-    }
-
-    public enum IESeguroAtualNaoSatisfeito
-    {
-        [Display(Name = "Não estou satisfeito com os preços que tenho")]
-        NAO = 0,
-        [Display(Name = "Sim estou satisfeito com os preços que tenho")]
-        SIM = 1
     }
 
     public enum IEBonusSeguroAtualSemSinistro
@@ -294,5 +273,22 @@ namespace CotacaoApp.Enumerations
         [Display(Name = "Cinco Sinistro")]
         SINISTROCINCO = 5,
     }
-        #endregion passo 3
+    #endregion passo 3
+
+
+    public class MyBoolAttribute : Attribute
+    {
+        public MyBoolAttribute(bool val)
+        {
+            Passed = val;
+        }
+
+        public bool Passed
+        {
+            get;
+            set;
+        }
     }
+
+    
+}

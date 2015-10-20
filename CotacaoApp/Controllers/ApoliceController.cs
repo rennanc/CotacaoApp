@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using CotacaoApp.Models;
 using CotacaoApp.DAO;
+using CotacaoApp.Util;
 
 namespace CotacaoApp.Controllers
 {
@@ -77,7 +78,9 @@ namespace CotacaoApp.Controllers
                 db.Apolice.Add(apolice);
                 db.SaveChanges();
             //}
-            
+            UtilEmailMessage utilEmail = new UtilEmailMessage();
+            utilEmail.EnviarEmail("codigo da apolice");
+
             return View(apolice);
         }
 

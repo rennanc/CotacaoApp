@@ -169,15 +169,15 @@ namespace CotacaoApp.Models
             //seguro atual - caso ja tenha
             [Display(Name = "Seguro Atual - quer mais opções")]
             [Column("IE_SEGUROATUAL_QUERMAISOPCOES")]
-            public IESeguroAtualQuerMaisOpcoes IESeguroAtualQuerMaisOpcoes { get; set; }
+            public bool IESeguroAtualQuerMaisOpcoes { get; set; }
 
             [Display(Name = "Seguro Atual - quer melhor atendimento")]
             [Column("IE_SEGUROATUAL_MELHORATENDIMENTO")]
-            public IESeguroAtualMelhorAtendimento IESeguroAtualMelhorAtendimento { get; set; }
+            public bool IESeguroAtualMelhorAtendimento { get; set; }
 
             [Display(Name = "Seguro Atual - Não está satisfeito")]
             [Column("IE_SEGUROATUAL_NAOSATISFEITO")]
-            public IESeguroAtualNaoSatisfeito IESeguroAtualNaoSatisfeito { get; set; }
+            public bool IESeguroAtualNaoSatisfeito { get; set; }
 
             [Display(Name = "Nome da Seguradora Atual")]
             [Column("NM_SEGURADORAATUAL")]

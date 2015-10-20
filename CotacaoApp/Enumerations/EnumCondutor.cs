@@ -130,32 +130,32 @@ namespace CotacaoApp.Enumerations
         NAO = 0,
     }
 
-    public enum IENoticiasEmail
-    {
-        //opções do radio button
-        [Display(Name = "Sim, Autorizo receber informações sobre a cotação e descontos sobre o seguro")]
-        SIM = 1,
-        [Display(Name = "Não, Autorizo receber informações sobre a cotação e descontos sobre o seguro")]
-        NAO = 0
-    }
+    //public enum IENoticiasEmail
+    //{
+    //    //opções do radio button
+    //    [Display(Name = "Sim, Autorizo receber informações sobre a cotação e descontos sobre o seguro")]
+    //    SIM = 1,
+    //    [Display(Name = "Não, Autorizo receber informações sobre a cotação e descontos sobre o seguro")]
+    //    NAO = 0
+    //}
 
-    public enum IEItauPersonalite
-    {
-        //opções do radio button
-        [Display(Name = "Possui Itaú Personalite")]
-        SIM = 1,
-        [Display(Name = "Não possui Itaú Personalite")]
-        NAO = 0
-    }
+    //public enum IEItauPersonalite
+    //{
+    //    //opções do radio button
+    //    [Display(Name = "Possui Itaú Personalite")]
+    //    SIM = 1,
+    //    [Display(Name = "Não possui Itaú Personalite")]
+    //    NAO = 0
+    //}
 
-    public enum IECartaoPortoSeguroVisa
-    {
-        //opções do radio button
-        [Display(Name = "Possui Cartão Porto Seguro Visa")]
-        NAO = 0,
-        [Display(Name = "Não Possui Cartão Porto Seguro Visa")]
-        SIM = 1
-    }
+    //public enum IECartaoPortoSeguroVisa
+    //{
+    //    //opções do radio button
+    //    [Display(Name = "Possui Cartão Porto Seguro Visa")]
+    //    NAO = 0,
+    //    [Display(Name = "Não Possui Cartão Porto Seguro Visa")]
+    //    SIM = 1
+    //}
 
 
 }

@@ -54,7 +54,7 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Contrato")]
         [Column("VL_CONTRATO")]
-        public string ValorContrato { get; set; }
+        public decimal ValorContrato { get; set; }
 
 
         [Display(Name = "Status")]

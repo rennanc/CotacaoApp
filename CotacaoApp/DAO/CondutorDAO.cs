@@ -88,8 +88,8 @@ namespace CotacaoApp.DAO
                     IERoubadoEm24Meses = (IERoubadoEm24Meses)reader.GetInt16(reader.GetOrdinal("IE_ROUBADOEM24MESES")),
                     IEAlgumCondutorEstuda = (IEAlgumCondutorEstuda)reader.GetInt16(reader.GetOrdinal("IE_ALGUMCONDUTORESTUDA")),
                     Email = reader.GetString(reader.GetOrdinal("NM_EMAIL")),
-                    IENoticiasEmail = (IENoticiasEmail)reader.GetInt16(reader.GetOrdinal("IE_NOTICIASEMAIL")),
-                    IECartaoPortoSeguroVisa = (IECartaoPortoSeguroVisa)reader.GetInt16(reader.GetOrdinal("IE_CARTAOPORTOSEGUROVISA")),
+                    IENoticiasEmail = reader.GetBoolean(reader.GetOrdinal("IE_NOTICIASEMAIL")),
+                    IECartaoPortoSeguroVisa = reader.GetBoolean(reader.GetOrdinal("IE_CARTAOPORTOSEGUROVISA")),
                 };
             }
 

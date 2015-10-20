@@ -218,9 +218,9 @@
             
             @Html.Label("Marque as opções que você se identifica:", htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8" >
-                <p>@Html.CheckBoxFor(model => model.IESeguroAtualQuerMaisOpcoes, IESeguroAtualQuerMaisOpcoes.SIM) Quero mais opções de seguradoras e coberturas</p>
-                <p>@Html.CheckBoxFor(model => model.IESeguroAtualMelhorAtendimento, IESeguroAtualMelhorAtendimento.SIM) Estou em busca de um melhor atendimento</p>
-                <p>@Html.CheckBoxFor(model => model.IESeguroAtualNaoSatisfeito, IESeguroAtualNaoSatisfeito.SIM) Não estou satisfeito com os preços que tenho</p>
+                <p>@Html.CheckBoxFor(model => model.IESeguroAtualQuerMaisOpcoes, true) Quero mais opções de seguradoras e coberturas</p>
+                <p>@Html.CheckBoxFor(model => model.IESeguroAtualMelhorAtendimento, true) Estou em busca de um melhor atendimento</p>
+                <p>@Html.CheckBoxFor(model => model.IESeguroAtualNaoSatisfeito, true) Não estou satisfeito com os preços que tenho</p>
             </div>
         </div>
 
@@ -311,13 +311,13 @@
 
 
     $("input[name='IEMotivoCotacao']").on('click', function () {
-        if ($(this).val() == 1) {
+        if ($(this).val() == 'FAZERPRIMEIROSEGURO') {
             $('#IEMotivoCotacao1').show();
         } else {
             $('#IEMotivoCotacao1').hide();
         }
 
-        if ($(this).val() == 2) {
+        if ($(this).val() == 'RENOVARSEGURO') {
             $('#IEMotivoCotacao2').show();
         } else {
             $('#IEMotivoCotacao2').hide();
