@@ -67,6 +67,7 @@ namespace CotacaoApp.Controllers
 
 
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult SendForm(Apolice apolice)
         {
@@ -79,7 +80,7 @@ namespace CotacaoApp.Controllers
                 db.SaveChanges();
             //}
             UtilEmailMessage utilEmail = new UtilEmailMessage();
-            utilEmail.EnviarEmail("codigo da apolice");
+            utilEmail.EnviarEmail(apolice.formularioApoliceHtml);
 
             return View(apolice);
         }
@@ -92,6 +93,9 @@ namespace CotacaoApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Apolice apolice = db.Apolice.Find(id);
+            PropostaDAO propostaDao = new PropostaDAO();
+            apolice.Proposta = propostaDao.GetProposta(apolice.CodigoProposta);
+            apolice.Seguradoras = db.Seguradora.ToList();
             if (apolice == null)
             {
                 return HttpNotFound();

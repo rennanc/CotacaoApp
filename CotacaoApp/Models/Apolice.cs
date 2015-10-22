@@ -61,5 +61,8 @@ namespace CotacaoApp.Models
         [Column("SG_STATUS")]
         public string Status { get; set; }
 
+        [NotMapped]
+        public string formularioApoliceHtml { get; set; }
+
     }
 }

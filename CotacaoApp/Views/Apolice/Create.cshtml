@@ -12,12 +12,10 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+    <div class="form-horizontal" id="Apolice">
         <h4>Formulario</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-        @*@Html.EditorFor(model => model.Proposta, new { htmlAttributes = new { @class = "form-control" } })*@
 
         @if (Model.Proposta != null)
         {
@@ -26,17 +24,7 @@
 
         }
 
-        @*<div class="form-group ">
-
-            <select name="" class="form-control col-md-10 col-md-offset-2" style="margin-left:305px">
-                <option>Escolha uma Proposta</option>
-                @foreach (var proposta in Model.Propostas)
-                {
-                    <option value="@proposta.Id">@proposta.Id</option>
-                }
-            </select>
-        </div>*@
-
+        
 
         <h1>Apolice</h1>
         <div class="form-group ">
@@ -56,7 +44,7 @@
         <div class="form-group">
             @Html.Label("Valor do Contrato:*", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ValorContrato, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "R$ 0.00" } })
+                @Html.EditorFor(model => model.ValorContrato, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "0.00" } })
                 @*@Html.ValidationMessageFor(model => model.Contrato, "", new { @class = "text-danger" })*@
             </div>
         </div>
@@ -112,7 +100,7 @@
                 @*@Html.ValidationMessageFor(model => model.Comissao.ValorPercentualCir, "", new { @class = "text-danger" })*@
             </div>
         </div>
-            
+        <input type="hidden" id="formularioApoliceHtml" name="formularioApoliceHtml" />
         <div><input type="submit" value="Emitir Apolice Para o Cliente" class="form-control btn-success" /></div>
 
     </div>
@@ -122,12 +110,17 @@
     @Html.ActionLink("Voltar para a Lista", "Index")
 </div>
 
-@*<script type="text/javascript">
-    $(".numeric").inputmask("decimal", {
-        radixPoint: ",",
-        groupSeparator: ".",
-        digits: 2,
-        autoGroup: true,
-        prefix: 'R$ '
+<script type="text/javascript">
+    //$(".numeric").inputmask("decimal", {
+    //    radixPoint: ",",
+    //    groupSeparator: ".",
+    //    digits: 2,
+    //    autoGroup: true,
+    //    prefix: 'R$ '
+    //});
+
+    $(document).ready(function () {
+        $("#formularioApoliceHtml").val($("#Apolice").html());
     });
-</script>*@
+    
+</script>

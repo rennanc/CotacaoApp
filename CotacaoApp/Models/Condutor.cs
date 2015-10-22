@@ -37,7 +37,7 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Sexo*")]
         [Column("IE_SEXO")]
-        public string IESexo { get; set; }
+        public IESexo IESexo { get; set; }
 
         [Display(Name = "Estado Civil*")]
         [Column("NM_ESTADOCIVIL")]

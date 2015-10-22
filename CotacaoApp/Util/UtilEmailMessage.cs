@@ -17,7 +17,7 @@ namespace CotacaoApp.Util
             //Specify The Address You want to sent Email To(can be any valid email address)
             string ReceiversAddress = "rfrancochagas@gmail.com";
             //Specify The password of gmial account u are using to sent mail(pw of sender@gmail.com)
-            const string SendersPassword = "Reneg@0142";
+            const string SendersPassword = "";
             //Write the subject of ur mail
             const string subject = "Testando";
             //Write the contents of your mail
@@ -30,6 +30,7 @@ namespace CotacaoApp.Util
             client.Host = "smtp.live.com";
             client.Port = Convert.ToInt16("587");
             client.EnableSsl = true;
+            sendmsg.IsBodyHtml = true;
 
             client.UseDefaultCredentials = false;
             client.Credentials = new NetworkCredential(SendersAddress, SendersPassword);

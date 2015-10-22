@@ -7,655 +7,667 @@
 
 
 
-<div class="border-box">
+<div class="container-fluid border-box col-lg-12">
     <!-- PASSO 1 - INICIO -->
 
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Cobertura)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cobertura)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeMarcaVeiculo)
-        </dt> 
-
-        <dd>
-            @Html.DisplayFor(model => model.NomeMarcaVeiculo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnoFabricacaoVeiculo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnoFabricacaoVeiculo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnoModeloVeiculo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnoModeloVeiculo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IEZeroKM)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IEZeroKM)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeVeiculo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NomeVeiculo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IEFinanciadoVeiculo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IEFinanciadoVeiculo)
-        </dd>
-
-
-        <h2>Sobre o Carro</h2>
-        <div> <p>O carro se enquadra nas seguintes categorias:</p>
-            <dt>
-                @Html.DisplayNameFor(model => model.IETipoVeiculoTaxi)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.IETipoVeiculoTaxi)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.IETipoVeiculoDeficiente)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.IETipoVeiculoDeficiente)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.IETipoVeiculoKitGas)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.IETipoVeiculoKitGas)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.IETipoVeiculoBlindado)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.IETipoVeiculoBlindado)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.IETipoVeiculoPessoaJuridica)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.IETipoVeiculoPessoaJuridica)
-            </dd>
-        </div>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IEAlarmeVeiculo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IEAlarmeVeiculo)
-        </dd>
-        <!-- PASSO 1 - FIM -->
-        <!-- PASSO 2 - INICIO-->
-        <div>
-            <dt>
-                @Html.DisplayNameFor(model => model.IETipoEstacionamento)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.IETipoEstacionamento)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.IETipoPortao)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.IETipoPortao)
-            </dd>
-        </div>
-        <dt>
-            @Html.DisplayName("Qual o CEP do local onde ele fica estacionado à noite ?")
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CepEstacionamento)
-        </dd>
-
-        <dt>
-            @Html.DisplayName("Qual o CEP para onde o carro mais se desloca?*")
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CepDeslocamento)
-        </dd>
-
-
-        <div>
-            @Html.DisplayName("O Carro é Utilizado Para:*")
-            <dt>
-                @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoLazer)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.IEUtilizacaoVeiculoLazer)
-            </dd>
-
-            <div>
-                <dt>
-                    @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoTrabalho)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.IEUtilizacaoVeiculoTrabalho)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.IELocalGaragemTrabalho)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.IELocalGaragemTrabalho)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.IEDistanciaParaTrabalhoVeiculo)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.IEDistanciaParaTrabalhoVeiculo)
-                </dd>
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-mg-3">
+                <strong>@Html.DisplayNameFor(model => model.Cobertura)</strong>
             </div>
-            <div>
-                <dt>
-                    @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoEstudo)
-                </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.IEUtilizacaoVeiculoEstudo)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.IELocalGaragemEstudo)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.IELocalGaragemEstudo)
-                </dd>
-            </div>
-            <div>
-                <dt>
-                    @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoInstrumento)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.IEUtilizacaoVeiculoInstrumento)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoInstrumentoForma)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.IEUtilizacaoVeiculoInstrumentoForma)
-                </dd>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.Cobertura)
             </div>
         </div>
-        <dt>
-            @Html.DisplayNameFor(model => model.IEKmEmMedia)
-        </dt>
+        <div class="row">
+            <div class="col-mg-3">
+                <strong>@Html.DisplayNameFor(model => model.NomeMarcaVeiculo)</strong>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.IEKmEmMedia)
-        </dd>
-        <!-- PASSO 2 - FIM-->
-        <!-- PASSO 3 - INICIO -->
-        <!-- segurado -->
-        <div> 
-            <dt>
-                @Html.DisplayNameFor(model => model.Segurado.Nome)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Segurado.Nome)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Segurado.DataNascimento)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Segurado.DataNascimento)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Segurado.IESexo)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Segurado.IESexo)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Segurado.IEEstadoCivil)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Segurado.IEEstadoCivil)
-            </dd>
-
-            <dt>
-                @Html.DisplayName("CPF segurado*")
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Segurado.CodigoCpf)
-            </dd>
-
-            <dt>
-                @Html.DisplayName("CEP da residência do segurado*")
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Segurado.NumeroCep)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Segurado.IEPossuiOutrosCarros)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Segurado.IEPossuiOutrosCarros)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Segurado.IEQuantidadeCarro)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Segurado.IEQuantidadeCarro)
-            </dd>
-
-            <dt>
-                @Html.DisplayName("Anos de CNH do segurado*")
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Segurado.AnosDeCNH)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Segurado.IEProprietarioVeiculo)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Segurado.IEProprietarioVeiculo)
-            </dd>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.NomeMarcaVeiculo)
+            </div>
         </div>
-        <!--PROPRIETARIO - INICIO -->
-        <h2>DADOS DO PROPRIETÁRIO</h2>
-        <div>
-            <dt>
-                @Html.DisplayNameFor(model => model.Proprietario.Nome)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Proprietario.Nome)
-            </dd>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayNameFor(model => model.AnoFabricacaoVeiculo)</strong>
+            </div>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Proprietario.DataNascimento)
-            </dt>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.AnoFabricacaoVeiculo)
+            </div>
 
-            <dd>
-                @Html.DisplayFor(model => model.Proprietario.DataNascimento)
-            </dd>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayNameFor(model => model.AnoModeloVeiculo)</strong>
+            </div>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Proprietario.IESexo)
-            </dt>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.AnoModeloVeiculo)
+            </div>
 
-            <dd>
-                @Html.DisplayFor(model => model.Proprietario.IESexo)
-            </dd>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayNameFor(model => model.IEZeroKM)</strong>
+            </div>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Proprietario.IERelacaoProprietario)
-            </dt>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.IEZeroKM)
+            </div>
 
-            <dd>
-                @Html.DisplayFor(model => model.Proprietario.IERelacaoProprietario)
-            </dd>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayNameFor(model => model.NomeVeiculo)</strong>
+            </div>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Proprietario.IEEstadoCivil)
-            </dt>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.NomeVeiculo)
+            </div>
 
-            <dd>
-                @Html.DisplayFor(model => model.Proprietario.IEEstadoCivil)
-            </dd>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayNameFor(model => model.IEFinanciadoVeiculo)</strong>
+            </div>
 
-            <dt>
-                @Html.DisplayName("CPF Proprietario*")
-            </dt>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.IEFinanciadoVeiculo)
+            </div>
 
-            <dd>
-                @Html.DisplayFor(model => model.Proprietario.CodigoCpf)
-            </dd>
 
-            <dt>
-                @Html.DisplayName("CEP da residência do proprietario*")
-            </dt>
+            <h2>Sobre o Carro</h2>
+            <div>
+                <strong>O carro se enquadra nas seguintes categorias:</strong>
+                <ul>
+                    <li>
+                        @Html.DisplayFor(model => model.IETipoVeiculoTaxi)
+                    </li>
 
-            <dd>
-                @Html.DisplayFor(model => model.Proprietario.NumeroCep)
-            </dd>
+                    <li>
+                        @Html.DisplayFor(model => model.IETipoVeiculoDeficiente)
+                    </li>
 
-        </div>
-        <!--PROPRIETARIO - FIM -->
-        <!--SEGURO ATUAL - INICIO -->
-            <div class="col-md-12">
+                    <li>
+                        @Html.DisplayFor(model => model.IETipoVeiculoKitGas)
+                    </li>
+
+                    <li>
+                        @Html.DisplayFor(model => model.IETipoVeiculoBlindado)
+                    </li>
+
+                    <li>
+                        @Html.DisplayFor(model => model.IETipoVeiculoPessoaJuridica)
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-mg-3">
+                <strong>@Html.DisplayNameFor(model => model.IEAlarmeVeiculo)</strong>
+            </div>
+
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.IEAlarmeVeiculo)
+            </div>
+            <!-- PASSO 1 - FIM -->
+            <!-- PASSO 2 - INICIO-->
+            <div>
+                <div id="IETipoEstacionamento" class="@Model.IETipoEstacionamento">
+                    <strong>@Html.DisplayNameFor(model => model.IETipoEstacionamento)</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.IETipoEstacionamento)
+                </div>
+
+                <div class="IETipoPortao">
+                    <strong>@Html.DisplayNameFor(model => model.IETipoPortao)</strong>
+                </div>
+
+                <div class="IETipoPortao">
+                    @Html.DisplayFor(model => model.IETipoPortao)
+                </div>
+            </div>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayName("Qual o CEP do local onde ele fica estacionado à noite ?")</strong>
+            </div>
+
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.CepEstacionamento)
+            </div>
+
+            <div class="col-mg-3">
+                <strong>@Html.DisplayName("Qual o CEP para onde o carro mais se desloca?*")</strong>
+            </div>
+
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.CepDeslocamento)
+            </div>
+
+
+            <div>
+                <strong>@Html.DisplayName("O Carro é Utilizado Para:*")</strong>
+                <div class="col-mg-12">
+                   @Html.DisplayFor(model => model.IEUtilizacaoVeiculoLazer) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoLazer) 
+                </div>
+
+                <span id="IEUtilizacaoVeiculoTrabalho" class="@Model.IEUtilizacaoVeiculoTrabalho.ToString()"></span>
+                <div class="col-mg-12">
+                    @Html.DisplayFor(model => model.IEUtilizacaoVeiculoTrabalho) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoTrabalho)
+                </div>
+                <ul>
+                    <li class="IELocalGaragemTrabalho">
+                        @Html.DisplayFor(model => model.IELocalGaragemTrabalho) @Html.DisplayNameFor(model => model.IELocalGaragemTrabalho)
+                    </li>
+
+                    <li class="IEDistanciaParaTrabalhoVeiculo">
+                        @Html.DisplayFor(model => model.IEDistanciaParaTrabalhoVeiculo) @Html.DisplayNameFor(model => model.IEDistanciaParaTrabalhoVeiculo)
+                    </li>
+                </ul>
+                
+                <div class="col-mg-12">
+                    @Html.DisplayFor(model => model.IEUtilizacaoVeiculoEstudo) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoEstudo)
+                </div>
+
+                <ul>
+                    <li class="IELocalGaragemEstudo">
+                        @Html.DisplayFor(model => model.IELocalGaragemEstudo) @Html.DisplayNameFor(model => model.IELocalGaragemEstudo)
+                    </li>
+                </ul>
+                <span id="IEUtilizacaoVeiculoEstudo" class="@Model.IEUtilizacaoVeiculoEstudo.ToString()"></span>
+                <div class="col-mg-12">
+                       @Html.DisplayFor(model => model.IEUtilizacaoVeiculoInstrumento) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoInstrumento)
+                </div>
+                <ul>
+                    <li class="IEUtilizacaoVeiculoInstrumentoForma">
+                        @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoInstrumentoForma)
+                    </li>
+
+                    <li class="IEUtilizacaoVeiculoInstrumentoForma">
+                        @Html.DisplayFor(model => model.IEUtilizacaoVeiculoInstrumentoForma)
+                    </li>
+                </ul>
+            </div>
+            <div class="col-mg-3">
+               <strong>@Html.DisplayNameFor(model => model.IEKmEmMedia)</strong>
+            </div>
+
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.IEKmEmMedia)
+            </div>
+            <!-- PASSO 2 - FIM-->
+            <!-- PASSO 3 - INICIO -->
+            <!-- segurado -->
+            <div>
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayNameFor(model => model.Segurado.Nome)</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Segurado.Nome)
+                </div>
+
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayNameFor(model => model.Segurado.DataNascimento)</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Segurado.DataNascimento)
+                </div>
+
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayNameFor(model => model.Segurado.IESexo)</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Segurado.IESexo)
+                </div>
+
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayNameFor(model => model.Segurado.IEEstadoCivil)</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Segurado.IEEstadoCivil)
+                </div>
+
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayName("CPF segurado*")</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Segurado.CodigoCpf)
+                </div>
+
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayName("CEP da residência do segurado*")</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Segurado.NumeroCep)
+                </div>
+
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayNameFor(model => model.Segurado.IEPossuiOutrosCarros)</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Segurado.IEPossuiOutrosCarros)
+                </div>
+
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayNameFor(model => model.Segurado.IEQuantidadeCarro)</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Segurado.IEQuantidadeCarro)
+                </div>
+
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayName("Anos de CNH do segurado*")</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Segurado.AnosDeCNH)
+                </div>
+
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayNameFor(model => model.Segurado.IEProprietarioVeiculo)</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Segurado.IEProprietarioVeiculo)
+                </div>
+            </div>
+            <!--PROPRIETARIO - INICIO -->
+            <h2>DADOS DO PROPRIETÁRIO</h2>
+            <div>
+                <div class="col-mg-3">
+                    <strong> @Html.DisplayNameFor(model => model.Proprietario.Nome)</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Proprietario.Nome)
+                </div>
+
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayNameFor(model => model.Proprietario.DataNascimento)</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Proprietario.DataNascimento)
+                </div>
+
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayNameFor(model => model.Proprietario.IESexo)</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Proprietario.IESexo)
+                </div>
+
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayNameFor(model => model.Proprietario.IERelacaoProprietario)</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Proprietario.IERelacaoProprietario)
+                </div>
+
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayNameFor(model => model.Proprietario.IEEstadoCivil)</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Proprietario.IEEstadoCivil)
+                </div>
+
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayName("CPF Proprietario*")</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Proprietario.CodigoCpf)
+                </div>
+
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayName("CEP da residência do proprietario*")</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Proprietario.NumeroCep)
+                </div>
+
+            </div>
+            <!--PROPRIETARIO - FIM -->
+            <!--SEGURO ATUAL - INICIO -->
+            <div >
                 <h2>SEGURO ATUAL</h2>
-                <dt>
-                    @Html.DisplayName("O que o Cliente procura ao realizar essa cotação?")
-                </dt>
+                <span id="IEMotivoCotacao" class="@Model.IEMotivoCotacao"></span>
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayName("O que o Cliente procura ao realizar essa cotação?")</strong>
+                </div>
 
-                <dd>
+                <div class="col-mg-9">
                     @Html.DisplayFor(model => model.IEMotivoCotacao)
-                </dd>
-                <dt>
-                    @Html.DisplayName("primeiro seguro")
-                </dt>
+                </div>
+                <div class="IEMotivoCotacao1">
+                    <strong>@Html.DisplayName("primeiro seguro")</strong>
+                </div>
 
-                <dd>
+                <div class="IEMotivoCotacao1">
                     @Html.DisplayFor(model => model.IEPrimeiroSeguro)
-                </dd>
+                </div>
                 <!--Renovar Seguro-->
-                <div>
-                    <dt>
-                        @Html.DisplayName("As opções que o Cliente se identifica:")
-                    </dt>
+                <div class="IEMotivoCotacao2">
+                    <div class="col-mg-3">
+                        <strong>@Html.DisplayName("As opções que o Cliente se identifica:")</strong>
+                    </div>
 
-                    <dd>
+                    <div class="col-mg-9">
                         @Html.DisplayFor(model => model.IESeguroAtualQuerMaisOpcoes)
-                    </dd>
+                    </div>
 
-                    <dt>
-                        @Html.DisplayName("Seguradora atual:")
-                    </dt>
+                    <div class="col-mg-3">
+                        <strong>@Html.DisplayName("Seguradora atual:")</strong>
+                    </div>
 
-                    <dd>
+                    <div class="col-mg-9">
                         @Html.DisplayFor(model => model.NomeSeguradoraAtual)
-                    </dd>
+                    </div>
 
-                    <dt>
-                        @Html.DisplayName("Data de vencimento da apólice atual*")
-                    </dt>
+                    <div class="col-mg-3">
+                        <strong>@Html.DisplayName("Data de vencimento da apólice atual*")</strong>
+                    </div>
 
-                    <dd>
+                    <div class="col-mg-9">
                         @Html.DisplayFor(model => model.DataApoliceAtualVencimento)
-                    </dd>
+                    </div>
 
-                    <dt>
-                        @Html.DisplayName("Classe de bônus que está na sua apólice atual")
+                    <div class="col-mg-3">
+                        <strong>@Html.DisplayName("Classe de bônus que está na sua apólice atual")</strong>
                         <i>Informar o bônus sem considerar os sinistros que ocorreram durante a vigência do seguro.</i>
-                    </dt>
+                    </div>
 
-                    <dd>
+                    <div class="col-mg-9">
                         @Html.DisplayFor(model => model.IEBonusSeguroAtualSemSinistro)
-                    </dd>
-                    <dt>
-                        @Html.DisplayName("Classe de bônus que está na sua apólice atual")
+                    </div>
+                    <div class="col-mg-3">
+                        <strong>@Html.DisplayName("Classe de bônus que está na sua apólice atual")</strong>
                         <i>Sinistro é todo evento em que a Seguradora indeniza o segurado e/ou um terceiro.</i>
-                    </dt>
+                    </div>
 
-                    <dd>
+                    <div class="col-mg-9">
                         @Html.DisplayFor(model => model.IEBonusSeguroAtualComSinistro)
-                    </dd>
+                    </div>
 
-                    <dt>
-                        @Html.DisplayName("Número da apólice:")
-                    </dt>
+                    <div class="col-mg-3">
+                        <strong>@Html.DisplayName("Número da apólice:")</strong>
+                    </div>
 
-                    <dd>
+                    <div class="col-mg-9">
                         @Html.DisplayFor(model => model.NumeroApoliceAntiga)
-                    </dd>
+                    </div>
 
-                    <dt>
-                        @Html.DisplayName("Número da CI:")
-                    </dt>
+                    <div class="col-mg-3">
+                        <strong>@Html.DisplayName("Número da CI:")</strong>
+                    </div>
 
-                    <dd>
+                    <div class="col-mg-9">
                         @Html.DisplayFor(model => model.NumeroCIAntiga)
-                    </dd>
+                    </div>
 
                 </div>
                 <!--Renovar Seguro-->
             </div>
             <!-- PASSO 3 - FIM -->
             <!-- PASSO 4 - INICIO -->
-        <dt>
-            @Html.DisplayName("Quem é o condutor principal do carro?:")
-        </dt>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayName("Quem é o condutor principal do carro?:")</strong>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Segurado.IECondutorPrincipal)
-        </dd>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.Segurado.IECondutorPrincipal)
+            </div>
 
-        <!--Outro Condutor-->
-        <dt>
-            @Html.DisplayName("Nome completo do (a)condutor(a) principal")
-        </dt>
+            <!--Outro Condutor-->
+            <div class="col-mg-3">
+                <strong>@Html.DisplayName("Nome completo do (a)condutor(a) principal")</strong>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.OutroCondutor.Nome)
-        </dd>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.OutroCondutor.Nome)
+            </div>
 
-        <dt>
-            @Html.DisplayName("Nome completo do (a)condutor(a) principal")
-        </dt>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayName("Sexo:")</strong>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.OutroCondutor.IESexo)
-        </dd>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.OutroCondutor.IESexo)
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OutroCondutor.IEEstadoCivil)
-        </dt>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayNameFor(model => model.OutroCondutor.IEEstadoCivil)</strong>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.OutroCondutor.IEEstadoCivil)
-        </dd>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.OutroCondutor.IEEstadoCivil)
+            </div>
 
-        <dt>
-            @Html.DisplayName("CPF do Outro Condutor*")
-        </dt>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayName("CPF do Outro Condutor*")</strong>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.OutroCondutor.CodigoCpf)
-        </dd>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.OutroCondutor.CodigoCpf)
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OutroCondutor.IERelacaoProprietario)
-        </dt>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayNameFor(model => model.OutroCondutor.IERelacaoProprietario)</strong>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.OutroCondutor.IERelacaoProprietario)
-        </dd>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.OutroCondutor.IERelacaoProprietario)
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OutroCondutor.NumeroCep)
-        </dt>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayName("CEP da residência do Outro Contudor*")</strong>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.OutroCondutor.NumeroCep)
-        </dd>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.OutroCondutor.NumeroCep)
+            </div>
+            <!--Outro condutor - Fim -->
 
-        <dt>
-            @Html.DisplayName("CEP da residência do Outro Contudor*")
-        </dt>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayName("Tipo de residência do Principal*")</strong>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.OutroCondutor.NumeroCep)
-        </dd>
-        <!--Outro condutor - Fim -->
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.Segurado.IETipoResidencia)
+            </div>
 
-        <dt>
-            @Html.DisplayName("Tipo de residência do Principal*")
-        </dt>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayName("Qual a profissão do Principal?*")</strong>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Segurado.IETipoResidencia)
-        </dd>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.Segurado.Profissao)
+            </div>
 
-        <dt>
-            @Html.DisplayName("Qual a profissão do Principal?*")
-        </dt>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayName("Nos últimos 24 meses Principal foi vítima de roubo / furto de carro?*")</strong>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Segurado.Profissao)
-        </dd>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.Segurado.IERoubadoEm24Meses)
+            </div>
 
-        <dt>
-            @Html.DisplayName("Nos últimos 24 meses Principal foi vítima de roubo / furto de carro?*")
-        </dt>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayName("Algum Condutor Estuda?*")</strong>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Segurado.IERoubadoEm24Meses)
-        </dd>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.Segurado.IEAlgumCondutorEstuda)
+            </div>
 
-        <dt>
-            @Html.DisplayName("Nos últimos 24 meses Principal foi vítima de roubo / furto de carro?*")
-        </dt>
+            <!-- PASSO 4 - FIM -->
+            <!-- PASSO 5 - INICIO -->
+            <h2>Contato Do Segurado</h2>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayName("Nome Completo")</strong>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Segurado.IEAlgumCondutorEstuda)
-        </dd>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.Segurado.Nome)
+            </div>
 
-        <!-- PASSO 4 - FIM -->
-        <!-- PASSO 5 - INICIO -->
-        <h2>Contato Do Segurado</h2>
-        <dt>
-            @Html.DisplayName("Nome Completo")
-        </dt>
+            <div class="col-mg-3">
+                <strong>@Html.DisplayName("E-mail")</strong>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Segurado.Nome)
-        </dd>
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.Segurado.Email)
+            </div>
+            @if (Model.Segurado.Telefones.Count >= 1)
+            {
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayName("Telefone Fixo")</strong>
+                </div>
 
-        <dt>
-            @Html.DisplayName("E-mail")
-        </dt>
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Segurado.Telefones[0].NumeroTelefone)
+                </div>
+            }
 
-        <dd>
-            @Html.DisplayFor(model => model.Segurado.Email)
-        </dd>
-        @if (Model.Segurado.Telefones.Count >= 1)
+            @if (Model.Segurado.Telefones.Count >= 2)
+            {
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayName("Telefone Celular")</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Segurado.Telefones[1].NumeroTelefone)
+                </div>
+            }
+
+            @if (Model.Segurado.Telefones.Count >= 3)
+            {
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayName("Telefone Comercial")</strong>
+                </div>
+
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Segurado.Telefones[2].NumeroTelefone)
+                </div>
+            }
+
+            <div class="col-mg-12">
+                @Html.DisplayFor(model => model.Segurado.IENoticiasEmail)<strong>@Html.DisplayNameFor(model => model.Segurado.IENoticiasEmail)</strong>
+            </div>
+
+            <h2>VANTAGENS E PREFERÊNCIAS</h2>
+
+            <div class="col-mg-12">
+                @Html.DisplayFor(model => model.Segurado.IEItauPersonalite) @Html.DisplayNameFor(model => model.Segurado.IEItauPersonalite)
+            </div>
+
+            <div class="col-mg-12">
+                @Html.DisplayFor(model => model.Segurado.IECartaoPortoSeguroVisa) @Html.DisplayNameFor(model => model.Segurado.IECartaoPortoSeguroVisa)
+            </div>
+
+            <div class="col-mg-3">
+                @Html.DisplayNameFor(model => model.NumeroPlaca)
+            </div>
+
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.NumeroPlaca)
+            </div>
+
+            <div class="col-mg-3">
+                @Html.DisplayNameFor(model => model.NumeroChassi)
+            </div>
+
+            <div class="col-mg-9">
+                @Html.DisplayFor(model => model.NumeroChassi)
+            </div>
+
+            <!-- PASSO 5 - FIM -->
+
+        </div>
+    </div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        //controles da pagina
+        if ($("#IETipoEstacionamento").attr('class') == 'ESTACIONAMENTO') {
+            $('.IETipoPortao').show();
+        }
+        else
         {
-        <dt>
-            @Html.DisplayName("Telefone Fixo")
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Segurado.Telefones[0].NumeroTelefone)
-        </dd>
+            $('.IETipoPortao').hide();
         }
 
-        @if (Model.Segurado.Telefones.Count >= 2)
-        {
-            <dt>
-                @Html.DisplayName("Telefone Celular")
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Segurado.Telefones[1].NumeroTelefone)
-            </dd>
+        //passo2
+        if ($("#IEUtilizacaoVeiculoTrabalho").attr('class') == 'SIM') {
+            $('.IELocalGaragemTrabalho').show();
+            $('.IEDistanciaParaTrabalhoVeiculo').show();
+        }
+        else {
+            $('.IELocalGaragemTrabalho').hide();
+            $('.IEDistanciaParaTrabalhoVeiculo').hide();
         }
 
-        @if (Model.Segurado.Telefones.Count >= 3)
-        {
-            <dt>
-                @Html.DisplayName("Telefone Comercial")
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Segurado.Telefones[2].NumeroTelefone)
-            </dd>
+        if ($("#IEUtilizacaoVeiculoEstudo").attr('class') == 'True') {
+            $('.IELocalGaragemEstudo').show();
+        }
+        else {
+            $('.IELocalGaragemEstudo').hide();
         }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Segurado.IENoticiasEmail)
-        </dt>
+        if ($("#IEUtilizacaoVeiculoInstrumento").attr('class') == 'True') {
+            $('.IEUtilizacaoVeiculoInstrumentoForma').show();
+        }
+        else {
+            $('.IEUtilizacaoVeiculoInstrumentoForma').hide();
+        }
+        //passo3
+        if ($("#IEMotivoCotacao").attr('class') == 'FAZERPRIMEIROSEGURO')
+        {
+            $('.IEMotivoCotacao1').show();
+        }
+        else
+        {
+            $('.IEMotivoCotacao1').hide();
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.Segurado.IENoticiasEmail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Segurado.IENoticiasEmail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Segurado.IENoticiasEmail)
-        </dd>
-
-        <h2>VANTAGENS E PREFERÊNCIAS</h2>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Segurado.IEItauPersonalite)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Segurado.IEItauPersonalite)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Segurado.IECartaoPortoSeguroVisa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Segurado.IECartaoPortoSeguroVisa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumeroPlaca)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumeroPlaca)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumeroChassi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumeroChassi)
-        </dd>
-
-        <!-- PASSO 5 - FIM -->
-
-        </dl>
+        if ($("#IEMotivoCotacao").attr('class') == 'RENOVARSEGURO')
+        {
+            $('.IEMotivoCotacao2').show();
+        }
+        else {
+            $('.IEMotivoCotacao2').hide();
+        }
 
 
-</div>
+        if ($("#IEPossuiOutrosCarros").attr('class') == 'True') {
+            $('.IEQuantidadeCarro').show();
+        }
+        else {
+            $('.IEQuantidadeCarro').hide();
+        }
+
+        if ($("#Segurado.IsSegurado").attr('class') == 'False') {
+            $('.Proprietario').show();
+        }
+        else {
+            $('.Proprietario').hide();
+        }
+
+
+        //checkbox
+            
+
+    });
+
+    $(".cep").inputmask("99.999-999");
+
+</script>
