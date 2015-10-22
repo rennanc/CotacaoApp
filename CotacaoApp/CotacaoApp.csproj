@@ -226,6 +226,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministracaoController.cs" />
     <Compile Include="Controllers\ApoliceController.cs" />
+    <Compile Include="Controllers\ValorPropostaController.cs" />
     <Compile Include="Controllers\CondutorController.cs" />
     <Compile Include="Controllers\EndossoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -252,6 +253,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Apolice.cs" />
     <Compile Include="Models\Comissao.cs" />
+    <Compile Include="Models\ValorProposta.cs" />
     <Compile Include="Models\Endosso.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -482,6 +484,11 @@
     <Content Include="Views\Condutor\Details.cshtml" />
     <Content Include="Views\Condutor\Edit.cshtml" />
     <Content Include="Views\Condutor\Index.cshtml" />
+    <Content Include="Views\ValorProposta\Create.cshtml" />
+    <Content Include="Views\ValorProposta\Delete.cshtml" />
+    <Content Include="Views\ValorProposta\Details.cshtml" />
+    <Content Include="Views\ValorProposta\Edit.cshtml" />
+    <Content Include="Views\ValorProposta\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

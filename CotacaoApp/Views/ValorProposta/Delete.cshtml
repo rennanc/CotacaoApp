@@ -1,0 +1,73 @@
+﻿@model CotacaoApp.Models.ValorProposta
+
+@{
+    ViewBag.Title = "Excluir Valor Proposta";
+}
+
+<h2>Excluir Valor Proposta</h2>
+
+<h3>Você tem certeza de que quer deletar isso?</h3>
+<div>
+    <h4>Valor Proposta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoCondutor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoCondutor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoApolice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoApolice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataVencimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataVencimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para a Lista", "Index")
+        </div>
+    }
+</div>
