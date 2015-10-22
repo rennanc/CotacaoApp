@@ -226,6 +226,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministracaoController.cs" />
     <Compile Include="Controllers\ApoliceController.cs" />
+    <Compile Include="Controllers\CondutorController.cs" />
     <Compile Include="Controllers\EndossoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -476,6 +477,11 @@
     <Content Include="Views\Endosso\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <Content Include="Views\Apolice\SendForm.cshtml" />
+    <Content Include="Views\Condutor\Create.cshtml" />
+    <Content Include="Views\Condutor\Delete.cshtml" />
+    <Content Include="Views\Condutor\Details.cshtml" />
+    <Content Include="Views\Condutor\Edit.cshtml" />
+    <Content Include="Views\Condutor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

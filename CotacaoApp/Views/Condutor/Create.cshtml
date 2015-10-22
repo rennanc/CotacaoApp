@@ -1,0 +1,193 @@
+﻿@model CotacaoApp.Models.Condutor
+
+@{
+    ViewBag.Title = "Novo Condutor";
+}
+
+<h2>Criar</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Formulario</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.codigoSegurado, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.codigoSegurado, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.codigoSegurado, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CodigoCpf, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.CodigoCpf, 20, 100, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.CodigoCpf, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IESexo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.IESexo, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.IESexo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IEEstadoCivil, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.IEEstadoCivil, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.IEEstadoCivil, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NumeroCep, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.NumeroCep, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.NumeroCep, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IEPossuiOutrosCarros, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.IEPossuiOutrosCarros, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.IEPossuiOutrosCarros, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IEQuantidadeCarro, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.IEQuantidadeCarro, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.IEQuantidadeCarro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AnosDeCNH, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.AnosDeCNH, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.AnosDeCNH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IEProprietarioVeiculo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.IEProprietarioVeiculo, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.IEProprietarioVeiculo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IERelacaoProprietario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.IERelacaoProprietario, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.IERelacaoProprietario, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IECondutorPrincipal, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.IECondutorPrincipal, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.IECondutorPrincipal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IETipoResidencia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.IETipoResidencia, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.IETipoResidencia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Profissao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Profissao, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.Profissao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IERoubadoEm24Meses, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.IERoubadoEm24Meses, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.IERoubadoEm24Meses, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IEAlgumCondutorEstuda, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.IEAlgumCondutorEstuda, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.IEAlgumCondutorEstuda, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Email, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IENoticiasEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.IENoticiasEmail, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.IENoticiasEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IEItauPersonalite, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.IEItauPersonalite, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.IEItauPersonalite, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IECartaoPortoSeguroVisa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.IECartaoPortoSeguroVisa, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.ValidationMessageFor(model => model.IECartaoPortoSeguroVisa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div><input type="submit" value="Cadastrar" class="form-control" /></div>
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar para a Lista", "Index")
+</div>

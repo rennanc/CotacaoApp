@@ -1,0 +1,97 @@
+﻿@model CotacaoApp.Models.Condutor
+
+@{
+    ViewBag.Title = "Excluir Condutor";
+}
+
+<h2>Excluir Condutor</h2>
+
+<h3>Você tem certeza de que quer deletar isso?</h3>
+<div>
+    <h4>Condutor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.codigoSegurado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigoSegurado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoCpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoCpf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IESexo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IESexo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IEEstadoCivil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IEEstadoCivil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroCep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroCep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnosDeCNH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnosDeCNH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IEProprietarioVeiculo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IEProprietarioVeiculo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para a Lista", "Index")
+        </div>
+    }
+</div>

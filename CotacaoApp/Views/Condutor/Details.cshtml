@@ -1,0 +1,74 @@
+﻿@model CotacaoApp.Models.Condutor
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoCpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoCpf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IESexo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IESexo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IEEstadoCivil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IEEstadoCivil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroCep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroCep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnosDeCNH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnosDeCNH)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Editar", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para a Lista", "Index")
+</p>
