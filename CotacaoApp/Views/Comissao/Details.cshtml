@@ -1,0 +1,66 @@
+﻿@model CotacaoApp.Models.Comissao
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorPremioLiquido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorPremioLiquido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorPercentualLiquido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorPercentualLiquido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorComissaoLiquida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorComissaoLiquida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorPercentualCiss)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorPercentualCiss)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorPercentualCir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorPercentualCir)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Editar", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para a Lista", "Index")
+</p>

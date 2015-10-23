@@ -1,0 +1,73 @@
+﻿@model CotacaoApp.Models.Comissao
+
+@{
+    ViewBag.Title = "Excluir Valor Comissão";
+}
+
+<h2>Excluir Valor Comissão</h2>
+
+<h3>Você tem certeza de que quer deletar isso?</h3>
+<div>
+    <h4>Valor Comissao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorPremioLiquido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorPremioLiquido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorPercentualLiquido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorPercentualLiquido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorComissaoLiquida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorComissaoLiquida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorPercentualCiss)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorPercentualCiss)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorPercentualCir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorPercentualCir)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para a Lista", "Index")
+        </div>
+    }
+</div>

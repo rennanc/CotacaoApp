@@ -1,0 +1,74 @@
+﻿@model IEnumerable<CotacaoApp.Models.Comissao>
+
+@{
+    ViewBag.Title = "Valor Comissão";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Novo Valor Proposta", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoUsuario)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ValorPremioLiquido)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ValorPercentualLiquido)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ValorComissaoLiquida)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ValorPercentualCiss)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ValorPercentualCir)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoUsuario)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorPremioLiquido)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorPercentualLiquido)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorComissaoLiquida)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorPercentualCiss)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorPercentualCir)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Deletar", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
