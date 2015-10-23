@@ -2,7 +2,7 @@
 @using CotacaoApp.Models
 @if (Session["UsuarioLogado"] != null)//(Request.IsAuthenticated)
     {
-        Usuario usuario = (Usuario)Session["UsuarioLogado"];
+        Usuario usuarioLogin = (Usuario)Session["UsuarioLogado"];
         using (Html.BeginForm("logout", "Login", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
         {
             @Html.AntiForgeryToken()
@@ -10,7 +10,7 @@
             <ul class="nav navbar-nav navbar-right">
         <li>
             @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
-            @Html.ActionLink("Olá " + usuario.Login + " !", "Index", "Usuario", routeValues: null, htmlAttributes: new { title = "Usuarios" })
+            @Html.ActionLink("Olá " + usuarioLogin.Nome + " !", "Index", "Usuario", routeValues: null, htmlAttributes: new { title = "Usuarios" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Sair</a></li>
     </ul>

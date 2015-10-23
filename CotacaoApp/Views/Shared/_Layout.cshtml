@@ -11,6 +11,14 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/inputmask")
     @RenderSection("scripts", required: false)
+    @using CotacaoApp.Models
+    @using CotacaoApp.Enumerations
+
+
+    @{
+        Usuario usuarioSessao = Session["UsuarioLogado"] as Usuario;
+    }
+
 
 </head>
 <body>
@@ -28,18 +36,30 @@
                 <ul class="nav navbar-nav ">
                     @if (Session["UsuarioLogado"] != null)
                     {
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administração <span class="caret"></span></a>
-                        @*@Html.ActionLink("Administracao", "Index", "Administracao")*@
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Propostas", "Index", "Proposta")</li>
-                            <li>@Html.ActionLink("Apolice", "Index", "Apolice")</li>
-                            <li>@Html.ActionLink("Usuario", "Index", "Usuario")</li>
-                            <li>@Html.ActionLink("Cobertura", "Index", "Cobertura")</li>
-                            <li>@Html.ActionLink("Seguradora", "Index", "Seguradora")</li>
-                            
-                        </ul>
-                    </li>
+                        if (usuarioSessao.Permissao == Permissao.ADMINISTRADOR)
+                        {
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administração <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Usuario", "Index", "Usuario")</li>
+                                    <li>@Html.ActionLink("Cobertura", "Index", "Cobertura")</li>
+                                    <li>@Html.ActionLink("Seguradora", "Index", "Seguradora")</li>
+                                </ul>
+                            </li>
+                        }
+                        if (usuarioSessao.Permissao == Permissao.CORRETOR || usuarioSessao.Permissao == Permissao.ADMINISTRADOR)
+                        {
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Seguradora <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Propostas", "Index", "Proposta")</li>
+                                <li>@Html.ActionLink("Apolice", "Index", "Apolice")</li>
+                                <li>@Html.ActionLink("Cobertura", "Index", "Cobertura")</li>
+                                <li>@Html.ActionLink("Pagamentos", "Index", "ValorProposta")</li>
+                                <li>@Html.ActionLink("Endosso", "Index", "Endosso")</li>
+                            </ul>
+                        </li>
+                        }
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
