@@ -1,19 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using CotacaoApp.Models;
 using CotacaoApp.DAO;
 using Microsoft.Web.Mvc;
-using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Validation;
+using CotacaoApp.Filters;
 
 namespace CotacaoApp.Controllers
 {
+    [AutorizacaoFilter]
     public class PropostaController : Controller
     {
 
@@ -172,7 +171,9 @@ namespace CotacaoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Proposta proposta = db.Proposta.Find(id);
+            //Proposta proposta = db.Proposta.Find(id);
+            PropostaDAO propostaDao = new PropostaDAO();
+            Proposta proposta = propostaDao.GetProposta(id);
             if (proposta == null)
             {
                 return HttpNotFound();

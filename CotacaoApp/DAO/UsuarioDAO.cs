@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data.Common;
 using CotacaoApp.Models;
 using System.Web.UI.WebControls;
+using CotacaoApp.Enumerations;
 
 namespace CotacaoApp.DAO
 {
@@ -33,7 +34,7 @@ namespace CotacaoApp.DAO
                     Id = reader.GetInt16(reader.GetOrdinal("CD_USUARIO")),
                     Login = reader.GetString(reader.GetOrdinal("NM_USUARIO")),
                     Nome = reader.GetString(reader.GetOrdinal("NM_NOME")),
-                    Permissao = reader.GetInt16(reader.GetOrdinal("FL_PERMISSAO"))
+                    Permissao = (Permissao)reader.GetInt16(reader.GetOrdinal("FL_PERMISSAO"))
                 };
             }
             return user;

@@ -12,7 +12,7 @@ using CotacaoApp.Filters;
 
 namespace CotacaoApp.Controllers
 {
-    //[AutorizacaoFilter]
+    [AutorizacaoFilter]
     public class UsuarioController : Controller
     {
         private DefaultConnection db = new DefaultConnection();

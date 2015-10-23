@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using CotacaoApp.Models;
 using CotacaoApp.DAO;
+using CotacaoApp.Filters;
 
 namespace CotacaoApp.Controllers
 {
+    [AutorizacaoFilter]
     public class CondutorController : Controller
     {
         private DefaultConnection db = new DefaultConnection();

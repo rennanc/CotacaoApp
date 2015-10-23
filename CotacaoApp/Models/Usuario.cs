@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CotacaoApp.Enumerations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CotacaoApp.Models
@@ -30,7 +31,7 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Permissao")]
         [Column("FL_PERMISSAO")]
-        public int Permissao { get; set; }
+        public Permissao Permissao { get; set; }
 
     }
 }

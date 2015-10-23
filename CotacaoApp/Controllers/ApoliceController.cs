@@ -9,9 +9,11 @@ using System.Web.Mvc;
 using CotacaoApp.Models;
 using CotacaoApp.DAO;
 using CotacaoApp.Util;
+using CotacaoApp.Filters;
 
 namespace CotacaoApp.Controllers
 {
+    [AutorizacaoFilter]
     public class ApoliceController : Controller
     {
         private DefaultConnection db = new DefaultConnection();
