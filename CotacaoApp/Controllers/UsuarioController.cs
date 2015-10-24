@@ -41,7 +41,8 @@ namespace CotacaoApp.Controllers
         // GET: Usuario/Create
         public ActionResult Create()
         {
-            return View();
+            Usuario usuario = new Usuario();
+            return View(usuario);
         }
 
         // POST: Usuario/Create

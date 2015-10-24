@@ -163,10 +163,10 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Proprietario.IEEstadoCivil, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    <p>@Html.RadioButtonFor(model => model.Proprietario.IEEstadoCivil, "0") Casado(a) ou reside há pelo menos 2 anos com companheiro(a)</p>
-                    <p>@Html.RadioButtonFor(model => model.Proprietario.IEEstadoCivil, "1") Separado(a)/Divorciado(a)</p>
-                    <p>@Html.RadioButtonFor(model => model.Proprietario.IEEstadoCivil, "2") Solteiro(a)</p>
-                    <p>@Html.RadioButtonFor(model => model.Proprietario.IEEstadoCivil, "3") Viúvo(a)</p>
+                    <p>@Html.RadioButtonFor(model => model.Proprietario.IEEstadoCivil, IEEstadoCivil.CASADOAOURESIDEHAPELOMENOS2ANOSCOMCOMPANHEIROA) Casado(a) ou reside há pelo menos 2 anos com companheiro(a)</p>
+                    <p>@Html.RadioButtonFor(model => model.Proprietario.IEEstadoCivil, IEEstadoCivil.SEPARADOADIVORCIADOA) Separado(a)/Divorciado(a)</p>
+                    <p>@Html.RadioButtonFor(model => model.Proprietario.IEEstadoCivil, IEEstadoCivil.SOLTEIROA) Solteiro(a)</p>
+                    <p>@Html.RadioButtonFor(model => model.Proprietario.IEEstadoCivil, IEEstadoCivil.VIUVOA) Viúvo(a)</p>
                     <p>@Html.ValidationMessageFor(model => model.Proprietario.IEEstadoCivil, "", new { @class = "text-danger" })
                 </div>
             </div>

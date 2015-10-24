@@ -9,6 +9,7 @@ using CotacaoApp.DAO;
 using Microsoft.Web.Mvc;
 using System.Data.Entity.Validation;
 using CotacaoApp.Filters;
+using System.Collections.Generic;
 
 namespace CotacaoApp.Controllers
 {
@@ -57,7 +58,15 @@ namespace CotacaoApp.Controllers
         // GET: Proposta
         public ActionResult Index()
         {
-            return View(db.Proposta.ToList());
+            List<Proposta> propostas = db.Proposta.ToList();
+            List<Proposta> propostasCompleta = new List<Proposta>();
+            PropostaDAO propostaDAO = new PropostaDAO();
+            foreach (Proposta proposta in propostas)
+            {
+                propostasCompleta.Add(propostaDAO.GetProposta(proposta.Id));
+            }
+
+            return View(propostasCompleta);
         }
 
 

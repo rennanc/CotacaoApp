@@ -68,23 +68,23 @@ namespace CotacaoApp.Models
         //tipo veiculo
         [Display(Name = "Taxi")]
         [Column("IE_TIPOVEICULO_TAXI")]
-        public IETipoVeiculoTaxi IETipoVeiculoTaxi { get; set; }
+        public bool IETipoVeiculoTaxi { get; set; }
 
         [Display(Name = "Adaptado para deficiente físico")]
         [Column("IE_TIPOVEICULO_DEFICIENTE")]
-        public IETipoVeiculoDeficiente IETipoVeiculoDeficiente { get; set; }
+        public bool IETipoVeiculoDeficiente { get; set; }
 
         [Display(Name = "Tem Kit Gás")]
         [Column("IE_TIPOVEICULO_KITGAS")]
-        public IETipoVeiculoKitGas IETipoVeiculoKitGas { get; set; }
+        public bool IETipoVeiculoKitGas { get; set; }
 
         [Display(Name = "É Blindado")]
         [Column("IE_TIPOVEICULO_BLINDADO")]
-        public IETipoVeiculoBlindado IETipoVeiculoBlindado { get; set; }
+        public bool IETipoVeiculoBlindado { get; set; }
 
         [Display(Name = "É para Pessoa Jurídica")]
         [Column("IE_TIPOVEICULO_PESSOAJURIDICA")]
-        public IETipoVeiculoPessoaJuridica IETipoVeiculoPessoaJuridica { get; set; }
+        public bool IETipoVeiculoPessoaJuridica { get; set; }
         //tipo veiculo
 
         [Display(Name = "Possui alarme ou algum dispositivo antifurto?*")]

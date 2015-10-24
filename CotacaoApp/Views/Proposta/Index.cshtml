@@ -15,7 +15,13 @@
             @Html.DisplayNameFor(model => model.Id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NomeVeiculo)
+            @Html.DisplayNameFor(model => model.Segurado.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Segurado.NumeroCep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cobertura.NomeCobertura)
         </th>
         <th></th>
     </tr>
@@ -26,12 +32,18 @@
             @Html.DisplayFor(modelItem => item.Id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NomeVeiculo)
+            @Html.DisplayFor(modelItem => item.Segurado.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Segurado.NumeroCep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cobertura.NomeCobertura)
         </td>
         <td>
             @Html.ActionLink("Criar Apolice", "Create", "Apolice", new { propostaId = item.Id }, new { propostaId = item.Id }) |
             @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Detailhes", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.Id }) |
             @Html.ActionLink("Deletar", "Delete", new { id=item.Id })
         </td>
     </tr>

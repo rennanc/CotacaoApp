@@ -53,18 +53,18 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.OutroCondutor.IESexo, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    @Html.RadioButtonFor(model => model.OutroCondutor.IESexo, "M") Masculino
-                    @Html.RadioButtonFor(model => model.OutroCondutor.IESexo, "F") Feminino
+                    @Html.RadioButtonFor(model => model.OutroCondutor.IESexo, IESexo.MASCULINO) Masculino
+                    @Html.RadioButtonFor(model => model.OutroCondutor.IESexo, IESexo.FEMININO) Feminino
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.OutroCondutor.IEEstadoCivil, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IEEstadoCivil, "0") Casado(a) ou reside há pelo menos 2 anos com companheiro(a)</p>
-                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IEEstadoCivil, "1") Separado(a)/Divorciado(a)</p>
-                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IEEstadoCivil, "2") Solteiro(a)</p>
-                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IEEstadoCivil, "3") Viúvo(a)</p>
+                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IEEstadoCivil, IEEstadoCivil.CASADOAOURESIDEHAPELOMENOS2ANOSCOMCOMPANHEIROA) Casado(a) ou reside há pelo menos 2 anos com companheiro(a)</p>
+                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IEEstadoCivil, IEEstadoCivil.SEPARADOADIVORCIADOA) Separado(a)/Divorciado(a)</p>
+                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IEEstadoCivil, IEEstadoCivil.SOLTEIROA) Solteiro(a)</p>
+                    <p>@Html.RadioButtonFor(model => model.OutroCondutor.IEEstadoCivil, IEEstadoCivil.VIUVOA) Viúvo(a)</p>
                     <p>@Html.ValidationMessageFor(model => model.OutroCondutor.IEEstadoCivil, "", new { @class = "text-danger" })
                 </div>
             </div>
