@@ -148,7 +148,7 @@
 
     //controles da pagina
     $("input[name='IETipoEstacionamento']").on('click', function () {
-        if ($(this).val() == 'ESTACIONAMENTO') {
+        if ($(this).val() == 'RESIDENCIAGARAGEM') {
             $('#IETipoPortao').show();
         } else {
             $('#IETipoPortao').hide();
@@ -193,7 +193,6 @@
     });
 
     //CAMPOS QUE SERÃO VALIDADOS
-    ///para o Bruno fazer
     $("#Proposta").validate({
         rules: {
             IETipoEstacionamento: {
@@ -228,6 +227,33 @@
             },
             IeKmMedia: {
                 required: true
+            },
+            CodigoCobertura: {
+                required: true
+            },
+            AnoFabricacaoVeiculo: {
+                required: true
+            },
+            NomeMarcaVeiculo: {
+                required: true
+            },
+            AnoModelo: {
+                required: true
+            },
+            IEZeroKM: {
+                required: true
+            },
+            NomeVeiculo: {
+                required: true
+            },
+            IEFinanciadoVeiculo: {
+                required: true
+            },
+            IEAlarmeVeiculo: {
+                required: true
+            },
+            messages: {
+                required: "Campo Obrigatório"
             }
         }
     });

@@ -223,6 +223,7 @@ namespace CotacaoApp.Controllers
 
             PropostaDAO propostaDao = new PropostaDAO();
             Proposta proposta = propostaDao.GetProposta(id);
+            proposta.Coberturas = db.Cobertura.ToList();
 
             if (proposta == null)
             {

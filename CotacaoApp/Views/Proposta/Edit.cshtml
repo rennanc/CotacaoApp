@@ -27,6 +27,7 @@
                     <option value="@cobertura.Id">@cobertura.NomeCobertura</option>
                 }
             </select>
+            <textarea id="descricaoCobertura"></textarea>
         </div>
 
 
@@ -716,3 +717,245 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script type="text/javascript">
+    $(".cep").inputmask("99.999-999");
+    $(".cpf").inputmask("999.999.999-99");
+    $(".email").inputmask({ alias: "email" });
+    $(".telefone").inputmask("(99) 9999-99999");
+
+    //VALIDACAO COMPORTAMENTO PADRAO
+    $.validator.setDefaults({
+        highlight: function (element) {
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function (error, element) {
+            if (element.parent('.input-group').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+
+    //PASSO 2 - Validação
+    $("input[name='IETipoEstacionamento']").on('click', function () {
+        if ($(this).val() == 'RESIDENCIAGARAGEM') {
+            $('#IETipoPortao').show();
+        } else {
+            $('#IETipoPortao').hide();
+        }
+    });
+
+    $("input[name='IEUtilizacaoVeiculoTrabalho']").on('click', function () {
+        $('#IELocalGaragemTrabalho').toggle();
+        $('#IEDistanciaParaTrabalhoVeiculo').toggle();
+    });
+
+    $("input[name='IEUtilizacaoVeiculoEstudo']").on('click', function () {
+        $('#IELocalGaragemEstudo').toggle();
+    });
+
+    $("input[name='IEUtilizacaoVeiculoInstrumento']").on('click', function () {
+        if ($(this).val() == "True") {
+            $('#IEUtilizacaoVeiculoInstrumentoForma').show();
+        } else {
+            $('#IEUtilizacaoVeiculoInstrumentoForma').hide();
+        }
+    });
+
+    //PASSO 3
+
+    $("input[name='IEMotivoCotacao']").on('click', function () {
+        if ($(this).val() == 'FAZERPRIMEIROSEGURO') {
+            $('#IEMotivoCotacao1').show();
+        } else {
+            $('#IEMotivoCotacao1').hide();
+        }
+
+        if ($(this).val() == 'RENOVARSEGURO') {
+            $('#IEMotivoCotacao2').show();
+        } else {
+            $('#IEMotivoCotacao2').hide();
+        }
+    });
+
+
+    $("input[name='Segurado.IEPossuiOutrosCarros']").on('click', function () {
+        if ($(this).val() == "True") {
+            $('#IEQuantidadeCarro').show();
+        } else {
+            $('#IEQuantidadeCarro').hide();
+        }
+    });
+
+
+    $("input[name='Segurado.IsSegurado']").on('click', function () {
+        if ($(this).val() == "False") {
+            $('#Proprietario').show();
+        } else {
+            $('#Proprietario').hide();
+        }
+    });
+
+    //PASSO 4
+    $("input[name='Segurado.IECondutorPrincipal']").on('click', function () {
+        if ($(this).val() == "False") {
+            $('#OutroCondutor').show();
+        } else {
+            $('#OutroCondutor').hide();
+        }
+    });
+
+
+    //CAMPOS QUE SERÃO VALIDADOS
+    $("#Proposta").validate({
+        rules: {
+            IETipoEstacionamento: {
+                required: true
+            },
+            IeTipoPortao: {
+                required: true
+            },
+            CepEstacionamento: {
+                required: true
+            },
+            CepDeslocamento: {
+                required: true
+            },
+            IEUtilizacaoVeiculoLazer: {
+                required: true
+            },
+            IELocalGaragemTrabalho: {
+                required: true
+            },
+            IEDistanciaParaTrabalhoVeiculo: {
+                required: true
+            },
+            IELocalGaragemEstudo: {
+                required: true
+            },
+            IEUtilizacaoVeiculoInstrumento: {
+                required: true
+            },
+            IEUtilizacaoVeiculoInstrumentoForma: {
+                required: true
+            },
+            IeKmMedia: {
+                required: true
+            },
+            "Segurado.Nome": {
+                required: true
+            },
+            "Segurado.DataNascimento": {
+                required: true
+            },
+            "Segurado.IESexo": {
+                required: true
+            },
+            "Segurado.IEEstadoCivil": {
+                required: true
+            },
+            "Segurado.CodigoCpf": {
+                required: true
+            },
+            "Segurado.NumeroCep": {
+                required: true
+            },
+            "Segurado.IEPossuiOutrosCarros": {
+                required: true
+            },
+            "Segurado.IEQuantidadeCarro": {
+                required: true
+            },
+            "Segurado.AnosDeCNH": {
+                required: true
+            },
+            "Segurado.IEProprietarioVeiculo": {
+                required: true
+            },
+
+            //Dodos do Proprietario
+            "Proprietario.Nome": {
+                required: true
+            },
+            "Proprietario.DataNascimento": {
+                required: true
+            },
+            "Proprietario.IESexo": {
+                required: true
+            },
+            "Proprietario.IERelacaoProprietario": {
+                required: true
+            },
+            "Proprietario.IEEstadoCivil": {
+                required: true
+            },
+            "Proprietario.CodigoCpf": {
+                required: true
+            },
+            "Proprietario.NumeroCep": {
+                required: true
+            },
+
+            //Seguro Atual
+            "IEMotivoCotacao": {
+                required: true
+            },
+            "NomeSeguradoraAtual": {
+                required: true
+            },
+            "DataApoliceAtualVencimento": {
+                required: true
+            },
+            "Segurado.IECondutorPrincipal": {
+                required: true
+            },
+            "OutroCondutor.Nome": {
+                required: true
+            },
+            "OutroCondutor.IESexo": {
+                required: true
+            },
+            "OutroCondutor.IEEstadoCivil": {
+                required: true
+            },
+            "OutroCondutor.CodigoCpf": {
+                required: true
+            },
+            "OutroCondutor.IERelacaoProprietario": {
+                required: true
+            },
+            "OutroCondutor.NumeroCep": {
+                required: true
+            },
+            "Segurado.IETipoResidencia": {
+                required: true
+            },
+            "Segurado.Profissao": {
+                required: true
+            },
+            "Segurado.IERoubadoEm24Meses": {
+                required: true
+            },
+            "Segurado.IEAlgumCondutorEstuda": {
+                required: true
+            },
+            "Segurado.Nome": {
+                required: true
+            },
+            "Segurado.Email": {
+                required: true
+            },
+            "Segurado.Telefones[0].NumeroTelefone": {
+                required: true
+            }
+        }
+    });
+
+</script>
