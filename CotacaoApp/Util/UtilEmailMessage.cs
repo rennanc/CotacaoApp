@@ -13,11 +13,11 @@ namespace CotacaoApp.Util
         public void EnviarEmail(string corpoDoEmail)
         {
             //Specify senders gmail address
-            string SendersAddress = "rennanchagas@hotmail.com"; 
+            string SendersAddress = "buscaseguros@outlook.com"; 
             //Specify The Address You want to sent Email To(can be any valid email address)
-            string ReceiversAddress = "rfrancochagas@gmail.com";
+            string ReceiversAddress = "rennanchagas@hotmail.com";
             //Specify The password of gmial account u are using to sent mail(pw of sender@gmail.com)
-            const string SendersPassword = "";
+            const string SendersPassword = "123@Seguros";
             //Write the subject of ur mail
             const string subject = "Proposta - BuscaSeguros";
             //Write the contents of your mail

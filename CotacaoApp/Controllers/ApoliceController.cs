@@ -94,6 +94,19 @@ namespace CotacaoApp.Controllers
                 apolice.CodigoComissao = apolice.Comissao.Id;
                 db.Apolice.Add(apolice);
                 db.SaveChanges();
+
+                PropostaDAO propostaDao = new PropostaDAO();
+                Proposta proposta = propostaDao.GetProposta(apolice.CodigoProposta);
+
+            //criando valor da proposta do condutor
+                ValorProposta valorProposta = new ValorProposta();
+                valorProposta.Valor = apolice.ValorContrato;
+            valorProposta.CodigoCondutor = proposta.Segurado.Id;
+            valorProposta.DataVencimento = new DateTime(2015, 10, 10);
+            valorProposta.CodigoApolice = apolice.Id;
+
+                db.ValorProposta.Add(valorProposta);
+            db.SaveChanges();
             //}
             UtilEmailMessage utilEmail = new UtilEmailMessage();
             utilEmail.EnviarEmail(apolice.formularioApoliceHtml);
@@ -130,6 +143,12 @@ namespace CotacaoApp.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(apolice).State = EntityState.Modified;
+
+                //Criacao de endosso
+                Endosso endosso = new Endosso();
+                endosso.DataEndosso = DateTime.Now;
+                endosso.CodApolice = apolice.Id;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

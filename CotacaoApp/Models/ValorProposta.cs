@@ -35,11 +35,11 @@ namespace CotacaoApp.Models
         [Display(Name = "Data Vencimento")]
         [Column("DT_DATA VENCIMENTO")]
         [DataType(DataType.Date)]
-        public string DataVencimento { get; set; }
+        public DateTime DataVencimento { get; set; }
 
         [Display(Name = "Valor*")]
         [Column("VL_VALOR")]
-        public String Valor { get; set; }
+        public decimal Valor { get; set; }
 
     }
 }

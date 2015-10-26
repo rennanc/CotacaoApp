@@ -28,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CodigoCpf, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.CodigoCpf, 20, 100, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.EditorFor(model => model.CodigoCpf, 20, 100, new { htmlAttributes = new { @class = "form-control textbox" } })
                 @Html.ValidationMessageFor(model => model.CodigoCpf, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control textbox" } })
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -44,7 +44,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control textbox" } })
                 @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -52,7 +52,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IESexo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.IESexo, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.EditorFor(model => model.IESexo, new { htmlAttributes = new { @class = "form-control textbox" } })
                 @Html.ValidationMessageFor(model => model.IESexo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -60,7 +60,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IEEstadoCivil, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.IEEstadoCivil, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.EditorFor(model => model.IEEstadoCivil, new { htmlAttributes = new { @class = "form-control textbox" } })
                 @Html.ValidationMessageFor(model => model.IEEstadoCivil, "", new { @class = "text-danger" })
             </div>
         </div>
