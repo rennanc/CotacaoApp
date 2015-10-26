@@ -35,8 +35,8 @@ namespace CotacaoApp.Models
         [Display(Name = "Cobertura")]
         public Cobertura Cobertura { get; set; }
 
-        [NotMapped]
-        [Display(Name = "CodigoCobertura")]
+
+        [Display(Name = "Cobertura")]
         [Column("CD_COBERTURA")]
         public int CodigoCobertura { get; set; }
 

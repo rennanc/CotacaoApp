@@ -262,7 +262,6 @@
     <Compile Include="Models\Condutor.cs" />
     <Compile Include="Models\Proposta.cs" />
     <Compile Include="Models\Cobertura.cs" />
-    <Compile Include="Models\PropostaCobertura.cs" />
     <Compile Include="Models\Seguradora.cs" />
     <Compile Include="Models\Telefone.cs" />
     <Compile Include="Models\Usuario.cs" />

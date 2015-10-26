@@ -54,6 +54,16 @@ namespace CotacaoApp.Controllers
             }
         }
 
+        public JsonResult ObterCobertura(Cobertura cobertura)
+        {
+            if(cobertura.Id == 0)
+            {
+                return null;
+            }
+            cobertura = db.Cobertura.Find(cobertura.Id);
+            return Json(cobertura.DescricaoCobertura, JsonRequestBehavior.AllowGet);
+        }
+
 
         // GET: Proposta
         public ActionResult Index()

@@ -51,15 +51,11 @@ namespace CotacaoApp.DAO
 
             db.SaveChanges();
 
-            //Salvando PropostaCobertura
-            PropostaCobertura propostaCobertura = new PropostaCobertura();
+            //correção provisoria
             if(proposta.CodigoCobertura == 0)
             {
                 proposta.CodigoCobertura = 1;
             }
-            //propostaCobertura.CodigoCobertura = proposta.CodigoCobertura;
-            //propostaCobertura.CodigoProposta = proposta.Id;
-            //db.PropostaCobertura.Add(propostaCobertura);
             db.SaveChanges();
         }
 

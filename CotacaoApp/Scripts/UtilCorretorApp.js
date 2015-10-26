@@ -1,12 +1,23 @@
-﻿$('.cep').on('blur', function () {
-    getEndereco($(this));
-
-
-    $.validator.addMethod($(this).attr('id'), function (value, element) {
-        return value == getEndereco($(this));
-
-    }, 'Endereço não encontrado!');
+﻿var resultCep = false;
+$('.cep').on('blur', function () {
+    resultCep = false;
+    getEndereco2($(this));
 });
+
+
+
+$.validator.addMethod('cepcorreio', function (value, element) {
+    var cepTag = $('#' + element.id);
+    if (!resultCep) {
+        if ($.find('#' + cepTag.attr('id') + 'txtEndereco')[0] == null) {
+            cepTag.parent().append("<span id='" + cepTag.attr('id') + "txtEndereco' class='help-block'></span>");
+        } else {
+            $('#' + cepTag.attr('id') + 'txtEndereco').text("");
+        }
+    }
+    return resultCep;
+}, 'Endereço não encontrado!');
+
 
 function getEndereco(cepTag) {
 
@@ -20,11 +31,15 @@ function getEndereco(cepTag) {
                 if (unescape(resultadoCEP["resultado_txt"]).indexOf("não encontrado") != -1) {
 
 
-                    if ($.find('#' + cepTag.attr('id') + 'txtEndereco')[0] == null) {
-                        cepTag.parent().append("<span id='" + cepTag.attr('id') + "txtEndereco' class='help-block'>Endereço não encontrado</span>");
-                    } else {
-                        $('#' + cepTag.attr('id') + 'txtEndereco').text("Endereço não encontrado");
-                    }
+                    //if ($.find('#' + cepTag.attr('id') + 'txtEndereco')[0] == null) {
+                    //    cepTag.parent().append("<span id='" + cepTag.attr('id') + "txtEndereco' class='help-block'>Endereço não encontrado</span>");
+                    //} else {
+                    //    $('#' + cepTag.attr('id') + 'txtEndereco').text("Endereço não encontrado");
+                    //}
+                    
+                    
+                    resultCep = false;
+                    $('#CepEstacionamento').valid();
                     return false;
 
                 } else {
@@ -36,10 +51,12 @@ function getEndereco(cepTag) {
                     } else {
                         $('#' + cepTag.attr('id') + 'txtEndereco').text(txtEndereco);
                     }
+                    resultCep = true;
+                    $('#CepEstacionamento').valid();
                     return true;
                 }
             } else {
-                alert("Endereço não encontrado!");
+                resultCep = false;
                 return false;
             }
             
@@ -47,6 +64,56 @@ function getEndereco(cepTag) {
     }
 }
 
+
+
+function getEndereco2(cepTag) {
+
+    if ($.trim(cepTag.val()) != "") {
+
+        //$.getScript("//cep.correiocontrol.com.br/" + cepTag.val().replace("-","").replace(".","") + ".json", function (data) {
+        $.getJSON("//cep.correiocontrol.com.br/" + cepTag.val().replace("-", "").replace(".", "").replace("_", "") + ".json", function (data) {
+            // o getScript dá um eval no script, então é só ler!
+            //Se o resultado for igual a 1
+            var retorno = false;
+            if (data) {
+                if (data.erro) {
+
+
+                    if ($.find('#' + cepTag.attr('id') + 'txtEndereco')[0] == null) {
+                        cepTag.parent().append("<span id='" + cepTag.attr('id') + "txtEndereco' class='help-block'></span>");
+                    } else {
+                        $('#' + cepTag.attr('id') + 'txtEndereco').text("");
+                    }
+                    resultCep = false;
+                    cepTag.valid();
+                    return false;
+
+                } else {
+                    // troca o valor dos elementos
+                    var txtEndereco = unescape(data.logradouro) + " " + unescape(data.bairro).trim();
+
+                    if ($.find('#' + cepTag.attr('id') + 'txtEndereco')[0] == null) {
+                        cepTag.parent().append("<span id='" + cepTag.attr('id') + "txtEndereco' class='help-block'>" + txtEndereco + "</span>");
+                    } else {
+                        $('#' + cepTag.attr('id') + 'txtEndereco').text(txtEndereco);
+                    }
+                    resultCep = true;
+                    cepTag.valid();
+                    return true;
+                }
+            } else {
+                if ($.find('#' + cepTag.attr('id') + 'txtEndereco')[0] == null) {
+                    cepTag.parent().append("<span id='" + cepTag.attr('id') + "txtEndereco' class='help-block'></span>");
+                } else {
+                    $('#' + cepTag.attr('id') + 'txtEndereco').text("");
+                }
+                resultCep = false;
+                return false;
+            }
+
+        });
+    }
+}
 
 ///validação do cep
 //function getEndereco() {

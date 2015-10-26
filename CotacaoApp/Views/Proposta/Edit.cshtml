@@ -17,17 +17,21 @@
         @Html.HiddenFor(model => model.Id)
 
        <!-- PASSO 1 - INICIO -->
-
-        <div class="form-group ">
-
-            <select name="CodigoCobertura" class="form-control col-md-9 col-md-offset-3" style="margin-left:305px" required>
+        <input type="hidden" id="CodigoCoberturaHidden" value="@Model.CodigoCobertura" />
+        <div >
+            @Html.LabelFor(model => model.CodigoCobertura, htmlAttributes: new { @class = "control-label col-md-3" })
+            <select name="CodigoCobertura" id="CodigoCobertura" class="form-control col-md-9 " style="margin-left:7px"  required>
                 <option value="" disabled selected>Escolha uma Cobertura</option>
                 @foreach (var cobertura in Model.Coberturas)
                 {
                     <option value="@cobertura.Id">@cobertura.NomeCobertura</option>
                 }
             </select>
-            <textarea id="descricaoCobertura"></textarea>
+            
+        </div>
+
+        <div class="form-group " style=" margin-left: 5px">
+            <textarea id="coberturaDescricao" class="form-control  col-sm-offset-3" rows="15" style="display: none; width: 70%; border: none; "></textarea>
         </div>
 
 
@@ -723,6 +727,26 @@
     $(".cpf").inputmask("999.999.999-99");
     $(".email").inputmask({ alias: "email" });
     $(".telefone").inputmask("(99) 9999-99999");
+
+    $(document).ready(function () {
+        var codigoCobertura = $('#CodigoCoberturaHidden').val();
+        $('#CodigoCobertura').val(codigoCobertura);
+        $('#CodigoCobertura').trigger('change');
+    });
+
+    //Obter Descrição da cobertura
+    $('#CodigoCobertura').on('change', function () {
+        var Cobertura = {};
+        Cobertura.Id = $(this).val();
+        $.getJSON("/Proposta/ObterCobertura", Cobertura, ObterCobertura);
+        debugger;
+        
+    });
+
+    var ObterCobertura = function (data) {
+        $("#coberturaDescricao").val(data);
+        $("#coberturaDescricao").show();
+    };
 
     //VALIDACAO COMPORTAMENTO PADRAO
     $.validator.setDefaults({

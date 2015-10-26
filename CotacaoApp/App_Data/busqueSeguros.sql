@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `corretorBD`.`Condutor` (
   `CD_CPF` INT NOT NULL COMMENT '',
   `NM_NOME` VARCHAR(250) NOT NULL COMMENT '',
   `DT_NASCIMENTO` DATE NULL COMMENT '',
-  `IE_SEXO` VARCHAR(2) NULL COMMENT '',
+  `IE_SEXO` INT NULL COMMENT '',
   `NM_ESTADOCIVIL` VARCHAR(45) NULL COMMENT '',
   `NR_CEP` VARCHAR(10) NULL COMMENT '',
   `IE_POSSUIOUTROSCARROS` INT NULL COMMENT '',
@@ -107,11 +107,23 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `corretorBD`.`Cobertura`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `corretorBD`.`Cobertura` (
+  `CD_COBERTURA` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `NM_COBERTURA` VARCHAR(45) NULL COMMENT '',
+  `DS_COBERTURA` VARCHAR(4000) NULL COMMENT '',
+  PRIMARY KEY (`CD_COBERTURA`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `corretorBD`.`Proposta`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `corretorBD`.`Proposta` (
   `CD_PROPOSTA` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `CD_CONDUTOR` INT NOT NULL COMMENT '',
+  `CD_COBERTURA` INT NOT NULL COMMENT '',
   `NM_MARCAVEICULO` VARCHAR(45) NULL COMMENT '',
   `NR_ANOFABVEICULO` INT NULL COMMENT '',
   `NR_ANOMODELOVEICULO` INT NULL COMMENT '',
@@ -156,7 +168,12 @@ CREATE TABLE IF NOT EXISTS `corretorBD`.`Proposta` (
     FOREIGN KEY (`CD_CONDUTOR`)
     REFERENCES `corretorBD`.`Condutor` (`CD_CONDUTOR`)
     ON DELETE NO ACTION
-    ON UPDATE CASCADE)
+    ON UPDATE CASCADE,
+  CONSTRAINT `FK_PROPOSTA_COBERTURA`
+    FOREIGN KEY (`CD_CONDUTOR`)
+    REFERENCES `corretorBD`.`Cobertura` (`CD_COBERTURA`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -190,17 +207,6 @@ CREATE TABLE IF NOT EXISTS `corretorBD`.`Apolice` (
     REFERENCES `corretorBD`.`Proposta` (`CD_PROPOSTA`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `corretorBD`.`Cobertura`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `corretorBD`.`Cobertura` (
-  `CD_COBERTURA` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `NM_COBERTURA` VARCHAR(45) NULL COMMENT '',
-  `DS_COBERTURA` VARCHAR(4000) NULL COMMENT '',
-  PRIMARY KEY (`CD_COBERTURA`)  COMMENT '')
 ENGINE = InnoDB;
 
 
@@ -244,27 +250,6 @@ CREATE TABLE IF NOT EXISTS `corretorBD`.`Endosso` (
   CONSTRAINT `fk_Endosso_Apolice1`
     FOREIGN KEY (`CD_APOLICE`)
     REFERENCES `corretorBD`.`Apolice` (`CD_APOLICE`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `corretorBD`.`Proposta_Cobertura`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `corretorBD`.`Proposta_Cobertura` (
-  `CD_PROPOSTA` INT NOT NULL COMMENT '',
-  `CD_COBERTURA` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`CD_PROPOSTA`, `CD_COBERTURA`)  COMMENT '',
-  INDEX `FK_APOLICESINISTRO_SINISTRO_idx` (`CD_COBERTURA` ASC)  COMMENT '',
-  CONSTRAINT `FK_PROPOSTACOBERTURA_PROPOSTA`
-    FOREIGN KEY (`CD_PROPOSTA`)
-    REFERENCES `corretorBD`.`Proposta` (`CD_PROPOSTA`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `FK_PROPOSTACOBERTURA_COBERTURA`
-    FOREIGN KEY (`CD_COBERTURA`)
-    REFERENCES `corretorBD`.`Cobertura` (`CD_COBERTURA`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

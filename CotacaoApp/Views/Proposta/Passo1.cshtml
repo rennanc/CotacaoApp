@@ -24,10 +24,10 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.Hidden("proposta", new Microsoft.Web.Mvc.MvcSerializer().Serialize(Model))
 
-
+        <input type="hidden" id="CodigoCoberturaHidden" value="@Model.CodigoCobertura" />
             <div class="form-group ">
-                
-                <select name="CodigoCobertura" class="form-control col-md-9 col-md-offset-3" style="margin-left:305px" required>
+                @Html.LabelFor(model => model.CodigoCobertura, htmlAttributes: new { @class = "control-label col-md-3" })
+                <select name="CodigoCobertura" id="CodigoCobertura" class="form-control col-md-9" style="margin-left:15px" required>
                     <option value="" disabled selected>Escolha uma Cobertura</option>
                     @foreach (var cobertura in Model.Coberturas)
                     {
@@ -35,7 +35,9 @@
                     }
                 </select>
             </div>
-            <div name="CoberturaDescricao"></div>
+            <div class="form-group " style=" margin-left: 5px">
+                <textarea id="coberturaDescricao" class="form-control  col-sm-offset-3" rows="15" style="display: none; width: 70%; border: none; "></textarea>
+            </div>
 
 
             <div class="form-group">
@@ -123,6 +125,30 @@
 }
 
 <script type="text/javascript">
+
+
+    $(document).ready(function () {
+        var codigoCobertura = $('#CodigoCoberturaHidden').val();
+        if (codigoCobertura !== undefined)
+        {
+            $('#CodigoCobertura').trigger('change');
+        }
+        
+    });
+
+    //Obter Descrição da cobertura
+    $('#CodigoCobertura').on('change', function () {
+        var Cobertura = {};
+        Cobertura.Id = $(this).val();
+        $.getJSON("/Proposta/ObterCobertura", Cobertura, ObterCobertura);
+        debugger;
+
+    });
+
+    var ObterCobertura = function (data) {
+        $("#coberturaDescricao").val(data);
+        $("#coberturaDescricao").show();
+    };
 
     //VALIDACAO COMPORTAMENTO PADRAO
     $.validator.setDefaults({
