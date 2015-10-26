@@ -159,7 +159,7 @@
 
 
     $("input[name='Segurado.IECondutorPrincipal']").on('click', function () {
-        if ($(this).val() == "False" ) {
+        if ($(this).val() == "OUTRAPESSOA") {
             $('#OutroCondutor').show();
         } else {
             $('#OutroCondutor').hide();
@@ -222,6 +222,9 @@
             "Segurado.IEAlgumCondutorEstuda": {
                 required: true
             }
+        },
+        messages: {
+            required: "Campo Obrigatório"
         }
     });
 </script>

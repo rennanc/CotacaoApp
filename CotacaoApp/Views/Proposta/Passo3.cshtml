@@ -326,7 +326,7 @@
 
 
     $("input[name='Segurado.IEPossuiOutrosCarros']").on('click', function () {
-        if ($(this).val() == "True") {
+        if ($(this).val() == "SIM") {
             $('#IEQuantidadeCarro').show();
         } else {
             $('#IEQuantidadeCarro').hide();
@@ -334,8 +334,8 @@
     });
 
 
-    $("input[name='Segurado.IsSegurado']").on('click', function () {
-        if ($(this).val() == "False") {
+    $("input[name='Segurado.IEProprietarioVeiculo']").on('click', function () {
+        if ($(this).val() == "NAO") {
             $('#Proprietario').show();
         } else {
             $('#Proprietario').hide();
@@ -433,6 +433,9 @@
             "DataApoliceAtualVencimento": {
                 required: true
             },
+        },
+        messages: {
+            required: "Campo Obrigatório"
         }
     });
 </script>
