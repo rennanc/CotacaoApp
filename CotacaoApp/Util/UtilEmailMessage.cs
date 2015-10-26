@@ -19,7 +19,7 @@ namespace CotacaoApp.Util
             //Specify The password of gmial account u are using to sent mail(pw of sender@gmail.com)
             const string SendersPassword = "";
             //Write the subject of ur mail
-            const string subject = "Testando";
+            const string subject = "Proposta - BuscaSeguros";
             //Write the contents of your mail
             //const string body = "Email de teste do Projeto - enviado com Gmail";
 

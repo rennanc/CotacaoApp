@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace CotacaoApp.Controllers
 {
-    [AutorizacaoFilter]
+    
     public class PropostaController : Controller
     {
 
@@ -66,6 +66,7 @@ namespace CotacaoApp.Controllers
 
 
         // GET: Proposta
+        [AutorizacaoFilter]
         public ActionResult Index()
         {
             List<Proposta> propostas = db.Proposta.ToList();
@@ -184,6 +185,7 @@ namespace CotacaoApp.Controllers
         }
 
         // GET: Proposta/Details/5
+        [AutorizacaoFilter]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -224,6 +226,7 @@ namespace CotacaoApp.Controllers
         }
 
         // GET: Proposta/Edit/5
+        [AutorizacaoFilter]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -248,6 +251,7 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AutorizacaoFilter]
         public ActionResult Edit([Bind(Include = "Id,Nome,Senha")] Proposta proposta)
         {
             if (ModelState.IsValid)
@@ -261,6 +265,7 @@ namespace CotacaoApp.Controllers
 
 
         // GET: Proposta/Delete/5
+        [AutorizacaoFilter]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -278,6 +283,7 @@ namespace CotacaoApp.Controllers
         // POST: Proposta/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [AutorizacaoFilter]
         public ActionResult DeleteConfirmed(int id)
         {
             Proposta proposta = db.Proposta.Find(id);

@@ -111,13 +111,12 @@
 </div>
 
 <script type="text/javascript">
-    //$(".numeric").inputmask("decimal", {
-    //    radixPoint: ",",
-    //    groupSeparator: ".",
-    //    digits: 2,
-    //    autoGroup: true,
-    //    prefix: 'R$ '
-    //});
+    $(".numeric").inputmask("decimal", {
+        radixPoint: ",",
+        groupSeparator: ".",
+        digits: 2,
+        autoGroup: true
+    });
 
     $(document).ready(function () {
         $("#formularioApoliceHtml").val($("#Apolice").html());

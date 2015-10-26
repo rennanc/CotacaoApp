@@ -21,7 +21,16 @@ namespace CotacaoApp.Controllers
         // GET: Apolice
         public ActionResult Index()
         {
-            return View(db.Apolice.ToList());
+            List<Apolice> apolices = db.Apolice.ToList();
+            foreach(Apolice apolice in apolices)
+            {
+                PropostaDAO propostaDao = new PropostaDAO();
+                propostaDao.GetProposta(apolice.CodigoProposta);
+                apolice.Proposta = propostaDao.GetProposta(apolice.CodigoProposta);
+                apolice.Comissao = db.Comissao.Find(apolice.CodigoComissao);
+                apolice.Seguradora = db.Seguradora.Find(apolice.CodigoSeguradora);
+            }
+            return View(apolices);
         }
 
         // GET: Apolice/Details/5
@@ -32,6 +41,11 @@ namespace CotacaoApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Apolice apolice = db.Apolice.Find(id);
+            PropostaDAO propostaDao = new PropostaDAO();
+            propostaDao.GetProposta(apolice.CodigoProposta);
+            apolice.Proposta = propostaDao.GetProposta(apolice.CodigoProposta);
+            apolice.Comissao = db.Comissao.Find(apolice.CodigoComissao);
+            apolice.Seguradora = db.Seguradora.Find(apolice.CodigoSeguradora);
             if (apolice == null)
             {
                 return HttpNotFound();
@@ -98,6 +112,7 @@ namespace CotacaoApp.Controllers
             PropostaDAO propostaDao = new PropostaDAO();
             apolice.Proposta = propostaDao.GetProposta(apolice.CodigoProposta);
             apolice.Seguradoras = db.Seguradora.ToList();
+            apolice.Comissao = db.Comissao.Find(apolice.CodigoComissao);
             if (apolice == null)
             {
                 return HttpNotFound();

@@ -1,4 +1,5 @@
 ﻿@model CotacaoApp.Models.Apolice
+@using CotacaoApp.Models
 
 @{
     ViewBag.Title = "Detalhes";
@@ -9,14 +10,13 @@
 <div>
     <h4>Apólice</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Proposta)
-        </dt>
+    @if (Model.Proposta != null)
+    {
+        @Html.Partial("_Proposta", (Proposta)Model.Proposta)
+        @Html.HiddenFor(model => model.CodigoProposta, new { id = "Comissao.CodigoProposta", Value = @Model.Proposta.Id })
 
-        <dd>
-            @Html.DisplayFor(model => model.Proposta)
-        </dd>
+    }
+    <dl class="dl-horizontal">
 
         <dt>
             @Html.DisplayNameFor(model => model.Comissao)
@@ -35,11 +35,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Contrato)
+            @Html.DisplayNameFor(model => model.ValorContrato)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Contrato)
+            @Html.DisplayFor(model => model.ValorContrato)
         </dd>
 
         <dt>
@@ -53,6 +53,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Editar", new { id = Model.Id }) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Voltar para a Lista", "Index")
 </p>

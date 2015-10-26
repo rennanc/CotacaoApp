@@ -9,13 +9,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CodigoProposta)
+            @Html.DisplayName("Veículo")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CodigoComissao)
+            @Html.DisplayNameFor(model => model.Proposta.Segurado.Nome)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CodigoSeguradora)
+            @Html.DisplayNameFor(model => model.Comissao.ValorPremioLiquido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seguradora.NomeSeguradora)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ValorContrato)
@@ -30,13 +33,16 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CodigoProposta)
+                @Html.DisplayFor(modelItem => item.Proposta.NomeVeiculo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CodigoComissao)
+                @Html.DisplayFor(modelItem => item.Proposta.Segurado.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CodigoSeguradora)
+                @Html.DisplayFor(modelItem => item.Comissao.ValorPremioLiquido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seguradora.NomeSeguradora)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ValorContrato)
