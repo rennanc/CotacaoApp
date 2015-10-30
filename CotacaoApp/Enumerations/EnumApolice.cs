@@ -14,7 +14,7 @@ namespace CotacaoApp.Enumerations
     public enum Status
     {
         //opções do radio button
-        [Display(Name = "Nenhum")]
+        [Display(Name = "Elaboração")]
         NENHUM = 0,
         [Display(Name = "Enviado")]
         ENVIADO = 1,

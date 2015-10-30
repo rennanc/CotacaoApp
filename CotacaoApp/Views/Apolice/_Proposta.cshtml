@@ -76,23 +76,23 @@
                 <strong>O carro se enquadra nas seguintes categorias:</strong>
                 <ul>
                     <li>
-                        @Html.DisplayFor(model => model.IETipoVeiculoTaxi)
+                        @Html.DisplayFor(model => model.IETipoVeiculoTaxi) @Html.DisplayNameFor(model => model.IETipoVeiculoTaxi)
                     </li>
 
                     <li>
-                        @Html.DisplayFor(model => model.IETipoVeiculoDeficiente)
+                        @Html.DisplayFor(model => model.IETipoVeiculoDeficiente) @Html.DisplayNameFor(model => model.IETipoVeiculoDeficiente)
                     </li>
 
                     <li>
-                        @Html.DisplayFor(model => model.IETipoVeiculoKitGas)
+                        @Html.DisplayFor(model => model.IETipoVeiculoKitGas) @Html.DisplayNameFor(model => model.IETipoVeiculoKitGas)
                     </li>
 
                     <li>
-                        @Html.DisplayFor(model => model.IETipoVeiculoBlindado)
+                        @Html.DisplayFor(model => model.IETipoVeiculoBlindado) @Html.DisplayNameFor(model => model.IETipoVeiculoBlindado)
                     </li>
 
                     <li>
-                        @Html.DisplayFor(model => model.IETipoVeiculoPessoaJuridica)
+                        @Html.DisplayFor(model => model.IETipoVeiculoPessoaJuridica) @Html.DisplayNameFor(model => model.IETipoVeiculoPessoaJuridica)
                     </li>
                 </ul>
             </div>
@@ -140,29 +140,29 @@
             </div>
 
 
-            <div>
-                <strong>@Html.DisplayName("O Carro é Utilizado Para:*")</strong>
-                <div class="col-mg-12">
+            <strong>@Html.DisplayName("O Carro é Utilizado Para:*")</strong>
+            <ul>
+                <li class="col-mg-12">
                    @Html.DisplayFor(model => model.IEUtilizacaoVeiculoLazer) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoLazer) 
-                </div>
+                </li>
 
                 <span id="IEUtilizacaoVeiculoTrabalho" class="@Model.IEUtilizacaoVeiculoTrabalho.ToString()"></span>
-                <div class="col-mg-12">
+                <li class="col-mg-12">
                     @Html.DisplayFor(model => model.IEUtilizacaoVeiculoTrabalho) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoTrabalho)
-                </div>
-                <ul>
-                    <li class="IELocalGaragemTrabalho">
-                        @Html.DisplayFor(model => model.IELocalGaragemTrabalho) @Html.DisplayNameFor(model => model.IELocalGaragemTrabalho)
-                    </li>
+                </li>
+                    <ul>
+                        <li class="IELocalGaragemTrabalho">
+                            @Html.DisplayFor(model => model.IELocalGaragemTrabalho) @Html.DisplayNameFor(model => model.IELocalGaragemTrabalho)
+                        </li>
 
-                    <li class="IEDistanciaParaTrabalhoVeiculo">
-                        @Html.DisplayFor(model => model.IEDistanciaParaTrabalhoVeiculo) @Html.DisplayNameFor(model => model.IEDistanciaParaTrabalhoVeiculo)
-                    </li>
-                </ul>
+                        <li class="IEDistanciaParaTrabalhoVeiculo">
+                            @Html.DisplayFor(model => model.IEDistanciaParaTrabalhoVeiculo) @Html.DisplayNameFor(model => model.IEDistanciaParaTrabalhoVeiculo)
+                        </li>
+                    </ul>
                 
-                <div class="col-mg-12">
+                <li class="col-mg-12">
                     @Html.DisplayFor(model => model.IEUtilizacaoVeiculoEstudo) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoEstudo)
-                </div>
+                </li>
 
                 <ul>
                     <li class="IELocalGaragemEstudo">
@@ -170,9 +170,9 @@
                     </li>
                 </ul>
                 <span id="IEUtilizacaoVeiculoEstudo" class="@Model.IEUtilizacaoVeiculoEstudo.ToString()"></span>
-                <div class="col-mg-12">
+                <li class="col-mg-12">
                        @Html.DisplayFor(model => model.IEUtilizacaoVeiculoInstrumento) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoInstrumento)
-                </div>
+                </li>
                 <ul>
                     <li class="IEUtilizacaoVeiculoInstrumentoForma">
                         @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoInstrumentoForma)
@@ -182,7 +182,7 @@
                         @Html.DisplayFor(model => model.IEUtilizacaoVeiculoInstrumentoForma)
                     </li>
                 </ul>
-            </div>
+            </ul>
             <div class="col-mg-3">
                <strong>@Html.DisplayNameFor(model => model.IEKmEmMedia)</strong>
             </div>
