@@ -109,7 +109,7 @@ namespace CotacaoApp.Controllers
             db.SaveChanges();
             //}
             UtilEmailMessage utilEmail = new UtilEmailMessage();
-            utilEmail.EnviarEmail(apolice.formularioApoliceHtml);
+            utilEmail.EnviarEmail("Proposta de Cotação de Seguro", proposta.Segurado.Email, apolice.formularioApoliceHtml);
 
             return View(apolice);
         }

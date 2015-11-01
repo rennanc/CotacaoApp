@@ -39,5 +39,23 @@ namespace CotacaoApp.DAO
             }
             return user;
         }
+
+        internal Usuario ObterSenhaPorLogin(string login)
+        {
+            var conexao = new DBConnection();
+            QuerySql query = conexao.CreateQuery("SELECT NM_LOGIN,NM_SENHA FROM usuario WHERE NM_USUARIO=@usuario");
+            query.SetParameter("usuario", login);
+            DbDataReader reader = query.ExecuteQuery();
+            Usuario user = null;
+            if (reader.Read())
+            {
+                user = new Usuario
+                {
+                    Login = reader.GetString(reader.GetOrdinal("NM_LOGIN")),
+                    Senha = reader.GetString(reader.GetOrdinal("NM_SENHA"))
+                };
+            }
+            return user;
+        }
     }
 }

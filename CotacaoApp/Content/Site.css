@@ -50,6 +50,7 @@ select{
     padding: 20px;
     border-radius: 10px;
     height: 350px;
+    width: 400px;
     opacity: 0.9;
 }
 
@@ -178,4 +179,37 @@ ol, ul {
 
 .textbox{
     width: 100%;
+}
+
+.wizardstep-block-On{
+    width: 200px;
+    height: 60px;
+    background: #226B90;
+    color: azure;
+    float: left;
+    border-left: dashed 1px white;
+
+}
+
+.wizardstep-block-Off{
+    width: 200px;
+    height: 60px;
+    background: #93C9E4;
+    color: azure;
+    float: left;
+    border-left: dashed 1px white;
+}
+
+
+
+.wizardstep-StepTitle{
+    font-size: 13px;
+    padding-left: 10px;
+    padding-top:2px;
+}
+
+.wizardstep-Title{
+    font-size: 25px;
+    padding-left: 10px;
+    padding-top:2px;
 }

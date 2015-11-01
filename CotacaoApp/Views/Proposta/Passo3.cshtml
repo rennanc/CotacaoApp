@@ -105,7 +105,7 @@
     <div class="form-group">
         @Html.Label("Anos de CNH do segurado*", htmlAttributes: new { @class = "control-label col-md-4" })
         <div class="col-md-8">
-            @Html.EditorFor(model => model.Segurado.AnosDeCNH, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Segurado.AnosDeCNH, new { htmlAttributes = new { @class = "form-control", @min = 1 } })
             @Html.ValidationMessageFor(model => model.Segurado.AnosDeCNH, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -208,7 +208,7 @@
                     <p>@Html.RadioButtonFor(model => model.IEPrimeiroSeguro, IEPrimeiroSeguro.AINDANAOTENHOCOTACAO) Ainda não tenho cotações de outras corretoras</p>
                 </div>
             <!--Primeiro Seguro-->
-            <p>@Html.RadioButtonFor(model => model.IEMotivoCotacao, 2) Renovar o seguro de um carro que já tenho</p>
+            <p>@Html.RadioButtonFor(model => model.IEMotivoCotacao, IEMotivoCotacao.RENOVARSEGURO) Renovar o seguro de um carro que já tenho</p>
         </div>
     </div>
 

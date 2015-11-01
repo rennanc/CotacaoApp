@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "RecuperaSenha";
+}
+
+<h2>Recuperação de Senha</h2>
+<form action="/Login/EmailRecuperacao" method="post">
+    @Html.AntiForgeryToken()
+    <label for="login">Digite o seu email:</label>
+    <input type="text" name="login" id="login" class="form-control" />
+    <input type="submit" value="Recuperar minha Senha" class="form-control" />
+</form>
+
+
+

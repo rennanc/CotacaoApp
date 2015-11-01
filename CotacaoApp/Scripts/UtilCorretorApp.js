@@ -5,7 +5,6 @@ $('.cep').on('blur', function () {
 });
 
 
-
 $.validator.addMethod('cepcorreio', function (value, element) {
     var cepTag = $('#' + element.id);
     if (!resultCep) {

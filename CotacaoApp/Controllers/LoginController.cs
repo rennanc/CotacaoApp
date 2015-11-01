@@ -1,5 +1,6 @@
 ﻿using CotacaoApp.DAO;
 using CotacaoApp.Models;
+using CotacaoApp.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace CotacaoApp.Controllers
 {
     public class LoginController : Controller
     {
+        private DefaultConnection db = new DefaultConnection();
+
         // GET: Login
         public ActionResult Index()
         {
@@ -32,7 +35,7 @@ namespace CotacaoApp.Controllers
             else
             {
                 //ModelState.AddModelError("", "Invalid login attempt.");
-                ViewBag.Error = "Login Inválido";
+                ViewBag.Error = "Usuário ou Senha Inválido";
                 return View("Index");
 
             }
@@ -43,6 +46,22 @@ namespace CotacaoApp.Controllers
         {
             Session.Remove("UsuarioLogado");
             return RedirectToAction("Index", "Login");
+        }
+
+        public ActionResult RecuperaSenha()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EmailRecuperacao(Usuario usuario)
+        {
+            UsuarioDAO usuarioDao = new UsuarioDAO();
+            usuario = usuarioDao.ObterSenhaPorLogin(usuario.Login);
+            UtilEmailMessage utilEmail = new UtilEmailMessage();
+            utilEmail.EnviarEmail("[Busca Seguros] Recuperação de Senha",usuario.Login,"Sua Senha de Acesso ao Busca Seguros é: " + usuario.Senha);
+            return View();
         }
     }
 }

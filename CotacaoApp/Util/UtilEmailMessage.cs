@@ -10,20 +10,21 @@ namespace CotacaoApp.Util
 
     public class UtilEmailMessage
     {
-        public void EnviarEmail(string corpoDoEmail)
+        public void EnviarEmail(string emailTitulo, string emailDestino, string corpoDoEmail)
         {
             //Specify senders gmail address
-            string SendersAddress = "buscaseguros@outlook.com"; 
-            //Specify The Address You want to sent Email To(can be any valid email address)
-            string ReceiversAddress = "rennanchagas@hotmail.com";
+            string SendersAddress = "buscaseguros@outlook.com";
             //Specify The password of gmial account u are using to sent mail(pw of sender@gmail.com)
             const string SendersPassword = "123@Seguros";
+            //Specify The Address You want to sent Email To(can be any valid email address)
+            string ReceiversAddress = emailDestino;
             //Write the subject of ur mail
-            const string subject = "Proposta - BuscaSeguros";
+            string subject = "Proposta - BuscaSeguros";
             //Write the contents of your mail
             //const string body = "Email de teste do Projeto - enviado com Gmail";
 
             // var templateService = new TemplateService();
+            subject = emailTitulo != null ? emailTitulo : subject;
 
             MailMessage sendmsg = new MailMessage(SendersAddress, ReceiversAddress, subject, corpoDoEmail);
             SmtpClient client = new SmtpClient();

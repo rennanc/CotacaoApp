@@ -12,12 +12,16 @@
 
     <div class="col-lg-12">
         <div class="row">
+            <input type="hidden" id="CodigoCoberturaHidden" value="@Model.CodigoCobertura" />
             <div class="col-mg-3">
-                <strong>@Html.DisplayNameFor(model => model.Cobertura)</strong>
+                <h4>@Html.DisplayNameFor(model => model.Cobertura)</h4>
             </div>
 
             <div class="col-mg-9">
-                @Html.DisplayFor(model => model.Cobertura)
+                <strong>@Html.DisplayFor(model => model.Cobertura.NomeCobertura)</strong>
+                <div >
+                    <textarea id="coberturaDescricao" class="form-control" rows="15" style="display: none; width: 70%; border: none; "></textarea>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -146,7 +150,7 @@
                    @Html.DisplayFor(model => model.IEUtilizacaoVeiculoLazer) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoLazer) 
                 </li>
 
-                <span id="IEUtilizacaoVeiculoTrabalho" class="@Model.IEUtilizacaoVeiculoTrabalho.ToString()"></span>
+                <input type="hidden" id="IEUtilizacaoVeiculoTrabalho" value="@Model.IEUtilizacaoVeiculoTrabalho.ToString()" />
                 <li class="col-mg-12">
                     @Html.DisplayFor(model => model.IEUtilizacaoVeiculoTrabalho) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoTrabalho)
                 </li>
@@ -596,7 +600,11 @@
 
 <script type="text/javascript">
 
-    $(document).ready(function() {
+    $(document).ready(function () {
+        var codigoCobertura = $('#CodigoCoberturaHidden').val();
+        if (codigoCobertura !== undefined) {
+            ObterCobertura(codigoCobertura);
+        }
         //controles da pagina
         if ($("#IETipoEstacionamento").attr('class') == 'ESTACIONAMENTO') {
             $('.IETipoPortao').show();
@@ -607,7 +615,7 @@
         }
 
         //passo2
-        if ($("#IEUtilizacaoVeiculoTrabalho").attr('class') == 'SIM') {
+        if ($("#IEUtilizacaoVeiculoTrabalho").val() == 'SIM') {
             $('.IELocalGaragemTrabalho').show();
             $('.IEDistanciaParaTrabalhoVeiculo').show();
         }
@@ -669,5 +677,20 @@
     });
 
     $(".cep").inputmask("99.999-999");
+
+
+    //Obter Descrição da cobertura
+    function ObterCobertura(codigoCobertura) {
+        var Cobertura = {};
+        Cobertura.Id = codigoCobertura;
+        $.getJSON("/Proposta/ObterCobertura", Cobertura, ObterCoberturaCallBack);
+        debugger;
+
+    };
+
+    var ObterCoberturaCallBack = function (data) {
+        $("#coberturaDescricao").val(data);
+        $("#coberturaDescricao").show();
+    };
 
 </script>

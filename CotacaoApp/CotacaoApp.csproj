@@ -495,6 +495,8 @@
     <Content Include="Views\Comissao\Details.cshtml" />
     <Content Include="Views\Comissao\Edit.cshtml" />
     <Content Include="Views\Comissao\Index.cshtml" />
+    <Content Include="Views\Login\RecuperaSenha.cshtml" />
+    <Content Include="Views\Login\EmailRecuperacao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
