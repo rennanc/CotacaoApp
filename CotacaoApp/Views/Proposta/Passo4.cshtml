@@ -4,19 +4,34 @@
     ViewBag.Title = "Passo 4 - Condutores";
 }
 
-<button type="button" class="btn btn-default btn-lg">Seu Carro</button>
-<button type="button" class="btn btn-default btn-lg">Localização</button>
-<button type="button" class="btn btn-default btn-lg">Segurado</button>
-<button type="button" class="btn btn-primary btn-lg">Condutores</button>
-<button type="button" class="btn btn-default btn-lg">Conclusão</button>
-
-<h2>Condutores</h2>
+<div class="col-lg-12 wizardstep-blocks">
+    <div class="wizardstep-block-Off">
+        <div class="wizardstep-StepTitle">1º Passo</div>
+        <div class="wizardstep-Title">Seu Carro</div>
+    </div>
+    <div class="wizardstep-block-Off">
+        <div class="wizardstep-StepTitle">2º Passo</div>
+        <div class="wizardstep-Title">Localização</div>
+    </div>
+    <div class="wizardstep-block-Off">
+        <div class="wizardstep-StepTitle">3º Passo</div>
+        <div class="wizardstep-Title">Segurado</div>
+    </div>
+    <div class="wizardstep-block-On">
+        <div class="wizardstep-StepTitle">4º Passo</div>
+        <div class="wizardstep-Title">Condutores</div>
+    </div>
+    <div class="wizardstep-block-Off">
+        <div class="wizardstep-StepTitle">5º Passo</div>
+        <div class="wizardstep-Title">Conclusão</div>
+    </div>
+</div>
 
 @using (Html.BeginForm("Passo4", "Proposta", FormMethod.Post, new { id = "Proposta" }))
 {
     @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <h4>Formulario</h4>
+    <div class="form-horizontal col-lg-12">
+        <h4></h4>
         <hr />
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -106,50 +121,50 @@
             </div>
         </div>
 
-            <div class="form-group">
-                @Html.Label("Tipo de residência do Principal*", htmlAttributes: new { @class = "control-label col-md-5" })
-                <div class="col-md-7">
-                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.APARTAMENTOOUFLAT) Apartamento ou flat</p>
-                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.CASAEMCONDOMINIOFECHADO) Casa em condominio fechado</p>
-                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.CASAOUSOBRADO) Casa ou sobrado</p>
-                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.CHACARAFAZENDAOUSITIO) Chácara, fazenda ou sítio</p>
-                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.OUTROS) Outros</p>
-                    <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.NAOSEI) Não sei</p>
-                </div>
+        <div class="form-group">
+            @Html.Label("Tipo de residência do Principal*", htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.APARTAMENTOOUFLAT) Apartamento ou flat</p>
+                <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.CASAEMCONDOMINIOFECHADO) Casa em condominio fechado</p>
+                <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.CASAOUSOBRADO) Casa ou sobrado</p>
+                <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.CHACARAFAZENDAOUSITIO) Chácara, fazenda ou sítio</p>
+                <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.OUTROS) Outros</p>
+                <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.NAOSEI) Não sei</p>
             </div>
+        </div>
 
-            <div class="form-group">
-                @Html.Label("Qual a profissão do Principal?*", htmlAttributes: new { @class = "control-label col-md-5" })
-                <div class="col-md-7">
-                    @Html.EditorFor(model => model.Segurado.Profissao, new { htmlAttributes = new { @class = "form-control" } })
-                </div>
+        <div class="form-group">
+            @Html.Label("Qual a profissão do Principal?*", htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.EditorFor(model => model.Segurado.Profissao, new { htmlAttributes = new { @class = "form-control" } })
             </div>
+        </div>
 
-            <div class="form-group">
-                @Html.Label("Nos últimos 24 meses Principal foi vítima de roubo / furto de carro?*", htmlAttributes: new { @class = "control-label col-md-5" })
-                <div class="col-md-7">
-                    @Html.RadioButtonFor(model => model.Segurado.IERoubadoEm24Meses, IERoubadoEm24Meses.SIM) Sim
-                    @Html.RadioButtonFor(model => model.Segurado.IERoubadoEm24Meses, IERoubadoEm24Meses.NAO) Não
-                </div>
+        <div class="form-group">
+            @Html.Label("Nos últimos 24 meses Principal foi vítima de roubo / furto de carro?*", htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.RadioButtonFor(model => model.Segurado.IERoubadoEm24Meses, IERoubadoEm24Meses.SIM) Sim
+                @Html.RadioButtonFor(model => model.Segurado.IERoubadoEm24Meses, IERoubadoEm24Meses.NAO) Não
             </div>
+        </div>
 
-            <div class="form-group">
-                @Html.Label("Algum condutor estuda?*", htmlAttributes: new { @class = "control-label col-md-5" })
-                <div class="col-md-7">
-                    @Html.RadioButtonFor(model => model.Segurado.IEAlgumCondutorEstuda, IEAlgumCondutorEstuda.SIM) Sim
-                    @Html.RadioButtonFor(model => model.Segurado.IEAlgumCondutorEstuda, IEAlgumCondutorEstuda.NAO) Não
-                </div>
+        <div class="form-group">
+            @Html.Label("Algum condutor estuda?*", htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-7">
+                @Html.RadioButtonFor(model => model.Segurado.IEAlgumCondutorEstuda, IEAlgumCondutorEstuda.SIM) Sim
+                @Html.RadioButtonFor(model => model.Segurado.IEAlgumCondutorEstuda, IEAlgumCondutorEstuda.NAO) Não
             </div>
+        </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-4 col-md-1">
-                    <input type="submit" name="btnVoltar" value="<< Anterior" class="btn btn-default" />
-                </div>
-                <div class="col-md-1">
-                    <input type="submit" name="btnAvancar" value="Confirmar e Prosseguir >>" class="btn btn-primary" />
-                </div>
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-1">
+                <input type="submit" name="btnVoltar" value="<< Anterior" class="btn btn-default" />
             </div>
-        
+            <div class="col-md-1">
+                <input type="submit" name="btnAvancar" value="Confirmar e Prosseguir >>" class="btn btn-primary" />
+            </div>
+        </div>
+
     </div>
 }
 

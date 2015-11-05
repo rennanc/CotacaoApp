@@ -2,10 +2,10 @@
 
 @using CotacaoApp.Enumerations
 @{
-    ViewBag.Title = "Passo2 - Localização";
+    ViewBag.Title = "Passo 2 - Localização";
 }
 
-<div class="col-lg-12" style="float: right;margin-right: -4%;">
+<div class="col-lg-12 wizardstep-blocks">
     <div class="wizardstep-block-Off">
         <div class="wizardstep-StepTitle">1º Passo</div>
         <div class="wizardstep-Title">Seu Carro</div>
@@ -28,35 +28,34 @@
     </div>
 </div>
 
-<h2>Localização</h2>
-
 @using (Html.BeginForm("Passo2", "Proposta", FormMethod.Post, new { id = "Proposta" }))
 {
     @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <h4>Formulario</h4>
+    <div class="form-horizontal col-lg-12">
+        <h4></h4>
         <hr />
+        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.Hidden("proposta", new Microsoft.Web.Mvc.MvcSerializer().Serialize(Model))
         <div class="form-group">
             @Html.LabelFor(model => model.IETipoEstacionamento, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8">
-                    <p>@Html.RadioButtonFor(model => model.IETipoEstacionamento, IETipoEstacionamento.RESIDENCIAGARAGEM) Residência/Garagem</p>
-                    <!--Tipo Portão-->
-                    <div class="form-group border-box display-hide" id="IETipoPortao" >
-                        <div class="col-md-3">@Html.Label("Tipo do Portão", htmlAttributes: new { @class = "control-label" })</div>
-                        <div class="col-md-9 col-md-pull-1">
-                                @Html.RadioButtonFor(model => model.IETipoPortao, IETipoPortao.AUTOMATICO) Automatico
-                                @Html.RadioButtonFor(model => model.IETipoPortao, IETipoPortao.MANUAL) Manual
-                                @Html.RadioButtonFor(model => model.IETipoPortao, IETipoPortao.COMPORTEIRO) Com Porteiro
-                                @Html.RadioButtonFor(model => model.IETipoPortao, IETipoPortao.SEMPORTEIRO) Sem Portão
-                                @Html.ValidationMessageFor(model => model.IETipoPortao, "", new { @class = "text-danger" })
-                        </div>
+                <p>@Html.RadioButtonFor(model => model.IETipoEstacionamento, IETipoEstacionamento.RESIDENCIAGARAGEM) Residência/Garagem</p>
+                <!--Tipo Portão-->
+                <div class="form-group border-box display-hide" id="IETipoPortao">
+                    <div class="col-md-3">@Html.Label("Tipo do Portão", htmlAttributes: new { @class = "control-label" })</div>
+                    <div class="col-md-9 col-md-pull-1">
+                        @Html.RadioButtonFor(model => model.IETipoPortao, IETipoPortao.AUTOMATICO) Automatico
+                        @Html.RadioButtonFor(model => model.IETipoPortao, IETipoPortao.MANUAL) Manual
+                        @Html.RadioButtonFor(model => model.IETipoPortao, IETipoPortao.COMPORTEIRO) Com Porteiro
+                        @Html.RadioButtonFor(model => model.IETipoPortao, IETipoPortao.SEMPORTEIRO) Sem Portão
+                        @Html.ValidationMessageFor(model => model.IETipoPortao, "", new { @class = "text-danger" })
                     </div>
-                    <!--Tipo Portão-->
-                    <p>@Html.RadioButtonFor(model => model.IETipoEstacionamento, IETipoEstacionamento.ESTACIONAMENTO) Estacionamento</p>
-                    <p>@Html.RadioButtonFor(model => model.IETipoEstacionamento, IETipoEstacionamento.OUTROS) Outros</p>
-                    @Html.ValidationMessageFor(model => model.IETipoEstacionamento, "", new { @class = "text-danger" })
+                </div>
+                <!--Tipo Portão-->
+                <p>@Html.RadioButtonFor(model => model.IETipoEstacionamento, IETipoEstacionamento.ESTACIONAMENTO) Estacionamento</p>
+                <p>@Html.RadioButtonFor(model => model.IETipoEstacionamento, IETipoEstacionamento.OUTROS) Outros</p>
+                @Html.ValidationMessageFor(model => model.IETipoEstacionamento, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -65,7 +64,7 @@
             <div class="col-md-8">
                 @Html.EditorFor(model => model.CepEstacionamento, new { htmlAttributes = new { @class = "form-control cep" } })
                 @Html.ValidationMessageFor(model => model.CepEstacionamento, "", new { @class = "text-danger" })
-                <div id="testecep" ></div>
+                <div id="testecep"></div>
             </div>
         </div>
 
@@ -81,11 +80,11 @@
             @Html.Label("O Carro é Utilizado Para:*", htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8">
                 @Html.CheckBoxFor(model => model.IEUtilizacaoVeiculoLazer, IEUtilizacaoVeiculoLazer.SIM)
-                @Html.LabelFor(model => model.IEUtilizacaoVeiculoLazer, htmlAttributes: new { @class = "control-label" }) <br/>
+                @Html.LabelFor(model => model.IEUtilizacaoVeiculoLazer, htmlAttributes: new { @class = "control-label" }) <br />
                 @Html.CheckBoxFor(model => model.IEUtilizacaoVeiculoTrabalho, IEUtilizacaoVeiculoTrabalho.SIM)
                 @Html.LabelFor(model => model.IEUtilizacaoVeiculoTrabalho, htmlAttributes: new { @class = "control-label" })<br />
                 <!--Para Trabalhar-->
-                <div class="form-group border-box display-hide" id="IELocalGaragemTrabalho" >
+                <div class="form-group border-box display-hide" id="IELocalGaragemTrabalho">
                     @Html.Label("O Veiculo Permanece em Garagem ou Estacionamento Protegido no Local de Trabalho?*", htmlAttributes: new { @class = "control-label col-md-4 " })
                     <div class="col-md-8">
                         <p>@Html.RadioButtonFor(model => model.IELocalGaragemTrabalho, IELocalGaragemTrabalho.SIMCOMPORTAOMANUAL) Sim, Com Portão Manual</p>
@@ -122,18 +121,18 @@
         </div>
 
         <div class="form-group">
-        @Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumento, htmlAttributes: new { @class = "control-label col-md-4" })
-        <div class="col-md-8">
-            <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, IEUtilizacaoVeiculoInstrumento.SIM) Sim</p>
-            <div class="form-group border-box display-hide" id="IEUtilizacaoVeiculoInstrumentoForma">
-                <p>@Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, htmlAttributes: new { @class = "control-label col-md-2" })</p>
-                <div class="col-md-10">
-                    <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, IEUtilizacaoVeiculoInstrumentoForma.PARAENTREGASREPRESENTACAOCOMERCIALVENDEDORESPROMOTORESEPRESTADORESDESERVICOS) Para entregas, representação comercial, vendedores, promotores e prestadores de serviços.</p>
-                    <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, IEUtilizacaoVeiculoInstrumentoForma.PARAVISITASACLIENTESFORNECEDORESEPROSPECCAODENOVOSNEGOCIOS) Para visitas a clientes, fornecedores e prospecção de novos negócios.</p>
-                    <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, IEUtilizacaoVeiculoInstrumentoForma.UTILIZADOEMOUTRASATIVIDADESNAORELACIONADASACIMA) Utilizado em outras atividades não relacionadas acima.</p>
+            @Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumento, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, IEUtilizacaoVeiculoInstrumento.SIM) Sim</p>
+                <div class="form-group border-box display-hide" id="IEUtilizacaoVeiculoInstrumentoForma">
+                    <p>@Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, htmlAttributes: new { @class = "control-label col-md-2" })</p>
+                    <div class="col-md-10">
+                        <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, IEUtilizacaoVeiculoInstrumentoForma.PARAENTREGASREPRESENTACAOCOMERCIALVENDEDORESPROMOTORESEPRESTADORESDESERVICOS) Para entregas, representação comercial, vendedores, promotores e prestadores de serviços.</p>
+                        <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, IEUtilizacaoVeiculoInstrumentoForma.PARAVISITASACLIENTESFORNECEDORESEPROSPECCAODENOVOSNEGOCIOS) Para visitas a clientes, fornecedores e prospecção de novos negócios.</p>
+                        <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, IEUtilizacaoVeiculoInstrumentoForma.UTILIZADOEMOUTRASATIVIDADESNAORELACIONADASACIMA) Utilizado em outras atividades não relacionadas acima.</p>
+                    </div>
                 </div>
-            </div>
-            <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, IEUtilizacaoVeiculoInstrumento.NAO) Não</p>
+                <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, IEUtilizacaoVeiculoInstrumento.NAO) Não</p>
             </div>
         </div>
 
