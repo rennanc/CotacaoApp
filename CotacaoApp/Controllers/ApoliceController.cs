@@ -62,6 +62,7 @@ namespace CotacaoApp.Controllers
             PropostaDAO propostaDao = new PropostaDAO();
             apolice.Proposta = propostaDao.GetProposta(propostaId);
             apolice.Seguradoras = db.Seguradora.ToList();
+            apolice.ValorContrato = 0;
             return View(apolice);
         }
 
