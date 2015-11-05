@@ -10,6 +10,7 @@ using Microsoft.Web.Mvc;
 using System.Data.Entity.Validation;
 using CotacaoApp.Filters;
 using System.Collections.Generic;
+using PagedList;
 
 namespace CotacaoApp.Controllers
 {
@@ -65,10 +66,30 @@ namespace CotacaoApp.Controllers
         }
 
 
+
+
         // GET: Proposta
         [AutorizacaoFilter]
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "nome_desc" : "";
+            ViewBag.CpfSortParm = String.IsNullOrEmpty(sortOrder) ? "cpf_desc" : "cpf";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+
+            //old
             List<Proposta> propostas = db.Proposta.ToList();
             List<Proposta> propostasCompleta = new List<Proposta>();
             PropostaDAO propostaDAO = new PropostaDAO();
@@ -76,6 +97,40 @@ namespace CotacaoApp.Controllers
             {
                 propostasCompleta.Add(propostaDAO.GetProposta(proposta.Id));
             }
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                propostasCompleta = propostasCompleta.Where(s => s.Segurado.Nome.IndexOf(searchString, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+            }
+            switch (sortOrder)
+            {
+                case "nome_desc":
+                    propostasCompleta = propostasCompleta.OrderByDescending(p => p.Segurado.Nome).ToList();
+                    break;
+                case "cpf":
+                    propostasCompleta = propostasCompleta.OrderBy(p => p.Segurado.CodigoCpf).ToList();
+                    break;
+                case "cpf_desc":
+                    propostasCompleta = propostasCompleta.OrderByDescending(p => p.Segurado.CodigoCpf).ToList();
+                    break;
+                default:  // Name ascending 
+                    propostasCompleta = propostasCompleta.OrderBy(p => p.Segurado.Nome).ToList();
+                    break;
+            }
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            PagedList<Proposta> propostaList = new PagedList<Proposta>(propostasCompleta, pageNumber, pageSize);
+            return View(propostaList);
+
+
+            //old
+            //List<Proposta> propostas = db.Proposta.ToList();
+            //List<Proposta> propostasCompleta = new List<Proposta>();
+            //PropostaDAO propostaDAO = new PropostaDAO();
+            //foreach (Proposta proposta in propostas)
+            //{
+            //    propostasCompleta.Add(propostaDAO.GetProposta(proposta.Id));
+            //}
 
             return View(propostasCompleta);
         }

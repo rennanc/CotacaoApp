@@ -43,9 +43,9 @@
 
         <div class="form-group">
             @Html.Label("Valor do Contrato:*", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ValorContrato, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "0.00" } })
-                @*@Html.ValidationMessageFor(model => model.Contrato, "", new { @class = "text-danger" })*@
+            <div class="input-group" style="padding-left:15px">
+                <div class="input-group-addon">$</div>
+                <input type="text" id="ValorContrato" style="width: 315px;" name="ValorContrato" class="form-control numeric" placeholder="0.00">
             </div>
         </div>
 
@@ -63,41 +63,41 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Comissao.ValorPremioLiquido, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Comissao.ValorPremioLiquido, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "0.00" } })
-                @*@Html.ValidationMessageFor(model => model.Comissao.ValorPremioLiquido, "", new { @class = "text-danger" })*@
+            <div class="input-group" style="padding-left:15px">
+                <div class="input-group-addon">$</div>
+                <input type="text" id="Comissao.ValorPremioLiquido" style="width: 315px;" name="Comissao.ValorPremioLiquido" class="form-control numeric" placeholder="0.00">
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Comissao.ValorPercentualLiquido, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Comissao.ValorPercentualLiquido, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "0.00" } })
-                @*@Html.ValidationMessageFor(model => model.Comissao.ValorPercentualLiquido, "", new { @class = "text-danger" })*@
+            <div class="input-group" style="padding-left:15px">
+                <div class="input-group-addon">%</div>
+                <input type="text" id="Comissao.ValorPercentualLiquido" style="width: 315px;" name="Comissao.ValorPercentualLiquido" class="form-control numeric" placeholder="0.00">
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Comissao.ValorComissaoLiquida, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Comissao.ValorComissaoLiquida, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "0.00" } })
-                @*@Html.ValidationMessageFor(model => model.Comissao.ValorComissaoLiquida, "", new { @class = "text-danger" })*@
+            <div class="input-group" style="padding-left:15px">
+                <div class="input-group-addon">$</div>
+                <input type="text" id="Comissao.ValorComissaoLiquida" style="width: 315px;" name="Comissao.ValorComissaoLiquida" class="form-control numeric" placeholder="0.00">
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Comissao.ValorPercentualCiss, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Comissao.ValorPercentualCiss, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "0.00" } })
-                @*@Html.ValidationMessageFor(model => model.Comissao.ValorPercentualCiss, "", new { @class = "text-danger" })*@
+            <div class="input-group" style="padding-left:15px">
+                <div class="input-group-addon">%</div>
+                <input type="text" id="Comissao.ValorPercentualCiss" style="width: 315px;" name="Comissao.ValorPercentualCiss" class="form-control numeric" placeholder="0.00">
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Comissao.ValorPercentualCir, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Comissao.ValorPercentualCir, new { htmlAttributes = new { @class = "form-control numeric", @placeholder = "0.00" } })
-                @*@Html.ValidationMessageFor(model => model.Comissao.ValorPercentualCir, "", new { @class = "text-danger" })*@
+            <div class="input-group" style="padding-left:15px">
+                <div class="input-group-addon">%</div>
+                <input type="text" id="Comissao.ValorPercentualCir" style="width: 315px;" name="Comissao.ValorPercentualCir" class="form-control numeric" placeholder="0.00">
             </div>
         </div>
         <input type="hidden" id="formularioApoliceHtml" name="formularioApoliceHtml" />
@@ -113,9 +113,7 @@
 <script type="text/javascript">
     $(".numeric").inputmask("decimal", {
         radixPoint: ",",
-        groupSeparator: ".",
-        digits: 2,
-        autoGroup: true
+        digits: 2
     });
 
     $(document).ready(function () {

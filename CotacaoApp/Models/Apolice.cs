@@ -10,7 +10,6 @@ using System.Web;
 namespace CotacaoApp.Models
 {
     [Serializable]
-    [AutorizacaoFilter]
     public class Apolice
     {
 

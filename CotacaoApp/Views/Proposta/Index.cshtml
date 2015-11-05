@@ -1,27 +1,42 @@
-﻿@model IEnumerable<CotacaoApp.Models.Proposta>
+﻿@model PagedList.IPagedList<CotacaoApp.Models.Proposta>
+@using PagedList.Mvc;
+
+<link href="`~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Propostas";
 }
 
-<h2>Index</h2>
+<h2>Lista de Propostas</h2>
 
+@using (Html.BeginForm("Index", "Proposta", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+        <label for="SearchString">Nome do Segurado</label>
+        <input type="text" id="SearchString" name="SearchString" class="form-control" placeholder="Nome do Segurado" />
+    </div>
+    <input type="submit" class="btn-lg btn-default" value="Buscar" />
+}
+    
 <p>
     @Html.ActionLink("Nova Proposta", "Passo1")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Id)
+            @Html.DisplayName("Numero da Proposta")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Segurado.Nome)
+            @Html.ActionLink("CPF do Segurado", "Index", new { sortOrder = ViewBag.CpfSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Segurado.NumeroCep)
+            @Html.ActionLink("Nome do Segurado", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cobertura.NomeCobertura)
+            @Html.DisplayName("Cep do Segurado")
+        </th>
+        <th>
+            @Html.DisplayName("Cobertura")
         </th>
         <th></th>
     </tr>
@@ -30,6 +45,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Segurado.CodigoCpf)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Segurado.Nome)
@@ -50,3 +68,12 @@
 }
 
 </table>
+
+<div class="col-sm-10">
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+                    new { pagina = page }))
+        Mostrando @Model.FirstItemOnPage de @Model.LastItemOnPage
+                    de @Model.TotalItemCount Propostas
+    </div>
+</div>
