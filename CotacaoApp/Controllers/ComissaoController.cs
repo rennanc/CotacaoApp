@@ -45,7 +45,7 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CodigoUsuario,ValorPremioLiquido,ValorPercentualLiquido,ValorComissaoLiquida,ValorPercentualCiss,ValorPercentualCir")] Comissao comissao)
+        public ActionResult Create([Bind(Include = "Id,CodigoUsuario,ValorPremioLiquido,ValorPercentualComissaoLiquido,ValorComissaoLiquida,ValorPercentualComissao,ValorPercentualCir")] Comissao comissao)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CodigoUsuario,ValorPremioLiquido,ValorPercentualLiquido,ValorComissaoLiquida,ValorPercentualCiss,ValorPercentualCir")] Comissao comissao)
+        public ActionResult Edit([Bind(Include = "Id,CodigoUsuario,ValorPremioLiquido,ValorPercentualComissaoLiquido,ValorComissaoLiquida,ValorPercentualComissao,ValorPercentualCir")] Comissao comissao)
         {
             if (ModelState.IsValid)
             {

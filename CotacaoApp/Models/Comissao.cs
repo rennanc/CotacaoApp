@@ -22,21 +22,17 @@ namespace CotacaoApp.Models
         [Column("VR_PREMIO_LIQUIDO")]
         public decimal ValorPremioLiquido { get; set; }
 
-
-        [Display(Name = "Valor Percentual Liquido:*")]
-        [Column("VR_PERC_COMISSAO")]
-        public decimal ValorPercentualLiquido { get; set; }
-
-
         [Display(Name = "Valor Comissao Liquida:*")]
-        [Column("VR_COMISSAO_LIQUIDA")]
+        [Column("VR_COMISSAO_LIQUIDO")]
         public decimal ValorComissaoLiquida { get; set; }
 
+        [Display(Name = "Valor Percentual Comissão:*")]
+        [Column("VR_PERC_COMISSAO")]
+        public decimal ValorPercentualComissao { get; set; }
 
-        [Display(Name = "Valor Percentual Ciss:*")]
-        [Column("VR_PERCISS")]
-        public decimal ValorPercentualCiss { get; set; }
-
+        [Display(Name = "Valor Percentual Liquido:*")]
+        [Column("VR_PERC_COMISSAO_LIQUIDO")]
+        public decimal ValorPercentualComissaoLiquido { get; set; }
 
         [Display(Name = "Valor Percentual Cir:*")]
         [Column("VR_PERCIR")]

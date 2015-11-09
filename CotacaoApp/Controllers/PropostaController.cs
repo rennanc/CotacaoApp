@@ -121,18 +121,6 @@ namespace CotacaoApp.Controllers
             int pageNumber = (page ?? 1);
             PagedList<Proposta> propostaList = new PagedList<Proposta>(propostasCompleta, pageNumber, pageSize);
             return View(propostaList);
-
-
-            //old
-            //List<Proposta> propostas = db.Proposta.ToList();
-            //List<Proposta> propostasCompleta = new List<Proposta>();
-            //PropostaDAO propostaDAO = new PropostaDAO();
-            //foreach (Proposta proposta in propostas)
-            //{
-            //    propostasCompleta.Add(propostaDAO.GetProposta(proposta.Id));
-            //}
-
-            return View(propostasCompleta);
         }
 
 

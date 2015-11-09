@@ -25,10 +25,12 @@
         }
 
         
+        <br/>
+        <h1>Apolice</h1> 
+        <h4>@Html.DisplayNameFor(model => model.Status) : @Html.DisplayFor(model => model.Status)</h4>
 
-        <h1>Apolice</h1>
         <div class="form-group ">
-            @Html.Label("Seguradora:*", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Seguradora:*", htmlAttributes: new { @class = "control-label col-md-3" })
             <select name="CodigoSeguradora" class="form-control col-md-10" style="margin-left:15px">
                 <option>Escolha uma Seguradora</option>
                 @if (Model.Seguradoras != null)
@@ -42,27 +44,20 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Valor do Contrato:*", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Valor do Contrato:*", htmlAttributes: new { @class = "control-label col-md-3" })
             <div class="input-group" style="padding-left:15px">
                 <div class="input-group-addon">$</div>
                 <input type="text" id="ValorContrato" style="width: 315px;" name="ValorContrato" class="form-control numeric" placeholder="0.00">
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-                @*@Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })*@
-            </div>
-        </div>
+        
         
 
         <h2>Comissão</h2>
         @Html.HiddenFor(model => model.Comissao.CodigoUsuario, new { id = "Comissao.CodigoUsuario", Value = @usuario.Id })
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Comissao.ValorPremioLiquido, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Comissao.ValorPremioLiquido, htmlAttributes: new { @class = "control-label col-md-3" })
             <div class="input-group" style="padding-left:15px">
                 <div class="input-group-addon">$</div>
                 <input type="text" id="Comissao.ValorPremioLiquido" style="width: 315px;" name="Comissao.ValorPremioLiquido" class="form-control numeric" placeholder="0.00">
@@ -70,15 +65,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Comissao.ValorPercentualLiquido, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="input-group" style="padding-left:15px">
-                <div class="input-group-addon">%</div>
-                <input type="text" id="Comissao.ValorPercentualLiquido" style="width: 315px;" name="Comissao.ValorPercentualLiquido" class="form-control numeric" placeholder="0.00">
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Comissao.ValorComissaoLiquida, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Comissao.ValorComissaoLiquida, htmlAttributes: new { @class = "control-label col-md-3" })
             <div class="input-group" style="padding-left:15px">
                 <div class="input-group-addon">$</div>
                 <input type="text" id="Comissao.ValorComissaoLiquida" style="width: 315px;" name="Comissao.ValorComissaoLiquida" class="form-control numeric" placeholder="0.00">
@@ -86,7 +73,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Comissao.ValorPercentualCiss, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Comissao.ValorPercentualComissao, htmlAttributes: new { @class = "control-label col-md-3" })
             <div class="input-group" style="padding-left:15px">
                 <div class="input-group-addon">%</div>
                 <input type="text" id="Comissao.ValorPercentualCiss" style="width: 315px;" name="Comissao.ValorPercentualCiss" class="form-control numeric" placeholder="0.00">
@@ -94,12 +81,20 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Comissao.ValorPercentualComissaoLiquido, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="input-group" style="padding-left:15px">
+                <div class="input-group-addon">%</div>
+                <input type="text" id="Comissao.ValorPercentualLiquido" style="width: 315px;" name="Comissao.ValorPercentualLiquido" class="form-control numeric" placeholder="0.00">
+            </div>
+        </div>
+
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Comissao.ValorPercentualCir, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="input-group" style="padding-left:15px">
                 <div class="input-group-addon">%</div>
                 <input type="text" id="Comissao.ValorPercentualCir" style="width: 315px;" name="Comissao.ValorPercentualCir" class="form-control numeric" placeholder="0.00">
             </div>
-        </div>
+        </div>*@
         <input type="hidden" id="formularioApoliceHtml" name="formularioApoliceHtml" />
         <div><input type="submit" value="Emitir Apolice Para o Cliente" class="form-control btn-success" /></div>
 

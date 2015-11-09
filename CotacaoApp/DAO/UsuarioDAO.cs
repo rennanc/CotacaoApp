@@ -43,7 +43,7 @@ namespace CotacaoApp.DAO
         internal Usuario ObterSenhaPorLogin(string login)
         {
             var conexao = new DBConnection();
-            QuerySql query = conexao.CreateQuery("SELECT NM_LOGIN,NM_SENHA FROM usuario WHERE NM_USUARIO=@usuario");
+            QuerySql query = conexao.CreateQuery("SELECT NM_USUARIO,NM_SENHA FROM usuario WHERE NM_USUARIO=@usuario");
             query.SetParameter("usuario", login);
             DbDataReader reader = query.ExecuteQuery();
             Usuario user = null;
@@ -51,7 +51,7 @@ namespace CotacaoApp.DAO
             {
                 user = new Usuario
                 {
-                    Login = reader.GetString(reader.GetOrdinal("NM_LOGIN")),
+                    Login = reader.GetString(reader.GetOrdinal("NM_USUARIO")),
                     Senha = reader.GetString(reader.GetOrdinal("NM_SENHA"))
                 };
             }

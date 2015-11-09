@@ -54,25 +54,65 @@
                 <textarea id="coberturaDescricao" class="form-control  col-sm-offset-3" rows="15" style="display: none; width: 70%; border: none; "></textarea>
             </div>
 
+            
+            <div class="form-group ">
+                @Html.Label("Marca do Carro:*", htmlAttributes: new { @class = "control-label col-md-3" })
+                <select name="NomeMarcaVeiculo" id="NomeMarcaVeiculo" class="form-control col-md-9" style="margin-left:15px" required>
+                    <option value="" disabled selected>Selecione</option>
+                </select>
+            </div>
 
-            <div class="form-group">
+            <div class="form-group ">
+                @Html.LabelFor(model => model.AnoFabricacaoVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
+                <select name="AnoFabricacaoVeiculo" id="AnoFabricacaoVeiculo" class="form-control col-md-9" style="margin-left:15px" required>
+                    <option value="" disabled selected>Selecione</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="display: none" id="AnoModeloVeiculoField">
+                @Html.LabelFor(model => model.AnoModeloVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    <span id="AnoModeloVeiculoRadios"></span>
+                </div>
+                <span id="AnoModeloVeiculo-error" class="help-block" style="display: none;"></span>
+            </div>
+
+
+            @*<div class="form-group">
                 @Html.Label("Marca do Carro:*", htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="col-md-9">
                     @Html.EditorFor(model => model.NomeMarcaVeiculo, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
-            </div>
+            </div>*@
 
-            <div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(model => model.AnoFabricacaoVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="col-md-9">
                     @Html.EditorFor(model => model.AnoFabricacaoVeiculo, new { htmlAttributes = new { @class = "form-control", @min = "1900" } })
                 </div>
-            </div>
+            </div>*@
 
-            <div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(model => model.AnoModeloVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="col-md-9">
                     @Html.EditorFor(model => model.AnoModeloVeiculo, new { htmlAttributes = new { @class = "form-control", @min = "1900" } })
+                </div>
+            </div>*@
+
+
+            @*<div class="form-group ">
+                @Html.LabelFor(model => model.NomeVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
+                <select name="NomeVeiculo" id="NomeVeiculo" class="form-control col-md-9 typ  select2-search__field" style="margin-left:15px" required>
+                    <option value="" disabled selected>Selecione</option>
+                    <option value="" >aaaa</option>
+                </select>
+            </div>*@
+            <div class="form-group">
+                @Html.LabelFor(model => model.NomeVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    <input type="text" name="NomeVeiculo" id="NomeVeiculo" class="twitter-typeahead" />
+                    @*@Html.EditorFor(model => model.NomeVeiculo, new { htmlAttributes = new { @class = "form-control typeahead" } })*@
+                    @Html.ValidationMessageFor(model => model.NomeVeiculo, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -82,14 +122,6 @@
                     @Html.RadioButtonFor(model => model.IEZeroKM, IEZeroKM.SIM) Sim
                     @Html.RadioButtonFor(model => model.IEZeroKM, IEZeroKM.NAO) Não
                     @Html.ValidationMessageFor(model => model.IEZeroKM, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.NomeVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.NomeVeiculo, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.NomeVeiculo, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -147,22 +179,94 @@
             if (codigoCobertura !== undefined) {
                 $('#CodigoCobertura').trigger('change');
             }
+            //preencher select de marcas
+            obterMarcasDeCarro();
+            obterListaAnoFabricacao();
+            $.support.cors = true;
+
+
+            
 
         });
+
+
+
+        var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+  'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
+  'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
+  'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
+  'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+  'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+  'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+  'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+        ];
+
+
+        var substringMatcher = function (strs) {
+            return function findMatches(q, cb) {
+                var matches, substringRegex;
+
+                // an array that will be populated with substring matches
+                matches = [];
+
+                // regex used to determine if a string contains the substring `q`
+                substrRegex = new RegExp(q, 'i');
+
+                // iterate through the pool of strings and for any string that
+                // contains the substring `q`, add it to the `matches` array
+                $.each(strs, function (i, str) {
+                    if (substrRegex.test(str)) {
+                        // the typeahead jQuery plugin expects suggestions to a
+                        // JavaScript object, refer to typeahead docs for more info
+                        matches.push({
+                            value: str
+                        });
+                    }
+                });
+
+                cb(matches);
+            };
+        };
+
+        $('input.typeahead').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1
+        },
+        {
+            name: 'states',
+            source: substringMatcher(states)
+        });
+        });
+        $('.typeahead.input-sm').siblings('input.tt-hint').addClass('hint-small');
+        $('.typeahead.input-lg').siblings('input.tt-hint').addClass('hint-large');
 
         //Obter Descrição da cobertura
         $('#CodigoCobertura').on('change', function () {
             var Cobertura = {};
             Cobertura.Id = $(this).val();
             $.getJSON("/Proposta/ObterCobertura", Cobertura, ObterCobertura);
-            debugger;
+        });
 
+
+        //mudar ano do modelo
+        $('#AnoFabricacaoVeiculo').on('change', function () {
+            obterListaAnoModelo($(this).val());
         });
 
         var ObterCobertura = function (data) {
             $("#coberturaDescricao").val(data);
             $("#coberturaDescricao").show();
         };
+
+        //carregar nomes dos modelos
+        $('#NomeMarcaVeiculo').on('change', function () {
+            var codigoMarca = $(this).val();
+            obterModelosDeCarro('NomeMarcaVeiculo', codigoMarca);
+        });
+
+        
 
         //VALIDACAO COMPORTAMENTO PADRAO
         $.validator.setDefaults({
@@ -199,7 +303,7 @@
                 NomeMarcaVeiculo: {
                     required: true
                 },
-                AnoModelo: {
+                AnoModeloVeiculo: {
                     required: true
                 },
                 IEZeroKM: {
@@ -220,4 +324,5 @@
             }
         });
     </script>
+<script type="text/javascript" src="~/Scripts/utilCorretorApp.js"></script>
 
