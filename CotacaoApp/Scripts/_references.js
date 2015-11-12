@@ -73,6 +73,7 @@
 /// <reference path="locales/bootstrap-datepicker.uk.min.js" />
 /// <reference path="locales/bootstrap-datepicker.vi.min.js" />
 /// <reference path="locales/bootstrap-datepicker.zh-tw.min.js" />
+/// <reference path="marcas.js" />
 /// <reference path="modernizr-2.6.2.js" />
 /// <reference path="respond.js" />
 /// <reference path="select2.min.js" />
