@@ -16,11 +16,30 @@
         <div class="col-xs-12" style="height:10px;"></div>
         <div class="col-lg-push-7 col-lg-4">
             
-            @using (Html.BeginForm("Passo1", "Proposta", FormMethod.Post))
+            @using (Html.BeginForm("Passo1", "Proposta", FormMethod.Get))
             {
             @Html.AntiForgeryToken()
                 <div class="form-home">
-                        <div class="col-md-12 form-group center-block">
+
+                    <div class="col-md-12 form-group center-block">
+                        <select name="NomeMarcaVeiculo" id="NomeMarcaVeiculo" class="form-control" >
+                            <option value="" disabled selected>Escolha a marca do Seu Carro</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 form-group ">
+                        <select name="AnoFabricacaoVeiculo" id="AnoFabricacaoVeiculo" class="form-control" >
+                            <option value="" disabled selected>Ano de Fabricação</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-12 " style="display: none; color: white"  name="AnoModeloVeiculo" id="AnoModeloVeiculoField">
+                        @Html.LabelFor(model => model.AnoModeloVeiculo, htmlAttributes: new { @class = "control-label col-md-6" })
+                        <div class="col-md-6 ">
+                            <span id="AnoModeloVeiculoRadios"></span>
+                        </div>
+                        <span id="AnoModeloVeiculo-error" class="help-block" style="display: none;"></span>
+                    </div>
+
+                        @*<div class="col-md-12 form-group center-block">
                             <select class="form-control" name="NomeMarcaVeiculo" id="NomeMarcaVeiculo">
                                 <option selected>Escolha a marca do Seu Carro</option>
                                 <option>Fiat</option>
@@ -30,20 +49,22 @@
                                 <option>Kia</option>
                             </select>
                         </div>
+                        
+
                         <div class="col-md-12 form-group">
                             <select class="form-control" name="AnoFabricacaoVeiculo" id="AnoFabricacaoVeiculo">
                                 <option selected>Ano de Fabricação</option>
                                 <option value="2014">2014</option>
                                 <option value="2015">2015</option>
                             </select>
-                        </div>
-                        <div class="col-md-12 form-group">
+                        </div>*@
+                        @*<div class="col-md-12 form-group">
                             <select class="form-control" name="AnoModeloVeiculo" id="AnoModeloVeiculo">
                                 <option selected>Ano do Modelo</option>
                                 <option value="2014" >2014</option>
                                 <option value="2015" >2015</option>
                             </select>
-                        </div>
+                        </div>*@
                         <div class="col-md-12 form-group">
                             <input class="form-control" name="NomeVeiculo" type="text" placeholder="Ex: Palio" />
                         </div>
@@ -159,3 +180,31 @@
                 <p> Em caso de qualquer problema, seja ele simples como um cano estourado ou complicado como um roubo de moto, o seguro te deixa tranquilo, pois garante total proteção e auxílio quando você precisar.</p>
             </div>
         </div>
+
+
+<script>
+    
+
+    $(document).ready(function () {
+        //preencher select de marcas
+        obterMarcasDeCarro();
+        obterListaAnoFabricacao();
+    });
+
+    //carregar nomes dos modelos
+    $('#NomeMarcaVeiculo').on('change', function () {
+        var codigoMarca = $(this).val();
+        obterModelosDeCarro('NomeMarcaVeiculo', codigoMarca);
+    });
+
+    //mudar ano do modelo
+    $('#AnoFabricacaoVeiculo').on('change', function () {
+        obterListaAnoModelo($(this).val());
+    });
+
+    var ObterCobertura = function (data) {
+        $("#coberturaDescricao").val(data);
+        $("#coberturaDescricao").show();
+    };
+</script>
+<script type="text/javascript" src="~/Scripts/utilCorretorApp.js"></script>

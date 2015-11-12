@@ -54,7 +54,8 @@
                 <textarea id="coberturaDescricao" class="form-control  col-sm-offset-3" rows="15" style="display: none; width: 70%; border: none; "></textarea>
             </div>
 
-            
+            @Html.HiddenFor(model => model.NomeMarcaVeiculo, new { id = "NomeMarcaVeiculoHidden" })
+            <input type="hidden" id="NomeMarcaVeiculoHidden" value="@Model.NomeMarcaVeiculo" />
             <div class="form-group ">
                 @Html.Label("Marca do Carro:*", htmlAttributes: new { @class = "control-label col-md-3" })
                 <select name="NomeMarcaVeiculo" id="NomeMarcaVeiculo" class="form-control col-md-9" style="margin-left:15px" required>
@@ -62,6 +63,7 @@
                 </select>
             </div>
 
+            <input type="hidden" id="AnoFabricacaoVeiculoHidden" value="@Model.AnoFabricacaoVeiculo" />
             <div class="form-group ">
                 @Html.LabelFor(model => model.AnoFabricacaoVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
                 <select name="AnoFabricacaoVeiculo" id="AnoFabricacaoVeiculo" class="form-control col-md-9" style="margin-left:15px" required>
@@ -184,6 +186,9 @@
             obterListaAnoFabricacao();
             $.support.cors = true;
 
+            //Resgatando select
+            $('#NomeMarcaVeiculo').val($('#NomeMarcaVeiculoHidden').val());
+            $('#AnoFabricacaoVeiculo').val($('#AnoFabricacaoVeiculoHidden').val());
 
             
 
@@ -237,7 +242,6 @@
         {
             name: 'states',
             source: substringMatcher(states)
-        });
         });
         $('.typeahead.input-sm').siblings('input.tt-hint').addClass('hint-small');
         $('.typeahead.input-lg').siblings('input.tt-hint').addClass('hint-large');

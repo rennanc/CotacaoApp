@@ -338,10 +338,13 @@
     <Content Include="Content\select2-bootstrap.less" />
     <Content Include="Content\select2-bootstrap-build.scss" />
     <Content Include="Content\select2-bootstrap-build.less" />
+    <None Include="Properties\PublishProfiles\buscaseguros %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\buscaseguros.pubxml" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\buscaSegurosFile.pubxml" />
+    <None Include="Properties\PublishProfiles\buscasegurosLocal.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\i18n\az.js" />
     <Content Include="Scripts\i18n\bg.js" />
