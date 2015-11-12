@@ -571,9 +571,7 @@
     <Content Include="Views\Comissao\Index.cshtml" />
     <Content Include="Views\Login\RecuperaSenha.cshtml" />
     <Content Include="Views\Login\EmailRecuperacao.cshtml" />
-    <Content Include="Scripts\json\marcas.json" />
-    <Content Include="Scripts\marcas.json" />
-    <Content Include="Scripts\marcas.js" />
+    <Content Include="Scripts\json\marcas.js" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -117,7 +117,7 @@ function getEndereco2(cepTag) {
 
 
 function obterMarcasDeCarro(){
-    $.getJSON("./Scripts/marcas.json", function (data) {
+    $.getJSON("./Scripts/json/marcas.js", function (data) {
         var selectMarcas = "";
         if (data) {
             $.each(data, function (i, marca) {
