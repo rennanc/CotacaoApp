@@ -187,8 +187,8 @@
 
     $(document).ready(function () {
         //preencher select de marcas
-        obterMarcasDeCarro();
-        obterListaAnoFabricacao();
+        obterMarcasDeCarro('NomeMarcaVeiculo', null);
+        obterListaAnoFabricacao('AnoFabricacaoVeiculo', null);
     });
 
     //carregar nomes dos modelos
@@ -199,7 +199,7 @@
 
     //mudar ano do modelo
     $('#AnoFabricacaoVeiculo').on('change', function () {
-        obterListaAnoModelo($(this).val());
+        obterListaAnoModelo($(this).val(), null);
     });
 
     var ObterCobertura = function (data) {

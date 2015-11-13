@@ -31,8 +31,7 @@ namespace CotacaoApp
                       "~/Content/bootstrap-datapicker3.css",
                       "~/Content/site.css",
                       "~/Content/select2-bootstrap.css",
-                      "~/Content/select2.css",
-                      "~/Content/typeahead.js-bootstrap.css"));
+                      "~/Content/select2.css"));
             bundles.Add(new ScriptBundle("~/bundles/inputmask").Include(
             "~/Scripts/jquery.inputmask/inputmask.js",
             "~/Scripts/jquery.inputmask/jquery.inputmask.js",

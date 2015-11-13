@@ -116,21 +116,26 @@ function getEndereco2(cepTag) {
 
 
 
-function obterMarcasDeCarro(){
+function obterMarcasDeCarro(nomeCampoSelect, nomeCampoHidden){
     $.getJSON("../Scripts/json/marcas.js", function (data) {
         var selectMarcas = "";
         if (data) {
             $.each(data, function (i, marca) {
-                $('#NomeMarcaVeiculo').append($('<option>', {
+                $('#' + nomeCampoSelect).append($('<option>', {
                     value: marca.id,
                     text: unescape(marca.name).trim()
                 }));
             });
         }
+
+        //definindo campo escolhido
+        if (nomeCampoHidden != null) {
+            $('#' + nomeCampoSelect).val($('#' + nomeCampoHidden).val());
+        }
     });
 }
 
-function obterListaAnoFabricacao() {
+function obterListaAnoFabricacao(nomeCampoSelect, nomeCampoHidden) {
     var dataHoje = new Date();
     for (i = 2000; i <= dataHoje.getFullYear(); i++) {
         $('#AnoFabricacaoVeiculo').append($('<option>', {
@@ -138,32 +143,83 @@ function obterListaAnoFabricacao() {
             text: i
         }));
     }
+
+    //definindo campo escolhido
+    if (nomeCampoHidden != null) {
+        $('#' + nomeCampoSelect).val($('#' + nomeCampoHidden).val());
+        $('#' + nomeCampoSelect).trigger("change");
+    }
 }
 
-function obterListaAnoModelo(ano) {
+function obterListaAnoModelo(ano, nomeCampoHiddenModelo) {
     ano = parseInt(ano, 10);
     var anosModelo = "";
     for (i = ano; i <= ano + 1; i++) {
-        anosModelo += '<input type="radio"  name="AnoModeloVeiculo" id="AnoModeloVeiculo" value="' + i + '"> ' + i + ' ';
+
+        if ($('#' + nomeCampoHiddenModelo).val() == i)
+        {
+            anosModelo += '<input type="radio"  name="AnoModeloVeiculo" id="AnoModeloVeiculo" value="' + i + '" checked> ' + i + ' ';
+        } else {
+            anosModelo += '<input type="radio"  name="AnoModeloVeiculo" id="AnoModeloVeiculo" value="' + i + '" > ' + i + ' ';
+        }
+        
     }
     $('#AnoModeloVeiculoRadios').html(anosModelo);
     $('#AnoModeloVeiculoField').show();
 }
 
+
+var obterAnoModelo = function () {
+
+};
+
+
+var modelosCarrosData = [];
 function obterModelosDeCarro(campoId, codigoMarca) {
     
     $.getJSON("//fipeapi.appspot.com/api/1/carros/veiculos/" + codigoMarca + ".json?format=json&callback=?", function (data) {
 
-        var source = [];
-        var typeahead = $('#NomeVeiculo').data('typeahead');
-        if (data) {
-            $.each(data, function (i, modelo) {
-                source.push(modelo.name);
-            });
-        }
+        //var carros = [];
+        //var typeahead = $('#' + campoId).data('typeahead');
+        modelosCarrosData = data;
+        //if (data) {
+        //    $.each(data, function (i, modelo) {
+        //        carros.push(modelo.name);
+        //    });
+        //}
 
-        if (typeahead) typeahead.source = source;
-        else $('#NomeVeiculo').typeahead({ source: source });
+
+        //$('#' + campoId).typeahead({
+        //    source: function (query, cb) {
+        //        cb(carros);
+
+        //    }
+        //});
+
+        //$('#' + campoId).typeahead({
+        //    source: function (query, process) {
+        //        carros = [];
+        //        map = {};
+        //        $.each(data, function (i, modelo) {
+        //            map[modelo.name] = modelo;
+        //            carros.push(modelo.name);
+        //        });
+        //        process(carros);
+        //    },
+        //    updater: function (item) {
+        //        $('hiddenInputElement').val(map[item].id);
+        //        return item;
+        //    }
+        //});
+
+
+        //$('#' + campoId).typeahead(null, {
+        //    displayKey: function (str) { return str; },
+        //    source: function (query, cb) {
+        //        cb(carros);
+
+        //    }
+        //});
 
      });
 }
