@@ -73,7 +73,7 @@ namespace CotacaoApp.DAO
                     codigoSegurado = reader.GetInt16(reader.GetOrdinal("CD_SEGURADO")),
                     CodigoCpf = reader.GetString(reader.GetOrdinal("CD_CPF")),
                     Nome = reader.GetString(reader.GetOrdinal("NM_NOME")),
-                    DataNascimento = reader.GetString(reader.GetOrdinal("DT_NASCIMENTO")),
+                    DataNascimento = DateTime.Parse(reader.GetString(reader.GetOrdinal("DT_NASCIMENTO"))),
                     IESexo = (IESexo)reader.GetInt16(reader.GetOrdinal("IE_SEXO")),
                     IEEstadoCivil = (IEEstadoCivil)reader.GetInt16(reader.GetOrdinal("NM_ESTADOCIVIL")),
                     NumeroCep = reader.GetString(reader.GetOrdinal("NR_CEP")),

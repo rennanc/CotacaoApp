@@ -295,15 +295,13 @@ namespace CotacaoApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AutorizacaoFilter]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Senha")] Proposta proposta)
+        public ActionResult Edit(Proposta proposta)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(proposta).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(proposta);
+
+            db.Entry(proposta).State = EntityState.Modified;
+            PropostaDAO propostaDao = new PropostaDAO();
+            propostaDao.Save(proposta);
+            return RedirectToAction("Index");
         }
 
 

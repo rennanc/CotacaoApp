@@ -236,8 +236,21 @@
             }
         });
 
+
+        SubmittingForm = function () {
+            //Validate Statements...
+            validForm = true;
+            $("#Proposta").submit();
+        }
+
         //CAMPOS QUE SERÃO VALIDADOS
         $("#Proposta").validate({
+            submitHandler: function (form) {
+                if (validForm)
+                    $("#Proposta").submit();
+                else
+                    SubmittingForm();
+            },
             rules: {
                 /*fazer igual o exemplo para todos os campos obrigatórios do formulario, ou seja, todos que apresentam asterisco.
                   Será necessário fazer nos 5 passos*/

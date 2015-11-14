@@ -219,6 +219,7 @@
         <!-- PASSO 2 - FIM-->
 
         <!-- PASSO 3 - INICIO -->
+        @Html.HiddenFor(model => model.Segurado.Id)
         <div class="form-group">
             @Html.Label("Nome completo do(a) segurado(a)*", htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8">
@@ -229,8 +230,7 @@
         <div class="form-group">
             @Html.Label("Data de nascimento de SEGURADO*", htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8">
-                @Html.EditorFor(model => model.Segurado.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Segurado.DataNascimento, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.Segurado.DataNascimento,  new { @Value = Model.Segurado.DataNascimento.ToString("yyyy-MM-dd"), @type = "date" , @class = "form-control  " } )
             </div>
         </div>
 
@@ -322,7 +322,7 @@
         <div id="Proprietario" class="display-hide">
             <div class="col-md-12"><h2>DADOS DO PROPRIETÁRIO</h2></div>
 
-
+            @Html.HiddenFor(model => model.Proprietario.Id)
             <div class="form-group">
                 @Html.Label("Nome do(a) Proprietário(a)*", htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
@@ -509,6 +509,8 @@
         </div>
 
         <div class="border-box display-hide" id="OutroCondutor">
+            <div class="col-md-12"><h2>DADOS DO OUTRO CONDUTOR</h2></div>
+            @Html.HiddenFor(model => model.OutroCondutor.Id)
             <div class="form-group">
                 @Html.Label("Nome completo do(a) condutor(a) principal*", htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
@@ -623,7 +625,9 @@
                 @Html.ValidationMessageFor(model => model.Segurado.Email, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        @if (Model.Segurado.Telefones.Count >= 1)
+        {
+        @Html.HiddenFor(model => model.Segurado.Telefones[0].Id)
         <div class="form-group">
             @Html.Label("Telefone Fixo*", htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8">
@@ -631,9 +635,11 @@
                 @Html.ValidationMessageFor(model => model.Segurado.Telefones[0].NumeroTelefone, "", new { @class = "text-danger" })
             </div>
         </div>
+        }
 
         @if (Model.Segurado.Telefones.Count >= 2)
         {
+         @Html.HiddenFor(model => model.Segurado.Telefones[1].Id)
         <div class="form-group">
             @Html.Label("Telefone Celular", htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8">
@@ -644,6 +650,7 @@
         }
         @if (Model.Segurado.Telefones.Count >= 3)
         {
+         @Html.HiddenFor(model => model.Segurado.Telefones[2].Id)
         <div class="form-group">
             @Html.Label("Telefone Comercial", htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8">
@@ -732,6 +739,12 @@
         var codigoCobertura = $('#CodigoCoberturaHidden').val();
         $('#CodigoCobertura').val(codigoCobertura);
         $('#CodigoCobertura').trigger('change');
+
+        $('.datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+            startDate: new Date()
+        });
     });
 
     //Obter Descrição da cobertura

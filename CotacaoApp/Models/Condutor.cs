@@ -32,8 +32,8 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Data de Nascimento")]
         [Column("DT_NASCIMENTO")]
-        [DataType(DataType.Date)]
-        public string DataNascimento { get; set; }
+        //[DataType(DataType.Date)]
+        public DateTime DataNascimento { get; set; }
 
         [Display(Name = "Sexo*")]
         [Column("IE_SEXO")]
