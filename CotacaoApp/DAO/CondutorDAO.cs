@@ -38,6 +38,63 @@ namespace CotacaoApp.DAO
             //return condutor;
         }
 
+        public void Editar(Condutor condutor)
+        {
+            var conexao = new DBConnection();
+            QuerySql query = conexao.CreateQuery("UPDATE condutor SET "+
+                                                 "  CD_SEGURADO = @CD_SEGURADO," +
+                                                 "  CD_CPF = @CD_CPF," +
+                                                 "  NM_NOME = @NM_NOME," +
+                                                 "  DT_NASCIMENTO = @DT_NASCIMENTO," +
+                                                 "  IE_SEXO = @IE_SEXO," +
+                                                 "  NM_ESTADOCIVIL = @NM_ESTADOCIVIL," +
+                                                 "  NR_CEP = @NR_CEP," +
+                                                 "  IE_POSSUIOUTROSCARROS = @IE_POSSUIOUTROSCARROS," +
+                                                 "  IE_QTDCARROS = @IE_QTDCARROS," +
+                                                 "  NR_ANOSCNH = @NR_ANOSCNH," +
+                                                 "  NM_EMAIL = @NM_EMAIL," +
+                                                 "  IE_PROPRIETARIOVEICULO = @IE_PROPRIETARIOVEICULO," +
+                                                 "  IE_RELACAOPROPRIETARIO = @IE_RELACAOPROPRIETARIO," +
+                                                 "  IE_CONDPRINCIPAL = @IE_CONDPRINCIPAL," +
+                                                 "  IE_TIPORESIDENCIA = @IE_TIPORESIDENCIA," +
+                                                 "  DS_PROFISSAO = @DS_PROFISSAO," +
+                                                 "  IE_ROUBADOEM24MESES = @IE_ROUBADOEM24MESES," +
+                                                 "  IE_ALGUMCONDUTORESTUDA = @IE_ALGUMCONDUTORESTUDA," +
+                                                 "  IE_NOTICIASEMAIL = @IE_NOTICIASEMAIL," +
+                                                 "  IE_ITAUPERSONALITE = @IE_ITAUPERSONALITE," +
+                                                 "  IE_CARTAOPORTOSEGUROVISA = @IE_CARTAOPORTOSEGUROVISA" +
+                                                 "  WHERE CD_CONDUTOR = @CD_CONDUTOR; ");
+
+
+            query.SetParameter("CD_CONDUTOR", condutor.Id);
+            query.SetParameter("CD_SEGURADO", condutor.codigoSegurado);
+            query.SetParameter("CD_CPF", condutor.CodigoCpf);
+
+            query.SetParameter("NM_NOME", condutor.Nome);
+            query.SetParameter("DT_NASCIMENTO", condutor.DataNascimento);
+            query.SetParameter("IE_SEXO", condutor.IESexo);
+            query.SetParameter("NM_ESTADOCIVIL", condutor.IEEstadoCivil);
+            query.SetParameter("NR_CEP", condutor.NumeroCep);
+            query.SetParameter("IE_POSSUIOUTROSCARROS", condutor.IEPossuiOutrosCarros);
+            query.SetParameter("IE_QTDCARROS", condutor.IEQuantidadeCarro);
+            query.SetParameter("NR_ANOSCNH", condutor.AnosDeCNH);
+            query.SetParameter("NM_EMAIL", condutor.Email);
+            query.SetParameter("IE_PROPRIETARIOVEICULO", condutor.IEProprietarioVeiculo);
+            query.SetParameter("IE_RELACAOPROPRIETARIO", condutor.IERelacaoProprietario);
+            query.SetParameter("IE_CONDPRINCIPAL", condutor.IECondutorPrincipal);
+            query.SetParameter("IE_TIPORESIDENCIA", condutor.IETipoResidencia);
+            query.SetParameter("DS_PROFISSAO", condutor.Profissao);
+            query.SetParameter("IE_ROUBADOEM24MESES", condutor.IERoubadoEm24Meses);
+            query.SetParameter("IE_ALGUMCONDUTORESTUDA", condutor.IEAlgumCondutorEstuda);
+            query.SetParameter("IE_NOTICIASEMAIL", condutor.IENoticiasEmail);
+            query.SetParameter("IE_ITAUPERSONALITE", condutor.IEItauPersonalite);
+            query.SetParameter("IE_CARTAOPORTOSEGUROVISA", condutor.IECartaoPortoSeguroVisa);
+
+
+            DbDataReader reader = query.ExecuteQuery();
+            conexao.Close();
+        }
+
         public Condutor ObterPorIdSeguradoETipo(int id, int tipo)
         {
             var conexao = new DBConnection();

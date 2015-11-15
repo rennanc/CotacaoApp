@@ -32,7 +32,26 @@ namespace CotacaoApp.DAO
                 };
                 telefones.Add(telefone);
             }
+
+            conexao.Close();
             return telefones;
+        }
+
+        public void Editar(Telefone telefone)
+        {
+            var conexao = new DBConnection();
+            QuerySql query = conexao.CreateQuery("UPDATE telefone SET " +
+                                                    "NR_TELEFONE = @NR_TELEFONE " +
+                                                    "WHERE CD_TELEFONE = @CD_TELEFONE " +
+                                                    "AND CD_CONDUTOR = @CD_CONDUTOR;");
+
+
+            query.SetParameter("CD_TELEFONE", telefone.Id);
+            query.SetParameter("CD_CONDUTOR", telefone.CodigoCondutor);
+            query.SetParameter("NR_TELEFONE", telefone.NumeroTelefone);
+
+            DbDataReader reader = query.ExecuteQuery();
+            conexao.Close();
         }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -65,10 +66,12 @@ namespace CotacaoApp.DAO
 
 
             //SALVANDO Segurado
-            db.Condutor.Add(proposta.Segurado);
+            CondutorDAO condutorDao = new CondutorDAO();
+            condutorDao.Editar(proposta.Segurado);
 
             //SALVANDO telefones do segurado
             List<Telefone> telefonesCorretos = new List<Telefone>();
+            TelefoneDAO telefoneDao = new TelefoneDAO();
             if (proposta.Segurado.Telefones != null)
             {
                 foreach (Telefone telefone in proposta.Segurado.Telefones)
@@ -77,30 +80,30 @@ namespace CotacaoApp.DAO
                     {
                         telefone.CodigoCondutor = proposta.Segurado.Id;
                         telefonesCorretos.Add(telefone);
+                        telefoneDao.Editar(telefone);
                     }
 
                 }
             }
-            db.Telefone.AddRange(telefonesCorretos);
 
             //SALVANDO Proprietario
             if (proposta.Proprietario.CodigoCpf != null)
             {
                 proposta.Proprietario.codigoSegurado = proposta.Segurado.Id;
-                db.Condutor.Add(proposta.Proprietario);
+                condutorDao.Editar(proposta.Proprietario);
             }
 
             //SALVANDO Outro Condutor
             if (proposta.OutroCondutor.CodigoCpf != null)
             {
                 proposta.OutroCondutor.codigoSegurado = proposta.Segurado.Id;
-                db.Condutor.Add(proposta.OutroCondutor);
+                condutorDao.Editar(proposta.OutroCondutor);
             }
 
 
             db.SaveChanges();
             proposta.codigoSegurado = proposta.Segurado.Id;
-            UpdateQuery(proposta);
+            Editar(proposta);
             //Insert(proposta);
             //Delete(proposta);
 
@@ -108,7 +111,7 @@ namespace CotacaoApp.DAO
 
         }
 
-        public void UpdateQuery(Proposta proposta)
+        public void Editar(Proposta proposta)
         {
             var conexao = new DBConnection();
             QuerySql query = conexao.CreateQuery("UPDATE proposta  " +
