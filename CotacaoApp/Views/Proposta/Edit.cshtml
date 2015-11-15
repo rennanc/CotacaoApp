@@ -648,6 +648,7 @@
             </div>
         </div>
         }
+        
         @if (Model.Segurado.Telefones.Count >= 3)
         {
          @Html.HiddenFor(model => model.Segurado.Telefones[2].Id)
@@ -659,6 +660,7 @@
             </div>
         </div>
         }
+        
 
         <div class="form-group">
             <label class="control-label col-md-4">Autorizo receber informações sobre a cotação e descontos sobre o seguro por:</label>
@@ -730,7 +732,7 @@
 </div>
 
 <script type="text/javascript">
-    //$(".cep").inputmask("99.999-999");
+    $(".cep").inputmask("99.999-999");
     $(".cpf").inputmask("999.999.999-99");
     $(".email").inputmask({ alias: "email" });
     $(".telefone").inputmask("(99) 9999-99999");

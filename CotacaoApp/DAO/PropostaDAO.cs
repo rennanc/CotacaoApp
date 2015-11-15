@@ -69,14 +69,17 @@ namespace CotacaoApp.DAO
 
             //SALVANDO telefones do segurado
             List<Telefone> telefonesCorretos = new List<Telefone>();
-            foreach (Telefone telefone in proposta.Segurado.Telefones)
+            if (proposta.Segurado.Telefones != null)
             {
-                if (telefone.NumeroTelefone != null)
+                foreach (Telefone telefone in proposta.Segurado.Telefones)
                 {
-                    telefone.CodigoCondutor = proposta.Segurado.Id;
-                    telefonesCorretos.Add(telefone);
-                }
+                    if (telefone.NumeroTelefone != null)
+                    {
+                        telefone.CodigoCondutor = proposta.Segurado.Id;
+                        telefonesCorretos.Add(telefone);
+                    }
 
+                }
             }
             db.Telefone.AddRange(telefonesCorretos);
 
