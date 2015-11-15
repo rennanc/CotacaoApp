@@ -34,8 +34,8 @@ namespace CotacaoApp.Models
         [Column("VR_PERC_COMISSAO_LIQUIDO")]
         public decimal ValorPercentualComissaoLiquido { get; set; }
 
-        [Display(Name = "Valor Percentual Cir:*")]
+        [Display(Name = "Valor Percentual do Imposto Sobre a Renda:*")]
         [Column("VR_PERCIR")]
-        public decimal ValorPercentualCir { get; set; }
+        public decimal ValorPercentualImpostoSobreRenda { get; set; }
     }
 }

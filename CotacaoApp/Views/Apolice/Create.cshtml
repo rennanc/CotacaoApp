@@ -13,7 +13,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal" id="Apolice">
-        <h4>Formulario</h4>
+        <h4>Apolice</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -29,24 +29,25 @@
         <h1>Apolice</h1> 
         <h4>@Html.DisplayNameFor(model => model.Status) : @Html.DisplayFor(model => model.Status)</h4>
 
-        <div class="form-group ">
-            @Html.Label("Seguradora:*", htmlAttributes: new { @class = "control-label col-md-3" })
-            <select name="CodigoSeguradora" class="form-control col-md-10" style="margin-left:15px">
-                <option>Escolha uma Seguradora</option>
-                @if (Model.Seguradoras != null)
+        <div class="col-lg-12">
+            <div class="form-group col-lg-12">
+                @Html.Label("Seguradora:*", htmlAttributes: new { @class = "control-label col-md-3" })
+                <select name="CodigoSeguradora" class="form-control col-md-9" style="margin-left:8px">
+                    <option>Escolha uma Seguradora</option>
+                    @if (Model.Seguradoras != null)
                 {
                     foreach (var seguradora in Model.Seguradoras)
                     {
-                        <option value="@seguradora.Id">@seguradora.NomeSeguradora</option>
+                            <option value="@seguradora.Id">@seguradora.NomeSeguradora</option>
+                        }
                     }
-                }
-            </select>
-        </div>
+                </select>
+            </div>
 
-        <div class="col-lg-12">
+
             <div class="form-group">
                 @Html.Label("Valor do Contrato:*", htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="input-group" style="padding-left:15px">
+                <div class="input-group col-lg-9" style="padding-left:15px">
                     <div class="input-group-addon">$</div>
                     <input type="text" id="ValorContrato" style="width: 315px;" name="ValorContrato" class="form-control numeric" placeholder="0.00">
                 </div>
@@ -89,13 +90,13 @@
                 </div>
             </div>
 
-            @*<div class="form-group">
-                    @Html.LabelFor(model => model.Comissao.ValorPercentualCir, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="input-group" style="padding-left:15px">
-                        <div class="input-group-addon">%</div>
-                        <input type="text" id="Comissao.ValorPercentualCir" style="width: 315px;" name="Comissao.ValorPercentualCir" class="form-control numeric" placeholder="0.00">
-                    </div>
-                </div>*@
+            <div class="form-group">
+                @Html.LabelFor(model => model.Comissao.ValorPercentualImpostoSobreRenda, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="input-group" style="padding-left:15px">
+                    <div class="input-group-addon">%</div>
+                    <input type="text" id="Comissao.ValorPercentualCir" style="width: 315px;" name="Comissao.ValorPercentualImpostoSobreRenda" class="form-control numeric" placeholder="0.00">
+                </div>
+            </div>
             <input type="hidden" id="formularioApoliceHtml" name="formularioApoliceHtml" />
             <div><input type="submit" value="Emitir Apolice Para o Cliente" class="form-control btn-success" /></div>
         </div>
@@ -103,7 +104,7 @@
 
 }
 
-<div>
+<div class="col-lg-12">
     @Html.ActionLink("Voltar para a Lista", "Index")
 </div>
 
