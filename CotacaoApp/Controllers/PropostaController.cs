@@ -11,6 +11,8 @@ using System.Data.Entity.Validation;
 using CotacaoApp.Filters;
 using System.Collections.Generic;
 using PagedList;
+using CotacaoApp.Enumerations;
+using CotacaoApp.Util;
 
 namespace CotacaoApp.Controllers
 {
@@ -52,6 +54,28 @@ namespace CotacaoApp.Controllers
             if (filterContext.Result is RedirectToRouteResult)
             {
                 TempData["proposta"] = _proposta;
+            }
+        }
+
+        [HttpGet]
+        public ViewResult AceitarProposta(string email, string codigoProposta, string codigoApolice)
+        {
+            email = email.Replace("%40", "@");
+            ApoliceDAO apoliceDao = new ApoliceDAO();
+            int status = (int)Status.APROVADO;
+            bool result = apoliceDao.ValidarEmailProposta(email, codigoProposta, codigoApolice);
+
+            if (result)
+            {
+                apoliceDao.MudarStatus(status, email, codigoProposta, codigoApolice);
+
+                UtilEmailMessage utilEmail = new UtilEmailMessage();
+                utilEmail.EnviarEmail("Proposta Aceita pelo Cliente", "rennanchagas@hotmail.com", "Apolice Aceita");
+                return View(result);
+            }
+            else
+            {
+                return View(result);
             }
         }
 

@@ -249,6 +249,7 @@
     <Compile Include="Controllers\CoberturaController.cs" />
     <Compile Include="Controllers\SeguradoraController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="DAO\ApoliceDAO.cs" />
     <Compile Include="DAO\CondutorDAO.cs" />
     <Compile Include="DAO\DBConnection.cs" />
     <Compile Include="DAO\DBSession.cs" />
@@ -572,6 +573,7 @@
     <Content Include="Views\Login\RecuperaSenha.cshtml" />
     <Content Include="Views\Login\EmailRecuperacao.cshtml" />
     <Content Include="Scripts\json\marcas.js" />
+    <Content Include="Views\Proposta\AceitarProposta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
