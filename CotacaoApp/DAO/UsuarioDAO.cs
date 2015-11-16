@@ -37,6 +37,7 @@ namespace CotacaoApp.DAO
                     Permissao = (Permissao)reader.GetInt16(reader.GetOrdinal("FL_PERMISSAO"))
                 };
             }
+            conexao.Close();
             return user;
         }
 
@@ -55,6 +56,7 @@ namespace CotacaoApp.DAO
                     Senha = reader.GetString(reader.GetOrdinal("NM_SENHA"))
                 };
             }
+            conexao.Close();
             return user;
         }
     }
