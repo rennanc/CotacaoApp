@@ -28,9 +28,9 @@ namespace CotacaoApp.Models
         [Column("DS_DESCRICAO")]
         public string Descricao { get; set; }
 
-        [Display(Name = "Tipo")]
+        [Display(Name = "Situação")]
         [Column("DS_TIPO")]
-        public string Tipo { get; set; }
+        public StatusPagamento Tipo { get; set; }
 
         [Display(Name = "Data Vencimento")]
         [Column("DT_DATA VENCIMENTO")]

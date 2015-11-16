@@ -25,18 +25,20 @@
         </div>
 
 
+
+
         <div class="form-group">
             @Html.LabelFor(model => model.CodigoApolice, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.CodigoApolice, new { htmlAttributes = new { @class = "form-control textbox" } })
+                <a href="~/Apolice/Details/@Model.CodigoApolice">Ver Apolice</a>
                 @Html.ValidationMessageFor(model => model.CodigoApolice, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Observação: ", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control textbox" } })
+                <textarea name="Descricao" id="Descricao" class="form-control textbox" cols="15" rows="12" >@Model.Descricao</textarea>
                 @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -44,7 +46,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Tipo, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.EditorFor(model => model.Tipo, new { htmlAttributes = new { @class = "form-control textbox" } })
                 @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -52,23 +54,29 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DataVencimento, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.DataVencimento, new { htmlAttributes = new { @class = "form-control textbox" } })
+                @Html.TextBoxFor(model => model.DataVencimento, new { @Value = Model.DataVencimento.ToString("yyyy-MM-dd"), @type = "date", @class = "form-control  " })
                 @Html.ValidationMessageFor(model => model.DataVencimento, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control textbox" } })
-                @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+            <div class="input-group" style="padding-left:15px">
+                <div class="input-group-addon">R$</div>
+                <input type="text" id="Comissao.Valor" value="@Model.Valor" style="width: 315px;" name="Comissao.Valor" class="form-control numeric" placeholder="0.00">
             </div>
         </div>
 
-        <div class="form-group"><input type="submit" value="Cadastrar" class="form-control" /></div>
+        <div class="form-group col-md-12"><input type="submit" value="Salvar" class="form-control btn btn-success col-md-offset-2" /></div>
     </div>
 }
 
 <div>
     @Html.ActionLink("Voltar a Lista", "Index")
 </div>
+<script type="text/javascript">
+    $(".numeric").inputmask("decimal", {
+        radixPoint: ",",
+        digits: 2
+    });
+</script>

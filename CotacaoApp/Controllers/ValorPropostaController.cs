@@ -26,12 +26,12 @@ namespace CotacaoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ValorProposta valproposta = db.ValorProposta.Find(id);
-            if (valproposta == null)
+            ValorProposta valorProposta = db.ValorProposta.Find(id);
+            if (valorProposta == null)
             {
                 return HttpNotFound();
             }
-            return View(valproposta);
+            return View(valorProposta);
         }
 
         // GET: ValorProposta/Create
@@ -45,16 +45,16 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CodigoCondutor,CodigoApolice,Descricao,Tipo,DataVencimento,Valor")] ValorProposta valproposta)
+        public ActionResult Create([Bind(Include = "Id,CodigoCondutor,CodigoApolice,Descricao,Tipo,DataVencimento,Valor")] ValorProposta valorProposta)
         {
             if (ModelState.IsValid)
             {
-                db.ValorProposta.Add(valproposta);
+                db.ValorProposta.Add(valorProposta);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(valproposta);
+            return View(valorProposta);
         }
 
         // GET: ValorProposta/Edit/5
@@ -64,12 +64,12 @@ namespace CotacaoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ValorProposta valproposta = db.ValorProposta.Find(id);
-            if (valproposta == null)
+            ValorProposta valorProposta = db.ValorProposta.Find(id);
+            if (valorProposta == null)
             {
                 return HttpNotFound();
             }
-            return View(valproposta);
+            return View(valorProposta);
         }
 
         // POST: Usuario/Edit/5
@@ -77,15 +77,15 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CodigoCondutor,CodigoApolice,Descricao,Tipo,DataVencimento,Valor")] ValorProposta valproposta)
+        public ActionResult Edit([Bind(Include = "Id,CodigoCondutor,CodigoApolice,Descricao,Tipo,DataVencimento,Valor")] ValorProposta valorProposta)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(valproposta).State = EntityState.Modified;
+                db.Entry(valorProposta).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(valproposta);
+            return View(valorProposta);
         }
 
         // GET: ValorProposta/Delete/5
@@ -95,12 +95,12 @@ namespace CotacaoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ValorProposta valproposta = db.ValorProposta.Find(id);
-            if (valproposta == null)
+            ValorProposta valorProposta = db.ValorProposta.Find(id);
+            if (valorProposta == null)
             {
                 return HttpNotFound();
             }
-            return View(valproposta);
+            return View(valorProposta);
         }
 
         // POST: ValorProposta/Delete/5
@@ -108,8 +108,8 @@ namespace CotacaoApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ValorProposta valproposta = db.ValorProposta.Find(id);
-            db.ValorProposta.Remove(valproposta);
+            ValorProposta valorProposta = db.ValorProposta.Find(id);
+            db.ValorProposta.Remove(valorProposta);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
