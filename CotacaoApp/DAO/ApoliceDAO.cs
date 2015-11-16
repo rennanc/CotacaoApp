@@ -40,7 +40,7 @@ namespace CotacaoApp.DAO
                                                   " AND proposta.CD_PROPOSTA = @CD_PROPOSTA " +
                                                   " AND apolice.CD_APOLICE = @CD_APOLICE");
 
-            query.SetParameter("NM_EMAIL", codigoApolice);
+            query.SetParameter("NM_EMAIL", email);
             query.SetParameter("CD_APOLICE", codigoApolice);
             query.SetParameter("CD_PROPOSTA", codigoProposta);
 

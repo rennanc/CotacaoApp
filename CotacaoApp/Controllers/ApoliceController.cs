@@ -114,7 +114,7 @@ namespace CotacaoApp.Controllers
             //PREPARANDO EMAIL
             apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#valorContratoEmail", apolice.ValorContrato.ToString());
             apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#corretorEmail", "Joao - " + usuario.Nome);
-            apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#EnderecoConfirmaEmail", "http://buscaseguros.azurewebsites.net/AceitarProposta?" +
+            apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#EnderecoConfirmaEmail", "http://buscaseguros.azurewebsites.net/Proposta/AceitarProposta?" +
                                                                                                             "email=" + proposta.Segurado.Email + 
                                                                                                             "&codigoProposta=" + apolice.CodigoProposta + 
                                                                                                             "&codigoApolice=" + apolice.Id);
