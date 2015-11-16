@@ -91,7 +91,7 @@ function getEndereco2(cepTag) {
 
                 } else {
                     // troca o valor dos elementos
-                    var txtEndereco = unescape(data.logradouro) + " - " + unescape(data.bairro).trim() + " - " + unescape(data.cidade).trim() + "/" + unescape(data.uf);
+                    var txtEndereco = unescape(data.logradouro) + " - " + unescape(data.bairro).trim() + " - " + unescape(data.localidade).trim() + "/" + unescape(data.uf);
 
                     if ($.find('#' + cepTag.attr('id') + 'txtEndereco')[0] == null) {
                         cepTag.parent().append("<span id='" + cepTag.attr('id') + "txtEndereco' class='help-block'>" + txtEndereco + "</span>");
