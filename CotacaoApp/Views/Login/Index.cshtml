@@ -8,7 +8,7 @@
 
 @if (erro != null)
 {
-    <div class="has-warning">@erro</div>
+    <div class="has-warning" style="background-color: #D48E8E; width: 50%">@erro</div>
 }
 <form action="/Login/Autenticar" method="post">
     @Html.AntiForgeryToken()
