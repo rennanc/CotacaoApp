@@ -113,7 +113,7 @@
             </div>
 
             <div class="form-group">
-                @Html.Label("CEP da residência de PRINCIPAL*", htmlAttributes: new { @class = "control-label col-md-4" })
+                @Html.Label("CEP da residência do Outro Condutor*", htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
                     @Html.EditorFor(model => model.OutroCondutor.NumeroCep, new { htmlAttributes = new { @class = "form-control cep" } })
                     @Html.ValidationMessageFor(model => model.OutroCondutor.NumeroCep, "", new { @class = "text-danger" })
@@ -122,7 +122,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Tipo de residência do Principal*", htmlAttributes: new { @class = "control-label col-md-5" })
+            @Html.Label("Tipo de residência do " + @Model.Segurado.Nome  + "*", htmlAttributes: new { @class = "control-label col-md-5" })
             <div class="col-md-7">
                 <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.APARTAMENTOOUFLAT) Apartamento ou flat</p>
                 <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.CASAEMCONDOMINIOFECHADO) Casa em condominio fechado</p>
@@ -134,14 +134,14 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Qual a profissão do Principal?*", htmlAttributes: new { @class = "control-label col-md-5" })
+            @Html.Label("Qual a profissão do " + @Model.Segurado.Nome + "?*", htmlAttributes: new { @class = "control-label col-md-5" })
             <div class="col-md-7">
                 @Html.EditorFor(model => model.Segurado.Profissao, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.Label("Nos últimos 24 meses Principal foi vítima de roubo / furto de carro?*", htmlAttributes: new { @class = "control-label col-md-5" })
+            @Html.Label("Nos últimos 24 meses o " + @Model.Segurado.Nome + " foi vítima de roubo / furto de carro?*", htmlAttributes: new { @class = "control-label col-md-5" })
             <div class="col-md-7">
                 @Html.RadioButtonFor(model => model.Segurado.IERoubadoEm24Meses, IERoubadoEm24Meses.SIM) Sim
                 @Html.RadioButtonFor(model => model.Segurado.IERoubadoEm24Meses, IERoubadoEm24Meses.NAO) Não
