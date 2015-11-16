@@ -25,6 +25,7 @@ namespace CotacaoApp.DAO
             query.SetParameter("NM_NOME", condutor.Nome);
             query.SetParameter("DT_NASCIMENTO", condutor.Nome);
             DbDataReader reader = query.ExecuteQuery();
+            reader.Close();
             conexao.Close();
             //Condutor condutor = null;
             //if (reader.Read())

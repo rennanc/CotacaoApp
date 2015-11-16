@@ -204,6 +204,7 @@ namespace CotacaoApp.DAO
 
 
             DbDataReader reader = query.ExecuteQuery();
+            reader.Close();
             conexao.Close();
         }
 

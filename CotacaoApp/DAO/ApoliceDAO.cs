@@ -14,7 +14,6 @@ namespace CotacaoApp.DAO
         public void MudarStatus(int status, string email, string codigoProposta, string codigoApolice)
         {
             var conexao = new DBConnection();
-
             QuerySql query = conexao.CreateQuery("UPDATE apolice SET " +
                                                  " SG_STATUS=@SG_STATUS " +
                                                  " WHERE CD_APOLICE = @CD_APOLICE " +
@@ -25,6 +24,7 @@ namespace CotacaoApp.DAO
             query.SetParameter("CD_PROPOSTA", codigoProposta);
             
             DbDataReader reader = query.ExecuteQuery();
+            reader.Close();
             conexao.Close();
         }
 
@@ -51,6 +51,7 @@ namespace CotacaoApp.DAO
                 result = reader.GetInt16(reader.GetOrdinal("COUNT"));
             }
 
+            reader.Close();
             conexao.Close();
             if (result > 0)
             {

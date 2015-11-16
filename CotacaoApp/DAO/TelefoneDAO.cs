@@ -32,7 +32,7 @@ namespace CotacaoApp.DAO
                 };
                 telefones.Add(telefone);
             }
-
+            reader.Close();
             conexao.Close();
             return telefones;
         }
