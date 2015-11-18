@@ -60,7 +60,6 @@ namespace CotacaoApp.Controllers
         [HttpGet]
         public ViewResult AceitarProposta(string email, string codigoProposta, string codigoApolice)
         {
-            email = email.Replace("%40", "@");
             ApoliceDAO apoliceDao = new ApoliceDAO();
             int status = (int)Status.APROVADO;
             bool result = apoliceDao.ValidarEmailProposta(email, codigoProposta, codigoApolice);

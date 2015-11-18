@@ -137,7 +137,7 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Usa o carro como instrumento de trabalho. Ex.: Representante comercial, entregador delivery etc.* ")]
         [Column("IE_UTILIZACAOVEICULO_INSTRUMENTO")]
-        public bool IEUtilizacaoVeiculoInstrumento { get; set; }
+        public int IEUtilizacaoVeiculoInstrumento { get; set; }
 
             [Display(Name = "Como o veículo é utilizado?*")]
             [Column("IE_UTILIZACAOVEICULO_INSTRUMENTOFORMA")]

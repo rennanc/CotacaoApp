@@ -123,7 +123,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumento, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8">
-                <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, IEUtilizacaoVeiculoInstrumento.SIM) Sim</p>
+                <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, (int)IEUtilizacaoVeiculoInstrumento.SIM) Sim</p>
                 <div class="form-group border-box display-hide" id="IEUtilizacaoVeiculoInstrumentoForma">
                     <p>@Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, htmlAttributes: new { @class = "control-label col-md-2" })</p>
                     <div class="col-md-10">
@@ -132,7 +132,7 @@
                         <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, IEUtilizacaoVeiculoInstrumentoForma.UTILIZADOEMOUTRASATIVIDADESNAORELACIONADASACIMA) Utilizado em outras atividades não relacionadas acima.</p>
                     </div>
                 </div>
-                <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, IEUtilizacaoVeiculoInstrumento.NAO) Não</p>
+                <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, (int)IEUtilizacaoVeiculoInstrumento.NAO) Não</p>
             </div>
         </div>
 
@@ -157,124 +157,7 @@
         </div>
     </div>
 }
-
-<script type="text/javascript">
-    $(".cep").inputmask("99.999-999");
-
-
-    //controles da pagina
-    $("input[name='IETipoEstacionamento']").on('click', function () {
-        if ($(this).val() == 'RESIDENCIAGARAGEM') {
-            $('#IETipoPortao').show();
-        } else {
-            $('#IETipoPortao').hide();
-        }
-    });
-
-    $("input[name='IEUtilizacaoVeiculoTrabalho']").on('click', function () {
-        $('#IELocalGaragemTrabalho').toggle();
-        $('#IEDistanciaParaTrabalhoVeiculo').toggle();
-    });
-
-    $("input[name='IEUtilizacaoVeiculoEstudo']").on('click', function () {
-        $('#IELocalGaragemEstudo').toggle();
-    });
-
-    $("input[name='IEUtilizacaoVeiculoInstrumento']").on('click', function () {
-        if ($(this).val() == "SIM") {
-            $('#IEUtilizacaoVeiculoInstrumentoForma').show();
-        } else {
-            $('#IEUtilizacaoVeiculoInstrumentoForma').hide();
-        }
-    });
-
-
-    //VALIDACAO COMPORTAMENTO PADRAO
-    $.validator.setDefaults({
-        highlight: function (element) {
-            $(element).closest('.form-group').addClass('has-error');
-        },
-        unhighlight: function (element) {
-            $(element).closest('.form-group').removeClass('has-error');
-        },
-        errorElement: 'span',
-        errorClass: 'help-block',
-        errorPlacement: function (error, element) {
-            if (element.parent('.input-group').length) {
-                error.insertAfter(element.parent());
-            } else {
-                error.insertAfter(element);
-            }
-        }
-    });
-
-    //CAMPOS QUE SERÃO VALIDADOS
-    $("#Proposta").validate({
-        rules: {
-            IETipoEstacionamento: {
-                required: true
-            },
-            IeTipoPortao: {
-                required: true
-            },
-            CepEstacionamento: {
-                required: true,
-                cepcorreio: true
-            },
-            CepDeslocamento: {
-                required: true,
-                cepcorreio: true
-            },
-            //IEUtilizacaoVeiculoLazer: {
-            //    required: true
-            //},
-            //IELocalGaragemTrabalho: {
-            //    required: true
-            //},
-            //IEDistanciaParaTrabalhoVeiculo: {
-            //    required: true
-            //},
-            IELocalGaragemEstudo: {
-                required: true
-            },
-            IEUtilizacaoVeiculoInstrumento: {
-                required: true
-            },
-            IEUtilizacaoVeiculoInstrumentoForma: {
-                required: true
-            },
-            IeKmMedia: {
-                required: true
-            },
-            CodigoCobertura: {
-                required: true
-            },
-            AnoFabricacaoVeiculo: {
-                required: true
-            },
-            NomeMarcaVeiculo: {
-                required: true
-            },
-            AnoModelo: {
-                required: true
-            },
-            IEZeroKM: {
-                required: true
-            },
-            NomeVeiculo: {
-                required: true
-            },
-            IEFinanciadoVeiculo: {
-                required: true
-            },
-            IEAlarmeVeiculo: {
-                required: true
-            },
-            messages: {
-                required: "Campo Obrigatório"
-            }
-        }
-    });
-</script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo2.js"></script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/validacaoProposta.js"></script>
 <script type="text/javascript"  src="~/Scripts/utilCorretorApp.js"></script>
 

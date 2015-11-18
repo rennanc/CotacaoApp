@@ -46,7 +46,8 @@
         <div class="form-group">
             @Html.Label("Data de nascimento de SEGURADO*", htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8">
-                @Html.EditorFor(model => model.Segurado.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Segurado.DataNascimento, new { htmlAttributes = new { @Value = Model.Segurado.DataNascimento != null ? Model.Segurado.DataNascimento.ToString("yyyy-MM-dd") : ""
+               , @class = "form-control ", @type = "date" } })
                 @Html.ValidationMessageFor(model => model.Segurado.DataNascimento, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -149,9 +150,18 @@
             </div>
 
             <div class="form-group">
-                @Html.Label("Data de nascimento do Proprietário*", htmlAttributes: new { @class = "control-label col-md-4" })
+                @Html.Label("Data de nascimento de Proprietário*", htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    @Html.EditorFor(model => model.Proprietario.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Proprietario.DataNascimento, new
+                       {
+                           htmlAttributes = new
+                           {
+                               @Value = Model.Proprietario.DataNascimento != null ? Model.Proprietario.DataNascimento.ToString("yyyy-MM-dd") : ""
+                           ,
+                               @class = "form-control ",
+                               @type = "date"
+                           }
+                       })
                 </div>
             </div>
 
@@ -320,139 +330,7 @@
 
 
 
-<script type="text/javascript">
-    $(".cpf").inputmask("999.999.999-99");
-    $(".cep").inputmask("99.999-999");
-
-
-    $("input[name='IEMotivoCotacao']").on('click', function () {
-        if ($(this).val() == 'FAZERPRIMEIROSEGURO') {
-            $('#IEMotivoCotacao1').show();
-        } else {
-            $('#IEMotivoCotacao1').hide();
-        }
-
-        if ($(this).val() == 'RENOVARSEGURO') {
-            $('#IEMotivoCotacao2').show();
-        } else {
-            $('#IEMotivoCotacao2').hide();
-        }
-    });
-
-
-    $("input[name='Segurado.IEPossuiOutrosCarros']").on('click', function () {
-        if ($(this).val() == "SIM") {
-            $('#IEQuantidadeCarro').show();
-        } else {
-            $('#IEQuantidadeCarro').hide();
-        }
-    });
-
-
-    $("input[name='Segurado.IEProprietarioVeiculo']").on('click', function () {
-        if ($(this).val() == "NAO") {
-            $('#Proprietario').show();
-        } else {
-            $('#Proprietario').hide();
-        }
-    });
-
-
-    //VALIDACAO COMPORTAMENTO PADRAO
-    $.validator.setDefaults({
-        highlight: function (element) {
-            $(element).closest('.form-group').addClass('has-error');
-        },
-        unhighlight: function (element) {
-            $(element).closest('.form-group').removeClass('has-error');
-        },
-        errorElement: 'span',
-        errorClass: 'help-block',
-        errorPlacement: function (error, element) {
-            if (element.parent('.input-group').length) {
-                error.insertAfter(element.parent());
-            } else {
-                error.insertAfter(element);
-            }
-        }
-    });
-    //CAMPOS QUE SERÃO VALIDADOS
-    ///para o Bruno fazer
-    $("#Proposta").validate({
-        rules: {
-            //esse é diferente, por isso tinha deixado o exemplo
-            //Dodos do Segurado
-            "Segurado.Nome": {
-                required: true
-            },
-            "Segurado.DataNascimento": {
-                required: true
-            },
-            "Segurado.IESexo": {
-                required: true
-            },
-            "Segurado.IEEstadoCivil": {
-                required: true
-            },
-            "Segurado.CodigoCpf": {
-                required: true
-            },
-            "Segurado.NumeroCep": {
-                required: true,
-                cepcorreio: true
-            },
-            "Segurado.IEPossuiOutrosCarros": {
-                required: true
-            },
-            "Segurado.IEQuantidadeCarro": {
-                required: true
-            },
-            "Segurado.AnosDeCNH": {
-                required: true
-            },
-            "Segurado.IEProprietarioVeiculo": {
-                required: true
-            },
-
-            //Dodos do Proprietario
-            "Proprietario.Nome": {
-                required: true
-            },
-            "Proprietario.DataNascimento": {
-                required: true
-            },
-            "Proprietario.IESexo": {
-                required: true
-            },
-            "Proprietario.IERelacaoProprietario": {
-                required: true
-            },
-            "Proprietario.IEEstadoCivil": {
-                required: true
-            },
-            "Proprietario.CodigoCpf": {
-                required: true
-            },
-            "Proprietario.NumeroCep": {
-                required: true,
-                cepcorreio: true
-            },
-
-            //Seguro Atual
-            "IEMotivoCotacao": {
-                required: true
-            },
-            "NomeSeguradoraAtual": {
-                required: true
-            },
-            "DataApoliceAtualVencimento": {
-                required: true
-            },
-        },
-        messages: {
-            required: "Campo Obrigatório"
-        }
-    });
-</script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo3.js"></script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/validacaoProposta.js"></script>
 <script type="text/javascript" src="~/Scripts/utilCorretorApp.js"></script>
 

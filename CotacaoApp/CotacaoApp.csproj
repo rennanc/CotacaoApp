@@ -469,6 +469,12 @@
     <Content Include="Scripts\locales\bootstrap-datepicker.vi.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Pages\Proposta\Passo1.js" />
+    <Content Include="Scripts\Pages\Proposta\Passo2.js" />
+    <Content Include="Scripts\Pages\Proposta\Passo3.js" />
+    <Content Include="Scripts\Pages\Proposta\Passo4.js" />
+    <Content Include="Scripts\Pages\Proposta\Passo5.js" />
+    <Content Include="Scripts\Pages\Proposta\validacaoProposta.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\select2.js" />
@@ -587,7 +593,9 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Scripts\Pages\Utils\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

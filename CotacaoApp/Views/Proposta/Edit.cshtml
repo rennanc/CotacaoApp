@@ -221,7 +221,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumento, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8">
-                <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, IEUtilizacaoVeiculoInstrumento.SIM) Sim</p>
+                <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, (int)IEUtilizacaoVeiculoInstrumento.SIM) Sim</p>
                 <div class="form-group border-box display-hide" id="IEUtilizacaoVeiculoInstrumentoForma">
                     <p>@Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, htmlAttributes: new { @class = "control-label col-md-2" })</p>
                     <div class="col-md-10">
@@ -230,7 +230,7 @@
                         <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, IEUtilizacaoVeiculoInstrumentoForma.UTILIZADOEMOUTRASATIVIDADESNAORELACIONADASACIMA) Utilizado em outras atividades não relacionadas acima.</p>
                     </div>
                 </div>
-                <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, IEUtilizacaoVeiculoInstrumento.NAO) Não</p>
+                <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, (int)IEUtilizacaoVeiculoInstrumento.NAO) Não</p>
             </div>
         </div>
 
@@ -819,6 +819,9 @@
     });
 
     //PASSO 2 - Validação
+
+
+
     $("input[name='IETipoEstacionamento']").on('click', function () {
         if ($(this).val() == 'RESIDENCIAGARAGEM') {
             $('#IETipoPortao').show();
@@ -837,7 +840,7 @@
     });
 
     $("input[name='IEUtilizacaoVeiculoInstrumento']").on('click', function () {
-        if ($(this).val() == "True") {
+        if ($(this).val() == "SIM") {
             $('#IEUtilizacaoVeiculoInstrumentoForma').show();
         } else {
             $('#IEUtilizacaoVeiculoInstrumentoForma').hide();
@@ -862,7 +865,7 @@
 
 
     $("input[name='Segurado.IEPossuiOutrosCarros']").on('click', function () {
-        if ($(this).val() == "True") {
+        if ($(this).val() == "SIM") {
             $('#IEQuantidadeCarro').show();
         } else {
             $('#IEQuantidadeCarro').hide();
@@ -870,8 +873,8 @@
     });
 
 
-    $("input[name='Segurado.IsSegurado']").on('click', function () {
-        if ($(this).val() == "False") {
+    $("input[name='Segurado.IEProprietarioVeiculo']").on('click', function () {
+        if ($(this).val() == "NAO") {
             $('#Proprietario').show();
         } else {
             $('#Proprietario').hide();
@@ -880,7 +883,7 @@
 
     //PASSO 4
     $("input[name='Segurado.IECondutorPrincipal']").on('click', function () {
-        if ($(this).val() == "False") {
+        if ($(this).val() == "OUTRAPESSOA") {
             $('#OutroCondutor').show();
         } else {
             $('#OutroCondutor').hide();
@@ -1029,6 +1032,9 @@
             },
             "Segurado.Telefones[0].NumeroTelefone": {
                 required: true
+            },
+            messages: {
+                required: "Campo Obrigatório"
             }
         }
     });

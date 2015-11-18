@@ -14,7 +14,7 @@ namespace CotacaoApp.DAO
 
         public void Insert(Proposta proposta)
         {
-
+ 
             //Adicionando Segurado
             db.Condutor.Add(proposta.Segurado);
             db.SaveChanges();
@@ -58,6 +58,7 @@ namespace CotacaoApp.DAO
                 proposta.CodigoCobertura = 1;
             }
             db.SaveChanges();
+            db.Dispose();
         }
 
 
@@ -206,6 +207,7 @@ namespace CotacaoApp.DAO
             DbDataReader reader = query.ExecuteQuery();
             reader.Close();
             conexao.Close();
+            db.Dispose();
         }
 
         public void Delete(Proposta proposta)
