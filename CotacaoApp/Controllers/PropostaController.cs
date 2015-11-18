@@ -268,7 +268,7 @@ namespace CotacaoApp.Controllers
             return View(proposta);
         }
 
-        // GET: Usuario/Create
+        // GET: Proposta/Create
         public ActionResult Create()
         {
             return View();
@@ -312,7 +312,7 @@ namespace CotacaoApp.Controllers
         }
 
 
-        // POST: Usuario/Edit/5
+        // POST: Proposta/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -336,12 +336,13 @@ namespace CotacaoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuario.Find(id);
-            if (usuario == null)
+            PropostaDAO propostaDao = new PropostaDAO();
+            Proposta proposta = propostaDao.GetProposta(id);
+            if (proposta == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(proposta);
         }
 
         // POST: Proposta/Delete/5

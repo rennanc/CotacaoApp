@@ -8,7 +8,6 @@
     obterListaAnoFabricacao('AnoFabricacaoVeiculo', 'AnoFabricacaoVeiculoHidden');
     $.support.cors = true;
 
-
 });
 
 

@@ -624,16 +624,17 @@
         if (codigoCobertura !== undefined) {
             ObterCobertura(codigoCobertura);
         }
+        
+
+        //passo2
         //controles da pagina
         if ($("#IETipoEstacionamento").attr('class') == 'ESTACIONAMENTO') {
             $('.IETipoPortao').show();
         }
-        else
-        {
+        else {
             $('.IETipoPortao').hide();
         }
 
-        //passo2
         if ($("#IEUtilizacaoVeiculoTrabalho").val() == 'SIM') {
             $('.IELocalGaragemTrabalho').show();
             $('.IEDistanciaParaTrabalhoVeiculo').show();
@@ -694,16 +695,9 @@
         } else {
                 $('#OutroCondutor').hide();
         }
-
-        //checkbox
             
 
     });
-
-    $(".cep").inputmask("99.999-999");
-    $(".email").inputmask({ alias: "email" });
-    $(".telefone").inputmask("(99) 9999-99999");
-    $(".cpf").inputmask("999.999.999-99");
 
 
     //Obter Descrição da cobertura
@@ -721,3 +715,4 @@
     };
 
 </script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/validacaoProposta.js"></script>

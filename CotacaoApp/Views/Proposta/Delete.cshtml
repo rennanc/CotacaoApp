@@ -1,30 +1,46 @@
-﻿@model CotacaoApp.Models.Usuario
+﻿@model CotacaoApp.Models.Proposta
 
 @{
-    ViewBag.Title = "Excluir Usuário";
+    ViewBag.Title = "Excluir Proposta";
 }
 
-<h2>Excluir Usuário</h2>
+<h2>Excluir Proposta</h2>
 
 <h3>Você tem certeza de que quer deletar isso?</h3>
 <div>
-    <h4>Usuario</h4>
+    <h4>Proposta</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Nome)
+            @Html.DisplayNameFor(model => model.Id)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nome)
+            @Html.DisplayFor(model => model.Id)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Senha)
+            @Html.DisplayNameFor(model => model.Segurado.CodigoCpf)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Senha)
+            @Html.DisplayFor(model => model.Segurado.CodigoCpf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Segurado.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Segurado.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeVeiculo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeVeiculo)
         </dd>
 
     </dl>
@@ -33,8 +49,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para a Lista", "Index")
         </div>
     }
 </div>
