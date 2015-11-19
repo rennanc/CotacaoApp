@@ -19,10 +19,10 @@ namespace CotacaoApp.Controllers
         private DefaultConnection db = new DefaultConnection();
 
         // GET: Apolice
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             List<Apolice> apolices = db.Apolice.ToList();
-            foreach(Apolice apolice in apolices)
+            foreach (Apolice apolice in apolices)
             {
                 PropostaDAO propostaDao = new PropostaDAO();
                 propostaDao.GetProposta(apolice.CodigoProposta);
@@ -31,6 +31,58 @@ namespace CotacaoApp.Controllers
                 apolice.Seguradora = db.Seguradora.Find(apolice.CodigoSeguradora);
             }
             return View(apolices);
+            //TODO
+            //ViewBag.CurrentSort = sortOrder;
+            //ViewBag.StatusSortParm = String.IsNullOrEmpty(sortOrder) ? "status_desc" : "";
+            //ViewBag.NomeSeguradoSortParm = String.IsNullOrEmpty(sortOrder) ? "nomeSegurado_desc" : "nomeSegurado";
+            //ViewBag.SeguradoraSortParm = String.IsNullOrEmpty(sortOrder) ? "seguradora_desc" : "seguradora";
+            //ViewBag.VeiculoSortParm = String.IsNullOrEmpty(sortOrder) ? "veiculo_desc" : "veiculo";
+            //ViewBag.ValorPremioLiquidoVeiculoSortParm = String.IsNullOrEmpty(sortOrder) ? "valorPremioLiquido_desc" : "valorPremioLiquido";
+
+            //if (searchString != null)
+            //{
+            //    page = 1;
+            //}
+            //else
+            //{
+            //    searchString = currentFilter;
+            //}
+
+            //ViewBag.CurrentFilter = searchString;
+
+
+            //List<Apolice> apolices = db.Apolice.ToList();
+            //List<Proposta> ApolicesCompletas = new List<Proposta>();
+            //PropostaDAO propostaDAO = new PropostaDAO();
+            //foreach (Proposta proposta in propostas)
+            //{
+            //    propostasCompleta.Add(propostaDAO.GetProposta(proposta.Id));
+            //}
+
+            //if (!String.IsNullOrEmpty(searchString))
+            //{
+            //    propostasCompleta = propostasCompleta.Where(s => s.Segurado.Nome.IndexOf(searchString, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+            //}
+            //switch (sortOrder)
+            //{
+            //    case "nome_desc":
+            //        propostasCompleta = propostasCompleta.OrderByDescending(p => p.Segurado.Nome).ToList();
+            //        break;
+            //    case "cpf":
+            //        propostasCompleta = propostasCompleta.OrderBy(p => p.Segurado.CodigoCpf).ToList();
+            //        break;
+            //    case "cpf_desc":
+            //        propostasCompleta = propostasCompleta.OrderByDescending(p => p.Segurado.CodigoCpf).ToList();
+            //        break;
+            //    default:  // Name ascending 
+            //        propostasCompleta = propostasCompleta.OrderBy(p => p.Segurado.Nome).ToList();
+            //        break;
+            //}
+            //int pageSize = 3;
+            //int pageNumber = (page ?? 1);
+            //PagedList<Proposta> propostaList = new PagedList<Proposta>(propostasCompleta, pageNumber, pageSize);
+            //return View(propostaList);
+
         }
 
         // GET: Apolice/Details/5
@@ -150,7 +202,7 @@ namespace CotacaoApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Proposta,Comissao,Segurdora,Contrato,Status")] Apolice apolice)
+        public ActionResult Edit(Apolice apolice)
         {
             if (ModelState.IsValid)
             {
