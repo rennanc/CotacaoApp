@@ -13,6 +13,37 @@
         $('#Proprietario').show();
     }
 
+    //exclusivo de detalhes
+
+    if ($("#IEMotivoCotacaoDetalhes").val() == 'FAZERPRIMEIROSEGURO')
+    {
+        $('.IEMotivoCotacao1').show();
+        $('.IEMotivoCotacao2').hide();
+    }
+    else if ($("#IEMotivoCotacaoDetalhes").val() == 'RENOVARSEGURO')
+    {
+        $('.IEMotivoCotacao2').show();
+        $('.IEMotivoCotacao1').hide();
+    }
+    else {
+        $('.IEMotivoCotacao1').hide();
+        $('.IEMotivoCotacao2').hide();
+    }
+
+    if ($("#IEPossuiOutrosCarrosDetalhes").val() == 'SIM') {
+        $('#IEQuantidadeCarro').show();
+    }
+    else {
+        $('#IEQuantidadeCarro').hide();
+    }
+
+    if ($("#SeguradoIEProprietarioVeiculoDetalhes").val() == 'NAO') {
+        $('#Proprietario').show();
+    }
+    else {
+        $('#Proprietario').hide();
+    }
+
 });
 
 

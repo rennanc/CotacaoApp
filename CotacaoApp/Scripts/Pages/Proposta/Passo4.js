@@ -2,6 +2,13 @@
     if ($("input[name='Segurado.IECondutorPrincipal']:checked").val() == 'OUTRAPESSOA') {
         $('#OutroCondutor').show();
     }
+
+    //exclusivo para detalhes
+    if ($("#SeguradoIECondutorPrincipalDetalhes").val() == 'OUTRAPESSOA') {
+        $('#OutroCondutor').show();
+    } else {
+        $('#OutroCondutor').hide();
+    }
 });
 
 

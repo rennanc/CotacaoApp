@@ -1,36 +1,61 @@
 ﻿$(document).ready(function () {
+    $('#CodigoCobertura').val($('#CodigoCoberturaHidden').val());
     var codigoCobertura = $('#CodigoCoberturaHidden').val();
     if (codigoCobertura !== undefined) {
-        $('#CodigoCobertura').trigger('change');
+        ObterCobertura(codigoCobertura);
     }
     //preencher select de marcas
     obterMarcasDeCarro('NomeMarcaVeiculoSelect', 'NomeMarcaVeiculoHidden');
     obterListaAnoFabricacao('AnoFabricacaoVeiculo', 'AnoFabricacaoVeiculoHidden');
     $.support.cors = true;
-
 });
 
-
-//Obter Descrição da cobertura
+/********************************
+    Obter Descrição da cobertura
+*********************************/
         $('#CodigoCobertura').on('change', function () {
             var Cobertura = {};
             Cobertura.Id = $(this).val();
-            $.getJSON("/Proposta/ObterCobertura", Cobertura, ObterCobertura);
+            $.getJSON("/Proposta/ObterCobertura", Cobertura, ObterCoberturaCallBack);
         });
 
+        //Obter Descrição da cobertura - ao carregar a pagina
+        function ObterCobertura(codigoCobertura) {
+            var Cobertura = {};
+            Cobertura.Id = codigoCobertura;
+            $.getJSON("/Proposta/ObterCobertura", Cobertura, ObterCoberturaCallBack);
+            debugger;
 
-//mudar ano do modelo
-        $('#AnoFabricacaoVeiculo').on('change', function () {
-            obterListaAnoModelo($(this).val(), 'AnoModeloVeiculoHidden');
-        });
+        };
 
-        var ObterCobertura = function (data) {
+        var ObterCoberturaCallBack = function (data) {
             $("#coberturaDescricao").val(data);
             $("#coberturaDescricao").show();
         };
 
-//carregar nomes dos modelos
+/********************************
+    mudar ano do modelo
+*********************************/
+        $('#AnoFabricacaoVeiculo').on('change', function () {
+            obterListaAnoModelo($(this).val(), 'AnoModeloVeiculoHidden');
+        });
+
+/********************************
+    carregar nomes dos modelos
+*********************************/
         $('#NomeMarcaVeiculoSelect').on('change', function () {
             var codigoMarca = $(this).val();
             obterModelosDeCarro('NomeVeiculo', codigoMarca);
         });
+
+
+/********************************
+    Obter Descrição da cobertura
+*********************************/
+        function ObterCobertura(codigoCobertura) {
+            var Cobertura = {};
+            Cobertura.Id = codigoCobertura;
+            $.getJSON("/Proposta/ObterCobertura", Cobertura, ObterCoberturaCallBack);
+            debugger;
+
+        };

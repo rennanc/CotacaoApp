@@ -105,7 +105,7 @@
                 </div>
                 <!--Para Trabalhar-->
                 <!--Para Estudar-->
-                @Html.CheckBoxFor(model => model.IEUtilizacaoVeiculoEstudo, IEUtilizacaoVeiculoEstudo.SIM)
+                @Html.CheckBoxFor(model => model.IEUtilizacaoVeiculoEstudo, true)
                 @Html.LabelFor(model => model.IEUtilizacaoVeiculoEstudo, htmlAttributes: new { @class = "control-label" })<br />
                 <div class="form-group border-box display-hide" id="IELocalGaragemEstudo">
                     <p>@Html.Label("O Veiculo Permanece em Garagem ou Estacionamento Protegido no Local de Estudo?*", htmlAttributes: new { @class = "control-label col-md-4" })</p>

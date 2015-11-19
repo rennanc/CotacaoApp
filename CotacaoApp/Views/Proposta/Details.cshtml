@@ -105,8 +105,8 @@
         <!-- PASSO 1 - FIM -->
         <!-- PASSO 2 - INICIO-->
         <div>
-            @
-            <div id="IETipoEstacionamento" class="@Model.IETipoEstacionamento">
+            @Html.HiddenFor(model => model.IETipoEstacionamento)
+            <div>
                 <strong>@Html.DisplayNameFor(model => model.IETipoEstacionamento)</strong>
             </div>
 
@@ -150,34 +150,37 @@
                 @Html.DisplayFor(model => model.IEUtilizacaoVeiculoTrabalho) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoTrabalho)
             </li>
             <ul>
-                <li class="IELocalGaragemTrabalho">
+                <li id="IELocalGaragemTrabalho">
                     @Html.DisplayFor(model => model.IELocalGaragemTrabalho) @Html.DisplayNameFor(model => model.IELocalGaragemTrabalho)
                 </li>
 
-                <li class="IEDistanciaParaTrabalhoVeiculo">
+                <li id="IEDistanciaParaTrabalhoVeiculo">
                     @Html.DisplayFor(model => model.IEDistanciaParaTrabalhoVeiculo) @Html.DisplayNameFor(model => model.IEDistanciaParaTrabalhoVeiculo)
                 </li>
             </ul>
 
+            <input type="hidden" id="IEUtilizacaoVeiculoEstudoDetalhes" value="@Model.IEUtilizacaoVeiculoEstudo.ToString()" />
             <li class="col-mg-12">
-                @Html.DisplayFor(model => model.IEUtilizacaoVeiculoEstudo) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoEstudo)
+                @Html.DisplayFor(model => model.IEUtilizacaoVeiculoEstudo) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoEstudo) teste
             </li>
 
             <ul>
-                <li class="IELocalGaragemEstudo">
+                <li id="IELocalGaragemEstudo">
                     @Html.DisplayFor(model => model.IELocalGaragemEstudo) @Html.DisplayNameFor(model => model.IELocalGaragemEstudo)
                 </li>
             </ul>
-            <span id="IEUtilizacaoVeiculoEstudo" class="@Model.IEUtilizacaoVeiculoEstudo.ToString()"></span>
+
+
+            @Html.HiddenFor(model => model.IEUtilizacaoVeiculoInstrumento)
             <li class="col-mg-12">
                 @Html.DisplayFor(model => model.IEUtilizacaoVeiculoInstrumento) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoInstrumento)
             </li>
-            <ul>
-                <li class="IEUtilizacaoVeiculoInstrumentoForma">
+            <ul id="IEUtilizacaoVeiculoInstrumentoForma">
+                <li>
                     @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoInstrumentoForma)
                 </li>
 
-                <li class="IEUtilizacaoVeiculoInstrumentoForma">
+                <li>
                     @Html.DisplayFor(model => model.IEUtilizacaoVeiculoInstrumentoForma)
                 </li>
             </ul>
@@ -241,6 +244,7 @@
                 @Html.DisplayFor(model => model.Segurado.NumeroCep)
             </div>
 
+            <input type="hidden" id="IEPossuiOutrosCarrosDetalhes" value="@Model.Segurado.IEPossuiOutrosCarros.ToString()" />
             <div class="col-mg-3">
                 <strong>@Html.DisplayNameFor(model => model.Segurado.IEPossuiOutrosCarros)</strong>
             </div>
@@ -248,13 +252,14 @@
             <div class="col-mg-9">
                 @Html.DisplayFor(model => model.Segurado.IEPossuiOutrosCarros)
             </div>
+            <div id="IEQuantidadeCarro">
+                <div class="col-mg-3">
+                    <strong>@Html.DisplayNameFor(model => model.Segurado.IEQuantidadeCarro)</strong>
+                </div>
 
-            <div class="col-mg-3">
-                <strong>@Html.DisplayNameFor(model => model.Segurado.IEQuantidadeCarro)</strong>
-            </div>
-
-            <div class="col-mg-9">
-                @Html.DisplayFor(model => model.Segurado.IEQuantidadeCarro)
+                <div class="col-mg-9">
+                    @Html.DisplayFor(model => model.Segurado.IEQuantidadeCarro)
+                </div>
             </div>
 
             <div class="col-mg-3">
@@ -266,7 +271,7 @@
             </div>
 
             <div class="col-mg-3">
-                <input type="hidden" id="Segurado.IEProprietarioVeiculo" value="@Model.Segurado.IEProprietarioVeiculo" />
+                <input type="hidden" id="SeguradoIEProprietarioVeiculoDetalhes" value="@Model.Segurado.IEProprietarioVeiculo" />
                 <strong>@Html.DisplayNameFor(model => model.Segurado.IEProprietarioVeiculo)</strong>
             </div>
 
@@ -339,7 +344,7 @@
         <!--SEGURO ATUAL - INICIO -->
         <div>
             <h2>SEGURO ATUAL</h2>
-            <span id="IEMotivoCotacao" class="@Model.IEMotivoCotacao"></span>
+            <input type="hidden" id="IEMotivoCotacaoDetalhes" value="@Model.IEMotivoCotacao" />
             <div class="col-mg-3">
                 <strong>@Html.DisplayName("O que o Cliente procura ao realizar essa cotação?")</strong>
             </div>
@@ -424,7 +429,7 @@
         </div>
 
         <div class="col-mg-9">
-            <input type="hidden" id="Segurado.IECondutorPrincipal" value="@Model.Segurado.IECondutorPrincipal" />
+            <input type="hidden" id="SeguradoIECondutorPrincipalDetalhes" value="@Model.Segurado.IECondutorPrincipal" />
             @Html.DisplayFor(model => model.Segurado.IECondutorPrincipal)
         </div>
 
@@ -594,110 +599,9 @@
         </div>
 
         <!-- PASSO 5 - FIM -->
-
     </div>
 
 </div>
-
-
-<script type="text/javascript">
-
-    $(document).ready(function () {
-        var codigoCobertura = $('#CodigoCoberturaHidden').val();
-        if (codigoCobertura !== undefined) {
-            ObterCobertura(codigoCobertura);
-        }
-        //controles da pagina
-        if ($("#IETipoEstacionamento").attr('class') == 'ESTACIONAMENTO') {
-            $('.IETipoPortao').show();
-        }
-        else {
-            $('.IETipoPortao').hide();
-        }
-
-        //passo2
-        if ($("#IEUtilizacaoVeiculoTrabalho").val() == 'SIM') {
-            $('.IELocalGaragemTrabalho').show();
-            $('.IEDistanciaParaTrabalhoVeiculo').show();
-        }
-        else {
-            $('.IELocalGaragemTrabalho').hide();
-            $('.IEDistanciaParaTrabalhoVeiculo').hide();
-        }
-
-        if ($("#IEUtilizacaoVeiculoEstudo").attr('class') == 'True') {
-            $('.IELocalGaragemEstudo').show();
-        }
-        else {
-            $('.IELocalGaragemEstudo').hide();
-        }
-
-        if ($("#IEUtilizacaoVeiculoInstrumento").attr('class') == 'True') {
-            $('.IEUtilizacaoVeiculoInstrumentoForma').show();
-        }
-        else {
-            $('.IEUtilizacaoVeiculoInstrumentoForma').hide();
-        }
-        //passo3
-        if ($("#IEMotivoCotacao").attr('class') == 'FAZERPRIMEIROSEGURO') {
-            $('.IEMotivoCotacao1').show();
-        }
-        else {
-            $('.IEMotivoCotacao1').hide();
-        }
-
-        if ($("#IEMotivoCotacao").attr('class') == 'RENOVARSEGURO') {
-            $('.IEMotivoCotacao2').show();
-        }
-        else {
-            $('.IEMotivoCotacao2').hide();
-        }
-
-
-        if ($("#IEPossuiOutrosCarros").attr('class') == 'True') {
-            $('.IEQuantidadeCarro').show();
-        }
-        else {
-            $('.IEQuantidadeCarro').hide();
-        }
-
-        if ($("#Segurado.IEProprietarioVeiculo").attr('class') == 'False') {
-            $('#Proprietario').show();
-        }
-        else {
-            $('#Proprietario').hide();
-        }
-        //passo4
-        if ($("#Segurado.IECondutorPrincipal").val() == 'OUTRAPESSOA') {
-            $('#OutroCondutor').show();
-        } else {
-            $('#OutroCondutor').hide();
-        }
-
-
-    });
-
-    $(".cep").inputmask("99.999-999");
-    $(".email").inputmask({ alias: "email" });
-    $(".telefone").inputmask("(99) 9999-99999");
-    $(".cpf").inputmask("999.999.999-99");
-
-
-    //Obter Descrição da cobertura
-    function ObterCobertura(codigoCobertura) {
-        var Cobertura = {};
-        Cobertura.Id = codigoCobertura;
-        $.getJSON("/Proposta/ObterCobertura", Cobertura, ObterCoberturaCallBack);
-        debugger;
-
-    };
-
-    var ObterCoberturaCallBack = function (data) {
-        $("#coberturaDescricao").val(data);
-        $("#coberturaDescricao").show();
-    };
-
-</script>
 
 <script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo1.js"></script>
 <script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo2.js"></script>
