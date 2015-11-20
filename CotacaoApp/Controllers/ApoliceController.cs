@@ -10,6 +10,8 @@ using CotacaoApp.Models;
 using CotacaoApp.DAO;
 using CotacaoApp.Util;
 using CotacaoApp.Filters;
+using CotacaoApp.Enumerations;
+using PagedList;
 
 namespace CotacaoApp.Controllers
 {
@@ -19,69 +21,99 @@ namespace CotacaoApp.Controllers
         private DefaultConnection db = new DefaultConnection();
 
         // GET: Apolice
-        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ViewResult Index(Apolice apoliceSearch, string sortOrder, string currentFilter, int? page)
         {
+            string searchString = "";
+            //List<Apolice> apolices = db.Apolice.ToList();
+            //foreach (Apolice apolice in apolices)
+            //{
+            //    PropostaDAO propostaDao = new PropostaDAO();
+            //    propostaDao.GetProposta(apolice.CodigoProposta);
+            //    apolice.Proposta = propostaDao.GetProposta(apolice.CodigoProposta);
+            //    apolice.Comissao = db.Comissao.Find(apolice.CodigoComissao);
+            //    apolice.Seguradora = db.Seguradora.Find(apolice.CodigoSeguradora);
+            //}
+            //return View(apolices);
+            //TODO
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.StatusSortParm = String.IsNullOrEmpty(sortOrder) ? "status_desc" : "";
+            ViewBag.NomeSeguradoSortParm = String.IsNullOrEmpty(sortOrder) ? "nomeSegurado_desc" : "nomeSegurado";
+            ViewBag.SeguradoraSortParm = String.IsNullOrEmpty(sortOrder) ? "seguradora_desc" : "seguradora";
+            ViewBag.VeiculoSortParm = String.IsNullOrEmpty(sortOrder) ? "veiculo_desc" : "veiculo";
+            ViewBag.ValorPremioLiquidoVeiculoSortParm = String.IsNullOrEmpty(sortOrder) ? "valorPremioLiquido_desc" : "valorPremioLiquido";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+
+            //TODO: Fazer uma consulta só
             List<Apolice> apolices = db.Apolice.ToList();
             foreach (Apolice apolice in apolices)
             {
                 PropostaDAO propostaDao = new PropostaDAO();
-                propostaDao.GetProposta(apolice.CodigoProposta);
                 apolice.Proposta = propostaDao.GetProposta(apolice.CodigoProposta);
                 apolice.Comissao = db.Comissao.Find(apolice.CodigoComissao);
                 apolice.Seguradora = db.Seguradora.Find(apolice.CodigoSeguradora);
             }
-            return View(apolices);
-            //TODO
-            //ViewBag.CurrentSort = sortOrder;
-            //ViewBag.StatusSortParm = String.IsNullOrEmpty(sortOrder) ? "status_desc" : "";
-            //ViewBag.NomeSeguradoSortParm = String.IsNullOrEmpty(sortOrder) ? "nomeSegurado_desc" : "nomeSegurado";
-            //ViewBag.SeguradoraSortParm = String.IsNullOrEmpty(sortOrder) ? "seguradora_desc" : "seguradora";
-            //ViewBag.VeiculoSortParm = String.IsNullOrEmpty(sortOrder) ? "veiculo_desc" : "veiculo";
-            //ViewBag.ValorPremioLiquidoVeiculoSortParm = String.IsNullOrEmpty(sortOrder) ? "valorPremioLiquido_desc" : "valorPremioLiquido";
 
-            //if (searchString != null)
-            //{
-            //    page = 1;
-            //}
-            //else
-            //{
-            //    searchString = currentFilter;
-            //}
+            //buscas
+            if (Status.NENHUM != apoliceSearch.Status)
+            {
+                apolices = apolices.Where(a => (int)a.Status == (int)apoliceSearch.Status).ToList();
+            }
+            if(apoliceSearch.Proposta != null && apoliceSearch.Proposta.Segurado != null && apoliceSearch.Proposta.Segurado.Nome != null)
+            {
+                apolices = apolices.Where(a => a.Proposta.Segurado.Nome.IndexOf(apoliceSearch.Proposta.Segurado.Nome, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+            }
+                
+                
 
-            //ViewBag.CurrentFilter = searchString;
-
-
-            //List<Apolice> apolices = db.Apolice.ToList();
-            //List<Proposta> ApolicesCompletas = new List<Proposta>();
-            //PropostaDAO propostaDAO = new PropostaDAO();
-            //foreach (Proposta proposta in propostas)
-            //{
-            //    propostasCompleta.Add(propostaDAO.GetProposta(proposta.Id));
-            //}
-
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    propostasCompleta = propostasCompleta.Where(s => s.Segurado.Nome.IndexOf(searchString, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
-            //}
-            //switch (sortOrder)
-            //{
-            //    case "nome_desc":
-            //        propostasCompleta = propostasCompleta.OrderByDescending(p => p.Segurado.Nome).ToList();
-            //        break;
-            //    case "cpf":
-            //        propostasCompleta = propostasCompleta.OrderBy(p => p.Segurado.CodigoCpf).ToList();
-            //        break;
-            //    case "cpf_desc":
-            //        propostasCompleta = propostasCompleta.OrderByDescending(p => p.Segurado.CodigoCpf).ToList();
-            //        break;
-            //    default:  // Name ascending 
-            //        propostasCompleta = propostasCompleta.OrderBy(p => p.Segurado.Nome).ToList();
-            //        break;
-            //}
-            //int pageSize = 3;
-            //int pageNumber = (page ?? 1);
-            //PagedList<Proposta> propostaList = new PagedList<Proposta>(propostasCompleta, pageNumber, pageSize);
-            //return View(propostaList);
+            //ordenação
+            switch (sortOrder)
+            {
+                case "status_desc":
+                    apolices = apolices.OrderByDescending(a => (int)a.Status).ToList();
+                    break;
+                case "nomeSegurado":
+                    apolices = apolices.OrderBy(a => a.Proposta.Segurado.Nome).ToList();
+                    break;
+                case "nomeSegurado_desc":
+                    apolices = apolices.OrderByDescending(a => a.Proposta.Segurado.Nome).ToList();
+                    break;
+                case "seguradora":
+                    apolices = apolices.OrderBy(a => a.Seguradora.NomeSeguradora).ToList();
+                    break;
+                case "seguradora_desc":
+                    apolices = apolices.OrderByDescending(a => a.Seguradora.NomeSeguradora).ToList();
+                    break;
+                case "veiculo":
+                    apolices = apolices.OrderBy(a => a.Proposta.NomeVeiculo).ToList();
+                    break;
+                case "veiculo_desc":
+                    apolices = apolices.OrderByDescending(a => a.Proposta.NomeVeiculo).ToList();
+                    break;
+                case "valorPremioLiquido":
+                    apolices = apolices.OrderBy(a => a.Proposta.NomeVeiculo).ToList();
+                    break;
+                case "valorPremioLiquido_desc":
+                    apolices = apolices.OrderByDescending(a => a.Comissao.ValorComissaoLiquida).ToList();
+                    break;
+                default:  // Status ascending 
+                    apolices = apolices.OrderBy(a => (int)a.Status).ToList();
+                    break;
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            PagedList<Apolice> apoliceList = new PagedList<Apolice>(apolices, pageNumber, pageSize);
+            return View(apoliceList);
 
         }
 
