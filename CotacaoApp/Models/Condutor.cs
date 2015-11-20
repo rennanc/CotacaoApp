@@ -34,7 +34,7 @@ namespace CotacaoApp.Models
         [Column("DT_NASCIMENTO")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime? DataNascimento { get; set; }
+        public DateTime DataNascimento { get; set; }
 
         [Display(Name = "Sexo*")]
         [Column("IE_SEXO")]

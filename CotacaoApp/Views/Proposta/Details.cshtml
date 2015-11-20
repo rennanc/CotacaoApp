@@ -2,6 +2,8 @@
 @using CotacaoApp.Enumerations
 
 
+
+
 <div class="container-fluid border-box col-lg-12">
     <!-- PASSO 1 - INICIO -->
 
@@ -58,7 +60,7 @@
         <div class="col-mg-9">
             @Html.DisplayFor(model => model.NomeVeiculo)
         </div>
-da
+
         <div class="col-mg-3">
             <strong>@Html.DisplayNameFor(model => model.IEFinanciadoVeiculo)</strong>
         </div>
@@ -205,7 +207,7 @@ da
                 <strong>@Html.DisplayNameFor(model => model.Segurado.DataNascimento)</strong>
             </div>
 
-            <div class="col-mg-9">
+            <div class="col-mg-9 dateDisplayFormat">
                 @Html.DisplayFor(model => model.Segurado.DataNascimento)
             </div>
 
@@ -292,7 +294,7 @@ da
                 <strong>@Html.DisplayNameFor(model => model.Proprietario.DataNascimento)</strong>
             </div>
 
-            <div class="col-mg-9">
+            <div class="col-mg-9 dateDisplayFormat">
                 @Html.DisplayFor(model => model.Proprietario.DataNascimento)
             </div>
 
@@ -378,7 +380,7 @@ da
                     <strong>@Html.DisplayName("Data de vencimento da apólice atual*")</strong>
                 </div>
 
-                <div class="col-mg-9">
+                <div class="col-mg-9 dateDisplayFormat">
                     @Html.DisplayFor(model => model.DataApoliceAtualVencimento)
                 </div>
 

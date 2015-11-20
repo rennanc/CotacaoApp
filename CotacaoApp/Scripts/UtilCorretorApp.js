@@ -142,7 +142,6 @@ function obterMarcasDeCarroPorId(IdDaMarca, nomeCampoDisplay)
     $.getJSON(window.location.origin + "/Scripts/json/marcas.js", function (data) {
         var selectMarcas = "";
         if (data) {
-            debugger;
             $.each(data, function (i, marca) {
                 if (marca.id == IdDaMarca) {
                     $('#' + nomeCampoDisplay).html(unescape(marca.name).trim());
