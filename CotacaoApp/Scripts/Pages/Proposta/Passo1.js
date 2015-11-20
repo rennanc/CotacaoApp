@@ -35,7 +35,7 @@
         };
 
         var ObterCoberturaCallBack = function (data) {
-            $("#coberturaDescricao").val(data);
+            $("#coberturaDescricao").text(data);
             $("#coberturaDescricao").show();
         };
 
