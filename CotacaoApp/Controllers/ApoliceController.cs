@@ -222,6 +222,7 @@ namespace CotacaoApp.Controllers
             apolice.Proposta = propostaDao.GetProposta(apolice.CodigoProposta);
             apolice.Seguradoras = db.Seguradora.ToList();
             apolice.Comissao = db.Comissao.Find(apolice.CodigoComissao);
+            apolice.Proposta.Coberturas = db.Cobertura.ToList();
             if (apolice == null)
             {
                 return HttpNotFound();
@@ -233,18 +234,37 @@ namespace CotacaoApp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(Apolice apolice)
         {
             if (ModelState.IsValid)
             {
+                //TODO CONSULTA PARA MUDANÇA DE FLAG E ADIÇÃO DE NOVA PROPOSTA E APOLICE
+                //modificando a antiga para Flag de modificada
+                apolice.Modificado = 1;
                 db.Entry(apolice).State = EntityState.Modified;
+
+                //modificando a antiga para Flag de modificada
+                apolice.Proposta.Modificado = 1;
+                db.Entry(apolice.Proposta).State = EntityState.Modified;
+
+                //cria nova proposta
+                apolice.Proposta = db.Proposta.Add(apolice.Proposta);
+
+                apolice.CodigoProposta = apolice.Proposta.Id;
 
                 //Criacao de endosso
                 Endosso endosso = new Endosso();
+                //salvando codigo antigo da apolice
+                endosso.CodApoliceAntigo = apolice.Id;
                 endosso.DataEndosso = DateTime.Now;
-                endosso.CodApolice = apolice.Id;
+                
+                //criando nova Apolice 
+                apolice = db.Apolice.Add(apolice);
 
+                //adicionando Id da apolice Nova
+                endosso.CodApolice = apolice.Id;
+                
+                //Salvando Endosso e Apolice nova
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

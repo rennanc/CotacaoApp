@@ -21,14 +21,15 @@ namespace CotacaoApp.Models
         public int CodApolice { get; set; }
 
         [Required]
-        [Display(Name = "Data Alteração Endosso")]
-        [Column("DT_ALTERACAO_ENDOSSO")]
-        public DateTime DataAlteracaoEndosso { get; set; }
+        [Display(Name = "Código Apolice Antigo")]
+        [Column("CD_APOLICEOLD")]
+        public int CodApoliceAntigo { get; set; }
 
         [Required]
         [Display(Name = "Data Endosso")]
         [Column("DT_ENDOSSO")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DataEndosso { get; set; }
+        
     }
 }

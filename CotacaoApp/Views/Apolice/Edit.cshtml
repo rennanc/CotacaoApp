@@ -19,7 +19,7 @@
 
         @if (Model.Proposta != null)
         {
-            @Html.Partial("_Proposta", (Proposta)Model.Proposta)
+            @Html.Partial("_PropostaEdit", (Proposta)Model.Proposta)
             @Html.HiddenFor(model => model.CodigoProposta, new { id = "Comissao.CodigoProposta", Value = @Model.Proposta.Id })
 
         }
@@ -132,4 +132,11 @@
     });
 
 </script>
+
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo1.js"></script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo2.js"></script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo3.js"></script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo4.js"></script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/validacaoProposta.js"></script>
+<script type="text/javascript" src="~/Scripts/utilCorretorApp.js"></script>
 

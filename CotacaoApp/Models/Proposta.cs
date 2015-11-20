@@ -225,6 +225,11 @@ namespace CotacaoApp.Models
         [Column("NR_CHASSIVEICULO")]
         public string NumeroChassi { get; set; }
 
+
+        [Display(Name = "Modificada")]
+        [Column("FL_MODIFICADA")]
+        public int Modificado { get; set; }
+
         //Auxiliares
         //[Display(Name = "Marca", Prompt = "Marca", Description = "Escolha a Marca do Veículo")]
         //public IList<SelectListItem> NomeMarcaLista { get; set; }
