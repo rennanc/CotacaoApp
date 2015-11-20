@@ -28,6 +28,7 @@ namespace CotacaoApp.Models
         [Required]
         [Display(Name = "Data Endosso")]
         [Column("DT_ENDOSSO")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DataEndosso { get; set; }
     }
 }

@@ -105,9 +105,9 @@ $("#Proposta").validate({
         IELocalGaragemEstudo: {
             required: true
         },
-        IEUtilizacaoVeiculoInstrumento: {
-            required: true
-        },
+        //IEUtilizacaoVeiculoInstrumento: {
+        //    required: true
+        //},
         IEUtilizacaoVeiculoInstrumentoForma: {
             required: true
         },

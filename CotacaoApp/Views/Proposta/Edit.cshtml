@@ -215,22 +215,18 @@
                     </div>
                 </div>
                 <!--Para Estudar-->
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumento, htmlAttributes: new { @class = "control-label col-md-4" })
-            <div class="col-md-8">
-                <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, (int)IEUtilizacaoVeiculoInstrumento.SIM) Sim</p>
+                <!--Para Instrumento de Trabalho-->
+                @Html.CheckBoxFor(model => model.IEUtilizacaoVeiculoInstrumento, IEUtilizacaoVeiculoInstrumento.SIM)
+                @Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumento, htmlAttributes: new { @class = "control-label" })<br />
                 <div class="form-group border-box display-hide" id="IEUtilizacaoVeiculoInstrumentoForma">
-                    <p>@Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, htmlAttributes: new { @class = "control-label col-md-2" })</p>
-                    <div class="col-md-10">
+                    <p>@Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, htmlAttributes: new { @class = "control-label col-md-4" })</p>
+                    <div class="col-md-8 ">
                         <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, IEUtilizacaoVeiculoInstrumentoForma.PARAENTREGASREPRESENTACAOCOMERCIALVENDEDORESPROMOTORESEPRESTADORESDESERVICOS) Para entregas, representação comercial, vendedores, promotores e prestadores de serviços.</p>
                         <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, IEUtilizacaoVeiculoInstrumentoForma.PARAVISITASACLIENTESFORNECEDORESEPROSPECCAODENOVOSNEGOCIOS) Para visitas a clientes, fornecedores e prospecção de novos negócios.</p>
                         <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, IEUtilizacaoVeiculoInstrumentoForma.UTILIZADOEMOUTRASATIVIDADESNAORELACIONADASACIMA) Utilizado em outras atividades não relacionadas acima.</p>
                     </div>
                 </div>
-                <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, (int)IEUtilizacaoVeiculoInstrumento.NAO) Não</p>
+                <!--Para Instrumento de Trabalho-->
             </div>
         </div>
 
@@ -257,7 +253,7 @@
         <div class="form-group">
             @Html.Label("Data de nascimento de SEGURADO*", htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8">
-                @Html.TextBoxFor(model => model.Segurado.DataNascimento,  new { @Value = Model.Segurado.DataNascimento.ToString("yyyy-MM-dd"), @type = "date" , @class = "form-control  " } )
+                @Html.EditorFor(model => model.Segurado.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 
@@ -361,7 +357,7 @@
             <div class="form-group">
                 @Html.Label("Data de nascimento do Proprietário*", htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    @Html.EditorFor(model => model.Proprietario.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextBoxFor(model => model.Proprietario.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Proprietario.DataNascimento, "", new { @class = "text-danger" })
                 </div>
             </div>

@@ -3,7 +3,6 @@
 
 
 <div class="container-fluid border-box col-lg-12">
-    div class="container-fluid border-box col-lg-12">
     <!-- PASSO 1 - INICIO -->
 
     <div class="col-lg-12">
@@ -24,7 +23,7 @@
             <strong>@Html.DisplayNameFor(model => model.NomeMarcaVeiculo)</strong>
         </div>
 
-        <div class="col-mg-9">
+        <div class="col-mg-9" id="NomeMarcaVeiculoDisplay">
             @Html.DisplayFor(model => model.NomeMarcaVeiculo)
         </div>
 
@@ -59,7 +58,7 @@
         <div class="col-mg-9">
             @Html.DisplayFor(model => model.NomeVeiculo)
         </div>
-
+da
         <div class="col-mg-3">
             <strong>@Html.DisplayNameFor(model => model.IEFinanciadoVeiculo)</strong>
         </div>
@@ -148,42 +147,40 @@
             <input type="hidden" id="IEUtilizacaoVeiculoTrabalho" value="@Model.IEUtilizacaoVeiculoTrabalho.ToString()" />
             <li class="col-mg-12">
                 @Html.DisplayFor(model => model.IEUtilizacaoVeiculoTrabalho) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoTrabalho)
-            </li>
-            <ul>
-                <li id="IELocalGaragemTrabalho">
-                    @Html.DisplayFor(model => model.IELocalGaragemTrabalho) @Html.DisplayNameFor(model => model.IELocalGaragemTrabalho)
-                </li>
+                <ul id="IEUtilizacaoVeiculoTrabalhoDetalhes">
+                    <strong>O Veiculo Permanece em Garagem ou Estacionamento Protegido no Local de Trabalho?*</strong>
+                    <li id="IELocalGaragemTrabalho">
+                        @Html.DisplayFor(model => model.IELocalGaragemTrabalho) @Html.DisplayNameFor(model => model.IELocalGaragemTrabalho)
+                    </li>
 
-                <li id="IEDistanciaParaTrabalhoVeiculo">
-                    @Html.DisplayFor(model => model.IEDistanciaParaTrabalhoVeiculo) @Html.DisplayNameFor(model => model.IEDistanciaParaTrabalhoVeiculo)
-                </li>
-            </ul>
+                    <li id="IEDistanciaParaTrabalhoVeiculo">
+                        @Html.DisplayFor(model => model.IEDistanciaParaTrabalhoVeiculo) @Html.DisplayNameFor(model => model.IEDistanciaParaTrabalhoVeiculo)
+                    </li>
+                </ul>
+            </li>
 
             <input type="hidden" id="IEUtilizacaoVeiculoEstudoDetalhes" value="@Model.IEUtilizacaoVeiculoEstudo.ToString()" />
             <li class="col-mg-12">
-                @Html.DisplayFor(model => model.IEUtilizacaoVeiculoEstudo) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoEstudo) teste
+                @Html.DisplayFor(model => model.IEUtilizacaoVeiculoEstudo) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoEstudo)
+                <ul id="IELocalGaragemEstudo">
+                    <strong>O Veiculo Permanece em Garagem ou Estacionamento Protegido no Local de Estudo?*</strong>
+                    <li>
+                        @Html.DisplayFor(model => model.IELocalGaragemEstudo) @Html.DisplayNameFor(model => model.IELocalGaragemEstudo)
+                    </li>
+                </ul>
             </li>
-
-            <ul>
-                <li id="IELocalGaragemEstudo">
-                    @Html.DisplayFor(model => model.IELocalGaragemEstudo) @Html.DisplayNameFor(model => model.IELocalGaragemEstudo)
-                </li>
-            </ul>
 
 
             @Html.HiddenFor(model => model.IEUtilizacaoVeiculoInstrumento)
             <li class="col-mg-12">
                 @Html.DisplayFor(model => model.IEUtilizacaoVeiculoInstrumento) @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoInstrumento)
+                <ul id="IEUtilizacaoVeiculoInstrumentoForma">
+                    <strong>@Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoInstrumentoForma)</strong>
+                    <li>
+                        @Html.DisplayFor(model => model.IEUtilizacaoVeiculoInstrumentoForma)
+                    </li>
+                </ul>
             </li>
-            <ul id="IEUtilizacaoVeiculoInstrumentoForma">
-                <li>
-                    @Html.DisplayNameFor(model => model.IEUtilizacaoVeiculoInstrumentoForma)
-                </li>
-
-                <li>
-                    @Html.DisplayFor(model => model.IEUtilizacaoVeiculoInstrumentoForma)
-                </li>
-            </ul>
         </ul>
         <div class="col-mg-3">
             <strong>@Html.DisplayNameFor(model => model.IEKmEmMedia)</strong>

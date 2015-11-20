@@ -137,7 +137,7 @@ namespace CotacaoApp.Models
 
         [Display(Name = "Usa o carro como instrumento de trabalho. Ex.: Representante comercial, entregador delivery etc.* ")]
         [Column("IE_UTILIZACAOVEICULO_INSTRUMENTO")]
-        public int IEUtilizacaoVeiculoInstrumento { get; set; }
+        public bool IEUtilizacaoVeiculoInstrumento { get; set; }
 
             [Display(Name = "Como o veículo é utilizado?*")]
             [Column("IE_UTILIZACAOVEICULO_INSTRUMENTOFORMA")]
@@ -186,7 +186,8 @@ namespace CotacaoApp.Models
             [Display(Name = "Fim da Vigencia da Apolice atual")]
             [Column("DT_VENC_SEGUROATUAL")]
             [DataType(DataType.Date)]
-            public string DataApoliceAtualVencimento { get; set; }
+            [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+            public DateTime? DataApoliceAtualVencimento { get; set; }
 
             [Display(Name = "Bonus Seguro Atual Sem Sinistro")]
             [Column("IE_BONUSAPOLICEATUAL_SEMSINISTRO")]

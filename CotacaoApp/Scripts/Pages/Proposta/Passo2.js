@@ -34,7 +34,7 @@
         $('#IELocalGaragemEstudo').hide();
     }
 
-    if ($("#IEUtilizacaoVeiculoInstrumento").val() == 1) {
+    if ($("#IEUtilizacaoVeiculoInstrumento").val() == 'True') {
         $('#IEUtilizacaoVeiculoInstrumentoForma').show();
     }
     else {
@@ -42,8 +42,13 @@
     }
 
     if ($("#IEUtilizacaoVeiculoTrabalho").val() == 'True') {
+        $('#IEUtilizacaoVeiculoTrabalhoDetalhes').show();
         $('#IELocalGaragemTrabalho').show();
         $('#IEDistanciaParaTrabalhoVeiculo').show();
+    } else {
+        $('#IEUtilizacaoVeiculoTrabalhoDetalhes').hide();
+        $('#IELocalGaragemTrabalho').hide();
+        $('#IEDistanciaParaTrabalhoVeiculo').hide();
     }
 });
 
@@ -69,9 +74,5 @@ $("input[name='IEUtilizacaoVeiculoEstudo']").on('click', function () {
 });
 
 $("input[name='IEUtilizacaoVeiculoInstrumento']").on('click', function () {
-    if ($(this).val() == "1") {
-        $('#IEUtilizacaoVeiculoInstrumentoForma').show();
-    } else {
-        $('#IEUtilizacaoVeiculoInstrumentoForma').hide();
-    }
+    $('#IEUtilizacaoVeiculoInstrumentoForma').toggle();
 });
