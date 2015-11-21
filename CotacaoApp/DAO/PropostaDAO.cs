@@ -52,12 +52,12 @@ namespace CotacaoApp.DAO
 
             db.SaveChanges();
 
-            //correção provisoria
-            if(proposta.CodigoCobertura == 0)
-            {
-                proposta.CodigoCobertura = 1;
-            }
-            db.SaveChanges();
+            ////correção provisoria
+            //if(proposta.CodigoCobertura == 0)
+            //{
+            //    proposta.CodigoCobertura = 1;
+            //}
+            //db.SaveChanges();
             db.Dispose();
         }
 
@@ -208,6 +208,20 @@ namespace CotacaoApp.DAO
             reader.Close();
             conexao.Close();
             db.Dispose();
+        }
+
+        public void MudarParaModificado(int codigoProposta)
+        {
+            var conexao = new DBConnection();
+            QuerySql query = conexao.CreateQuery("UPDATE proposta SET " +
+                                            " FL_MUDANCA=1 " +
+                                            " WHERE CD_PROPOSTA = @CD_PROPOSTA ");
+
+            query.SetParameter("CD_PROPOSTA", codigoProposta);
+
+            DbDataReader reader = query.ExecuteQuery();
+            reader.Close();
+            conexao.Close();
         }
 
         public void Delete(Proposta proposta)

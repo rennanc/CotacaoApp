@@ -63,5 +63,19 @@ namespace CotacaoApp.DAO
             }
             
         }
+
+        public void MudarParaModificado(int codigoApolice)
+        {
+            var conexao = new DBConnection();
+            QuerySql query = conexao.CreateQuery("UPDATE apolice SET " +
+                                            " FL_MUDANCA=1 " +
+                                            " WHERE CD_APOLICE = @CD_APOLICE ");
+
+            query.SetParameter("CD_APOLICE", codigoApolice);
+
+            DbDataReader reader = query.ExecuteQuery();
+            reader.Close();
+            conexao.Close();
+        }
     }
 }

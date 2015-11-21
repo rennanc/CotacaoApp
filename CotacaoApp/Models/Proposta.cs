@@ -227,8 +227,8 @@ namespace CotacaoApp.Models
 
 
         [Display(Name = "Modificada")]
-        [Column("FL_MODIFICADA")]
-        public int Modificado { get; set; }
+        [Column("FL_STATUS")]
+        public int Status { get; set; }
 
         //Auxiliares
         //[Display(Name = "Marca", Prompt = "Marca", Description = "Escolha a Marca do Veículo")]

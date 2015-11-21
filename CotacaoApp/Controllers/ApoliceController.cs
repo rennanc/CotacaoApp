@@ -238,33 +238,28 @@ namespace CotacaoApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                //TODO CONSULTA PARA MUDANÇA DE FLAG E ADIÇÃO DE NOVA PROPOSTA E APOLICE
                 //modificando a antiga para Flag de modificada
-                apolice.Modificado = 1;
-                db.Entry(apolice).State = EntityState.Modified;
+                ApoliceDAO apoliceDao = new ApoliceDAO();
+                apoliceDao.MudarParaModificado(apolice.Id);
 
-                //modificando a antiga para Flag de modificada
-                apolice.Proposta.Modificado = 1;
-                db.Entry(apolice.Proposta).State = EntityState.Modified;
-
-                //cria nova proposta
-                apolice.Proposta = db.Proposta.Add(apolice.Proposta);
-
-                apolice.CodigoProposta = apolice.Proposta.Id;
+                //Salvando Mudanças da proposta
+                PropostaDAO propostaDao = new PropostaDAO();
+                propostaDao.Save(apolice.Proposta);
 
                 //Criacao de endosso
                 Endosso endosso = new Endosso();
                 //salvando codigo antigo da apolice
                 endosso.CodApoliceAntigo = apolice.Id;
                 endosso.DataEndosso = DateTime.Now;
-                
+
                 //criando nova Apolice 
                 apolice = db.Apolice.Add(apolice);
 
                 //adicionando Id da apolice Nova
                 endosso.CodApolice = apolice.Id;
-                
+
                 //Salvando Endosso e Apolice nova
+                db.Endosso.Add(endosso);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
