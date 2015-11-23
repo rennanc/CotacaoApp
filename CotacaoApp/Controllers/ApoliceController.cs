@@ -236,8 +236,8 @@ namespace CotacaoApp.Controllers
         [HttpPost]
         public ActionResult Edit(Apolice apolice)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 //modificando a antiga para Flag de modificada
                 ApoliceDAO apoliceDao = new ApoliceDAO();
                 apoliceDao.MudarParaModificado(apolice.Id);
@@ -262,8 +262,8 @@ namespace CotacaoApp.Controllers
                 db.Endosso.Add(endosso);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            return View(apolice);
+            //}
+            //return View(apolice);
         }
 
         // GET: Apolice/Delete/5

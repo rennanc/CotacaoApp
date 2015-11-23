@@ -28,14 +28,15 @@ namespace CotacaoApp.DAO
             conexao.Close();
         }
 
-        public bool ValidarEmailProposta(string email, string codigoProposta, string codigoApolice)
+        public string ObterEmailDoCorretorEValidarEmail(string email, string codigoProposta, string codigoApolice)
         {
             var conexao = new DBConnection();
 
-            QuerySql query = conexao.CreateQuery("SELECT COUNT(*) COUNT " +
+            QuerySql query = conexao.CreateQuery("SELECT usuario.NM_USUARIO NM_USUARIO " +
                                                   " FROM condutor " +
                                                   " INNER JOIN proposta ON proposta.CD_CONDUTOR = condutor.CD_CONDUTOR " +
                                                   " INNER JOIN apolice ON apolice.CD_PROPOSTA = proposta.CD_PROPOSTA " +
+                                                  " INNER JOIN usuario ON apolice.CD_USUARIO = CD_USUARIO " +
                                                   " WHERE NM_EMAIL = @NM_EMAIL " +
                                                   " AND proposta.CD_PROPOSTA = @CD_PROPOSTA " +
                                                   " AND apolice.CD_APOLICE = @CD_APOLICE");
@@ -45,30 +46,41 @@ namespace CotacaoApp.DAO
             query.SetParameter("CD_PROPOSTA", codigoProposta);
 
             DbDataReader reader = query.ExecuteQuery();
-            int result = 0;
+            string emailCondutor = null;
             if (reader.Read())
             {
-                result = reader.GetInt16(reader.GetOrdinal("COUNT"));
+                emailCondutor = reader.GetString(reader.GetOrdinal("NM_USUARIO"));
             }
 
             reader.Close();
             conexao.Close();
-            if (result > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-            
+            return emailCondutor;
+
+        }
+
+        public void ExcluirApolicesRejeitadas(string codigoProposta, string codigoApoliceExcesao)
+        {
+            var conexao = new DBConnection();
+
+            QuerySql query = conexao.CreateQuery("DELETE " +
+                                                 " FROM apolice " +
+                                                 " WHERE CD_APOLICE != @CD_APOLICE " +
+                                                 " AND CD_PROPOSTA = @CD_PROPOSTA ");
+
+            query.SetParameter("CD_APOLICE", codigoApoliceExcesao);
+            query.SetParameter("CD_PROPOSTA", codigoProposta);
+
+            DbDataReader reader = query.ExecuteQuery();
+
+            reader.Close();
+            conexao.Close();
         }
 
         public void MudarParaModificado(int codigoApolice)
         {
             var conexao = new DBConnection();
             QuerySql query = conexao.CreateQuery("UPDATE apolice SET " +
-                                            " FL_MUDANCA=1 " +
+                                            " FL_MODIFICADA=1 " +
                                             " WHERE CD_APOLICE = @CD_APOLICE ");
 
             query.SetParameter("CD_APOLICE", codigoApolice);
