@@ -46,8 +46,7 @@
         <div class="form-group">
             @Html.Label("Data de nascimento de SEGURADO*", htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8">
-                @Html.EditorFor(model => model.Segurado.DataNascimento, new { htmlAttributes = new { @Value = Model.Segurado.DataNascimento != null ? Model.Segurado.DataNascimento.ToString("yyyy-MM-dd") : ""
-               , @class = "form-control ", @type = "date" } })
+                @Html.EditorFor(model => model.Segurado.DataNascimento, new { htmlAttributes = new {@class = "form-control ", @type = "date" } })
                 @Html.ValidationMessageFor(model => model.Segurado.DataNascimento, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -156,8 +155,6 @@
                        {
                            htmlAttributes = new
                            {
-                               @Value = Model.Proprietario.DataNascimento != null ? Model.Proprietario.DataNascimento.ToString("yyyy-MM-dd") : ""
-                           ,
                                @class = "form-control ",
                                @type = "date"
                            }
