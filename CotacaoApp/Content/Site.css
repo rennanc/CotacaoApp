@@ -217,3 +217,5 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     padding-left: 10px;
     padding-top:2px;
 }
+
+div.preformatted{ white-space: pre ; display: block; unicode-bidi: embed }

@@ -11,6 +11,11 @@
         startDate: new Date()
     });
 
+    $(".dateDisplayFormat").each(function () {
+        var datas = $(this).text().trim().split("-");
+        $(this).text(datas[2] + "/" + datas[1] + "/" + datas[0])
+    });
+
 });
 
 //VALIDACAO COMPORTAMENTO PADRAO
@@ -105,9 +110,9 @@ $("#Proposta").validate({
         IELocalGaragemEstudo: {
             required: true
         },
-        IEUtilizacaoVeiculoInstrumento: {
-            required: true
-        },
+        //IEUtilizacaoVeiculoInstrumento: {
+        //    required: true
+        //},
         IEUtilizacaoVeiculoInstrumentoForma: {
             required: true
         },

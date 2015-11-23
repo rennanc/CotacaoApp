@@ -7,6 +7,12 @@
     //preencher select de marcas
     obterMarcasDeCarro('NomeMarcaVeiculoSelect', 'NomeMarcaVeiculoHidden');
     obterListaAnoFabricacao('AnoFabricacaoVeiculo', 'AnoFabricacaoVeiculoHidden');
+
+    debugger;
+    if ($('#NomeMarcaVeiculoDisplay').text().trim() != "")
+    {
+        obterMarcasDeCarroPorId($('#NomeMarcaVeiculoDisplay').text().trim(), 'NomeMarcaVeiculoDisplay');
+    }
     $.support.cors = true;
 });
 
@@ -29,7 +35,7 @@
         };
 
         var ObterCoberturaCallBack = function (data) {
-            $("#coberturaDescricao").val(data);
+            $("#coberturaDescricao").text(data);
             $("#coberturaDescricao").show();
         };
 

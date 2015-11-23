@@ -581,6 +581,8 @@
     <Content Include="Views\Login\EmailRecuperacao.cshtml" />
     <Content Include="Scripts\json\marcas.js" />
     <Content Include="Views\Proposta\AceitarProposta.cshtml" />
+    <Content Include="Views\Apolice\_PropostaEdit.cshtml" />
+    <Content Include="Views\Endosso\_Proposta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

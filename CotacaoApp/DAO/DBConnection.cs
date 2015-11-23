@@ -9,7 +9,7 @@ using System.Web;
 
 namespace CotacaoApp.DAO
 {
-    public class DBConnection
+    public class DBConnection : IDisposable
     {
 
         #region Declaracao de Variaveis globais
@@ -84,6 +84,12 @@ namespace CotacaoApp.DAO
                 _State = false;
                 _ErrorNumber = ex.GetHashCode();
             }
+        }
+
+        public void Dispose()
+        {
+            _rsData.Close();
+            _Connection.Close();
         }
 
         public MySqlDataReader RecordSet

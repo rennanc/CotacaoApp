@@ -60,6 +60,10 @@ namespace CotacaoApp.Models
         [Column("SG_STATUS")]
         public Status Status { get; set; }
 
+        [Display(Name = "Modificada")]
+        [Column("FL_MODIFICADA")]
+        public int Modificado { get; set; }
+
         [NotMapped]
         public string formularioApoliceHtml { get; set; }
 

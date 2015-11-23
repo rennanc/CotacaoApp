@@ -15,7 +15,7 @@ namespace CotacaoApp.Enumerations
     {
         //opções do radio button
         [Display(Name = "Elaboração")]
-        NENHUM = 0,
+        ELABORACAO = 0,
         [Display(Name = "Enviado")]
         ENVIADO = 1,
         [Display(Name = "Aprovado Pelo Cliente")]
@@ -27,7 +27,9 @@ namespace CotacaoApp.Enumerations
         [Display(Name = "Contrato Cancelado")]
         CONTRATOCANCELADO = 5,
         [Display(Name = "Contrato Aprovado")]
-        CONTRATOAPROVADO = 6
+        CONTRATOAPROVADO = 6,
+        [Display(Name = "Nenhum")]
+        NENHUM = 7,
 
     }
 

@@ -160,9 +160,9 @@ namespace CotacaoApp.Enumerations
     {
         //opções do radio button
         [Display(Name = "Sim")]
-        SIM = 0,
+        SIM = 1,
         [Display(Name = "Não")]
-        NAO = 1
+        NAO = 0
     }
 
     public enum IEUtilizacaoVeiculoInstrumentoForma

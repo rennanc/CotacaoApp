@@ -137,6 +137,20 @@ function obterMarcasDeCarro(nomeCampoSelect, nomeCampoHidden){
     });
 }
 
+function obterMarcasDeCarroPorId(IdDaMarca, nomeCampoDisplay)
+{
+    $.getJSON(window.location.origin + "/Scripts/json/marcas.js", function (data) {
+        var selectMarcas = "";
+        if (data) {
+            $.each(data, function (i, marca) {
+                if (marca.id == IdDaMarca) {
+                    $('#' + nomeCampoDisplay).html(unescape(marca.name).trim());
+                }
+            });
+        }
+    });
+}
+
 function obterListaAnoFabricacao(nomeCampoSelect, nomeCampoHidden) {
     var dataHoje = new Date();
     for (i = 2000; i <= dataHoje.getFullYear(); i++) {

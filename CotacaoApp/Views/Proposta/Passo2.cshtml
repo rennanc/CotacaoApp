@@ -105,11 +105,11 @@
                 </div>
                 <!--Para Trabalhar-->
                 <!--Para Estudar-->
-                @Html.CheckBoxFor(model => model.IEUtilizacaoVeiculoEstudo, true)
+                @Html.CheckBoxFor(model => model.IEUtilizacaoVeiculoEstudo, IEUtilizacaoVeiculoEstudo.SIM)
                 @Html.LabelFor(model => model.IEUtilizacaoVeiculoEstudo, htmlAttributes: new { @class = "control-label" })<br />
                 <div class="form-group border-box display-hide" id="IELocalGaragemEstudo">
                     <p>@Html.Label("O Veiculo Permanece em Garagem ou Estacionamento Protegido no Local de Estudo?*", htmlAttributes: new { @class = "control-label col-md-4" })</p>
-                    <div class="col-md-6 ">
+                    <div class="col-md-8 ">
                         <p>@Html.RadioButtonFor(model => model.IELocalGaragemEstudo, IELocalGaragemEstudo.SIMCOMPORTAOMANUAL) Sim, Com Portão Manual</p>
                         <p>@Html.RadioButtonFor(model => model.IELocalGaragemEstudo, IELocalGaragemEstudo.SIMCOMPORTAOAUTOMATICOOUCOMPORTEIRO) Sim, Com Portão Automático ou com Porteiro</p>
                         <p>@Html.RadioButtonFor(model => model.IELocalGaragemEstudo, IELocalGaragemEstudo.SIMEMESTACIONAMENTOPRIVADOPAGOOUFECHADO) Sim, Em Estacionamento Privado Pago Ou Fechado</p>
@@ -117,22 +117,18 @@
                     </div>
                 </div>
                 <!--Para Estudar-->
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumento, htmlAttributes: new { @class = "control-label col-md-4" })
-            <div class="col-md-8">
-                <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, (int)IEUtilizacaoVeiculoInstrumento.SIM) Sim</p>
+                <!--Para Instrumento de Trabalho-->
+                @Html.CheckBoxFor(model => model.IEUtilizacaoVeiculoInstrumento, IEUtilizacaoVeiculoInstrumento.SIM)
+                @Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumento, htmlAttributes: new { @class = "control-label" })<br />
                 <div class="form-group border-box display-hide" id="IEUtilizacaoVeiculoInstrumentoForma">
-                    <p>@Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, htmlAttributes: new { @class = "control-label col-md-2" })</p>
-                    <div class="col-md-10">
+                    <p>@Html.LabelFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, htmlAttributes: new { @class = "control-label col-md-4" })</p>
+                    <div class="col-md-8 ">
                         <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, IEUtilizacaoVeiculoInstrumentoForma.PARAENTREGASREPRESENTACAOCOMERCIALVENDEDORESPROMOTORESEPRESTADORESDESERVICOS) Para entregas, representação comercial, vendedores, promotores e prestadores de serviços.</p>
                         <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, IEUtilizacaoVeiculoInstrumentoForma.PARAVISITASACLIENTESFORNECEDORESEPROSPECCAODENOVOSNEGOCIOS) Para visitas a clientes, fornecedores e prospecção de novos negócios.</p>
                         <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumentoForma, IEUtilizacaoVeiculoInstrumentoForma.UTILIZADOEMOUTRASATIVIDADESNAORELACIONADASACIMA) Utilizado em outras atividades não relacionadas acima.</p>
                     </div>
                 </div>
-                <p>@Html.RadioButtonFor(model => model.IEUtilizacaoVeiculoInstrumento, (int)IEUtilizacaoVeiculoInstrumento.NAO) Não</p>
+                <!--Para Instrumento de Trabalho-->
             </div>
         </div>
 

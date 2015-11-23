@@ -62,19 +62,20 @@ namespace CotacaoApp.Controllers
         {
             ApoliceDAO apoliceDao = new ApoliceDAO();
             int status = (int)Status.APROVADO;
-            bool result = apoliceDao.ValidarEmailProposta(email, codigoProposta, codigoApolice);
+            string emailCorretor = apoliceDao.ObterEmailDoCorretorEValidarEmail(email, codigoProposta, codigoApolice);
 
-            if (result)
+            if (emailCorretor != null)
             {
                 apoliceDao.MudarStatus(status, email, codigoProposta, codigoApolice);
+                apoliceDao.ExcluirApolicesRejeitadas(codigoProposta, codigoApolice);
 
                 UtilEmailMessage utilEmail = new UtilEmailMessage();
-                utilEmail.EnviarEmail("Proposta Aceita pelo Cliente", "rennanchagas@hotmail.com", "Apolice Aceita");
-                return View(result);
+                utilEmail.EnviarEmail("[BUSCA SEGUROS] Apolice " + codigoApolice + " Aceita pelo Cliente", emailCorretor, "Apolice Aceita");
+                return View(emailCorretor);
             }
             else
             {
-                return View(result);
+                return View();
             }
         }
 

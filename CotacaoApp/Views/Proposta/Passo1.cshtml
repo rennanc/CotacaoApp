@@ -50,8 +50,8 @@
                     }
                 </select>
             </div>
-            <div class="form-group " style=" margin-left: 5px">
-                <textarea id="coberturaDescricao" class="form-control  col-sm-offset-3" rows="15" style="display: none; width: 70%; border: none; "></textarea>
+            <div class="form-group col-lg-12" style=" padding-top: 5px; margin-left:0px;">
+                <pre id="coberturaDescricao" class="preformatted col-sm-offset-3" style="display: none;"></pre>
             </div>
 
             @Html.HiddenFor(model => model.NomeMarcaVeiculo, new { id = "NomeMarcaVeiculoHidden" })
@@ -79,36 +79,6 @@
                 <span id="AnoModeloVeiculo-error" class="help-block" style="display: none;"></span>
             </div>
 
-
-            @*<div class="form-group">
-                @Html.Label("Marca do Carro:*", htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.NomeMarcaVeiculo, new { htmlAttributes = new { @class = "form-control" } })
-                </div>
-            </div>*@
-
-            @*<div class="form-group">
-                @Html.LabelFor(model => model.AnoFabricacaoVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.AnoFabricacaoVeiculo, new { htmlAttributes = new { @class = "form-control", @min = "1900" } })
-                </div>
-            </div>*@
-
-            @*<div class="form-group">
-                @Html.LabelFor(model => model.AnoModeloVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.AnoModeloVeiculo, new { htmlAttributes = new { @class = "form-control", @min = "1900" } })
-                </div>
-            </div>*@
-
-
-            @*<div class="form-group ">
-                @Html.LabelFor(model => model.NomeVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
-                <select name="NomeVeiculo" id="NomeVeiculo" class="form-control col-md-9 typ  select2-search__field" style="margin-left:15px" required>
-                    <option value="" disabled selected>Selecione</option>
-                    <option value="" >aaaa</option>
-                </select>
-            </div>*@
             <div class="form-group">
                 @Html.LabelFor(model => model.NomeVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="col-md-9">
