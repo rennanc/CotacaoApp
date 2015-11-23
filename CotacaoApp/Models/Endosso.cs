@@ -20,6 +20,9 @@ namespace CotacaoApp.Models
         [Column("CD_APOLICE")]
         public int CodApolice { get; set; }
 
+        [NotMapped]
+        public Apolice apolice { get; set; }
+
         [Required]
         [Display(Name = "Código Apolice Antigo")]
         [Column("CD_APOLICEOLD")]
