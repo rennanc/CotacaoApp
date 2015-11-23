@@ -207,7 +207,6 @@ namespace CotacaoApp.DAO
             DbDataReader reader = query.ExecuteQuery();
             reader.Close();
             conexao.Close();
-            db.Dispose();
         }
 
         public void MudarParaModificado(int codigoProposta)
