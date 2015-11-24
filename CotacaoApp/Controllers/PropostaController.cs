@@ -71,7 +71,9 @@ namespace CotacaoApp.Controllers
 
                 UtilEmailMessage utilEmail = new UtilEmailMessage();
                 utilEmail.EnviarEmail("[BUSCA SEGUROS] Apolice " + codigoApolice + " Aceita pelo Cliente", emailCorretor, "Apolice Aceita");
-                return View(emailCorretor);
+                //return View(emailCorretor);
+                //TODO: Redirecionar para a view de sucesso
+                return View();
             }
             else
             {

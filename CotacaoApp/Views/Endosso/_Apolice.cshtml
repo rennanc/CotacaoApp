@@ -1,14 +1,9 @@
 ﻿@model CotacaoApp.Models.Apolice
 @using CotacaoApp.Models
 
-@{
-    ViewBag.Title = "Detalhes";
-}
-
-<h2>Detalhes</h2>
 
 <div>
-    <h4>Apólice</h4>
+    <h2>Apólice</h2>
     <hr />
     @if (Model.Proposta != null)
     {
@@ -52,7 +47,3 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Voltar para a Lista", "Index")
-</p>

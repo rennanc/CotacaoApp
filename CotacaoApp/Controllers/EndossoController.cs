@@ -27,6 +27,10 @@ namespace CotacaoApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Endosso endosso = db.Endosso.Find(id);
+            ApoliceDAO apoliceDao = new ApoliceDAO();
+            endosso.Apolice = db.Apolice.Find(endosso.CodApolice);
+            endosso.Apolice.Comissao = db.Comissao.Find(endosso.Apolice.CodigoComissao);
+            endosso.Apolice.Seguradora = db.Seguradora.Find(endosso.Apolice.CodigoSeguradora);
             if (endosso == null)
             {
                 return HttpNotFound();
@@ -65,6 +69,10 @@ namespace CotacaoApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Endosso endosso = db.Endosso.Find(id);
+            ApoliceDAO apoliceDao = new ApoliceDAO();
+            endosso.Apolice = db.Apolice.Find(endosso.CodApolice);
+            endosso.Apolice.Comissao = db.Comissao.Find(endosso.Apolice.CodigoComissao);
+            endosso.Apolice.Seguradora = db.Seguradora.Find(endosso.Apolice.CodigoSeguradora);
             if (endosso == null)
             {
                 return HttpNotFound();
