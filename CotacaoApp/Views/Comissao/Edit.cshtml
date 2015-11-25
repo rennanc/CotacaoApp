@@ -1,7 +1,7 @@
 ﻿@model CotacaoApp.Models.Comissao
 
 @{
-    ViewBag.Title = "Editar";
+    ViewBag.Title = "Editar Comissao";
 }
 
 <h2>Editar</h2>
@@ -17,53 +17,44 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CodigoUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CodigoUsuario, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CodigoUsuario, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ValorPremioLiquido, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.ValorPremioLiquido, new { htmlAttributes = new { @class = "form-control textbox" } })
-                @Html.ValidationMessageFor(model => model.ValorPremioLiquido, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.ValorPremioLiquido, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="input-group" style="padding-left:15px">
+                <div class="input-group-addon">$</div>
+                <input type="text" id="Comissao.ValorPremioLiquido" value="@Model.ValorPremioLiquido" style="width: 315px;" name="Comissao.ValorPremioLiquido" class="form-control numeric" placeholder="0.00">
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ValorPercentualLiquido, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.ValorPercentualLiquido, new { htmlAttributes = new { @class = "form-control textbox" } })
-                @Html.ValidationMessageFor(model => model.ValorPercentualLiquido, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.ValorComissaoLiquida, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="input-group" style="padding-left:15px">
+                <div class="input-group-addon">$</div>
+                <input type="text" id="Comissao.ValorComissaoLiquida" value="@Model.ValorComissaoLiquida" style="width: 315px;" name="Comissao.ValorComissaoLiquida" class="form-control numeric" placeholder="0.00">
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ValorComissaoLiquida, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.ValorComissaoLiquida, new { htmlAttributes = new { @class = "form-control textbox" } })
-                @Html.ValidationMessageFor(model => model.ValorComissaoLiquida, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.ValorPercentualComissao, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="input-group" style="padding-left:15px">
+                <div class="input-group-addon">%</div>
+                <input type="text" id="Comissao.ValorPercentualComissao" value="@Model.ValorPercentualComissao" style="width: 315px;" name="Comissao.ValorPercentualComissao" class="form-control numeric" placeholder="0.00">
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.ValorPercentualComissaoLiquido, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="input-group" style="padding-left:15px">
+                <div class="input-group-addon">%</div>
+                <input type="text" id="Comissao.ValorPercentualComissaoLiquido" value="@Model.ValorPercentualComissaoLiquido" style="width: 315px;" name="Comissao.ValorPercentualComissaoLiquido" class="form-control numeric" placeholder="0.00">
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ValorPercentualCiss, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.ValorPercentualCiss, new { htmlAttributes = new { @class = "form-control textbox" } })
-                @Html.ValidationMessageFor(model => model.ValorPercentualCiss, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.ValorPercentualImpostoSobreRenda, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="input-group" style="padding-left:15px">
+                <div class="input-group-addon">%</div>
+                <input type="text" id="Comissao.ValorPercentualImpostoSobreRenda" value="@Model.ValorPercentualImpostoSobreRenda" style="width: 315px;" name="Comissao.ValorPercentualImpostoSobreRenda" class="form-control numeric" placeholder="0.00">
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ValorPercentualCir, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.ValorPercentualCir, new { htmlAttributes = new { @class = "form-control textbox" } })
-                @Html.ValidationMessageFor(model => model.ValorPercentualCir, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        </div>*@
 
         <div class="form-group"><input type="submit" value="Cadastrar" class="form-control" /></div>
     </div>

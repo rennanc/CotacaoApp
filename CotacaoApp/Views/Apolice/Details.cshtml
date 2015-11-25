@@ -16,18 +16,19 @@
         @Html.HiddenFor(model => model.CodigoProposta, new { id = "Comissao.CodigoProposta", Value = @Model.Proposta.Id })
 
     }
-    <dl class="dl-horizontal">
+    <h1>Apolice</h1>
+    <dl class=" col-lg-12">
 
         <dt>
-            @Html.DisplayNameFor(model => model.Comissao)
+            <h4>@Html.DisplayNameFor(model => model.Status)</h4>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Comissao)
+            @Html.DisplayFor(model => model.Status)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Seguradora.NomeSeguradora)
+            <h4>@Html.DisplayNameFor(model => model.Seguradora.NomeSeguradora)</h4>
         </dt>
 
         <dd>
@@ -35,20 +36,30 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ValorContrato)
+            <h4>Valor do Contrato:</h4>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ValorContrato)
+            R$ @Html.DisplayFor(model => model.ValorContrato)
+        </dd>
+
+        <!-- Comissao  INICIO -->
+        <dt>
+            <h4>@Html.DisplayNameFor(model => model.Comissao.ValorComissaoLiquida)</h4>
+        </dt>
+
+        <dd>
+            R$ @Html.DisplayFor(model => model.Comissao.ValorComissaoLiquida)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Status)
+            <h4>@Html.DisplayNameFor(model => model.Comissao.ValorPercentualComissao)</h4>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Status)
+            @Html.DisplayFor(model => model.Comissao.ValorPercentualComissao) %
         </dd>
+        <!-- Comissao  FIM -->
 
     </dl>
 </div>
