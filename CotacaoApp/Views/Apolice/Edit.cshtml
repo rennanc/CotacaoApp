@@ -333,6 +333,7 @@
                     <div class="col-md-12"><h2>DADOS DO PROPRIETÁRIO</h2></div>
 
                     @Html.HiddenFor(model => model.Proposta.Proprietario.Id)
+                    @Html.HiddenFor(model => model.Proposta.Proprietario.IEProprietarioVeiculo, IEProprietarioVeiculo.SIM)
                     <div class="form-group">
                         @Html.Label("Nome do(a) Proprietário(a)*", htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
@@ -521,6 +522,7 @@
                 <div class="border-box display-hide" id="OutroCondutor">
                     <div class="col-md-12"><h2>DADOS DO OUTRO CONDUTOR</h2></div>
                     @Html.HiddenFor(model => model.Proposta.OutroCondutor.Id)
+                    @Html.HiddenFor(model => model.Proposta.OutroCondutor.IECondutorPrincipal, IECondutorPrincipal.OUTRAPESSOA)
                     <div class="form-group">
                         @Html.Label("Nome completo do(a) condutor(a) principal*", htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">

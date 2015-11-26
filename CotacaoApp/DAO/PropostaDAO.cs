@@ -235,16 +235,18 @@ namespace CotacaoApp.DAO
             proposta.Cobertura = db.Cobertura.Find(proposta.CodigoCobertura);
             proposta.Segurado = db.Condutor.Find(proposta.codigoSegurado);
 
+
             //obtendo telefone
             TelefoneDAO telefoneDao = new TelefoneDAO();
             proposta.Segurado.Telefones = telefoneDao.ObterTodosPorIdCondutor(proposta.Segurado.Id);
 
             CondutorDAO condutorDao = new CondutorDAO();
-            if (proposta.Segurado.IEProprietarioVeiculo == 0)
+
+            if (proposta.Segurado.IEProprietarioVeiculo == Enumerations.IEProprietarioVeiculo.NAO)
             {
                 proposta.Proprietario = condutorDao.ObterPorIdSeguradoETipo(proposta.Segurado.Id, 1);
             }
-            if (proposta.Segurado.IECondutorPrincipal == 0)
+            if (proposta.Segurado.IECondutorPrincipal == Enumerations.IECondutorPrincipal.OUTRAPESSOA)
             {
                 proposta.OutroCondutor = condutorDao.ObterPorIdSeguradoETipo(proposta.Segurado.Id, 2);
             }

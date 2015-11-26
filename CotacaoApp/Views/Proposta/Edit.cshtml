@@ -346,6 +346,7 @@
             <div class="col-md-12"><h2>DADOS DO PROPRIETÁRIO</h2></div>
 
             @Html.HiddenFor(model => model.Proprietario.Id)
+            @Html.HiddenFor(model => model.Proprietario.IEProprietarioVeiculo, IEProprietarioVeiculo.SIM)
             <div class="form-group">
                 @Html.Label("Nome do(a) Proprietário(a)*", htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
@@ -357,8 +358,7 @@
             <div class="form-group">
                 @Html.Label("Data de nascimento do Proprietário*", htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.Proprietario.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Proprietario.DataNascimento, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Proprietario.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
             </div>
 
@@ -534,6 +534,7 @@
         <div class="border-box display-hide" id="OutroCondutor">
             <div class="col-md-12"><h2>DADOS DO OUTRO CONDUTOR</h2></div>
             @Html.HiddenFor(model => model.OutroCondutor.Id)
+            @Html.HiddenFor(model => model.OutroCondutor.IECondutorPrincipal, IECondutorPrincipal.OUTRAPESSOA)
             <div class="form-group">
                 @Html.Label("Nome completo do(a) condutor(a) principal*", htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
@@ -633,13 +634,13 @@
         </div>
         <!-- PASSO 4 - FIM -->
         <!-- PASSO 5 - INICIO -->
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.Label("Nome Completo*", htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8">
                 @Html.EditorFor(model => model.Segurado.Nome, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Segurado.Nome, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.Label("E-mail*", htmlAttributes: new { @class = "control-label col-md-4" })
@@ -743,16 +744,13 @@
         
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class=" col-md-12">
+                @Html.ActionLink("Voltar para a Lista", "Index", new object { }, new { @class = "btn btn-default" })
+                <input type="submit" value="Salvar" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Voltar para a Lista", "Index")
-</div>
 
 <script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo1.js"></script>
 <script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo2.js"></script>

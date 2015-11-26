@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
@@ -147,6 +148,19 @@ namespace CotacaoApp.DAO
         {
             _Command.Parameters.AddWithValue("@" + nome, valor);
             return this;
+        }
+    }
+
+    public static class DataReaderExtensions
+    {
+        public static string GetStringOrNull(this IDataReader reader, int ordinal)
+        {
+            return reader.IsDBNull(ordinal) ? null : reader.GetString(ordinal);
+        }
+
+        public static string GetStringOrNull(this IDataReader reader, string columnName)
+        {
+            return reader.GetStringOrNull(reader.GetOrdinal(columnName));
         }
     }
 }

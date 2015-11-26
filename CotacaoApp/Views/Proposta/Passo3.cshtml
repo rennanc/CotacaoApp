@@ -139,7 +139,7 @@
         <div id="Proprietario" class="display-hide">
             <div class="col-md-12"><h2>DADOS DO PROPRIETÁRIO</h2></div>
 
-
+            @Html.HiddenFor(model => model.Proprietario.IEProprietarioVeiculo, IEProprietarioVeiculo.SIM)
             <div class="form-group">
                 @Html.Label("Nome do(a) Proprietário(a)*", htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
