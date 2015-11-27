@@ -221,6 +221,7 @@ namespace CotacaoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Apolice apolice = db.Apolice.Find(id);
             PropostaDAO propostaDao = new PropostaDAO();
             apolice.Proposta = propostaDao.GetProposta(apolice.CodigoProposta);
@@ -246,15 +247,20 @@ namespace CotacaoApp.Controllers
                 ApoliceDAO apoliceDao = new ApoliceDAO();
                 apoliceDao.MudarParaModificado(apolice.Id);
 
-                //Salvando Mudanças da proposta
+
+                //Inserindo nova proposta do Endosso
                 PropostaDAO propostaDao = new PropostaDAO();
-                propostaDao.Save(apolice.Proposta);
+                apolice.Proposta.FlagEndosso = true;
+                apolice.Proposta.Id = propostaDao.Insert(apolice.Proposta);
 
                 //Criacao de endosso
                 Endosso endosso = new Endosso();
                 //salvando codigo antigo da apolice
                 endosso.CodApoliceAntigo = apolice.Id;
                 endosso.DataEndosso = DateTime.Now;
+                
+                //Mudança de Status da Apolice ao Criar um Endosso
+                apolice.Status = Status.ENVIADO;
 
                 //criando nova Apolice 
                 apolice = db.Apolice.Add(apolice);
@@ -265,10 +271,32 @@ namespace CotacaoApp.Controllers
                 //Salvando Endosso e Apolice nova
                 db.Endosso.Add(endosso);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+
+                //Enviando Email de endosso para o Cliente
+                Usuario usuario = (Usuario)Session["UsuarioLogado"];
+                //PREPARANDO EMAIL
+                apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#valorContratoEmail", apolice.ValorContrato.ToString());
+                apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#corretorEmail", "Joao - " + usuario.Nome);
+                string url = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath, "");
+                apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#EnderecoConfirmaEmail", url + "/Proposta/AceitarProposta?" +
+                                                                                                                "email=" + apolice.Proposta.Segurado.Email +
+                                                                                                                "&codigoProposta=" + apolice.CodigoProposta +
+                                                                                                                "&codigoApolice=" + apolice.Id);
+                UtilEmailMessage utilEmail = new UtilEmailMessage();
+                utilEmail.EnviarEmail("[BUSCA SEGUROS] Sua Proposta de Cotação de Seguro", apolice.Proposta.Segurado.Email, apolice.formularioApoliceHtml);
+
+
+
+            return RedirectToAction("Index");
             //}
             //return View(apolice);
         }
+
+        //public ActionResult Review(Apolice apolice)
+        //{
+
+        //}
 
         // GET: Apolice/Delete/5
         public ActionResult Delete(int? id)

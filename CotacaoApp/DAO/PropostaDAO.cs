@@ -12,7 +12,7 @@ namespace CotacaoApp.DAO
     {
         private DefaultConnection db = new DefaultConnection();
 
-        public void Insert(Proposta proposta)
+        public int Insert(Proposta proposta)
         {
  
             //Adicionando Segurado
@@ -21,16 +21,19 @@ namespace CotacaoApp.DAO
 
             //Adicionando telefones do segurado
             List<Telefone> telefonesCorretos = new List<Telefone>();
-            foreach(Telefone telefone in proposta.Segurado.Telefones)
+            if(null != proposta.Segurado && null != proposta.Segurado.Telefones)
             {
-                if(telefone.NumeroTelefone != null)
+                foreach(Telefone telefone in proposta.Segurado.Telefones)
                 {
-                    telefone.CodigoCondutor = proposta.Segurado.Id;
-                    telefonesCorretos.Add(telefone);
-                }
+                    if(telefone.NumeroTelefone != null)
+                    {
+                        telefone.CodigoCondutor = proposta.Segurado.Id;
+                        telefonesCorretos.Add(telefone);
+                    }
                 
+                }
+                db.Telefone.AddRange(telefonesCorretos);
             }
-            db.Telefone.AddRange(telefonesCorretos);
 
             //Adicionando Proprietario
             if (proposta.Proprietario.CodigoCpf != null)
@@ -48,7 +51,7 @@ namespace CotacaoApp.DAO
 
             //Adicionando Proposta
             proposta.codigoSegurado = proposta.Segurado.Id;
-            db.Proposta.Add(proposta);
+            int novoIdProposta = db.Proposta.Add(proposta).Id;
 
             db.SaveChanges();
 
@@ -59,6 +62,7 @@ namespace CotacaoApp.DAO
             //}
             //db.SaveChanges();
             db.Dispose();
+            return novoIdProposta;
         }
 
 

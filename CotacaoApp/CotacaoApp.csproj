@@ -585,6 +585,7 @@
     <Content Include="Views\Apolice\_PropostaEdit.cshtml" />
     <Content Include="Views\Endosso\_Proposta.cshtml" />
     <Content Include="Views\Endosso\_Apolice.cshtml" />
+    <Content Include="Views\Apolice\Review.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

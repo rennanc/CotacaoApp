@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using PagedList;
 using CotacaoApp.Enumerations;
 using CotacaoApp.Util;
+using System.Text;
 
 namespace CotacaoApp.Controllers
 {
@@ -74,8 +75,21 @@ namespace CotacaoApp.Controllers
                 //Excluir apolices Rejeitadas
                 apoliceDao.ExcluirApolicesRejeitadas(codigoProposta, codigoApolice);
 
+
+                //Montando Email
+                string url = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath, "");
                 UtilEmailMessage utilEmail = new UtilEmailMessage();
-                utilEmail.EnviarEmail("[BUSCA SEGUROS] Apolice " + codigoApolice + " Aceita pelo Cliente", emailCorretor, "Apolice Aceita");
+                StringBuilder corpoDoEmail = new StringBuilder();
+                corpoDoEmail.Append("<div><h1>BUSCA SEGUROS</h1></div><br/>");
+                corpoDoEmail.Append("<div><h2>Apolice Aceita - Codigo da Apolice: " + codigoApolice + "</h2></div>");
+                corpoDoEmail.Append("<br/><br/>");
+                corpoDoEmail.Append("<div>Parabéns Corretor, o seu cliente acaba de aceitar o contrato<br/>");
+                corpoDoEmail.Append("confira agora mesmo a Apolice e entre em contato com o nosso Cliente</div>");
+                corpoDoEmail.Append("<br/><br/>");
+                corpoDoEmail.Append("<div><a href='"+ url + "/Apolice/Details?" + codigoApolice + "'><h1>Abrir Apolice Aprovada</h1></a></div>");
+
+                
+                utilEmail.EnviarEmail("[BUSCA SEGUROS] Apolice " + codigoApolice + " Aceita pelo Cliente", emailCorretor, corpoDoEmail.ToString());
                 //return View(emailCorretor);
                 //TODO: Redirecionar para a view de sucesso
                 return View();

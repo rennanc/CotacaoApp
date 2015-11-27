@@ -9,7 +9,7 @@
 
 <h2>Editar</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Apolice", FormMethod.Post, new { id = "ApoliceForm" }))
 {
     @Html.AntiForgeryToken()
 
@@ -622,13 +622,6 @@
                 </div>
                 <!-- PASSO 4 - FIM -->
                 <!-- PASSO 5 - INICIO -->
-                <div class="form-group">
-                    @Html.Label("Nome Completo*", htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-8">
-                        @Html.EditorFor(model => model.Proposta.Segurado.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Proposta.Segurado.Nome, "", new { @class = "text-danger" })
-                    </div>
-                </div>
 
                 <div class="form-group">
                     @Html.Label("E-mail*", htmlAttributes: new { @class = "control-label col-md-4" })
@@ -760,8 +753,8 @@
             <div class="form-group">
                 @Html.Label("Valor do Contrato:*", htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="input-group col-lg-9" style="padding-left:15px">
-                    <div class="input-group-addon">$</div>
-                    <input type="text" id="ValorContrato" style="width: 315px;" value="@Model.ValorContrato" name="ValorContrato" class="form-control numeric" placeholder="0.00">
+                    <div class="input-group-addon">R$</div>
+                    <input type="text" id="ValorContrato" style="width: 315px;" value="@Model.ValorContrato" name="ValorContrato" class="form-control numeric" placeholder="0.00" required>
                 </div>
             </div>
 
@@ -779,20 +772,22 @@
             </div>*@
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Comissao.ValorComissaoLiquida, htmlAttributes: new { @class = "control-label col-md-3" })
+                @Html.LabelFor(model => model.Comissao.ValorPercentualComissao, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="input-group" style="padding-left:15px">
-                    <div class="input-group-addon">$</div>
-                    <input type="text" id="Comissao.ValorComissaoLiquida" value="@Model.Comissao.ValorComissaoLiquida" style="width: 315px;" name="Comissao.ValorComissaoLiquida" class="form-control numeric" placeholder="0.00">
+                    <div class="input-group-addon">%</div>
+                    <input type="number" id="Comissao_ValorPercentualComissao" style="width: 315px;" min="0" max="100" name="Comissao.ValorPercentualComissao" class="form-control numeric" placeholder="0.00" required>
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Comissao.ValorPercentualComissao, htmlAttributes: new { @class = "control-label col-md-3" })
+                @Html.LabelFor(model => model.Comissao.ValorComissaoLiquida, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="input-group" style="padding-left:15px">
-                    <div class="input-group-addon">%</div>
-                    <input type="number" id="Comissao.ValorPercentualComissao" style="width: 315px;" min="0" max="100" name="Comissao.ValorPercentualComissao" class="form-control numeric" placeholder="0.00">
+                    <div class="input-group-addon">R$</div>
+                    <input type="text" id="Comissao_ValorComissaoLiquida" value="@Model.Comissao.ValorComissaoLiquida" style="width: 315px;" name="Comissao.ValorComissaoLiquida" class="form-control numeric" placeholder="0.00" disabled>
                 </div>
             </div>
+
+            
 
             @*<div class="form-group">
                 @Html.LabelFor(model => model.Comissao.ValorPercentualComissaoLiquido, htmlAttributes: new { @class = "control-label col-md-3" })
@@ -832,11 +827,26 @@
     });
 
     $("#ApoliceForm").submit(function (event) {
-        debugger;
-        $("#contratoEmail").show();
-        $("#valorContratoEmail").val($("#ValorContrato").val());
-        $("#corretorEmail").val('teste');
-        $("#formularioApoliceHtml").val($("#Apolice").html());
+
+        $("#ApoliceForm").validate();
+        if ($("#ApoliceForm").valid()) {
+            debugger;
+            $("#contratoEmail").show();
+            $("#valorContratoEmail").val($("#ValorContrato").val());
+            $("#corretorEmail").val('teste');
+            $("#formularioApoliceHtml").val($("#Apolice").html());
+        }
+
+    });
+
+    $("#Comissao_ValorPercentualComissao").on('change', function () {
+        var valorPercentual = parseFloat($(this).val().replace(",", "."));
+        var valorContrato = parseFloat($('#ValorContrato').val().replace(",", "."));
+
+        var valorComissao = valorContrato * (valorPercentual / 100);
+
+        $('#Comissao_ValorComissaoLiquida').val(valorComissao);
+
 
     });
 

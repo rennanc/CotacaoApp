@@ -226,9 +226,13 @@ namespace CotacaoApp.Models
         public string NumeroChassi { get; set; }
 
 
-        [Display(Name = "Modificada")]
+        [Display(Name = "Status da Proposta")]
         [Column("FL_STATUS")]
         public StatusProposta Status { get; set; }
+
+        [Display(Name = "Endosso")]
+        [Column("FL_ENDOSSO")]
+        public bool FlagEndosso { get; set; }
 
         //Auxiliares
         //[Display(Name = "Marca", Prompt = "Marca", Description = "Escolha a Marca do Veículo")]
