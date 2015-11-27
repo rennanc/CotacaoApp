@@ -206,7 +206,7 @@ namespace CotacaoApp.Controllers
 
 
             UtilEmailMessage utilEmail = new UtilEmailMessage();
-            utilEmail.EnviarEmail("Proposta de Cotação de Seguro", proposta.Segurado.Email, apolice.formularioApoliceHtml);
+            utilEmail.EnviarEmail("[BUSCA SEGUROS] Sua Proposta de Cotação de Seguro", proposta.Segurado.Email, apolice.formularioApoliceHtml);
 
             return View(apolice);
         }

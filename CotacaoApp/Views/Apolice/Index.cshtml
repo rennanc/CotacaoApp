@@ -16,6 +16,14 @@
         <input type="text" id="SearchString" name="apoliceSearch.Proposta.Segurado.Nome" class="form-control" placeholder="Nome do Segurado" />
     </div>
 
+    @*<select id="apoliceSearch_Status" name="apoliceSearch.Status" class="form-control">
+        <option value="7">Todos os Status</option>
+        @foreach (var status in EnumHelper.GetSelectList(typeof(Status)))
+        {
+            <option value="@status.Value">@status.Text</option>
+        }
+    </select>*@
+
     @Html.DropDownList("apoliceSearch.Status", EnumHelper.GetSelectList(typeof(Status)), "Selecione o Status", new { @class = "form-control" })
 
     <input type="submit" class="btn-sm btn-default" value="Buscar" />

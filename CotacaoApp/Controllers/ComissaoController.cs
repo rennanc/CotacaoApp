@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using CotacaoApp.Models;
 using CotacaoApp.DAO;
 using CotacaoApp.Filters;
+using System.Collections.Generic;
 
 namespace CotacaoApp.Controllers
 {
@@ -16,7 +17,11 @@ namespace CotacaoApp.Controllers
         // GET: Comissao
         public ActionResult Index()
         {
-            return View(db.Comissao.ToList());
+            Usuario usuario = (Usuario)Session["UsuarioLogado"];
+            
+            List<Comissao> comissoes = db.Comissao.ToList();
+            comissoes = comissoes.Where(c => c.CodigoUsuario == usuario.Id).ToList();
+            return View(comissoes);
         }
 
         // GET: ValorProposta/Details/5

@@ -32,8 +32,8 @@
         <div class="col-lg-12">
             <div class="form-group col-lg-12">
                 @Html.Label("Seguradora:*", htmlAttributes: new { @class = "control-label col-md-3" })
-                <select name="CodigoSeguradora" class="form-control col-md-9" style="margin-left:8px">
-                    <option>Escolha uma Seguradora</option>
+                <select name="CodigoSeguradora" class="form-control col-md-9" style="margin-left:8px" placeholder="Escolha uma Seguradora" required>
+                    <option value="" disabled selected>Escolha uma Seguradora</option>
                     @if (Model.Seguradoras != null)
                 {
                     foreach (var seguradora in Model.Seguradoras)
@@ -115,11 +115,15 @@
     });
 
     $("#ApoliceForm").submit(function (event) {
-        debugger;
-        $("#contratoEmail").show();
-        $("#valorContratoEmail").val($("#ValorContrato").val());
-        $("#corretorEmail").val('teste');
-        $("#formularioApoliceHtml").val($("#Apolice").html());
+
+        $("#ApoliceForm").validate();
+        if ($("#ApoliceForm").valid()) {
+            debugger;
+            $("#contratoEmail").show();
+            $("#valorContratoEmail").val($("#ValorContrato").val());
+            $("#corretorEmail").val('teste');
+            $("#formularioApoliceHtml").val($("#Apolice").html());
+        }
 
     });
     

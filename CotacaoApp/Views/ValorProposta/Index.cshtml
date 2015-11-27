@@ -20,6 +20,10 @@
         </th>
 
         <th>
+            @Html.DisplayNameFor(model => model.Condutor.Nome)
+        </th>
+
+        <th>
             @Html.DisplayNameFor(model => model.Descricao)
         </th>
 
@@ -46,6 +50,10 @@
 
             <td>
                 @Html.DisplayFor(modelItem => item.CodigoApolice)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Condutor.Nome)
             </td>
 
             <td>

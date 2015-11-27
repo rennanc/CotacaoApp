@@ -41,5 +41,7 @@ namespace CotacaoApp.Models
         [Column("VL_VALOR")]
         public decimal Valor { get; set; }
 
+        [NotMapped]
+        public Condutor Condutor { get; set; }
     }
 }
