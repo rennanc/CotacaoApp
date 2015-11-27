@@ -183,6 +183,9 @@ namespace CotacaoApp.Controllers
             PropostaDAO propostaDao = new PropostaDAO();
             Proposta proposta = propostaDao.GetProposta(apolice.CodigoProposta);
 
+            //Mudando Status para fins de organização
+            propostaDao.MudarStatus(proposta.Id, (int)StatusProposta.ATENDIDO);
+
             //criando valor da proposta do condutor
             ValorProposta valorProposta = new ValorProposta();
             valorProposta.Valor = apolice.ValorContrato;

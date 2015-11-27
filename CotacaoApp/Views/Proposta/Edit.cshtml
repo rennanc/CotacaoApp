@@ -735,7 +735,7 @@
                 </div>
             </div>
         </div>
-
+        @Html.HiddenFor(model => model.Status)
         <div class="form-group col-md-12">
             @Html.CheckBoxFor(model => model.Segurado.IEItauPersonalite, new { htmlAttributes = new { @class = "form-control" } }) Li e concordo com o contrato de prestação de serviços de corretagem de seguros e com o termo de Uso e política de privacidade do site da BuscaSeguro.
         </div>

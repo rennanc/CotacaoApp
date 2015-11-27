@@ -276,6 +276,19 @@ namespace CotacaoApp.Enumerations
     }
     #endregion passo 3
 
+    public enum StatusProposta
+    {
+        [Display(Name = "Aguardando Atendimento")]
+        AGUARDANDO = 0,
+        [Display(Name = "Atendido")]
+        ATENDIDO = 1,
+        [Display(Name = "Com Apolice Aceita")]
+        COMAPOLICEACEITA = 2,
+        [Display(Name = "Nenhum")]
+        NENHUM = 3,
+
+    }
+
 
     public class MyBoolAttribute : Attribute
     {

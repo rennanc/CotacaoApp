@@ -66,7 +66,12 @@ namespace CotacaoApp.Controllers
 
             if (emailCorretor != null)
             {
+                //Mudando Status da proposta para fins de organização
+                PropostaDAO propostaDao = new PropostaDAO();
+                propostaDao.MudarStatus(int.Parse(codigoProposta), (int)StatusProposta.ATENDIDO);
+                //Mudando Status da Apolice
                 apoliceDao.MudarStatus(status, email, codigoProposta, codigoApolice);
+                //Excluir apolices Rejeitadas
                 apoliceDao.ExcluirApolicesRejeitadas(codigoProposta, codigoApolice);
 
                 UtilEmailMessage utilEmail = new UtilEmailMessage();
@@ -96,12 +101,14 @@ namespace CotacaoApp.Controllers
 
         // GET: Proposta
         [AutorizacaoFilter]
-        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ViewResult Index(Proposta propostaSearch, string sortOrder, string currentFilter, int? page)
         {
-
+            string searchString = "";
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "nome_desc" : "";
+            ViewBag.StatusParm = String.IsNullOrEmpty(sortOrder) ? "status_desc" : "";
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "nome_desc" : "nome";
             ViewBag.CpfSortParm = String.IsNullOrEmpty(sortOrder) ? "cpf_desc" : "cpf";
+            
 
             if (searchString != null)
             {
@@ -124,14 +131,27 @@ namespace CotacaoApp.Controllers
                 propostasCompleta.Add(propostaDAO.GetProposta(proposta.Id));
             }
 
-            if (!String.IsNullOrEmpty(searchString))
+
+            //buscas
+            if (StatusProposta.NENHUM != propostaSearch.Status)
             {
-                propostasCompleta = propostasCompleta.Where(s => s.Segurado.Nome.IndexOf(searchString, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+                propostasCompleta = propostasCompleta.Where(a => (int)a.Status == (int)propostaSearch.Status).ToList();
             }
+            if (propostaSearch != null && propostaSearch.Segurado != null && propostaSearch.Segurado.Nome != null)
+            {
+                propostasCompleta = propostasCompleta.Where(a => a.Segurado.Nome.IndexOf(propostaSearch.Segurado.Nome, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+            }
+
             switch (sortOrder)
             {
+                case "status_desc":
+                    propostasCompleta = propostasCompleta.OrderByDescending(p => p.Status).ToList();
+                    break;
                 case "nome_desc":
                     propostasCompleta = propostasCompleta.OrderByDescending(p => p.Segurado.Nome).ToList();
+                    break;
+                case "nome":
+                    propostasCompleta = propostasCompleta.OrderBy(p => p.Segurado.Nome).ToList();
                     break;
                 case "cpf":
                     propostasCompleta = propostasCompleta.OrderBy(p => p.Segurado.CodigoCpf).ToList();
@@ -139,11 +159,13 @@ namespace CotacaoApp.Controllers
                 case "cpf_desc":
                     propostasCompleta = propostasCompleta.OrderByDescending(p => p.Segurado.CodigoCpf).ToList();
                     break;
+
                 default:  // Name ascending 
                     propostasCompleta = propostasCompleta.OrderBy(p => p.Segurado.Nome).ToList();
                     break;
             }
-            int pageSize = 3;
+
+            int pageSize = 15;
             int pageNumber = (page ?? 1);
             PagedList<Proposta> propostaList = new PagedList<Proposta>(propostasCompleta, pageNumber, pageSize);
             return View(propostaList);

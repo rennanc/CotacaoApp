@@ -202,6 +202,7 @@ namespace CotacaoApp.DAO
             query.SetParameter("NR_CI", proposta.NumeroCIAntiga);
             query.SetParameter("NR_PLACAVEICULO", proposta.NumeroPlaca);
             query.SetParameter("NR_CHASSIVEICULO", proposta.NumeroChassi);
+            query.SetParameter("FL_STATUS", proposta.Status);
 
 
             DbDataReader reader = query.ExecuteQuery();
@@ -209,14 +210,15 @@ namespace CotacaoApp.DAO
             conexao.Close();
         }
 
-        public void MudarParaModificado(int codigoProposta)
+        public void MudarStatus(int codigoProposta, int status)
         {
             var conexao = new DBConnection();
             QuerySql query = conexao.CreateQuery("UPDATE proposta SET " +
-                                            " FL_MUDANCA=1 " +
+                                            " FL_STATUS=@FL_STATUS " +
                                             " WHERE CD_PROPOSTA = @CD_PROPOSTA ");
 
             query.SetParameter("CD_PROPOSTA", codigoProposta);
+            query.SetParameter("FL_STATUS", status);
 
             DbDataReader reader = query.ExecuteQuery();
             reader.Close();

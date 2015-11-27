@@ -12,6 +12,8 @@ namespace CotacaoApp.Util
     {
         public void EnviarEmail(string emailTitulo, string emailDestino, string corpoDoEmail)
         {
+            try
+            {
             //Specify senders gmail address
             string SendersAddress = "buscaseguros@outlook.com";
             //Specify The password of gmial account u are using to sent mail(pw of sender@gmail.com)
@@ -38,6 +40,12 @@ namespace CotacaoApp.Util
             
 
             client.Send(sendmsg);
+
+            }
+            catch (Exception e)
+            {
+                Console.Write("Erro ao enviar o email " + e.Message);
+            }
         }
 
         //static void Main(string[] args)
