@@ -12,6 +12,7 @@ using CotacaoApp.Util;
 using CotacaoApp.Filters;
 using CotacaoApp.Enumerations;
 using PagedList;
+using Microsoft.Web.Mvc;
 
 namespace CotacaoApp.Controllers
 {
@@ -19,6 +20,34 @@ namespace CotacaoApp.Controllers
     public class ApoliceController : Controller
     {
         private DefaultConnection db = new DefaultConnection();
+
+
+        private Apolice _apolice;
+
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            var serialized = Request.Form["apolice"];
+            if (serialized != null)
+            {
+                // Form was posted containing serialized data
+                _apolice = (Apolice)new MvcSerializer().Deserialize(serialized);
+                try
+                {
+                    TryUpdateModel(_apolice);
+                }
+                catch (Exception)
+                {
+                    _apolice = (Apolice)TempData["apolice"] ?? new Apolice();
+
+                }
+
+
+            }
+            else
+            {
+                _apolice = (Apolice)TempData["apolice"] ?? new Apolice();
+            }
+        }
 
         // GET: Apolice
         public ViewResult Index(Apolice apoliceSearch, string sortOrder, string currentFilter, int? page)
@@ -239,8 +268,10 @@ namespace CotacaoApp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Edit(Apolice apolice)
         {
+            apolice = _apolice;
             //if (ModelState.IsValid)
             //{
                 //modificando a antiga para Flag de modificada
@@ -284,7 +315,7 @@ namespace CotacaoApp.Controllers
                                                                                                                 "&codigoProposta=" + apolice.CodigoProposta +
                                                                                                                 "&codigoApolice=" + apolice.Id);
                 UtilEmailMessage utilEmail = new UtilEmailMessage();
-                utilEmail.EnviarEmail("[BUSCA SEGUROS] Sua Proposta de Cotação de Seguro", apolice.Proposta.Segurado.Email, apolice.formularioApoliceHtml);
+                utilEmail.EnviarEmail("[BUSCA SEGUROS] Endosso de Sua Proposta de Cotação de Seguro", apolice.Proposta.Segurado.Email, apolice.formularioApoliceHtml);
 
 
 
@@ -296,7 +327,9 @@ namespace CotacaoApp.Controllers
         [HttpPost]
         public ActionResult Review(Apolice apolice)
         {
-            return View(apolice);
+            apolice.Seguradoras = db.Seguradora.ToList();
+            _apolice = apolice;
+            return View(_apolice);
         }
 
         // GET: Apolice/Delete/5
