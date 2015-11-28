@@ -35,6 +35,7 @@ namespace CotacaoApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ValorProposta valorProposta = db.ValorProposta.Find(id);
+            valorProposta.Condutor = db.Condutor.Find(valorProposta.CodigoCondutor);
             if (valorProposta == null)
             {
                 return HttpNotFound();
@@ -73,6 +74,7 @@ namespace CotacaoApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ValorProposta valorProposta = db.ValorProposta.Find(id);
+            valorProposta.Condutor = db.Condutor.Find(valorProposta.CodigoCondutor);
             if (valorProposta == null)
             {
                 return HttpNotFound();
@@ -89,8 +91,10 @@ namespace CotacaoApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(valorProposta).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(valorProposta).State = EntityState.Modified;
+                //db.SaveChanges();
+                ValorPropostaDAO valorPropostaDao = new ValorPropostaDAO();
+                valorPropostaDao.Salvar(valorProposta);
                 return RedirectToAction("Index");
             }
             return View(valorProposta);
