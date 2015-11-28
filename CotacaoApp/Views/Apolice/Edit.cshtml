@@ -9,7 +9,7 @@
 
 <h2>Editar</h2>
 
-@using (Html.BeginForm("Edit", "Apolice", FormMethod.Post, new { id = "ApoliceForm" }))
+@using (Html.BeginForm("Review", "Apolice", FormMethod.Post, new { id = "ApoliceForm" }))
 {
     @Html.AntiForgeryToken()
 
@@ -47,7 +47,7 @@
                 </div>
 
 
-                @Html.HiddenFor(model => model.Proposta.NomeMarcaVeiculo, new { id = "NomeMarcaVeiculoHidden" })
+                @Html.HiddenFor(model => model.Proposta.NomeMarcaVeiculo, new { @id = "NomeMarcaVeiculoHidden", @Name = "NomeMarcaVeiculoHidden" })
                 <div class="form-group ">
                     @Html.Label("Marca do Carro:*", htmlAttributes: new { @class = "control-label col-md-3" })
                     <select name="Proposta.NomeMarcaVeiculo" id="NomeMarcaVeiculoSelect" class="form-control col-md-9" style="margin-left:15px" required>
@@ -55,7 +55,7 @@
                     </select>
                 </div>
 
-                @Html.HiddenFor(model => model.Proposta.AnoFabricacaoVeiculo, new { id = "AnoFabricacaoVeiculoHidden" })
+                @Html.HiddenFor(model => model.Proposta.AnoFabricacaoVeiculo, new { @id = "AnoFabricacaoVeiculoHidden", @Name = "AnoFabricacaoVeiculoHidden" })
                 <div class="form-group ">
                     @Html.LabelFor(model => model.Proposta.AnoFabricacaoVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
                     <select name="Proposta.AnoFabricacaoVeiculo" id="AnoFabricacaoVeiculo" class="form-control col-md-9" style="margin-left:15px" required>
@@ -63,7 +63,7 @@
                     </select>
                 </div>
 
-                @Html.HiddenFor(model => model.Proposta.AnoModeloVeiculo, new { id = "AnoModeloVeiculoHidden" })
+                @Html.HiddenFor(model => model.Proposta.AnoModeloVeiculo, new { @id = "AnoModeloVeiculoHidden", @Name = "AnoModeloVeiculoHidden" })
                 <div class="form-group" style="display: none" id="AnoModeloVeiculoField">
                     @Html.LabelFor(model => model.Proposta.AnoModeloVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
                     <div class="col-md-9">
@@ -805,7 +805,7 @@
                 </div>
             </div>*@
             <input type="hidden" id="formularioApoliceHtml" name="formularioApoliceHtml" />
-            <div><input type="submit" value="Emitir Apolice Para o Cliente" class="form-control btn-success" /></div>
+            <div><input type="submit" value="Gerar Endosso" class="form-control btn-success" /></div>
         </div>
 }
 
@@ -834,7 +834,7 @@
             $("#contratoEmail").show();
             $("#valorContratoEmail").val($("#ValorContrato").val());
             $("#corretorEmail").val('teste');
-            $("#formularioApoliceHtml").val($("#Apolice").html());
+            //$("#formularioApoliceHtml").val($("#Apolice").html());
         }
 
     });

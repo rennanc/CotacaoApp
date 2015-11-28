@@ -531,8 +531,10 @@
             <div class="col-mg-9">
                 @Html.DisplayFor(model => model.Segurado.Email)
             </div>
-            @if (Model.Segurado.Telefones.Count >= 1)
+            @if (null != Model.Segurado.Telefones)
             {
+                if (Model.Segurado.Telefones.Count >= 1)
+                {
                 <div class="col-mg-3">
                     <strong>@Html.DisplayName("Telefone Fixo")</strong>
                 </div>
@@ -540,28 +542,29 @@
                 <div class="col-mg-9">
                     @Html.DisplayFor(model => model.Segurado.Telefones[0].NumeroTelefone)
                 </div>
-            }
+                }
 
-            @if (Model.Segurado.Telefones.Count >= 2)
-            {
-                <div class="col-mg-3">
-                    <strong>@Html.DisplayName("Telefone Celular")</strong>
-                </div>
+                if (Model.Segurado.Telefones.Count >= 2)
+                {
+                    <div class="col-mg-3">
+                        <strong>@Html.DisplayName("Telefone Celular")</strong>
+                    </div>
 
-                <div class="col-mg-9">
-                    @Html.DisplayFor(model => model.Segurado.Telefones[1].NumeroTelefone)
-                </div>
-            }
+                    <div class="col-mg-9">
+                        @Html.DisplayFor(model => model.Segurado.Telefones[1].NumeroTelefone)
+                    </div>
+                }
 
-            @if (Model.Segurado.Telefones.Count >= 3)
-            {
-                <div class="col-mg-3">
-                    <strong>@Html.DisplayName("Telefone Comercial")</strong>
-                </div>
+                if (Model.Segurado.Telefones.Count >= 3)
+                {
+                    <div class="col-mg-3">
+                        <strong>@Html.DisplayName("Telefone Comercial")</strong>
+                    </div>
 
-                <div class="col-mg-9">
-                    @Html.DisplayFor(model => model.Segurado.Telefones[2].NumeroTelefone)
-                </div>
+                    <div class="col-mg-9">
+                        @Html.DisplayFor(model => model.Segurado.Telefones[2].NumeroTelefone)
+                    </div>
+                }
             }
 
             <div class="col-mg-12">

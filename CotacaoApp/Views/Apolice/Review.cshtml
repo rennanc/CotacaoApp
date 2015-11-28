@@ -2,18 +2,18 @@
 @using CotacaoApp.Models
 
 @{
-    ViewBag.Title = "Nova Apólice";
+    ViewBag.Title = "Revisão de Envio de Endosso";
     Usuario usuario = (Usuario)Session["UsuarioLogado"];
 }
 
-<h2>Criar Apólice</h2>
+<h2>Revisão de Envio de Endosso da Apolice</h2>
 
-@using (Html.BeginForm("SendForm", "Apolice", FormMethod.Post, new { id = "ApoliceForm" }))
+@using (Html.BeginForm("Edit", "Apolice", FormMethod.Post, new { id = "ApoliceForm" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal" id="Apolice">
-        <h4>Apolice</h4>
+        <h4>Endosso da Apolice</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -49,7 +49,7 @@
                 @Html.Label("Valor do Contrato:*", htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="input-group col-lg-9" style="padding-left:15px">
                     <div class="input-group-addon">R$</div>
-                    <input type="text" id="ValorContrato" style="width: 315px;" name="ValorContrato" class="form-control numeric" placeholder="0.00" required>
+                    <input type="text" id="ValorContrato" style="width: 315px;" name="ValorContrato" value="@Model.ValorContrato" class="form-control numeric" placeholder="0.00" required>
                 </div>
             </div>
 
@@ -70,7 +70,7 @@
                 @Html.LabelFor(model => model.Comissao.ValorPercentualComissao, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="input-group" style="padding-left:15px">
                     <div class="input-group-addon">%</div>
-                    <input type="number" id="Comissao_ValorPercentualComissao" style="width: 315px;" min="0" max="100" name="Comissao.ValorPercentualComissao" class="form-control numeric" placeholder="0.00" required>
+                    <input type="number" id="Comissao_ValorPercentualComissao" value="@Model.Comissao.ValorPercentualComissao" style="width: 315px;" min="0" max="100" name="Comissao.ValorPercentualComissao" class="form-control numeric" placeholder="0.00" required>
                 </div>
             </div>
 
@@ -78,7 +78,7 @@
                 @Html.LabelFor(model => model.Comissao.ValorComissaoLiquida, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="input-group" style="padding-left:15px">
                     <div class="input-group-addon">R$</div>
-                    <input type="text" id="Comissao_ValorComissaoLiquida" style="width: 315px;" name="Comissao.ValorComissaoLiquida" class="form-control numeric" placeholder="0.00" disabled>
+                    <input type="text" id="Comissao_ValorComissaoLiquida" value="@Model.Comissao.ValorComissaoLiquida" style="width: 315px;" name="Comissao.ValorComissaoLiquida" class="form-control numeric" placeholder="0.00" disabled>
                 </div>
             </div>
 
@@ -112,6 +112,13 @@
     $(".numeric").inputmask("decimal", {
         radixPoint: ",",
         digits: 2
+    });
+
+    $(document).ready(function () {
+        var CodigoSeguradora = $('#CodigoSeguradoraHidden').val();
+        $('#CodigoSeguradora').val(CodigoSeguradora);
+        $('#CodigoSeguradora').trigger('change');
+        $("#Comissao_ValorPercentualComissao").trigger('change');
     });
 
     $("#ApoliceForm").submit(function (event) {

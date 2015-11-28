@@ -293,10 +293,11 @@ namespace CotacaoApp.Controllers
             //return View(apolice);
         }
 
-        //public ActionResult Review(Apolice apolice)
-        //{
-
-        //}
+        [HttpPost]
+        public ActionResult Review(Apolice apolice)
+        {
+            return View(apolice);
+        }
 
         // GET: Apolice/Delete/5
         public ActionResult Delete(int? id)
