@@ -230,10 +230,6 @@ namespace CotacaoApp.Models
         [Column("FL_STATUS")]
         public StatusProposta Status { get; set; }
 
-        [Display(Name = "Endosso")]
-        [Column("FL_ENDOSSO")]
-        public bool FlagEndosso { get; set; }
-
         //Auxiliares
         //[Display(Name = "Marca", Prompt = "Marca", Description = "Escolha a Marca do Veículo")]
         //public IList<SelectListItem> NomeMarcaLista { get; set; }

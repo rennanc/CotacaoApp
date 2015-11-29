@@ -284,8 +284,10 @@ namespace CotacaoApp.Enumerations
         ATENDIDO = 1,
         [Display(Name = "Com Apolice Aceita")]
         COMAPOLICEACEITA = 2,
+        [Display(Name = "Endossada")]
+        ENDOSSADA = 3,
         [Display(Name = "Nenhum")]
-        NENHUM = 3,
+        NENHUM = 4,
 
     }
 

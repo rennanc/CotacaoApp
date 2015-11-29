@@ -75,20 +75,22 @@ namespace CotacaoApp.DAO
             //db.SaveChanges();
 
             //Adicionando telefones do segurado
-            //List<Telefone> telefonesCorretos = new List<Telefone>();
-            //if (null != proposta.Segurado && null != proposta.Segurado.Telefones)
-            //{
-            //    foreach (Telefone telefone in proposta.Segurado.Telefones)
-            //    {
-            //        if (telefone.NumeroTelefone != null)
-            //        {
-            //            telefone.CodigoCondutor = proposta.Segurado.Id;
-            //            telefonesCorretos.Add(telefone);
-            //        }
+            //SALVANDO telefones do segurado
+            List<Telefone> telefonesCorretos = new List<Telefone>();
+            TelefoneDAO telefoneDao = new TelefoneDAO();
+            if (null != proposta.Segurado && proposta.Segurado.Telefones != null)
+            {
+                foreach (Telefone telefone in proposta.Segurado.Telefones)
+                {
+                    if (telefone.NumeroTelefone != null)
+                    {
+                        telefone.CodigoCondutor = proposta.Segurado.Id;
+                        telefonesCorretos.Add(telefone);
+                        telefoneDao.Editar(telefone);
+                    }
 
-            //    }
-            //    db.Telefone.AddRange(telefonesCorretos);
-            //}
+                }
+            }
 
             //Adicionando Proprietario
             if (proposta.Proprietario.CodigoCpf != null)
