@@ -45,6 +45,14 @@
 
         <!-- Comissao  INICIO -->
         <dt>
+            <h4>@Html.DisplayNameFor(model => model.Comissao.ValorPercentualComissao)</h4>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comissao.ValorPercentualComissao) %
+        </dd>
+
+        <dt>
             <h4>@Html.DisplayNameFor(model => model.Comissao.ValorComissaoLiquida)</h4>
         </dt>
 
@@ -52,13 +60,7 @@
             R$ @Html.DisplayFor(model => model.Comissao.ValorComissaoLiquida)
         </dd>
 
-        <dt>
-            <h4>@Html.DisplayNameFor(model => model.Comissao.ValorPercentualComissao)</h4>
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Comissao.ValorPercentualComissao) %
-        </dd>
+        
         <!-- Comissao  FIM -->
 
     </dl>
@@ -67,3 +69,10 @@
     @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Voltar para a Lista", "Index")
 </p>
+
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo1.js"></script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo2.js"></script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo3.js"></script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo4.js"></script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/validacaoProposta.js"></script>
+<script type="text/javascript" src="~/Scripts/utilCorretorApp.js"></script>

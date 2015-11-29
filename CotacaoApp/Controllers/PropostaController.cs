@@ -69,7 +69,7 @@ namespace CotacaoApp.Controllers
             {
                 //Mudando Status da proposta para fins de organização
                 PropostaDAO propostaDao = new PropostaDAO();
-                propostaDao.MudarStatus(int.Parse(codigoProposta), (int)StatusProposta.ATENDIDO);
+                propostaDao.MudarStatus(int.Parse(codigoProposta), (int)StatusProposta.COMAPOLICEACEITA);
                 //Mudando Status da Apolice
                 apoliceDao.MudarStatus(status, email, codigoProposta, codigoApolice);
                 //Excluir apolices Rejeitadas
@@ -77,7 +77,7 @@ namespace CotacaoApp.Controllers
 
 
                 //Montando Email
-                string url = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath, "");
+                string url = Request.Url.Authority;
                 UtilEmailMessage utilEmail = new UtilEmailMessage();
                 StringBuilder corpoDoEmail = new StringBuilder();
                 corpoDoEmail.Append("<div><h1>BUSCA SEGUROS</h1></div><br/>");
@@ -86,7 +86,7 @@ namespace CotacaoApp.Controllers
                 corpoDoEmail.Append("<div>Parabéns Corretor, o seu cliente acaba de aceitar o contrato<br/>");
                 corpoDoEmail.Append("confira agora mesmo a Apolice e entre em contato com o nosso Cliente</div>");
                 corpoDoEmail.Append("<br/><br/>");
-                corpoDoEmail.Append("<div><a href='"+ url + "/Apolice/Details?" + codigoApolice + "'><h1>Abrir Apolice Aprovada</h1></a></div>");
+                corpoDoEmail.Append("<div><a href='http://" + url + "/Apolice/Details/" + codigoApolice + "'><h1>Abrir Apolice Aprovada</h1></a></div>");
 
                 
                 utilEmail.EnviarEmail("[BUSCA SEGUROS] Apolice " + codigoApolice + " Aceita pelo Cliente", emailCorretor, corpoDoEmail.ToString());

@@ -44,7 +44,7 @@
             @Html.ActionLink("Nome do Segurado", "Index", new { sortOrder = ViewBag.NomeSeguradoSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Valor do Premio Líquido", "Index", new { sortOrder = ViewBag.ValorPremioLiquidoVeiculoSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Valor da Comissao", "Index", new { sortOrder = ViewBag.ValorPremioLiquidoVeiculoSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
             @Html.DisplayName("ValorContrato")
@@ -68,10 +68,10 @@
                 @Html.DisplayFor(modelItem => item.Proposta.Segurado.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Comissao.ValorPremioLiquido)
+                @Html.DisplayFor(modelItem => item.ValorContrato)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ValorContrato)
+                @Html.DisplayFor(modelItem => item.Comissao.ValorComissaoLiquida)
             </td>
             <td>
                 @Html.ActionLink("Alterar/Criar Endosso", "Edit", new { id = item.Id }) |

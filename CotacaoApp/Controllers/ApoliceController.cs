@@ -229,7 +229,7 @@ namespace CotacaoApp.Controllers
             Usuario usuario = (Usuario)Session["UsuarioLogado"];
             //PREPARANDO EMAIL
             apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#valorContratoEmail", apolice.ValorContrato.ToString());
-            apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#corretorEmail", "Joao - " + usuario.Nome);
+            apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#corretorEmail", "Seu Corretor - " + usuario.Nome);
             string url = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath,"");
             apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#EnderecoConfirmaEmail", url + "/Proposta/AceitarProposta?" +
                                                                                                             "email=" + proposta.Segurado.Email + 
@@ -282,7 +282,7 @@ namespace CotacaoApp.Controllers
                 //Inserindo nova proposta do Endosso
                 PropostaDAO propostaDao = new PropostaDAO();
                 apolice.Proposta.FlagEndosso = true;
-                apolice.Proposta.Id = propostaDao.Insert(apolice.Proposta);
+                apolice.Proposta.Id = propostaDao.InsertForEndosso(apolice.Proposta);
 
                 //Criacao de endosso
                 Endosso endosso = new Endosso();
@@ -308,7 +308,7 @@ namespace CotacaoApp.Controllers
                 Usuario usuario = (Usuario)Session["UsuarioLogado"];
                 //PREPARANDO EMAIL
                 apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#valorContratoEmail", apolice.ValorContrato.ToString());
-                apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#corretorEmail", "Joao - " + usuario.Nome);
+                apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#corretorEmail", "Seu Corretor - " + usuario.Nome);
                 string url = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath, "");
                 apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#EnderecoConfirmaEmail", url + "/Proposta/AceitarProposta?" +
                                                                                                                 "email=" + apolice.Proposta.Segurado.Email +

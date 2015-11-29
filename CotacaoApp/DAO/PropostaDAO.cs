@@ -65,6 +65,63 @@ namespace CotacaoApp.DAO
             return novoIdProposta;
         }
 
+        public int InsertForEndosso(Proposta proposta)
+        {
+
+            //Adicionando Segurado
+            CondutorDAO condutorDao = new CondutorDAO();
+            condutorDao.Editar(proposta.Segurado);
+            //db.Condutor.Add(proposta.Segurado);
+            //db.SaveChanges();
+
+            //Adicionando telefones do segurado
+            //List<Telefone> telefonesCorretos = new List<Telefone>();
+            //if (null != proposta.Segurado && null != proposta.Segurado.Telefones)
+            //{
+            //    foreach (Telefone telefone in proposta.Segurado.Telefones)
+            //    {
+            //        if (telefone.NumeroTelefone != null)
+            //        {
+            //            telefone.CodigoCondutor = proposta.Segurado.Id;
+            //            telefonesCorretos.Add(telefone);
+            //        }
+
+            //    }
+            //    db.Telefone.AddRange(telefonesCorretos);
+            //}
+
+            //Adicionando Proprietario
+            if (proposta.Proprietario.CodigoCpf != null)
+            {
+                condutorDao.Editar(proposta.Proprietario);
+                //proposta.Proprietario.codigoSegurado = proposta.Segurado.Id;
+                //db.Condutor.Add(proposta.Proprietario);
+            }
+
+            //Adicionando Outro Condutor
+            if (proposta.OutroCondutor.CodigoCpf != null)
+            {
+                condutorDao.Editar(proposta.OutroCondutor);
+                //proposta.OutroCondutor.codigoSegurado = proposta.Segurado.Id;
+                //db.Condutor.Add(proposta.OutroCondutor);
+            }
+
+            //Adicionando Proposta
+            //proposta.codigoSegurado = proposta.Segurado.Id;
+            int novoIdProposta = db.Proposta.Add(proposta).Id;
+
+            db.SaveChanges();
+
+            ////correção provisoria
+            //if(proposta.CodigoCobertura == 0)
+            //{
+            //    proposta.CodigoCobertura = 1;
+            //}
+            //db.SaveChanges();
+            db.Dispose();
+            return novoIdProposta;
+        }
+
 
         public void Save(Proposta proposta)
         {

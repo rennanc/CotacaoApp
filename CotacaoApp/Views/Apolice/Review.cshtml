@@ -26,11 +26,58 @@
     </div>
 
     <br />
-        <h1>Apolice</h1>
-        <h4>@Html.DisplayNameFor(model => model.Status) : @Html.DisplayFor(model => model.Status)</h4>
-        <input type="hidden" id="CodigoSeguradoraHidden" value="@Model.CodigoSeguradora" />
+    <h1>Apolice</h1>
+    <dl class=" col-lg-12">
+
+        <dt>
+            <h4>@Html.DisplayNameFor(model => model.Status)</h4>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            <h4>@Html.DisplayNameFor(model => model.Seguradora.NomeSeguradora)</h4>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seguradora.NomeSeguradora)
+        </dd>
+
+        <dt>
+            <h4>Valor do Contrato:</h4>
+        </dt>
+
+        <dd>
+            R$ @Html.DisplayFor(model => model.ValorContrato)
+        </dd>
+
+        <!-- Comissao  INICIO -->
+        <dt>
+            <h4>@Html.DisplayNameFor(model => model.Comissao.ValorPercentualComissao)</h4>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comissao.ValorPercentualComissao) %
+        </dd>
+        <dt>
+            <h4>@Html.DisplayNameFor(model => model.Comissao.ValorComissaoLiquida)</h4>
+        </dt>
+
+        <dd>
+            R$ @Html.DisplayFor(model => model.Comissao.ValorComissaoLiquida)
+        </dd>
+        
+        <!-- Comissao  FIM -->
+
+    </dl>
+
+        @*<h1>Apolice</h1>
+    <h4>@Html.DisplayNameFor(model => model.Status) : @Html.DisplayFor(model => model.Status)</h4>
+    <input type="hidden" id="CodigoSeguradoraHidden" value="@Model.CodigoSeguradora" />*@
         <div class="col-lg-12">
-            <div class="form-group col-lg-12">
+            @*<div class="form-group col-lg-12">
                 @Html.Label("Seguradora:*", htmlAttributes: new { @class = "control-label col-md-3" })
                 <select name="CodigoSeguradora" id="CodigoSeguradora" class="form-control col-md-9" style="margin-left:8px" placeholder="Escolha uma Seguradora" required>
                     <option value="" disabled selected>Escolha uma Seguradora</option>
@@ -51,12 +98,12 @@
                     <div class="input-group-addon">R$</div>
                     <input type="text" id="ValorContrato" style="width: 315px;" name="ValorContrato" value="@Model.ValorContrato" class="form-control numeric" placeholder="0.00" required>
                 </div>
-            </div>
+            </div>*@
 
 
 
-            <h2>Comissão</h2>
-            @Html.HiddenFor(model => model.Comissao.CodigoUsuario, new { id = "Comissao.CodigoUsuario", Value = @usuario.Id })
+            @*<h2>Comissão</h2>*@
+            @*@Html.HiddenFor(model => model.Comissao.CodigoUsuario, new { id = "Comissao.CodigoUsuario", Value = @usuario.Id })*@
 
             @*<div class="form-group">
                     @Html.LabelFor(model => model.Comissao.ValorPremioLiquido, htmlAttributes: new { @class = "control-label col-md-3" })
@@ -66,7 +113,7 @@
                     </div>
                 </div>*@
 
-            <div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(model => model.Comissao.ValorPercentualComissao, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="input-group" style="padding-left:15px">
                     <div class="input-group-addon">%</div>
@@ -80,7 +127,7 @@
                     <div class="input-group-addon">R$</div>
                     <input type="text" id="Comissao_ValorComissaoLiquida" value="@Model.Comissao.ValorComissaoLiquida" style="width: 315px;" name="Comissao.ValorComissaoLiquida" class="form-control numeric" placeholder="0.00" disabled>
                 </div>
-            </div>
+            </div>*@
 
             @*<div class="form-group">
                     @Html.LabelFor(model => model.Comissao.ValorPercentualComissaoLiquido, htmlAttributes: new { @class = "control-label col-md-3" })
