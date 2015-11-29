@@ -276,6 +276,7 @@ namespace CotacaoApp.Controllers
             //{
                 //modificando a antiga para Flag de modificada
             ApoliceDAO apoliceDao = new ApoliceDAO();
+            apoliceDao.MudarStatus(apolice.Id, apolice.CodigoProposta, (int)Status.ENDOSSADO);
             apoliceDao.MudarParaModificado(apolice.Id);
 
 

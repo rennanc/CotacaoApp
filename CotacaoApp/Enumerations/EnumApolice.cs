@@ -20,6 +20,8 @@ namespace CotacaoApp.Enumerations
         ENVIADO = 1,
         [Display(Name = "Aprovado Pelo Cliente")]
         APROVADO = 2,
+        [Display(Name = "Endossado")]
+        ENDOSSADO = 3,
         //[Display(Name = "Contrato Reprovado pela Seguradora")]
         //REPROVADOSEGURADORA = 3,
         //[Display(Name = "Contrato Aprovado pela Seguradora")]

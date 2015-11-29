@@ -24,7 +24,7 @@ namespace CotacaoApp.DAO
         #endregion
 
         public DBConnection()
-        {
+        { 
             _Connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString.ToString());
             _Connection.Open();
         }
