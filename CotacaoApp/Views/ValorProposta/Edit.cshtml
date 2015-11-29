@@ -39,6 +39,7 @@
             </div>
         </div>
 
+        <input type="hidden" id="TipoHidden" value="@((int)Model.Tipo)" />
         <div class="form-group">
             @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -79,8 +80,15 @@
     @Html.ActionLink("Voltar a Lista", "Index")
 </div>
 <script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#Tipo').val($('#TipoHidden').val());
+    });
+
     $(".numeric").inputmask("decimal", {
         radixPoint: ",",
         digits: 2
     });
 </script>
+
+
