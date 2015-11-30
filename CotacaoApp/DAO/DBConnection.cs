@@ -83,7 +83,9 @@ namespace CotacaoApp.DAO
                     _rsData = myCommand.ExecuteReader(); //Executa comando
                     _State = true;                       //Indica status da Operação
                     _CompleteCommand = true;
+                   
                 }
+                Dispose();
             }
             catch (Exception ex)
             {
