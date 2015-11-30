@@ -300,8 +300,8 @@ namespace CotacaoApp.Controllers
             apolice.Status = Status.ENVIADO;
 
             //criando nova Apolice 
-            apolice.Id = 0;
-            apolice = db.Apolice.Add(apolice);
+            db.Apolice.Add(apolice);
+            db.SaveChanges();
 
             //adicionando Id da apolice Nova
             endosso.CodApolice = apolice.Id;
@@ -328,9 +328,14 @@ namespace CotacaoApp.Controllers
 
 
 
-            return RedirectToAction("Index");
+            return RedirectToAction("SendEndosso");
             //}
             //return View(apolice);
+        }
+
+        public ActionResult SendEndosso()
+        {
+            return View();
         }
 
         [HttpPost]

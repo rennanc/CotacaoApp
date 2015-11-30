@@ -39,6 +39,7 @@ namespace CotacaoApp.DAO
             if (proposta.Proprietario.CodigoCpf != null)
             {
                 proposta.Proprietario.codigoSegurado = proposta.Segurado.Id;
+                proposta.Proprietario.IEProprietarioVeiculo = Enumerations.IEProprietarioVeiculo.SIM;
                 db.Condutor.Add(proposta.Proprietario);
             }
 
@@ -46,6 +47,7 @@ namespace CotacaoApp.DAO
             if (proposta.OutroCondutor.CodigoCpf != null)
             {
                 proposta.OutroCondutor.codigoSegurado = proposta.Segurado.Id;
+                proposta.OutroCondutor.IECondutorPrincipal = Enumerations.IECondutorPrincipal.OUTRAPESSOA;
                 db.Condutor.Add(proposta.OutroCondutor);
             }
 
@@ -95,6 +97,7 @@ namespace CotacaoApp.DAO
             //Adicionando Proprietario
             if (proposta.Proprietario.CodigoCpf != null)
             {
+                proposta.Proprietario.IEProprietarioVeiculo = Enumerations.IEProprietarioVeiculo.SIM;
                 condutorDao.Editar(proposta.Proprietario);
                 //proposta.Proprietario.codigoSegurado = proposta.Segurado.Id;
                 //db.Condutor.Add(proposta.Proprietario);
@@ -103,6 +106,7 @@ namespace CotacaoApp.DAO
             //Adicionando Outro Condutor
             if (proposta.OutroCondutor.CodigoCpf != null)
             {
+                proposta.OutroCondutor.IECondutorPrincipal = Enumerations.IECondutorPrincipal.OUTRAPESSOA;
                 condutorDao.Editar(proposta.OutroCondutor);
                 //proposta.OutroCondutor.codigoSegurado = proposta.Segurado.Id;
                 //db.Condutor.Add(proposta.OutroCondutor);
@@ -153,6 +157,7 @@ namespace CotacaoApp.DAO
             //SALVANDO Proprietario
             if (proposta.Proprietario.CodigoCpf != null)
             {
+                proposta.Proprietario.IEProprietarioVeiculo = Enumerations.IEProprietarioVeiculo.SIM;
                 proposta.Proprietario.codigoSegurado = proposta.Segurado.Id;
                 condutorDao.Editar(proposta.Proprietario);
             }
@@ -160,6 +165,7 @@ namespace CotacaoApp.DAO
             //SALVANDO Outro Condutor
             if (proposta.OutroCondutor.CodigoCpf != null)
             {
+                proposta.OutroCondutor.IECondutorPrincipal = Enumerations.IECondutorPrincipal.OUTRAPESSOA;
                 proposta.OutroCondutor.codigoSegurado = proposta.Segurado.Id;
                 condutorDao.Editar(proposta.OutroCondutor);
             }
