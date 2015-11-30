@@ -285,6 +285,7 @@
     <Compile Include="Util\UtilEmailMessage.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\backupDadosBancoCorretor.sql" />
     <Content Include="App_Data\busqueSeguros.sql" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
