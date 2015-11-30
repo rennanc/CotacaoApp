@@ -335,12 +335,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="App_Data\busqueSeguros.mwb" />
     <Content Include="ApplicationInsights.config" />
     <Content Include="Content\select2-bootstrap.scss" />
     <Content Include="Content\select2-bootstrap.less" />
     <Content Include="Content\select2-bootstrap-build.scss" />
     <Content Include="Content\select2-bootstrap-build.less" />
+    <Content Include="App_Data\busqueSeguros.mwb" />
     <None Include="Properties\PublishProfiles\buscaseguros %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\buscaseguros.pubxml" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
