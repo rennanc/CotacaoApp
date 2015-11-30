@@ -31,7 +31,7 @@ namespace CotacaoApp.DAO
             }
             catch (Exception e)
             {
-                _Connection.Close();
+                Dispose();
                 throw new Exception("Erro de conexão com o banco :" + e.StackTrace);
             }
         }
@@ -85,11 +85,14 @@ namespace CotacaoApp.DAO
                     _CompleteCommand = true;
                    
                 }
+                SqlConnection.ClearAllPools();
                 Dispose();
+                
             }
             catch (Exception ex)
             {
                 //Caso de excessão desconhecida
+                SqlConnection.ClearAllPools();
                 Dispose();
                 _ErrorMessage = ex.Message.ToString();
                 _State = false;
