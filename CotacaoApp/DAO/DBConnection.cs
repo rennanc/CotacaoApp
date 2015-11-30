@@ -98,6 +98,10 @@ namespace CotacaoApp.DAO
                 _State = false;
                 _ErrorNumber = ex.GetHashCode();
             }
+            finally
+            {
+                Dispose();
+            }
         }
 
         public void Dispose()
