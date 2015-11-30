@@ -276,7 +276,7 @@
             </div>
             <!--PROPRIETARIO - INICIO -->
             <div class="border-box display-hide" id="Proprietario">
-                <h2>DADOS DO PROPRIETÁRIO</h2>
+                <h3>DADOS DO PROPRIETÁRIO</h3>
 
                 <div class="col-mg-3">
                     <strong> @Html.DisplayNameFor(model => model.Proprietario.Nome)</strong>
@@ -430,6 +430,7 @@
 
             <!--Outro Condutor-->
             <div class="border-box display-hide" id="OutroCondutor">
+                <h3>OUTRO CONDUTOR</h3>
                 <div class="col-mg-3">
                     <strong>@Html.DisplayName("Nome completo do (a)condutor(a) principal")</strong>
                 </div>
@@ -530,8 +531,10 @@
             <div class="col-mg-9">
                 @Html.DisplayFor(model => model.Segurado.Email)
             </div>
-            @if (Model.Segurado.Telefones.Count >= 1)
+            @if (null != Model.Segurado.Telefones)
             {
+                if (Model.Segurado.Telefones.Count >= 1)
+                {
                 <div class="col-mg-3">
                     <strong>@Html.DisplayName("Telefone Fixo")</strong>
                 </div>
@@ -539,28 +542,29 @@
                 <div class="col-mg-9">
                     @Html.DisplayFor(model => model.Segurado.Telefones[0].NumeroTelefone)
                 </div>
-            }
+                }
 
-            @if (Model.Segurado.Telefones.Count >= 2)
-            {
-                <div class="col-mg-3">
-                    <strong>@Html.DisplayName("Telefone Celular")</strong>
-                </div>
+                if (Model.Segurado.Telefones.Count >= 2)
+                {
+                    <div class="col-mg-3">
+                        <strong>@Html.DisplayName("Telefone Celular")</strong>
+                    </div>
 
-                <div class="col-mg-9">
-                    @Html.DisplayFor(model => model.Segurado.Telefones[1].NumeroTelefone)
-                </div>
-            }
+                    <div class="col-mg-9">
+                        @Html.DisplayFor(model => model.Segurado.Telefones[1].NumeroTelefone)
+                    </div>
+                }
 
-            @if (Model.Segurado.Telefones.Count >= 3)
-            {
-                <div class="col-mg-3">
-                    <strong>@Html.DisplayName("Telefone Comercial")</strong>
-                </div>
+                if (Model.Segurado.Telefones.Count >= 3)
+                {
+                    <div class="col-mg-3">
+                        <strong>@Html.DisplayName("Telefone Comercial")</strong>
+                    </div>
 
-                <div class="col-mg-9">
-                    @Html.DisplayFor(model => model.Segurado.Telefones[2].NumeroTelefone)
-                </div>
+                    <div class="col-mg-9">
+                        @Html.DisplayFor(model => model.Segurado.Telefones[2].NumeroTelefone)
+                    </div>
+                }
             }
 
             <div class="col-mg-12">
@@ -578,7 +582,7 @@
             </div>
 
             <div class="col-mg-3">
-                @Html.DisplayNameFor(model => model.NumeroPlaca)
+                <strong>@Html.DisplayNameFor(model => model.NumeroPlaca)</strong>
             </div>
 
             <div class="col-mg-9">
@@ -586,7 +590,7 @@
             </div>
 
             <div class="col-mg-3">
-                @Html.DisplayNameFor(model => model.NumeroChassi)
+                <strong>@Html.DisplayNameFor(model => model.NumeroChassi)</strong>
             </div>
 
             <div class="col-mg-9">
@@ -595,6 +599,10 @@
 
             <!-- PASSO 5 - FIM -->
               <div id="contratoEmail" style="display:none">
+                  <div class="col-mg-12">
+                      <h1>Seguradora:</h1>
+                      <p id="SeguradoraEmail">#seguradoraEmail</p>
+                  </div>
                   <div class="col-mg-12">
                       <h1>Valor do Contrato</h1>
                       <p id="valorContratoEmail">#valorContratoEmail</p>
@@ -605,15 +613,15 @@
                   </div>
                   <br/>
                   <div class="col-mg-12 btn btn-block" id="linkAceitarContrato">
-                      <a href="#EnderecoConfirmaEmail" class="btn btn-success">Aceitar proposta de Seguro</a>
+                      <a href="#EnderecoConfirmaEmail" class="btn btn-success"><h2>Aceitar proposta de Seguro</h2></a>
                   </div>
               </div>
         </div>
 </div>
 
-<script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo1.js"></script>
+@*<script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo1.js"></script>
 <script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo2.js"></script>
 <script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo3.js"></script>
 <script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo4.js"></script>
 <script type="text/javascript" src="~/Scripts/Pages/Proposta/validacaoProposta.js"></script>
-<script type="text/javascript" src="~/Scripts/utilCorretorApp.js"></script>
+<script type="text/javascript" src="~/Scripts/utilCorretorApp.js"></script>*@

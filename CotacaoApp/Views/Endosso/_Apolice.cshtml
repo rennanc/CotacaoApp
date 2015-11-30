@@ -1,0 +1,49 @@
+﻿@model CotacaoApp.Models.Apolice
+@using CotacaoApp.Models
+
+
+<div>
+    <h2>Apólice</h2>
+    <hr />
+    @if (Model.Proposta != null)
+    {
+        @Html.Partial("_Proposta", (Proposta)Model.Proposta)
+        @Html.HiddenFor(model => model.CodigoProposta, new { id = "Comissao.CodigoProposta", Value = @Model.Proposta.Id })
+
+    }
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comissao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comissao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Seguradora.NomeSeguradora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seguradora.NomeSeguradora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorContrato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorContrato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>

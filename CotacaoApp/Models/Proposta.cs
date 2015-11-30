@@ -226,9 +226,9 @@ namespace CotacaoApp.Models
         public string NumeroChassi { get; set; }
 
 
-        [Display(Name = "Modificada")]
+        [Display(Name = "Status da Proposta")]
         [Column("FL_STATUS")]
-        public int Status { get; set; }
+        public StatusProposta Status { get; set; }
 
         //Auxiliares
         //[Display(Name = "Marca", Prompt = "Marca", Description = "Escolha a Marca do Veículo")]

@@ -2,7 +2,7 @@
 @using PagedList.Mvc;
 @using CotacaoApp.Enumerations;
 
-<link href="`~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Apólice";
@@ -15,6 +15,14 @@
         <label for="SearchString">Nome do Segurado</label>
         <input type="text" id="SearchString" name="apoliceSearch.Proposta.Segurado.Nome" class="form-control" placeholder="Nome do Segurado" />
     </div>
+
+    @*<select id="apoliceSearch_Status" name="apoliceSearch.Status" class="form-control">
+        <option value="7">Todos os Status</option>
+        @foreach (var status in EnumHelper.GetSelectList(typeof(Status)))
+        {
+            <option value="@status.Value">@status.Text</option>
+        }
+    </select>*@
 
     @Html.DropDownList("apoliceSearch.Status", EnumHelper.GetSelectList(typeof(Status)), "Selecione o Status", new { @class = "form-control" })
 
@@ -36,7 +44,7 @@
             @Html.ActionLink("Nome do Segurado", "Index", new { sortOrder = ViewBag.NomeSeguradoSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Valor do Premio Líquido", "Index", new { sortOrder = ViewBag.ValorPremioLiquidoVeiculoSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Valor da Comissao", "Index", new { sortOrder = ViewBag.ValorPremioLiquidoVeiculoSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
             @Html.DisplayName("ValorContrato")
@@ -60,10 +68,10 @@
                 @Html.DisplayFor(modelItem => item.Proposta.Segurado.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Comissao.ValorPremioLiquido)
+                @Html.DisplayFor(modelItem => item.ValorContrato)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ValorContrato)
+                @Html.DisplayFor(modelItem => item.Comissao.ValorComissaoLiquida)
             </td>
             <td>
                 @Html.ActionLink("Alterar/Criar Endosso", "Edit", new { id = item.Id }) |
@@ -78,7 +86,7 @@
 <div class="col-sm-10">
     <div>
         @Html.PagedListPager(Model, page => Url.Action("Index",
-                    new { pagina = page }))
+                    new { page = page }))
         Mostrando @Model.FirstItemOnPage de @Model.LastItemOnPage
         de @Model.TotalItemCount Apolices
     </div>

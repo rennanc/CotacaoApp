@@ -12,7 +12,7 @@ namespace CotacaoApp.DAO
     {
         private DefaultConnection db = new DefaultConnection();
 
-        public void Insert(Proposta proposta)
+        public int Insert(Proposta proposta)
         {
  
             //Adicionando Segurado
@@ -21,21 +21,25 @@ namespace CotacaoApp.DAO
 
             //Adicionando telefones do segurado
             List<Telefone> telefonesCorretos = new List<Telefone>();
-            foreach(Telefone telefone in proposta.Segurado.Telefones)
+            if(null != proposta.Segurado && null != proposta.Segurado.Telefones)
             {
-                if(telefone.NumeroTelefone != null)
+                foreach(Telefone telefone in proposta.Segurado.Telefones)
                 {
-                    telefone.CodigoCondutor = proposta.Segurado.Id;
-                    telefonesCorretos.Add(telefone);
-                }
+                    if(telefone.NumeroTelefone != null)
+                    {
+                        telefone.CodigoCondutor = proposta.Segurado.Id;
+                        telefonesCorretos.Add(telefone);
+                    }
                 
+                }
+                db.Telefone.AddRange(telefonesCorretos);
             }
-            db.Telefone.AddRange(telefonesCorretos);
 
             //Adicionando Proprietario
             if (proposta.Proprietario.CodigoCpf != null)
             {
                 proposta.Proprietario.codigoSegurado = proposta.Segurado.Id;
+                proposta.Proprietario.IEProprietarioVeiculo = Enumerations.IEProprietarioVeiculo.SIM;
                 db.Condutor.Add(proposta.Proprietario);
             }
 
@@ -43,12 +47,13 @@ namespace CotacaoApp.DAO
             if (proposta.OutroCondutor.CodigoCpf != null)
             {
                 proposta.OutroCondutor.codigoSegurado = proposta.Segurado.Id;
+                proposta.OutroCondutor.IECondutorPrincipal = Enumerations.IECondutorPrincipal.OUTRAPESSOA;
                 db.Condutor.Add(proposta.OutroCondutor);
             }
 
             //Adicionando Proposta
             proposta.codigoSegurado = proposta.Segurado.Id;
-            db.Proposta.Add(proposta);
+            int novoIdProposta = db.Proposta.Add(proposta).Id;
 
             db.SaveChanges();
 
@@ -59,6 +64,68 @@ namespace CotacaoApp.DAO
             //}
             //db.SaveChanges();
             db.Dispose();
+            return novoIdProposta;
+        }
+
+        public int InsertForEndosso(Proposta proposta)
+        {
+
+            //Adicionando Segurado
+            CondutorDAO condutorDao = new CondutorDAO();
+            condutorDao.Editar(proposta.Segurado);
+            //db.Condutor.Add(proposta.Segurado);
+            //db.SaveChanges();
+
+            //Adicionando telefones do segurado
+            //SALVANDO telefones do segurado
+            List<Telefone> telefonesCorretos = new List<Telefone>();
+            TelefoneDAO telefoneDao = new TelefoneDAO();
+            if (null != proposta.Segurado && proposta.Segurado.Telefones != null)
+            {
+                foreach (Telefone telefone in proposta.Segurado.Telefones)
+                {
+                    if (telefone.NumeroTelefone != null)
+                    {
+                        telefone.CodigoCondutor = proposta.Segurado.Id;
+                        telefonesCorretos.Add(telefone);
+                        telefoneDao.Editar(telefone);
+                    }
+
+                }
+            }
+
+            //Adicionando Proprietario
+            if (proposta.Proprietario.CodigoCpf != null)
+            {
+                proposta.Proprietario.IEProprietarioVeiculo = Enumerations.IEProprietarioVeiculo.SIM;
+                condutorDao.Editar(proposta.Proprietario);
+                //proposta.Proprietario.codigoSegurado = proposta.Segurado.Id;
+                //db.Condutor.Add(proposta.Proprietario);
+            }
+
+            //Adicionando Outro Condutor
+            if (proposta.OutroCondutor.CodigoCpf != null)
+            {
+                proposta.OutroCondutor.IECondutorPrincipal = Enumerations.IECondutorPrincipal.OUTRAPESSOA;
+                condutorDao.Editar(proposta.OutroCondutor);
+                //proposta.OutroCondutor.codigoSegurado = proposta.Segurado.Id;
+                //db.Condutor.Add(proposta.OutroCondutor);
+            }
+
+            //Adicionando Proposta
+            //proposta.codigoSegurado = proposta.Segurado.Id;
+            int novoIdProposta = db.Proposta.Add(proposta).Id;
+
+            db.SaveChanges();
+
+            ////correção provisoria
+            //if(proposta.CodigoCobertura == 0)
+            //{
+            //    proposta.CodigoCobertura = 1;
+            //}
+            //db.SaveChanges();
+            db.Dispose();
+            return novoIdProposta;
         }
 
 
@@ -90,6 +157,7 @@ namespace CotacaoApp.DAO
             //SALVANDO Proprietario
             if (proposta.Proprietario.CodigoCpf != null)
             {
+                proposta.Proprietario.IEProprietarioVeiculo = Enumerations.IEProprietarioVeiculo.SIM;
                 proposta.Proprietario.codigoSegurado = proposta.Segurado.Id;
                 condutorDao.Editar(proposta.Proprietario);
             }
@@ -97,6 +165,7 @@ namespace CotacaoApp.DAO
             //SALVANDO Outro Condutor
             if (proposta.OutroCondutor.CodigoCpf != null)
             {
+                proposta.OutroCondutor.IECondutorPrincipal = Enumerations.IECondutorPrincipal.OUTRAPESSOA;
                 proposta.OutroCondutor.codigoSegurado = proposta.Segurado.Id;
                 condutorDao.Editar(proposta.OutroCondutor);
             }
@@ -202,6 +271,7 @@ namespace CotacaoApp.DAO
             query.SetParameter("NR_CI", proposta.NumeroCIAntiga);
             query.SetParameter("NR_PLACAVEICULO", proposta.NumeroPlaca);
             query.SetParameter("NR_CHASSIVEICULO", proposta.NumeroChassi);
+            query.SetParameter("FL_STATUS", proposta.Status);
 
 
             DbDataReader reader = query.ExecuteQuery();
@@ -209,14 +279,15 @@ namespace CotacaoApp.DAO
             conexao.Close();
         }
 
-        public void MudarParaModificado(int codigoProposta)
+        public void MudarStatus(int codigoProposta, int status)
         {
             var conexao = new DBConnection();
             QuerySql query = conexao.CreateQuery("UPDATE proposta SET " +
-                                            " FL_MUDANCA=1 " +
+                                            " FL_STATUS=@FL_STATUS " +
                                             " WHERE CD_PROPOSTA = @CD_PROPOSTA ");
 
             query.SetParameter("CD_PROPOSTA", codigoProposta);
+            query.SetParameter("FL_STATUS", status);
 
             DbDataReader reader = query.ExecuteQuery();
             reader.Close();
@@ -235,16 +306,18 @@ namespace CotacaoApp.DAO
             proposta.Cobertura = db.Cobertura.Find(proposta.CodigoCobertura);
             proposta.Segurado = db.Condutor.Find(proposta.codigoSegurado);
 
+
             //obtendo telefone
             TelefoneDAO telefoneDao = new TelefoneDAO();
             proposta.Segurado.Telefones = telefoneDao.ObterTodosPorIdCondutor(proposta.Segurado.Id);
 
             CondutorDAO condutorDao = new CondutorDAO();
-            if (proposta.Segurado.IEProprietarioVeiculo == 0)
+
+            if (proposta.Segurado.IEProprietarioVeiculo == Enumerations.IEProprietarioVeiculo.NAO)
             {
                 proposta.Proprietario = condutorDao.ObterPorIdSeguradoETipo(proposta.Segurado.Id, 1);
             }
-            if (proposta.Segurado.IECondutorPrincipal == 0)
+            if (proposta.Segurado.IECondutorPrincipal == Enumerations.IECondutorPrincipal.OUTRAPESSOA)
             {
                 proposta.OutroCondutor = condutorDao.ObterPorIdSeguradoETipo(proposta.Segurado.Id, 2);
             }

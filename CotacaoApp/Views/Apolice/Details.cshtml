@@ -16,39 +16,52 @@
         @Html.HiddenFor(model => model.CodigoProposta, new { id = "Comissao.CodigoProposta", Value = @Model.Proposta.Id })
 
     }
-    <dl class="dl-horizontal">
+    <h1>Apolice</h1>
+    <dl class=" col-lg-12">
 
         <dt>
-            @Html.DisplayNameFor(model => model.Comissao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Comissao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Seguradora)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Seguradora)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ValorContrato)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ValorContrato)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
+            <h4>@Html.DisplayNameFor(model => model.Status)</h4>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Status)
         </dd>
+
+        <dt>
+            <h4>@Html.DisplayNameFor(model => model.Seguradora.NomeSeguradora)</h4>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seguradora.NomeSeguradora)
+        </dd>
+
+        <dt>
+            <h4>Valor do Contrato:</h4>
+        </dt>
+
+        <dd>
+            R$ @Html.DisplayFor(model => model.ValorContrato)
+        </dd>
+
+        <!-- Comissao  INICIO -->
+        <dt>
+            <h4>@Html.DisplayNameFor(model => model.Comissao.ValorPercentualComissao)</h4>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comissao.ValorPercentualComissao) %
+        </dd>
+
+        <dt>
+            <h4>@Html.DisplayNameFor(model => model.Comissao.ValorComissaoLiquida)</h4>
+        </dt>
+
+        <dd>
+            R$ @Html.DisplayFor(model => model.Comissao.ValorComissaoLiquida)
+        </dd>
+
+        
+        <!-- Comissao  FIM -->
 
     </dl>
 </div>
@@ -56,3 +69,10 @@
     @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Voltar para a Lista", "Index")
 </p>
+
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo1.js"></script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo2.js"></script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo3.js"></script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/Passo4.js"></script>
+<script type="text/javascript" src="~/Scripts/Pages/Proposta/validacaoProposta.js"></script>
+<script type="text/javascript" src="~/Scripts/utilCorretorApp.js"></script>

@@ -17,6 +17,12 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
+        @if (Model.Apolice != null)
+        {
+            @Html.Partial("_Apolice", (Apolice)Model.Apolice)
+            @Html.HiddenFor(model => model.CodApolice, new { id = "Apolice.CodApolice", Value = @Model.Apolice.Id })
+
+        }
         <div class="form-group">
             @Html.LabelFor(model => model.CodApoliceAntigo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
@@ -24,8 +25,15 @@ namespace CotacaoApp.DAO
 
         public DBConnection()
         {
-            _Connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString.ToString());
-            _Connection.Open();
+            try { 
+                _Connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString.ToString());
+                _Connection.Open();
+            }
+            catch (Exception e)
+            {
+                _Connection.Close();
+                throw new Exception("Erro de conexão com o banco :" + e.StackTrace);
+            }
         }
 
         public QuerySql CreateQuery(String sql)
@@ -80,6 +88,7 @@ namespace CotacaoApp.DAO
             catch (Exception ex)
             {
                 //Caso de excessão desconhecida
+                Dispose();
                 _ErrorMessage = ex.Message.ToString();
                 _State = false;
                 _ErrorNumber = ex.GetHashCode();
@@ -147,6 +156,19 @@ namespace CotacaoApp.DAO
         {
             _Command.Parameters.AddWithValue("@" + nome, valor);
             return this;
+        }
+    }
+
+    public static class DataReaderExtensions
+    {
+        public static string GetStringOrNull(this IDataReader reader, int ordinal)
+        {
+            return reader.IsDBNull(ordinal) ? null : reader.GetString(ordinal);
+        }
+
+        public static string GetStringOrNull(this IDataReader reader, string columnName)
+        {
+            return reader.GetStringOrNull(reader.GetOrdinal(columnName));
         }
     }
 }

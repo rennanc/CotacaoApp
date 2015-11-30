@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using CotacaoApp.Models;
 using CotacaoApp.DAO;
 using CotacaoApp.Filters;
+using System.Collections.Generic;
 
 namespace CotacaoApp.Controllers
 {
@@ -16,7 +17,14 @@ namespace CotacaoApp.Controllers
         // GET: ValorProposta
         public ActionResult Index()
         {
-            return View(db.ValorProposta.ToList());
+           // return View(db.ValorProposta.ToList());
+
+            List<ValorProposta> valorPropostas = db.ValorProposta.ToList();
+            foreach (ValorProposta valorProposta in valorPropostas)
+            {
+                valorProposta.Condutor = db.Condutor.Find(valorProposta.CodigoCondutor);
+            }
+            return View(valorPropostas);
         }
 
         // GET: ValorProposta/Details/5
@@ -27,6 +35,7 @@ namespace CotacaoApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ValorProposta valorProposta = db.ValorProposta.Find(id);
+            valorProposta.Condutor = db.Condutor.Find(valorProposta.CodigoCondutor);
             if (valorProposta == null)
             {
                 return HttpNotFound();
@@ -65,6 +74,7 @@ namespace CotacaoApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ValorProposta valorProposta = db.ValorProposta.Find(id);
+            valorProposta.Condutor = db.Condutor.Find(valorProposta.CodigoCondutor);
             if (valorProposta == null)
             {
                 return HttpNotFound();
@@ -81,8 +91,10 @@ namespace CotacaoApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(valorProposta).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(valorProposta).State = EntityState.Modified;
+                //db.SaveChanges();
+                ValorPropostaDAO valorPropostaDao = new ValorPropostaDAO();
+                valorPropostaDao.Salvar(valorProposta);
                 return RedirectToAction("Index");
             }
             return View(valorProposta);

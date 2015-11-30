@@ -184,6 +184,22 @@ function obterListaAnoModelo(ano, nomeCampoHiddenModelo) {
     $('#AnoModeloVeiculoField').show();
 }
 
+function obterListaAnoModeloParaApolice(ano, nomeCampoHiddenModelo) {
+    ano = parseInt(ano, 10);
+    var anosModelo = "";
+    for (i = ano; i <= ano + 1; i++) {
+
+        if ($('#' + nomeCampoHiddenModelo).val() == i) {
+            anosModelo += '<input type="radio"  name="Proposta.AnoModeloVeiculo" id="AnoModeloVeiculo" value="' + i + '" checked> ' + i + ' ';
+        } else {
+            anosModelo += '<input type="radio"  name="Proposta.AnoModeloVeiculo" id="AnoModeloVeiculo" value="' + i + '" > ' + i + ' ';
+        }
+
+    }
+    $('#AnoModeloVeiculoRadiosApolice').html(anosModelo);
+    $('#AnoModeloVeiculoField').show();
+}
+
 
 var obterAnoModelo = function () {
 

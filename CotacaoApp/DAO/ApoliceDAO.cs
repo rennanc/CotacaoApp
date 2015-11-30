@@ -28,18 +28,36 @@ namespace CotacaoApp.DAO
             conexao.Close();
         }
 
+        public void MudarStatus(int codigoApolice, int codigoProposta, int status)
+        {
+            var conexao = new DBConnection();
+            QuerySql query = conexao.CreateQuery("UPDATE apolice SET " +
+                                                 " SG_STATUS=@SG_STATUS " +
+                                                 " WHERE CD_APOLICE = @CD_APOLICE " +
+                                                 " AND CD_PROPOSTA = @CD_PROPOSTA");
+
+            query.SetParameter("SG_STATUS", status);
+            query.SetParameter("CD_APOLICE", codigoApolice);
+            query.SetParameter("CD_PROPOSTA", codigoProposta);
+
+            DbDataReader reader = query.ExecuteQuery();
+            reader.Close();
+            conexao.Close();
+        }
+
         public string ObterEmailDoCorretorEValidarEmail(string email, string codigoProposta, string codigoApolice)
         {
             var conexao = new DBConnection();
 
-            QuerySql query = conexao.CreateQuery("SELECT usuario.NM_USUARIO NM_USUARIO " +
-                                                  " FROM condutor " +
-                                                  " INNER JOIN proposta ON proposta.CD_CONDUTOR = condutor.CD_CONDUTOR " +
-                                                  " INNER JOIN apolice ON apolice.CD_PROPOSTA = proposta.CD_PROPOSTA " +
-                                                  " INNER JOIN usuario ON apolice.CD_USUARIO = CD_USUARIO " +
-                                                  " WHERE NM_EMAIL = @NM_EMAIL " +
-                                                  " AND proposta.CD_PROPOSTA = @CD_PROPOSTA " +
-                                                  " AND apolice.CD_APOLICE = @CD_APOLICE");
+            QuerySql query = conexao.CreateQuery("SELECT usuario.NM_USUARIO " +
+                                                 "  FROM usuario " +
+                                                 "  INNER JOIN comissao ON comissao.CD_USUARIO = comissao.CD_USUARIO " +
+                                                 "  INNER JOIN apolice ON apolice.CD_COMISSAO = comissao.CD_COMISSAO " +
+                                                 "  INNER JOIN proposta ON proposta.CD_PROPOSTA = apolice.CD_PROPOSTA " +
+                                                 "  INNER JOIN condutor ON condutor.CD_CONDUTOR = proposta.CD_CONDUTOR " +
+                                                 "  WHERE condutor.NM_EMAIL = @NM_EMAIL " +
+                                                 "  AND proposta.CD_PROPOSTA = @CD_PROPOSTA " +
+                                                 "  AND apolice.CD_APOLICE = @CD_APOLICE ");
 
             query.SetParameter("NM_EMAIL", email);
             query.SetParameter("CD_APOLICE", codigoApolice);
@@ -65,7 +83,8 @@ namespace CotacaoApp.DAO
             QuerySql query = conexao.CreateQuery("DELETE " +
                                                  " FROM apolice " +
                                                  " WHERE CD_APOLICE != @CD_APOLICE " +
-                                                 " AND CD_PROPOSTA = @CD_PROPOSTA ");
+                                                 " AND CD_PROPOSTA = @CD_PROPOSTA " +
+                                                 " AND SG_STATUS != 3 ");
 
             query.SetParameter("CD_APOLICE", codigoApoliceExcesao);
             query.SetParameter("CD_PROPOSTA", codigoProposta);

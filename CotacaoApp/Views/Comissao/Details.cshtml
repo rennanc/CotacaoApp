@@ -1,7 +1,7 @@
 ﻿@model CotacaoApp.Models.Comissao
 
 @{
-    ViewBag.Title = "Detalhes";
+    ViewBag.Title = "Detalhes da Comissao";
 }
 
 <h2>Detalhes</h2>
@@ -27,14 +27,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ValorPercentualLiquido)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ValorPercentualLiquido)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.ValorComissaoLiquida)
         </dt>
 
@@ -43,20 +35,28 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ValorPercentualCiss)
+            @Html.DisplayNameFor(model => model.ValorPercentualComissao)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ValorPercentualCiss)
+            @Html.DisplayFor(model => model.ValorPercentualComissao)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.ValorPercentualComissaoLiquido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorPercentualComissaoLiquido)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ValorPercentualCir)
+            @Html.DisplayNameFor(model => model.ValorPercentualImpostoSobreRenda)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ValorPercentualCir)
-        </dd>
+            @Html.DisplayFor(model => model.ValorPercentualImpostoSobreRenda)
+        </dd>*@
 
     </dl>
 </div>

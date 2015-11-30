@@ -1,4 +1,5 @@
 ﻿@model CotacaoApp.Models.Endosso
+@using CotacaoApp.Models
 
 @{
     ViewBag.Title = "Detalhes";
@@ -7,15 +8,30 @@
 <h2>Detalhes</h2>
 
 <div>
-    <h4>Usuario</h4>
+    <h4>Endosso</h4>
     <hr />
+
+    @if (Model.Apolice != null)
+    {
+        @Html.Partial("_Apolice", (Apolice)Model.Apolice)
+        @Html.HiddenFor(model => model.CodApolice, new { id = "Apolice.CodApolice", Value = @Model.Apolice.Id })
+
+    }
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.CodApolice)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CodApolice)
+            <a href="/Apolice/Details/@Model.CodApolice">Ver Apolice Atual</a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodApoliceAntigo)
+        </dt>
+
+        <dd>
+            <a href="/Apolice/Details/@Model.CodApoliceAntigo">Ver Apolice Anterior</a>
         </dd>
 
         <dt>

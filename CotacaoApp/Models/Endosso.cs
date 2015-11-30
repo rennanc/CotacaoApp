@@ -21,7 +21,7 @@ namespace CotacaoApp.Models
         public int CodApolice { get; set; }
 
         [NotMapped]
-        public Apolice apolice { get; set; }
+        public Apolice Apolice { get; set; }
 
         [Required]
         [Display(Name = "Código Apolice Antigo")]
