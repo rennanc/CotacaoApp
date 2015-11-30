@@ -38,13 +38,14 @@ namespace CotacaoApp.Util
             client.UseDefaultCredentials = false;
             client.Credentials = new NetworkCredential(SendersAddress, SendersPassword);
             
-
             client.Send(sendmsg);
 
             }
             catch (Exception e)
             {
                 Console.Write("Erro ao enviar o email " + e.Message);
+                throw new Exception("Erro com o Servidor de envio de email :" + e.StackTrace);
+                
             }
         }
 

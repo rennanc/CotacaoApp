@@ -24,9 +24,16 @@ namespace CotacaoApp.DAO
         #endregion
 
         public DBConnection()
-        { 
-            _Connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString.ToString());
-            _Connection.Open();
+        {
+            try { 
+                _Connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString.ToString());
+                _Connection.Open();
+            }
+            catch (Exception e)
+            {
+                _Connection.Close();
+                throw new Exception("Erro de conexão com o banco :" + e.StackTrace);
+            }
         }
 
         public QuerySql CreateQuery(String sql)
@@ -81,6 +88,7 @@ namespace CotacaoApp.DAO
             catch (Exception ex)
             {
                 //Caso de excessão desconhecida
+                Dispose();
                 _ErrorMessage = ex.Message.ToString();
                 _State = false;
                 _ErrorNumber = ex.GetHashCode();
