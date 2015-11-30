@@ -182,7 +182,6 @@ namespace CotacaoApp.Controllers
             int pageSize = 15;
             int pageNumber = (page ?? 1);
             PagedList<Proposta> propostaList = new PagedList<Proposta>(propostasCompleta, pageNumber, pageSize);
-            db.Dispose();
             return View(propostaList);
         }
 

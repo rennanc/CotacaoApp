@@ -31,7 +31,6 @@ namespace CotacaoApp.DAO
             }
             catch (Exception e)
             {
-                _Connection.Close();
                 Dispose();
                 throw new Exception("Erro de conexão com o banco :" + e.StackTrace);
             }
@@ -86,7 +85,6 @@ namespace CotacaoApp.DAO
                     _CompleteCommand = true;
                    
                 }
-                Dispose();
                 
             }
             catch (Exception ex)
