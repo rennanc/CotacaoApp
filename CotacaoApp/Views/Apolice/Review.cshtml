@@ -42,7 +42,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CodigoSeguradora)
+            @Html.DisplayFor(model => model.Seguradora.NomeSeguradora)
         </dd>
 
         <dt>
@@ -66,7 +66,7 @@
         </dt>
 
         <dd>
-            R$ @Html.DisplayFor(model => model.Comissao.ValorComissaoLiquida)
+            R$ @Model.Comissao.ValorComissaoLiquida
         </dd>
         
         <!-- Comissao  FIM -->

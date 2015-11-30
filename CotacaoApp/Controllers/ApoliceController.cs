@@ -228,6 +228,8 @@ namespace CotacaoApp.Controllers
 
             Usuario usuario = (Usuario)Session["UsuarioLogado"];
             //PREPARANDO EMAIL
+            apolice.Seguradora = db.Seguradora.Find(apolice.CodigoSeguradora);
+            apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#seguradoraEmail", apolice.Seguradora.NomeSeguradora.ToString());
             apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#valorContratoEmail", apolice.ValorContrato.ToString());
             apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#corretorEmail", "Seu Corretor - " + usuario.Nome);
             string url = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath,"");
@@ -312,6 +314,8 @@ namespace CotacaoApp.Controllers
             //Enviando Email de endosso para o Cliente
             Usuario usuario = (Usuario)Session["UsuarioLogado"];
             //PREPARANDO EMAIL
+            apolice.Seguradora = db.Seguradora.Find(apolice.CodigoSeguradora);
+            apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#seguradoraEmail", apolice.Seguradora.NomeSeguradora.ToString());
             apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#valorContratoEmail", apolice.ValorContrato.ToString());
             apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#corretorEmail", "Seu Corretor - " + usuario.Nome);
             string url = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath, "");
@@ -332,7 +336,7 @@ namespace CotacaoApp.Controllers
         [HttpPost]
         public ActionResult Review(Apolice apolice)
         {
-            apolice.Seguradoras = db.Seguradora.ToList();
+            apolice.Seguradora = db.Seguradora.Find(apolice.CodigoSeguradora);
             _apolice = apolice;
             return View(_apolice);
         }
