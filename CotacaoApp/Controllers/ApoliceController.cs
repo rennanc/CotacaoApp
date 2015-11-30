@@ -298,6 +298,7 @@ namespace CotacaoApp.Controllers
             apolice.Status = Status.ENVIADO;
 
             //criando nova Apolice 
+            apolice.Id = 0;
             apolice = db.Apolice.Add(apolice);
 
             //adicionando Id da apolice Nova
