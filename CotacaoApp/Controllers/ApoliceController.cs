@@ -12,6 +12,7 @@ using CotacaoApp.Util;
 using CotacaoApp.Filters;
 using CotacaoApp.Enumerations;
 using PagedList;
+using Microsoft.Web.Mvc;
 
 namespace CotacaoApp.Controllers
 {
@@ -19,6 +20,34 @@ namespace CotacaoApp.Controllers
     public class ApoliceController : Controller
     {
         private DefaultConnection db = new DefaultConnection();
+
+
+        private Apolice _apolice;
+
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            var serialized = Request.Form["apolice"];
+            if (serialized != null)
+            {
+                // Form was posted containing serialized data
+                _apolice = (Apolice)new MvcSerializer().Deserialize(serialized);
+                try
+                {
+                    TryUpdateModel(_apolice);
+                }
+                catch (Exception)
+                {
+                    _apolice = (Apolice)TempData["apolice"] ?? new Apolice();
+
+                }
+
+
+            }
+            else
+            {
+                _apolice = (Apolice)TempData["apolice"] ?? new Apolice();
+            }
+        }
 
         // GET: Apolice
         public ViewResult Index(Apolice apoliceSearch, string sortOrder, string currentFilter, int? page)
@@ -183,6 +212,9 @@ namespace CotacaoApp.Controllers
             PropostaDAO propostaDao = new PropostaDAO();
             Proposta proposta = propostaDao.GetProposta(apolice.CodigoProposta);
 
+            //Mudando Status para fins de organização
+            propostaDao.MudarStatus(proposta.Id, (int)StatusProposta.ATENDIDO);
+
             //criando valor da proposta do condutor
             ValorProposta valorProposta = new ValorProposta();
             valorProposta.Valor = apolice.ValorContrato;
@@ -197,7 +229,7 @@ namespace CotacaoApp.Controllers
             Usuario usuario = (Usuario)Session["UsuarioLogado"];
             //PREPARANDO EMAIL
             apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#valorContratoEmail", apolice.ValorContrato.ToString());
-            apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#corretorEmail", "Joao - " + usuario.Nome);
+            apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#corretorEmail", "Seu Corretor - " + usuario.Nome);
             string url = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath,"");
             apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#EnderecoConfirmaEmail", url + "/Proposta/AceitarProposta?" +
                                                                                                             "email=" + proposta.Segurado.Email + 
@@ -206,7 +238,7 @@ namespace CotacaoApp.Controllers
 
 
             UtilEmailMessage utilEmail = new UtilEmailMessage();
-            utilEmail.EnviarEmail("Proposta de Cotação de Seguro", proposta.Segurado.Email, apolice.formularioApoliceHtml);
+            utilEmail.EnviarEmail("[BUSCA SEGUROS] Sua Proposta de Cotação de Seguro", proposta.Segurado.Email, apolice.formularioApoliceHtml);
 
             return View(apolice);
         }
@@ -218,6 +250,7 @@ namespace CotacaoApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Apolice apolice = db.Apolice.Find(id);
             PropostaDAO propostaDao = new PropostaDAO();
             apolice.Proposta = propostaDao.GetProposta(apolice.CodigoProposta);
@@ -235,36 +268,72 @@ namespace CotacaoApp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Edit(Apolice apolice)
         {
+            apolice = _apolice;
             //if (ModelState.IsValid)
             //{
                 //modificando a antiga para Flag de modificada
-                ApoliceDAO apoliceDao = new ApoliceDAO();
-                apoliceDao.MudarParaModificado(apolice.Id);
+            ApoliceDAO apoliceDao = new ApoliceDAO();
+            apoliceDao.MudarStatus(apolice.Id, apolice.CodigoProposta, (int)Status.ENDOSSADO);
+            apoliceDao.MudarParaModificado(apolice.Id);
 
-                //Salvando Mudanças da proposta
-                PropostaDAO propostaDao = new PropostaDAO();
-                propostaDao.Save(apolice.Proposta);
 
-                //Criacao de endosso
-                Endosso endosso = new Endosso();
-                //salvando codigo antigo da apolice
-                endosso.CodApoliceAntigo = apolice.Id;
-                endosso.DataEndosso = DateTime.Now;
+            PropostaDAO propostaDao = new PropostaDAO();
+            //Mudar Proposta Antiga para Proposta Endossada
+            propostaDao.MudarStatus(apolice.CodigoProposta, (int)StatusProposta.ENDOSSADA);
 
-                //criando nova Apolice 
-                apolice = db.Apolice.Add(apolice);
+            //Inserindo nova proposta do Endosso
+            apolice.Proposta.Id = propostaDao.InsertForEndosso(apolice.Proposta);
+            apolice.CodigoProposta = apolice.Proposta.Id;
 
-                //adicionando Id da apolice Nova
-                endosso.CodApolice = apolice.Id;
+            //Criacao de endosso
+            Endosso endosso = new Endosso();
+            //salvando codigo antigo da apolice
+            endosso.CodApoliceAntigo = apolice.Id;
+            endosso.DataEndosso = DateTime.Now;
+                
+            //Mudança de Status da Apolice ao Criar um Endosso
+            apolice.Status = Status.ENVIADO;
 
-                //Salvando Endosso e Apolice nova
-                db.Endosso.Add(endosso);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+            //criando nova Apolice 
+            apolice = db.Apolice.Add(apolice);
+
+            //adicionando Id da apolice Nova
+            endosso.CodApolice = apolice.Id;
+
+            //Salvando Endosso e Apolice nova
+            db.Endosso.Add(endosso);
+            db.SaveChanges();
+
+
+            //Enviando Email de endosso para o Cliente
+            Usuario usuario = (Usuario)Session["UsuarioLogado"];
+            //PREPARANDO EMAIL
+            apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#valorContratoEmail", apolice.ValorContrato.ToString());
+            apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#corretorEmail", "Seu Corretor - " + usuario.Nome);
+            string url = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath, "");
+            apolice.formularioApoliceHtml = apolice.formularioApoliceHtml.Replace("#EnderecoConfirmaEmail", url + "/Proposta/AceitarProposta?" +
+                                                                                                            "email=" + apolice.Proposta.Segurado.Email +
+                                                                                                            "&codigoProposta=" + apolice.CodigoProposta +
+                                                                                                            "&codigoApolice=" + apolice.Id);
+            UtilEmailMessage utilEmail = new UtilEmailMessage();
+            utilEmail.EnviarEmail("[BUSCA SEGUROS] Endosso de Sua Proposta de Cotação de Seguro", apolice.Proposta.Segurado.Email, apolice.formularioApoliceHtml);
+
+
+
+            return RedirectToAction("Index");
             //}
             //return View(apolice);
+        }
+
+        [HttpPost]
+        public ActionResult Review(Apolice apolice)
+        {
+            apolice.Seguradoras = db.Seguradora.ToList();
+            _apolice = apolice;
+            return View(_apolice);
         }
 
         // GET: Apolice/Delete/5

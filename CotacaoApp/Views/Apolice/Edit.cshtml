@@ -5,11 +5,12 @@
 @{
     ViewBag.Title = "Editar";
     Usuario usuario = (Usuario)Session["UsuarioLogado"];
+    Double percentualComissao = Double.Parse(Model.Comissao.ValorPercentualComissao.ToString());
 }
 
 <h2>Editar</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Review", "Apolice", FormMethod.Post, new { id = "ApoliceForm" }))
 {
     @Html.AntiForgeryToken()
 
@@ -47,7 +48,7 @@
                 </div>
 
 
-                @Html.HiddenFor(model => model.Proposta.NomeMarcaVeiculo, new { id = "NomeMarcaVeiculoHidden" })
+                @Html.HiddenFor(model => model.Proposta.NomeMarcaVeiculo, new { @id = "NomeMarcaVeiculoHidden", @Name = "NomeMarcaVeiculoHidden" })
                 <div class="form-group ">
                     @Html.Label("Marca do Carro:*", htmlAttributes: new { @class = "control-label col-md-3" })
                     <select name="Proposta.NomeMarcaVeiculo" id="NomeMarcaVeiculoSelect" class="form-control col-md-9" style="margin-left:15px" required>
@@ -55,7 +56,7 @@
                     </select>
                 </div>
 
-                @Html.HiddenFor(model => model.Proposta.AnoFabricacaoVeiculo, new { id = "AnoFabricacaoVeiculoHidden" })
+                @Html.HiddenFor(model => model.Proposta.AnoFabricacaoVeiculo, new { @id = "AnoFabricacaoVeiculoHidden", @Name = "AnoFabricacaoVeiculoHidden" })
                 <div class="form-group ">
                     @Html.LabelFor(model => model.Proposta.AnoFabricacaoVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
                     <select name="Proposta.AnoFabricacaoVeiculo" id="AnoFabricacaoVeiculo" class="form-control col-md-9" style="margin-left:15px" required>
@@ -63,11 +64,11 @@
                     </select>
                 </div>
 
-                @Html.HiddenFor(model => model.Proposta.AnoModeloVeiculo, new { id = "AnoModeloVeiculoHidden" })
+                @Html.HiddenFor(model => model.Proposta.AnoModeloVeiculo, new { @id = "AnoModeloVeiculoHidden", @Name = "AnoModeloVeiculoHidden" })
                 <div class="form-group" style="display: none" id="AnoModeloVeiculoField">
                     @Html.LabelFor(model => model.Proposta.AnoModeloVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
                     <div class="col-md-9">
-                        <span id="AnoModeloVeiculoRadios"></span>
+                        <span id="AnoModeloVeiculoRadiosApolice"></span>
                     </div>
                     <span id="AnoModeloVeiculo-error" class="help-block" style="display: none;"></span>
                 </div>
@@ -230,6 +231,7 @@
                 <!-- PASSO 2 - FIM-->
                 <!-- PASSO 3 - INICIO -->
                 @Html.HiddenFor(model => model.Proposta.Segurado.Id)
+                @Html.HiddenFor(model => model.Proposta.codigoSegurado)
                 <div class="form-group">
                     @Html.Label("Nome completo do(a) segurado(a)*", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
@@ -333,6 +335,7 @@
                     <div class="col-md-12"><h2>DADOS DO PROPRIETÁRIO</h2></div>
 
                     @Html.HiddenFor(model => model.Proposta.Proprietario.Id)
+                    @Html.HiddenFor(model => model.Proposta.Proprietario.IEProprietarioVeiculo, IEProprietarioVeiculo.SIM)
                     <div class="form-group">
                         @Html.Label("Nome do(a) Proprietário(a)*", htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
@@ -344,7 +347,7 @@
                     <div class="form-group">
                         @Html.Label("Data de nascimento do Proprietário*", htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            @Html.TextBoxFor(model => model.Proposta.Proprietario.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.Proposta.Proprietario.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Proposta.Proprietario.DataNascimento, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -521,6 +524,7 @@
                 <div class="border-box display-hide" id="OutroCondutor">
                     <div class="col-md-12"><h2>DADOS DO OUTRO CONDUTOR</h2></div>
                     @Html.HiddenFor(model => model.Proposta.OutroCondutor.Id)
+                    @Html.HiddenFor(model => model.Proposta.OutroCondutor.IECondutorPrincipal, IECondutorPrincipal.OUTRAPESSOA)
                     <div class="form-group">
                         @Html.Label("Nome completo do(a) condutor(a) principal*", htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
@@ -620,13 +624,6 @@
                 </div>
                 <!-- PASSO 4 - FIM -->
                 <!-- PASSO 5 - INICIO -->
-                <div class="form-group">
-                    @Html.Label("Nome Completo*", htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-8">
-                        @Html.EditorFor(model => model.Proposta.Segurado.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Proposta.Segurado.Nome, "", new { @class = "text-danger" })
-                    </div>
-                </div>
 
                 <div class="form-group">
                     @Html.Label("E-mail*", htmlAttributes: new { @class = "control-label col-md-4" })
@@ -721,6 +718,7 @@
                         </div>
                     </div>
                 </div>
+                @Html.HiddenFor(model => model.Proposta.Status, StatusProposta.COMAPOLICEACEITA)
                 <!-- PASSO 5 - FIM -->
             </div>
             /**** PROPOSTA EDIT ****/
@@ -757,8 +755,8 @@
             <div class="form-group">
                 @Html.Label("Valor do Contrato:*", htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="input-group col-lg-9" style="padding-left:15px">
-                    <div class="input-group-addon">$</div>
-                    <input type="text" id="ValorContrato" style="width: 315px;" value="@Model.ValorContrato" name="ValorContrato" class="form-control numeric" placeholder="0.00">
+                    <div class="input-group-addon">R$</div>
+                    <input type="text" id="ValorContrato" style="width: 315px;" value="@Model.ValorContrato" name="ValorContrato" class="form-control numeric" placeholder="0.00" required>
                 </div>
             </div>
 
@@ -776,20 +774,22 @@
             </div>*@
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Comissao.ValorComissaoLiquida, htmlAttributes: new { @class = "control-label col-md-3" })
+                @Html.LabelFor(model => model.Comissao.ValorPercentualComissao, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="input-group" style="padding-left:15px">
-                    <div class="input-group-addon">$</div>
-                    <input type="text" id="Comissao.ValorComissaoLiquida" value="@Model.Comissao.ValorComissaoLiquida" style="width: 315px;" name="Comissao.ValorComissaoLiquida" class="form-control numeric" placeholder="0.00">
+                    <div class="input-group-addon">%</div>
+                    <input type="number" id="Comissao_ValorPercentualComissao" value="@percentualComissao" style="width: 315px;" min="0" max="100" name="Comissao.ValorPercentualComissao" class="form-control numeric" placeholder="0.00" required>
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Comissao.ValorPercentualComissao, htmlAttributes: new { @class = "control-label col-md-3" })
+                @Html.LabelFor(model => model.Comissao.ValorComissaoLiquida, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="input-group" style="padding-left:15px">
-                    <div class="input-group-addon">%</div>
-                    <input type="number" id="Comissao.ValorPercentualComissao" style="width: 315px;" min="0" max="100" name="Comissao.ValorPercentualComissao" class="form-control numeric" placeholder="0.00">
+                    <div class="input-group-addon">R$</div>
+                    <input type="text" id="Comissao_ValorComissaoLiquida" value="@Model.Comissao.ValorComissaoLiquida" style="width: 315px;" name="Comissao.ValorComissaoLiquida" class="form-control numeric" placeholder="0.00" disabled>
                 </div>
             </div>
+
+            
 
             @*<div class="form-group">
                 @Html.LabelFor(model => model.Comissao.ValorPercentualComissaoLiquido, htmlAttributes: new { @class = "control-label col-md-3" })
@@ -807,7 +807,7 @@
                 </div>
             </div>*@
             <input type="hidden" id="formularioApoliceHtml" name="formularioApoliceHtml" />
-            <div><input type="submit" value="Emitir Apolice Para o Cliente" class="form-control btn-success" /></div>
+            <div><input type="submit" value="Gerar Endosso" class="form-control btn-success" /></div>
         </div>
 }
 
@@ -824,16 +824,31 @@
 
 
     $(".numeric").inputmask("decimal", {
-        radixPoint: ",",
+        radixPoint: ".",
         digits: 2
     });
 
     $("#ApoliceForm").submit(function (event) {
-        debugger;
-        $("#contratoEmail").show();
-        $("#valorContratoEmail").val($("#ValorContrato").val());
-        $("#corretorEmail").val('teste');
-        $("#formularioApoliceHtml").val($("#Apolice").html());
+
+        $("#ApoliceForm").validate();
+        if ($("#ApoliceForm").valid()) {
+            debugger;
+            $("#contratoEmail").show();
+            $("#valorContratoEmail").val($("#ValorContrato").val());
+            $("#corretorEmail").val('teste');
+            //$("#formularioApoliceHtml").val($("#Apolice").html());
+        }
+
+    });
+
+    $("#Comissao_ValorPercentualComissao").on('change', function () {
+        var valorPercentual = parseFloat($(this).val().replace(",", "."));
+        var valorContrato = parseFloat($('#ValorContrato').val().replace(",", "."));
+
+        var valorComissao = valorContrato * (valorPercentual / 100);
+
+        $('#Comissao_ValorComissaoLiquida').val(valorComissao);
+
 
     });
 

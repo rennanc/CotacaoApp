@@ -58,6 +58,7 @@
         </div>
 
         <div class="border-box display-hide" id="OutroCondutor">
+            @Html.HiddenFor(model => model.OutroCondutor.IECondutorPrincipal, IECondutorPrincipal.OUTRAPESSOA)
             <div class="form-group">
                 @Html.Label("Nome completo do(a) condutor(a) principal*", htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
@@ -86,7 +87,7 @@
 
             <div class="form-group">
                 <div class="col-md-4 text-right">
-                    <p><label class="control-label">CPF do proprietário*</label></p>
+                    <p><label class="control-label">CPF do Condutor*</label></p>
                     <i>É muito importante colocar o CPF correto para obter uma cotação exata e com preços dentro do seu perfil. Não se preocupe, as informações serão armazenadas com total segurança.</i>
                 </div>
                 <div class="col-md-8">
@@ -122,7 +123,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Tipo de residência do " + @Model.Segurado.Nome  + "*", htmlAttributes: new { @class = "control-label col-md-5" })
+            @Html.Label("Tipo de residência do(da) " + @Model.Segurado.Nome  + "*", htmlAttributes: new { @class = "control-label col-md-5" })
             <div class="col-md-7">
                 <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.APARTAMENTOOUFLAT) Apartamento ou flat</p>
                 <p>@Html.RadioButtonFor(model => model.Segurado.IETipoResidencia, IETipoResidencia.CASAEMCONDOMINIOFECHADO) Casa em condominio fechado</p>
@@ -134,14 +135,14 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Qual a profissão do " + @Model.Segurado.Nome + "?*", htmlAttributes: new { @class = "control-label col-md-5" })
+            @Html.Label("Qual a profissão do(da) " + @Model.Segurado.Nome + "?*", htmlAttributes: new { @class = "control-label col-md-5" })
             <div class="col-md-7">
                 @Html.EditorFor(model => model.Segurado.Profissao, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.Label("Nos últimos 24 meses o " + @Model.Segurado.Nome + " foi vítima de roubo / furto de carro?*", htmlAttributes: new { @class = "control-label col-md-5" })
+            @Html.Label("Nos últimos 24 meses o(a) " + @Model.Segurado.Nome + " foi vítima de roubo / furto de carro?*", htmlAttributes: new { @class = "control-label col-md-5" })
             <div class="col-md-7">
                 @Html.RadioButtonFor(model => model.Segurado.IERoubadoEm24Meses, IERoubadoEm24Meses.SIM) Sim
                 @Html.RadioButtonFor(model => model.Segurado.IERoubadoEm24Meses, IERoubadoEm24Meses.NAO) Não

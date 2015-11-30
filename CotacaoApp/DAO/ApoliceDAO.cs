@@ -28,6 +28,23 @@ namespace CotacaoApp.DAO
             conexao.Close();
         }
 
+        public void MudarStatus(int codigoApolice, int codigoProposta, int status)
+        {
+            var conexao = new DBConnection();
+            QuerySql query = conexao.CreateQuery("UPDATE apolice SET " +
+                                                 " SG_STATUS=@SG_STATUS " +
+                                                 " WHERE CD_APOLICE = @CD_APOLICE " +
+                                                 " AND CD_PROPOSTA = @CD_PROPOSTA");
+
+            query.SetParameter("SG_STATUS", status);
+            query.SetParameter("CD_APOLICE", codigoApolice);
+            query.SetParameter("CD_PROPOSTA", codigoProposta);
+
+            DbDataReader reader = query.ExecuteQuery();
+            reader.Close();
+            conexao.Close();
+        }
+
         public string ObterEmailDoCorretorEValidarEmail(string email, string codigoProposta, string codigoApolice)
         {
             var conexao = new DBConnection();
@@ -66,7 +83,8 @@ namespace CotacaoApp.DAO
             QuerySql query = conexao.CreateQuery("DELETE " +
                                                  " FROM apolice " +
                                                  " WHERE CD_APOLICE != @CD_APOLICE " +
-                                                 " AND CD_PROPOSTA = @CD_PROPOSTA ");
+                                                 " AND CD_PROPOSTA = @CD_PROPOSTA " +
+                                                 " AND SG_STATUS != 3 ");
 
             query.SetParameter("CD_APOLICE", codigoApoliceExcesao);
             query.SetParameter("CD_PROPOSTA", codigoProposta);

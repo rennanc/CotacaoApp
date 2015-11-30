@@ -219,3 +219,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 div.preformatted{ white-space: pre ; display: block; unicode-bidi: embed }
+
+.div-centered{
+    float: none;
+    margin: 0 auto;
+}

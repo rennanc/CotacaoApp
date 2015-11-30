@@ -1,7 +1,8 @@
 ﻿@model PagedList.IPagedList<CotacaoApp.Models.Proposta>
 @using PagedList.Mvc;
+@using CotacaoApp.Enumerations;
 
-<link href="`~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Propostas";
@@ -12,9 +13,23 @@
 @using (Html.BeginForm("Index", "Proposta", FormMethod.Get, new { @class = "form-inline" }))
 {
     <div class="form-group">
-        <label for="SearchString">Nome do Segurado</label>
-        <input type="text" id="SearchString" name="SearchString" class="form-control" placeholder="Nome do Segurado" />
+        <label for="propostaSearch_Segurado_Nome">Nome do Segurado</label>
+        <input type="text" id="propostaSearch_Segurado_Nome" name="propostaSearch.Segurado.Nome" class="form-control" placeholder="Nome do Segurado" />
     </div>
+    <select id="propostaSearch_Status" name="propostaSearch.Status" class="form-control">
+            @foreach (var status in EnumHelper.GetSelectList(typeof(StatusProposta)))
+            {
+
+                if (int.Parse(status.Value) == (int)StatusProposta.NENHUM)
+                {
+                    <option value="@status.Value">Todos os Status</option>
+                }
+                else
+                {
+                    <option value="@status.Value">@status.Text</option>
+                }
+            }
+    </select>
     <input type="submit" class="btn-sm btn-default" value="Buscar" />
 }
     
@@ -24,7 +39,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayName("Numero da Proposta")
+            @Html.DisplayName("Codigo")
+        </th>
+        <th>
+            @Html.DisplayName("Status")
         </th>
         <th>
             @Html.ActionLink("CPF do Segurado", "Index", new { sortOrder = ViewBag.CpfSortParm, currentFilter = ViewBag.CurrentFilter })
@@ -46,6 +64,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Id)
         </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.Status)
+        </th>
         <td>
             @Html.DisplayFor(modelItem => item.Segurado.CodigoCpf)
         </td>
@@ -60,7 +81,7 @@
         </td>
         <td>
             @Html.ActionLink("Criar Apolice", "Create", "Apolice", new { propostaId = item.Id }, new { propostaId = item.Id }) |
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
             @Html.ActionLink("Detalhes", "Details", new { id=item.Id }) |
             @Html.ActionLink("Deletar", "Delete", new { id=item.Id })
         </td>
@@ -72,7 +93,7 @@
 <div class="col-sm-10">
     <div>
         @Html.PagedListPager(Model, page => Url.Action("Index",
-                    new { pagina = page }))
+                    new { page = page }))
         Mostrando @Model.FirstItemOnPage de @Model.LastItemOnPage
                     de @Model.TotalItemCount Propostas
     </div>

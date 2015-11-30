@@ -52,28 +52,28 @@
         </div>
 
         @*<div class="form-group">
-                @Html.LabelFor(model => model.NomeMarcaVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.NomeMarcaVeiculo, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.NomeMarcaVeiculo, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
+            @Html.LabelFor(model => model.NomeMarcaVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.NomeMarcaVeiculo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NomeMarcaVeiculo, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
         @*<div class="form-group">
-                @Html.LabelFor(model => model.AnoFabricacaoVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.AnoFabricacaoVeiculo, new { htmlAttributes = new { @class = "form-control", @min = "1900" } })
-                </div>
-            </div>*@
+            @Html.LabelFor(model => model.AnoFabricacaoVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.AnoFabricacaoVeiculo, new { htmlAttributes = new { @class = "form-control", @min = "1900" } })
+            </div>
+        </div>*@
 
 
 
         @*<div class="form-group">
-                @Html.LabelFor(model => model.AnoModeloVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.AnoModeloVeiculo, new { htmlAttributes = new { @class = "form-control", @min = "1900" } })
-                </div>
-            </div>*@
+            @Html.LabelFor(model => model.AnoModeloVeiculo, htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.AnoModeloVeiculo, new { htmlAttributes = new { @class = "form-control", @min = "1900" } })
+            </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.IEZeroKM, htmlAttributes: new { @class = "control-label col-md-3" })
@@ -336,6 +336,7 @@
             <div class="col-md-12"><h2>DADOS DO PROPRIETÁRIO</h2></div>
 
             @Html.HiddenFor(model => model.Proprietario.Id)
+            @Html.HiddenFor(model => model.Proprietario.IEProprietarioVeiculo, IEProprietarioVeiculo.SIM)
             <div class="form-group">
                 @Html.Label("Nome do(a) Proprietário(a)*", htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
@@ -347,8 +348,7 @@
             <div class="form-group">
                 @Html.Label("Data de nascimento do Proprietário*", htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    @Html.TextBoxFor(model => model.Proprietario.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Proprietario.DataNascimento, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Proprietario.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
             </div>
 
@@ -524,6 +524,7 @@
         <div class="border-box display-hide" id="OutroCondutor">
             <div class="col-md-12"><h2>DADOS DO OUTRO CONDUTOR</h2></div>
             @Html.HiddenFor(model => model.OutroCondutor.Id)
+            @Html.HiddenFor(model => model.OutroCondutor.IECondutorPrincipal, IECondutorPrincipal.OUTRAPESSOA)
             <div class="form-group">
                 @Html.Label("Nome completo do(a) condutor(a) principal*", htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
@@ -623,13 +624,13 @@
         </div>
         <!-- PASSO 4 - FIM -->
         <!-- PASSO 5 - INICIO -->
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.Label("Nome Completo*", htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-8">
                 @Html.EditorFor(model => model.Segurado.Nome, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Segurado.Nome, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.Label("E-mail*", htmlAttributes: new { @class = "control-label col-md-4" })
@@ -724,5 +725,10 @@
                 </div>
             </div>
         </div>
+
+        <div class="form-group col-md-12">
+            @Html.CheckBoxFor(model => model.Segurado.IEItauPersonalite, new { htmlAttributes = new { @class = "form-control" } }) Li e concordo com o contrato de prestação de serviços de corretagem de seguros e com o termo de Uso e política de privacidade do site da BuscaSeguro.
+        </div>
         <!-- PASSO 5 - FIM -->
+        @Html.HiddenFor(model => model.Status, StatusProposta.AGUARDANDO)
     </div>

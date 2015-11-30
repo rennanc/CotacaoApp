@@ -311,6 +311,7 @@
     <Content Include="Images\buscaSegurosSmall.jpg" />
     <Content Include="Images\busqueSeguros.jpg" />
     <Content Include="Images\busqueSegurosSmall.jpg" />
+    <Content Include="Images\email-marketing.png" />
     <Content Include="Images\mulherComChave.jpg" />
     <Content Include="Images\Motivos.png" />
     <Content Include="Images\Seguradoras\seguradora-aig-seguros.png" />
@@ -584,6 +585,8 @@
     <Content Include="Views\Apolice\_PropostaEdit.cshtml" />
     <Content Include="Views\Endosso\_Proposta.cshtml" />
     <Content Include="Views\Endosso\_Apolice.cshtml" />
+    <Content Include="Views\Apolice\Review.cshtml" />
+    <Content Include="Views\Apolice\_PropostaReview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

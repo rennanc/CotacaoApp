@@ -56,7 +56,8 @@ namespace CotacaoApp.Controllers
             {
                 db.Usuario.Add(usuario);
                 db.SaveChanges();
-                return RedirectToAction("Index","Administracao");
+                return RedirectToAction("Index");
+                //return RedirectToAction("Index","Administracao");
             }
 
             return View(usuario);

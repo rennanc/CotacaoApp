@@ -33,13 +33,16 @@ namespace CotacaoApp.Models
         public StatusPagamento Tipo { get; set; }
 
         [Display(Name = "Data Vencimento")]
-        [Column("DT_DATA VENCIMENTO")]
+        [Column("DT_DATA_VENCIMENTO")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DataVencimento { get; set; }
 
         [Display(Name = "Valor*")]
         [Column("VL_VALOR")]
         public decimal Valor { get; set; }
 
+        [NotMapped]
+        public Condutor Condutor { get; set; }
     }
 }

@@ -4,11 +4,15 @@
     }
 
     //exclusivo para detalhes
-    if ($("#SeguradoIECondutorPrincipalDetalhes").val() == 'OUTRAPESSOA') {
-        $('#OutroCondutor').show();
-    } else {
-        $('#OutroCondutor').hide();
+    if ($("#SeguradoIECondutorPrincipalDetalhes").val() != undefined)
+    {
+        if ($("#SeguradoIECondutorPrincipalDetalhes").val() == 'OUTRAPESSOA') {
+            $('#OutroCondutor').show();
+        } else {
+            $('#OutroCondutor').hide();
+        }
     }
+    
 });
 
 

@@ -7,6 +7,7 @@ using System.Data.Common;
 using CotacaoApp.Models;
 using System.Web.UI.WebControls;
 using CotacaoApp.Enumerations;
+using System.Data.SqlClient;
 
 namespace CotacaoApp.DAO
 {
@@ -102,9 +103,7 @@ namespace CotacaoApp.DAO
             var conexao = new DBConnection();
 
             string queryString = "SELECT * FROM condutor "+
-                                                "INNER JOIN telefone ON "+
-                                                "condutor.CD_CONDUTOR = telefone.CD_CONDUTOR "+
-                                                "WHERE CD_SEGURADO=@seguradoId ";
+                                         "WHERE CD_SEGURADO=@seguradoId ";
 
 
             //IE_PROPRIETARIOVEICULO
@@ -123,33 +122,31 @@ namespace CotacaoApp.DAO
 
             DbDataReader reader = query.ExecuteQuery();
 
-            Condutor condutor = null;
+            Condutor condutor = new Condutor();
             if (reader.Read())
             {
-                condutor = new Condutor
-                {
-                    Id = reader.GetInt16(reader.GetOrdinal("CD_CONDUTOR")),
-                    codigoSegurado = reader.GetInt16(reader.GetOrdinal("CD_SEGURADO")),
-                    CodigoCpf = reader.GetString(reader.GetOrdinal("CD_CPF")),
-                    Nome = reader.GetString(reader.GetOrdinal("NM_NOME")),
-                    DataNascimento = DateTime.Parse(reader.GetString(reader.GetOrdinal("DT_NASCIMENTO"))),
-                    IESexo = (IESexo)reader.GetInt16(reader.GetOrdinal("IE_SEXO")),
-                    IEEstadoCivil = (IEEstadoCivil)reader.GetInt16(reader.GetOrdinal("NM_ESTADOCIVIL")),
-                    NumeroCep = reader.GetString(reader.GetOrdinal("NR_CEP")),
-                    IEPossuiOutrosCarros = (IEPossuiOutrosCarros)reader.GetInt16(reader.GetOrdinal("IE_POSSUIOUTROSCARROS")),
-                    IEQuantidadeCarro = (IEQuantidadeCarro)reader.GetInt16(reader.GetOrdinal("IE_QTDCARROS")),
-                    AnosDeCNH = reader.GetInt16(reader.GetOrdinal("NR_ANOSCNH")),
-                    IEProprietarioVeiculo = (IEProprietarioVeiculo)reader.GetInt16(reader.GetOrdinal("IE_PROPRIETARIOVEICULO")),
-                    IERelacaoProprietario = (IERelacaoProprietario)reader.GetInt16(reader.GetOrdinal("IE_RELACAOPROPRIETARIO")),
-                    IECondutorPrincipal = (IECondutorPrincipal)reader.GetInt16(reader.GetOrdinal("IE_CONDPRINCIPAL")),
-                    IETipoResidencia = (IETipoResidencia)reader.GetInt16(reader.GetOrdinal("IE_TIPORESIDENCIA")),
-                    Profissao = reader.GetString(reader.GetOrdinal("DS_PROFISSAO")),
-                    IERoubadoEm24Meses = (IERoubadoEm24Meses)reader.GetInt16(reader.GetOrdinal("IE_ROUBADOEM24MESES")),
-                    IEAlgumCondutorEstuda = (IEAlgumCondutorEstuda)reader.GetInt16(reader.GetOrdinal("IE_ALGUMCONDUTORESTUDA")),
-                    Email = reader.GetString(reader.GetOrdinal("NM_EMAIL")),
-                    IENoticiasEmail = reader.GetBoolean(reader.GetOrdinal("IE_NOTICIASEMAIL")),
-                    IECartaoPortoSeguroVisa = reader.GetBoolean(reader.GetOrdinal("IE_CARTAOPORTOSEGUROVISA")),
-                };
+
+                condutor.Id = reader.GetInt16(reader.GetOrdinal("CD_CONDUTOR"));
+                condutor.codigoSegurado = reader.GetInt16(reader.GetOrdinal("CD_SEGURADO"));
+                condutor.CodigoCpf = reader.GetStringOrNull(reader.GetOrdinal("CD_CPF"));
+                condutor.Nome = reader.GetStringOrNull(reader.GetOrdinal("NM_NOME"));
+                condutor.DataNascimento = DateTime.Parse(reader.GetStringOrNull(reader.GetOrdinal("DT_NASCIMENTO")));
+                condutor.IESexo = (IESexo)reader.GetInt16(reader.GetOrdinal("IE_SEXO"));
+                condutor.IEEstadoCivil = (IEEstadoCivil)reader.GetInt16(reader.GetOrdinal("NM_ESTADOCIVIL"));
+                condutor.NumeroCep = reader.GetStringOrNull(reader.GetOrdinal("NR_CEP"));
+                condutor.IEPossuiOutrosCarros = (IEPossuiOutrosCarros)reader.GetInt16(reader.GetOrdinal("IE_POSSUIOUTROSCARROS"));
+                condutor.IEQuantidadeCarro = (IEQuantidadeCarro)reader.GetInt16(reader.GetOrdinal("IE_QTDCARROS"));
+                condutor.AnosDeCNH = reader.GetInt16(reader.GetOrdinal("NR_ANOSCNH"));
+                condutor.IEProprietarioVeiculo = (IEProprietarioVeiculo)reader.GetInt16(reader.GetOrdinal("IE_PROPRIETARIOVEICULO"));
+                condutor.IERelacaoProprietario = (IERelacaoProprietario)reader.GetInt16(reader.GetOrdinal("IE_RELACAOPROPRIETARIO"));
+                condutor.IECondutorPrincipal = (IECondutorPrincipal)reader.GetInt16(reader.GetOrdinal("IE_CONDPRINCIPAL"));
+                condutor.IETipoResidencia = (IETipoResidencia)reader.GetInt16(reader.GetOrdinal("IE_TIPORESIDENCIA"));
+                condutor.Profissao = reader.GetStringOrNull(reader.GetOrdinal("DS_PROFISSAO"));
+                condutor.IERoubadoEm24Meses = (IERoubadoEm24Meses)reader.GetInt16(reader.GetOrdinal("IE_ROUBADOEM24MESES"));
+                condutor.IEAlgumCondutorEstuda = (IEAlgumCondutorEstuda)reader.GetInt16(reader.GetOrdinal("IE_ALGUMCONDUTORESTUDA"));
+                condutor.Email = reader.GetStringOrNull(reader.GetOrdinal("NM_EMAIL"));
+                condutor.IENoticiasEmail = reader.GetBoolean(reader.GetOrdinal("IE_NOTICIASEMAIL"));
+                condutor.IECartaoPortoSeguroVisa = reader.GetBoolean(reader.GetOrdinal("IE_CARTAOPORTOSEGUROVISA"));
             }
 
             if(condutor != null)
@@ -160,5 +157,8 @@ namespace CotacaoApp.DAO
             
             return condutor;
         }
+
     }
+
+    
 }

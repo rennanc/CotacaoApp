@@ -44,6 +44,7 @@
 *********************************/
         $('#AnoFabricacaoVeiculo').on('change', function () {
             obterListaAnoModelo($(this).val(), 'AnoModeloVeiculoHidden');
+            obterListaAnoModeloParaApolice($(this).val(), 'AnoModeloVeiculoHidden'); //Para Edit do Apolice
         });
 
 /********************************
