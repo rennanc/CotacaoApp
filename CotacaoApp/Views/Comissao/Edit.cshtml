@@ -16,13 +16,13 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.ValorPremioLiquido, htmlAttributes: new { @class = "control-label col-md-3" })
             <div class="input-group" style="padding-left:15px">
                 <div class="input-group-addon">$</div>
                 <input type="text" id="Comissao.ValorPremioLiquido" value="@Model.ValorPremioLiquido" style="width: 315px;" name="Comissao.ValorPremioLiquido" class="form-control numeric" placeholder="0.00">
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.ValorComissaoLiquida, htmlAttributes: new { @class = "control-label col-md-3" })

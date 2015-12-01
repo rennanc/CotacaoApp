@@ -9,9 +9,9 @@
 <table class="table">
     <tr>
 
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.ValorPremioLiquido)
-        </th>
+        </th>*@
 
         <th>
             @Html.DisplayNameFor(model => model.ValorComissaoLiquida)
@@ -35,9 +35,9 @@
     {
         <tr>
 
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.ValorPremioLiquido)
-            </td>
+            </td>*@
 
             <td>
                 @Html.DisplayFor(modelItem => item.ValorComissaoLiquida)
@@ -55,7 +55,7 @@
                 @Html.DisplayFor(modelItem => item.ValorPercentualImpostoSobreRenda)
             </td>*@
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @*@Html.ActionLink("Editar", "Edit", new { id = item.Id }) |*@
                 @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
                 @Html.ActionLink("Deletar", "Delete", new { id = item.Id })
             </td>
