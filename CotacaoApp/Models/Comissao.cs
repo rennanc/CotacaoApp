@@ -22,7 +22,7 @@ namespace CotacaoApp.Models
         [Column("VR_PREMIO_LIQUIDO")]
         public decimal ValorPremioLiquido { get; set; }
 
-        [Display(Name = "Valor Comissao Liquida:*")]
+        [Display(Name = "Valor Comissao :*")]
         [Column("VR_COMISSAO_LIQUIDO")]
         public decimal ValorComissaoLiquida { get; set; }
 
