@@ -276,7 +276,10 @@ namespace CotacaoApp.Controllers
             apolice = _apolice;
             //if (ModelState.IsValid)
             //{
-                //modificando a antiga para Flag de modificada
+            db.Comissao.Add(apolice.Comissao);
+            db.SaveChanges();
+            apolice.CodigoComissao = apolice.Comissao.Id;
+            //modificando a antiga para Flag de modificada
             ApoliceDAO apoliceDao = new ApoliceDAO();
             apoliceDao.MudarStatus(apolice.Id, apolice.CodigoProposta, (int)Status.ENDOSSADO);
             apoliceDao.MudarParaModificado(apolice.Id);
