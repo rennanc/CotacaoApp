@@ -44,10 +44,10 @@
             @Html.ActionLink("Nome do Segurado", "Index", new { sortOrder = ViewBag.NomeSeguradoSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Valor da Comissao", "Index", new { sortOrder = ViewBag.ValorPremioLiquidoVeiculoSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.DisplayName("Valor do Contrato")
         </th>
         <th>
-            @Html.DisplayName("ValorContrato")
+            @Html.ActionLink("Valor da Comissao", "Index", new { sortOrder = ViewBag.ValorPremioLiquidoVeiculoSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th></th>
     </tr>

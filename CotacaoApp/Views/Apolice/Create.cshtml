@@ -78,7 +78,7 @@
                 @Html.LabelFor(model => model.Comissao.ValorComissaoLiquida, htmlAttributes: new { @class = "control-label col-md-3" })
                 <div class="input-group" style="padding-left:15px">
                     <div class="input-group-addon">R$</div>
-                    <input type="text" id="Comissao_ValorComissaoLiquida" style="width: 315px;"  name="Comissao.ValorComissaoLiquida" class="form-control numeric" placeholder="0.00" disabled>
+                    <input type="text" id="Comissao_ValorComissaoLiquida" style="width: 315px;"  name="Comissao.ValorComissaoLiquida" class="form-control numeric" placeholder="0.00" >
                 </div>
             </div>
 
@@ -110,7 +110,7 @@
 
 <script type="text/javascript">
     $(".numeric").inputmask("decimal", {
-        radixPoint: ".",
+        radixPoint: ",",
         digits: 2
     });
 
