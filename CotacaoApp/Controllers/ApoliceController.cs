@@ -219,7 +219,7 @@ namespace CotacaoApp.Controllers
             ValorProposta valorProposta = new ValorProposta();
             valorProposta.Valor = apolice.ValorContrato;
             valorProposta.CodigoCondutor = proposta.Segurado.Id;
-            valorProposta.DataVencimento = new DateTime(2015, 10, 10);
+            valorProposta.DataVencimento = new DateTime(2016, 05, 12);
             valorProposta.CodigoApolice = apolice.Id;
 
             db.ValorProposta.Add(valorProposta);
@@ -279,6 +279,9 @@ namespace CotacaoApp.Controllers
             db.Comissao.Add(apolice.Comissao);
             db.SaveChanges();
             apolice.CodigoComissao = apolice.Comissao.Id;
+
+            
+
             //modificando a antiga para Flag de modificada
             ApoliceDAO apoliceDao = new ApoliceDAO();
             apoliceDao.MudarStatus(apolice.Id, apolice.CodigoProposta, (int)Status.ENDOSSADO);
@@ -304,6 +307,16 @@ namespace CotacaoApp.Controllers
 
             //criando nova Apolice 
             db.Apolice.Add(apolice);
+            db.SaveChanges();
+
+            //adicionando pagamento
+            //criando valor da proposta do condutor
+            ValorProposta valorProposta = new ValorProposta();
+            valorProposta.Valor = apolice.ValorContrato;
+            valorProposta.CodigoCondutor = apolice.Proposta.codigoSegurado;
+            valorProposta.DataVencimento = new DateTime(2016, 05, 12);
+            valorProposta.CodigoApolice = apolice.Id;
+            db.ValorProposta.Add(valorProposta);
             db.SaveChanges();
 
             //adicionando Id da apolice Nova
